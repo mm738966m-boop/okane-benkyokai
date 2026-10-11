@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>お金の勉強会｜Zoomに入る</title>
+<meta property="og:title" content="お金の勉強会｜Zoomに入る">
+<meta property="og:description" content="このリンクから、ご予約の勉強会のZoomに入れます。">
+<meta property="og:image" content="https://mm738966m-boop.github.io/okane-benkyokai/zoom/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
+<style>
+:root{--teal:#0E7C86;--deep:#0A5A62;--ink:#1C3236;--ink2:#4A6468;--soft:#EEF6F7;--gold:#D9A441;--goldbg:#FBF4E3}
+*{box-sizing:border-box}
+body{margin:0;background:var(--soft);color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;font-size:18px;font-weight:500;line-height:1.8;min-height:100vh;display:grid;place-items:center;padding:24px 20px}
+.card{background:#fff;border-radius:24px;box-shadow:0 6px 24px rgba(10,90,98,.10);border-top:6px solid var(--gold);max-width:460px;width:100%;padding:28px 22px 30px;text-align:center}
+img{width:132px;height:auto}
+h1{font-size:26px;font-weight:900;color:var(--deep);line-height:1.5;margin:8px 0 6px}
+p{margin:0 0 6px}
+.btn{display:block;margin:22px 0 14px;background:var(--teal);color:#fff;text-decoration:none;font-weight:900;font-size:21px;border-radius:999px;padding:16px 12px;box-shadow:0 5px 0 var(--deep)}
+.btn[aria-disabled=true]{background:#B9CDD0;box-shadow:0 5px 0 #9DB0B3;pointer-events:none}
+.btn:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
+.note{font-size:15px;color:var(--ink2);background:var(--goldbg);border-radius:14px;padding:12px 14px;text-align:left}
+</style>
+</head>
+<body>
+<main class="card">
+  <img src="mascot.webp" alt="">
+  <h1 id="ttl">Zoomを開いています</h1>
+  <p id="msg">そのまま少しお待ちください。</p>
+  <a id="go" class="btn" href="#" aria-disabled="true">Zoomに入る</a>
+  <p class="note">自動で開かないときは、上のボタンを押してください。<br>うまく入れないときは、お申込みのときに届いたメールのリンクからも入れます。</p>
+</main>
+<script>
+(function(){
+  var API='https://script.google.com/macros/s/AKfycbwjbvpoTwN4gUGCSMEMkhG4kmho-yCGcnjKr0YIJ-CCf5KXb0HVHjKo2XUS-bOAMlgwZw/exec';
+  var FALLBACK='https://us02web.zoom.us/j/86141509775';
+  var go=document.getElementById('go'),ttl=document.getElementById('ttl'),msg=document.getElementById('msg'),done=false;
+  function ready(url,auto){
+    if(done)return;done=true;
+    if(!/^https:\/\/[a-z0-9.-]*zoom\.us\//i.test(url))url=FALLBACK;
+    go.href=url;go.removeAttribute('aria-disabled');
+    ttl.textContent='Zoomの準備ができました';msg.textContent='自動で開きます。';
+    if(auto)setTimeout(function(){location.href=url},300);
+  }
+  var m=(new URLSearchParams(location.search).get('m')||'').trim();
+  window.fxJoin=function(d){ready(d&&d.url||FALLBACK,true)};
+  var s=document.createElement('script');
+  s.src=API+'?callback=fxJoin&m='+encodeURIComponent(m)+'&t='+Date.now();
+  s.onerror=function(){ready(FALLBACK,true)};
+  document.body.appendChild(s);
+  setTimeout(function(){ready(FALLBACK,true)},9000);
+})();
+</script>
+</body>
+</html>
