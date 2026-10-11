@@ -21,6 +21,7 @@ p{margin:0 0 6px}
 .btn{display:block;margin:22px 0 14px;background:var(--teal);color:#fff;text-decoration:none;font-weight:900;font-size:21px;border-radius:999px;padding:16px 12px;box-shadow:0 5px 0 var(--deep)}
 .btn[aria-disabled=true]{background:#B9CDD0;box-shadow:0 5px 0 #9DB0B3;pointer-events:none}
 .btn:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
+.ask{display:none;text-align:left;margin-top:14px}.ask label{font-weight:900;display:block;margin-bottom:6px}.ask input{width:100%;font:inherit;font-size:18px;border:2px solid #D5E4E6;border-radius:12px;padding:12px 14px;min-height:54px}.ask input:focus{outline:3px solid var(--gold);border-color:var(--teal)}.ask button{width:100%;margin-top:12px;font:inherit;font-weight:900;font-size:20px;color:#fff;background:var(--teal);border:0;border-radius:999px;min-height:58px;box-shadow:0 5px 0 var(--deep);cursor:pointer}
 .note{font-size:15px;color:var(--ink2);background:var(--goldbg);border-radius:14px;padding:12px 14px;text-align:left}
 </style>
 </head>
@@ -29,6 +30,7 @@ p{margin:0 0 6px}
   <img src="mascot.webp" alt="">
   <h1 id="ttl">Zoomを開いています</h1>
   <p id="msg">そのまま少しお待ちください。</p>
+  <form id="ask" class="ask"><label for="em">お申込みのときのメールアドレス</label><input id="em" type="email" inputmode="email" autocomplete="email" required placeholder="例：name@example.com"><button type="submit">Zoomを開く</button></form>
   <a id="go" class="btn" href="#" aria-disabled="true">Zoomに入る</a>
   <p class="note">自動で開かないときは、上のボタンを押してください。<br>うまく入れないときは、お申込みのときに届いたメールのリンクからも入れます。</p>
 </main>
@@ -44,13 +46,22 @@ p{margin:0 0 6px}
     ttl.textContent='Zoomの準備ができました';msg.textContent='自動で開きます。';
     if(auto)setTimeout(function(){location.href=url},300);
   }
+  function lookup(m){
+    done=false;ttl.textContent='Zoomを開いています';msg.textContent='そのまま少しお待ちください。';
+    window.fxJoin=function(d){ready(d&&d.url||FALLBACK,true)};
+    var s=document.createElement('script');
+    s.src=API+'?callback=fxJoin&m='+encodeURIComponent(m)+'&t='+Date.now();
+    s.onerror=function(){ready(FALLBACK,true)};
+    document.body.appendChild(s);
+    setTimeout(function(){ready(FALLBACK,true)},9000);
+  }
   var m=(new URLSearchParams(location.search).get('m')||'').trim();
-  window.fxJoin=function(d){ready(d&&d.url||FALLBACK,true)};
-  var s=document.createElement('script');
-  s.src=API+'?callback=fxJoin&m='+encodeURIComponent(m)+'&t='+Date.now();
-  s.onerror=function(){ready(FALLBACK,true)};
-  document.body.appendChild(s);
-  setTimeout(function(){ready(FALLBACK,true)},9000);
+  if(m&&m.indexOf('@')>0&&m.indexOf('%')===-1){lookup(m)}
+  else{
+    var ask=document.getElementById('ask');ask.style.display='block';go.style.display='none';
+    ttl.textContent='Zoomに入る';msg.textContent='お申込みのメールアドレスを入れて、ボタンを押してください。';
+    ask.addEventListener('submit',function(ev){ev.preventDefault();var v=document.getElementById('em').value.trim();if(!v)return;ask.style.display='none';go.style.display='block';lookup(v)});
+  }
 })();
 </script>
 </body>
