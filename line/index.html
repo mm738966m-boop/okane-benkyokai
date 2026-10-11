@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>お金の勉強会｜LINEで予約情報を受け取る</title>
+<meta property="og:title" content="お金の勉強会｜LINEで予約情報を受け取る">
+<meta property="og:description" content="このリンクから、ご予約の情報をLINEで受け取れます。">
+<meta property="og:image" content="https://mm738966m-boop.github.io/okane-benkyokai/zoom/ogp.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
+<style>
+body{margin:0;background:#EEF6F7;color:#1C3236;font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;font-size:18px;font-weight:500;line-height:1.8;min-height:100vh;display:grid;place-items:center;padding:24px 20px;box-sizing:border-box}
+.card{background:#fff;border-radius:24px;box-shadow:0 6px 24px rgba(10,90,98,.10);border-top:6px solid #D9A441;max-width:460px;width:100%;padding:28px 22px 30px;text-align:center;box-sizing:border-box}
+img{width:132px;height:auto}h1{font-size:25px;font-weight:900;color:#0A5A62;line-height:1.5;margin:8px 0 6px}p{margin:0 0 6px}
+.btn{display:block;margin:22px 0 4px;background:#06C755;color:#fff;text-decoration:none;font-weight:900;font-size:21px;border-radius:999px;padding:16px 12px;box-shadow:0 5px 0 #049A42}
+.btn:focus-visible{outline:4px solid #D9A441;outline-offset:3px}
+</style>
+</head>
+<body>
+<main class="card">
+  <img src="../zoom/mascot.webp" alt="">
+  <h1>LINEを開いています</h1>
+  <p>自動で開かないときは、下のボタンを押してください。</p>
+  <a id="go" class="btn" href="https://utage-system.com/line/link/DHmB7Kogg6pd/j5K2p2f8nDJ2">LINEで予約情報を受け取る</a>
+</main>
+<script>
+(function(){
+  var BASE='https://utage-system.com/line/link/DHmB7Kogg6pd/j5K2p2f8nDJ2';
+  var r=(new URLSearchParams(location.search).get('r')||'').trim();
+  var url=(r&&/^[A-Za-z0-9_-]+$/.test(r))?BASE+'?rid='+encodeURIComponent(r):BASE;
+  document.getElementById('go').href=url;
+  setTimeout(function(){location.replace(url)},400);
+})();
+</script>
+</body>
+</html>
