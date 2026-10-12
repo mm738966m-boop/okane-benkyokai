@@ -31,8 +31,11 @@ var css=''
 +'.fx-hint{margin:4px 0 12px;font-size:15.5px;color:#4A6468}'
 +'#fx-note{margin:12px 0 0;font-size:14.5px;color:#4A6468;background:#FBF4E3;border-radius:12px;padding:9px 13px;line-height:1.7}'
 +'#fx-head{font-size:19px;font-weight:900;color:#1C3236;margin:22px 0 2px}'
-+'#fx-line{margin:22px 0 4px;background:#F7FBFB;border:2px dashed #CFE3E5;border-radius:16px;padding:14px 14px 13px;text-align:center}'
-+'#fx-line p{margin:0 0 10px;font-size:15px;color:#4A6468;line-height:1.7}'
++'#fx-line{margin:22px 0 4px;background:#F7FBFB;border:2px dashed #CFE3E5;border-radius:16px;padding:14px 14px 13px;text-align:left}'
++'#fx-line p{margin:0 0 6px;font-size:16px;color:#1C3236;line-height:1.7}#fx-line p b{color:#0A5A62;font-weight:900}#fx-line .fx-sub{font-size:14.5px;color:#4A6468;margin-bottom:12px}'
++'#fx-line label{display:block;text-align:left;font-size:14.5px;font-weight:900;color:#0A5A62;margin:0 0 10px}#fx-line input{display:block;width:100%;margin-top:4px;font:inherit;font-size:17px;font-weight:500;color:#1C3236;border:2px solid #D5E4E6;border-radius:12px;min-height:50px;padding:8px 12px;background:#fff;box-sizing:border-box}#fx-line input:focus{border-color:#0E7C86;outline:0;box-shadow:0 0 0 3px rgba(14,124,134,.18)}'
++'#fx-line button{display:block;width:100%;font:inherit;font-size:18px;font-weight:900;color:#fff;background:#0E7C86;border:0;border-radius:999px;min-height:54px;cursor:pointer;box-shadow:0 5px 0 #0A5A62;margin-top:4px}#fx-line button[disabled]{opacity:.7;cursor:default}'
++'#fx-rq-msg{margin-top:10px;font-size:15px;line-height:1.7;text-align:left;min-height:0}#fx-rq-msg.ok{background:#FBF4E3;border-radius:12px;padding:10px 12px;color:#1C3236}#fx-rq-msg.ok b{color:#0A5A62}#fx-rq-msg.ng{color:#B23B3B;font-weight:700}'
 +'#fx-line a{display:inline-flex;align-items:center;gap:8px;background:#06C755;color:#fff;font-weight:900;font-size:16px;border-radius:999px;padding:11px 20px;text-decoration:none;box-shadow:0 4px 0 #04994A}'
 +'#fx-line small{display:block;margin-top:10px;font-size:13.5px;color:#4A6468;line-height:1.6}'
 +'#fx-line b{display:inline-block;font-size:15px;font-weight:900;color:#0A5A62;background:#fff;border:2px solid #CFE3E5;border-radius:999px;padding:6px 16px}'
@@ -85,7 +88,35 @@ function render(){
   if(!document.getElementById('fx-note')){var cal=sch.querySelector('.event-calendar');if(cal)cal.insertAdjacentHTML('afterend','<div id="fx-note"></div>')}
   if(!box){box=document.createElement('div');box.id='fx-slots';sch.appendChild(box);
     var fh=document.createElement('div');fh.id='fx-head';sch.insertBefore(fh,box);
-    var fl=document.createElement('div');fl.id='fx-line';fl.innerHTML='<p>2週間より先の日をご希望の方は、LINEでお知らせください。<br>ご希望の日が開く日に、こちらからご連絡します。</p>'+(IS_PHONE?'<a href="'+LINE_URL+'">LINEを開く</a><small>開くと「日程」の文字が入っています。<br>そのまま送信ボタンを押してください。</small>':'<b>スマホのLINEで「日程」と送ってください</b>');sch.appendChild(fl);box.addEventListener('click',function(e){var t=e.target.closest('.fx-ok');if(!t)return;var r=document.querySelector('#app .schedule').querySelectorAll('button.calendar-time');[].forEach.call(r,function(b){if(b.textContent.trim().slice(0,5)===t.getAttribute('data-k'))b.click()});setTimeout(render,200)});sig=''}
+    var fl=document.createElement('div');fl.id='fx-line';
+    var dmin=new Date();dmin.setHours(0,0,0,0);dmin=new Date(dmin.getTime()+WINDOW_DAYS*864e5);var dmax=new Date(dmin.getTime()+76*864e5);
+    var iso=function(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())};
+    fl.innerHTML='<p><b>2週間より先の日</b>をご希望の方へ</p><p class="fx-sub">ご希望の日を選んで送ると、その日の予約が始まる朝に、メールでお知らせします。</p>'
+      +'<label>ご希望の日<input type="date" id="fx-rq-date" min="'+iso(dmin)+'" max="'+iso(dmax)+'" required></label>'
+      +'<label>メールアドレス<input type="email" id="fx-rq-mail" placeholder="example@gmail.com" autocomplete="email" required></label>'
+      +'<button type="button" id="fx-rq-go">この日を希望する</button><div id="fx-rq-msg" aria-live="polite"></div>';
+    sch.appendChild(fl);
+    fl.querySelector('#fx-rq-go').addEventListener('click',function(){
+      var di=fl.querySelector('#fx-rq-date'),mi=fl.querySelector('#fx-rq-mail'),msg=fl.querySelector('#fx-rq-msg'),btn=this;
+      var v=di.value,mv=mi.value.trim();
+      if(!v){msg.className='ng';msg.textContent='ご希望の日を選んでください。';di.focus();return}
+      var d=new Date(v+'T00:00:00');if(isNaN(d)||d<dmin){msg.className='ng';msg.textContent=(dmin.getMonth()+1)+'月'+dmin.getDate()+'日より先の日を選んでください。それより前の日は、上の日付から予約できます。';di.focus();return}
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mv)){msg.className='ng';msg.textContent='メールアドレスをご確認ください。';mi.focus();return}
+      btn.disabled=true;msg.className='';msg.textContent='送っています…';
+      var jp=d.getFullYear()+'年'+pad(d.getMonth()+1)+'月'+pad(d.getDate())+'日';
+      fetch('/r/86k55gOyDnlF/register',{credentials:'same-origin'}).then(function(r){return r.text()}).then(function(h){
+        var m=h.match(/name="rid"[^>]*value="([^"]*)"/)||h.match(/value="([^"]*)"[^>]*name="rid"/);
+        var fd=new FormData();fd.append('mail',mv);fd.append('event_date',jp);if(m)fd.append('rid',m[1]);
+        return fetch('/r/86k55gOyDnlF/store',{method:'POST',body:fd,credentials:'same-origin'});
+      }).then(function(r){
+        if(!r.ok)throw 0;
+        var open=new Date(d.getTime()-WINDOW_DAYS*864e5);
+        msg.className='ok';msg.innerHTML='<b>承りました。</b><br>'+(d.getMonth()+1)+'月'+d.getDate()+'日（'+'日月火水木金土'.charAt(d.getDay())+'）の予約が始まる '+(open.getMonth()+1)+'月'+open.getDate()+'日の朝8時に、メールでお知らせします。';
+        di.value='';mi.value='';btn.textContent='送りました';
+      }).catch(function(){
+        btn.disabled=false;msg.className='ng';msg.innerHTML='送れませんでした。お手数ですが、お金の勉強会のLINEに「日程」と送ってください。';
+      });
+    });box.addEventListener('click',function(e){var t=e.target.closest('.fx-ok');if(!t)return;var r=document.querySelector('#app .schedule').querySelectorAll('button.calendar-time');[].forEach.call(r,function(b){if(b.textContent.trim().slice(0,5)===t.getAttribute('data-k'))b.click()});setTimeout(render,200)});sig=''}
   if(s!==sig){sig=s;box.innerHTML=parts.join('');var fhd=document.getElementById('fx-head');if(fhd){if(selected&&m){var dn=parseInt((selDay.firstElementChild||selDay).textContent,10),dd=new Date(+m[1],+m[2]-1,dn);fhd.textContent=(+m[2])+'月'+dn+'日（'+'日月火水木金土'.charAt(dd.getDay())+'）の時間';fhd.style.display=''}else fhd.style.display='none'}}
   var nt=document.getElementById('fx-note');if(nt){var e0=new Date();e0.setHours(0,0,0,0);var e1=new Date(e0.getTime()+(WINDOW_DAYS-1)*864e5);var ntx='予約は、2週間先の日まで受け付けています。\nそれより先の日は、順番に受付を始めます📅';if(nt.textContent!==ntx){nt.textContent=ntx;nt.style.whiteSpace='pre-line'}}
   /* 予約できる14日間の日付だけ、押せる形にする（印はつけない） */
