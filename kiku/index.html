@@ -144,6 +144,18 @@ footer::before{content:"";display:block;width:60px;height:2px;margin:0 auto 14px
 .dock a{border:0;color:#fff;background:linear-gradient(180deg,#2BDB73,#04A847);box-shadow:0 2px 0 rgba(255,255,255,.4) inset}
 .dock a:focus-visible,.dock button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 
+dialog.qr{border:0;border-radius:26px;padding:26px 22px 22px;max-width:400px;width:calc(100% - 32px);text-align:center;background:linear-gradient(180deg,#fff,#FFFDF7);box-shadow:0 30px 80px rgba(0,0,0,.4);color:var(--ink)}
+dialog.qr::backdrop{background:rgba(6,42,48,.72);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+dialog.qr[open]{animation:pop .35s cubic-bezier(.2,1.3,.4,1)}
+@keyframes pop{from{transform:scale(.9);opacity:0}}
+dialog.qr h3{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-weight:800;font-size:23px;line-height:1.5;margin:0 0 6px;color:var(--night)}
+dialog.qr p{margin:0 0 14px;font-size:16.5px;color:var(--ink2);line-height:1.7}
+dialog.qr img{width:220px;height:220px;margin:0 auto 14px;border-radius:16px;border:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--foil) border-box}
+dialog.qr .alt{font-size:15px;background:#F6EFDC;border-radius:14px;padding:10px 14px}
+dialog.qr .row{display:grid;gap:10px;margin-top:6px}
+dialog.qr .ghost{justify-content:center;text-decoration:none}
+dialog.qr .x{border:0;background:none;font:inherit;font-weight:700;color:var(--ink2);min-height:48px;cursor:pointer;text-decoration:underline}
+
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1);transition-delay:var(--d,0s)}
 .js .rv.l{transform:translateX(-30px)}
 .js .rv.r{transform:translateX(30px)}
@@ -263,7 +275,7 @@ footer::before{content:"";display:block;width:60px;height:2px;margin:0 auto 14px
         <a class="btn" href="https://line.me/R/oaMessage/%40477jhcia/?%E7%9B%B8%E8%AB%87"><span>LINEで「相談」と送る</span><small>無料・売り込みはありません</small></a>
       </div>
     </div>
-    <p class="note rv"><b>ボタンでLINEが開かないとき</b>は、お金の勉強会のLINEのトークに「診断」または「相談」と、そのまま送ってください。</p>
+    <p class="note rv"><b>パソコンでご覧の方</b>は、ボタンを押すとQRコードが出ます。スマホで読み取ってください。</p>
 
     <div class="gap"></div>
     <span class="eyebrow rv">動画の中身</span>
@@ -289,6 +301,17 @@ footer::before{content:"";display:block;width:60px;height:2px;margin:0 auto 14px
   <a href="#next">見終わったら、次へ</a>
 </div></div>
 
+<dialog class="qr" id="qr" aria-labelledby="qrh">
+  <h3 id="qrh">スマホで読み取ってください</h3>
+  <p>カメラをかざすと、「<b id="qrw"></b>」の文字が入ったLINEが開きます。</p>
+  <img id="qri" src="" alt="LINEを開くQRコード" width="220" height="220">
+  <p class="alt">または、スマホのLINEで勉強会のトークに「<b id="qrw2"></b>」と送ってください。</p>
+  <div class="row">
+    <a class="ghost" id="qrpc" href="https://utage-system.com/event/zsNG7V8HsuS7/register" target="_blank" rel="noopener">パソコンのまま日時を選ぶ</a>
+    <button type="button" class="x" id="qrx">とじる</button>
+  </div>
+</dialog>
+
 <script>
 (function(){
   var yt=document.getElementById('yt'),top=document.getElementById('top');
@@ -298,6 +321,22 @@ footer::before{content:"";display:block;width:60px;height:2px;margin:0 auto 14px
       top.scrollIntoView({block:'center'});
     });
   });
+  var isPhone=/iPhone|iPod|Android|Mobile/i.test(navigator.userAgent)||(navigator.maxTouchPoints>1&&/Macintosh/.test(navigator.userAgent));
+  var dlg=document.getElementById('qr');
+  if(!isPhone&&dlg&&dlg.showModal){
+    document.querySelectorAll('a.btn').forEach(function(a){
+      a.addEventListener('click',function(e){
+        e.preventDefault();
+        var soudan=a.href.indexOf('%E7%9B%B8%E8%AB%87')>-1,w=soudan?'相談':'診断';
+        document.getElementById('qrw').textContent=w;document.getElementById('qrw2').textContent=w;
+        document.getElementById('qri').src=soudan?'qr_soudan.png':'qr_shindan.png';
+        document.getElementById('qrpc').style.display=soudan?'':'none';
+        dlg.showModal();
+      });
+    });
+    document.getElementById('qrx').addEventListener('click',function(){dlg.close()});
+    dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
+  }
   var opts=document.querySelectorAll('#opts button'),ans=document.getElementById('ans');
   opts.forEach(function(o){o.addEventListener('click',function(){
     opts.forEach(function(x){x.classList.remove('sel')});o.classList.add('sel');ans.classList.add('open');
