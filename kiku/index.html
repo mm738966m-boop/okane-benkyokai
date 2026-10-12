@@ -20,8 +20,9 @@
 :root{--night:#062A30;--night2:#0B4A52;--teal:#0E7C86;--deep:#0A5A62;--ink:#1C3236;--ink2:#4A6468;--paper:#FBF8F1;--line:#E6DCC4;--gold:#C9A24B;--gold2:#F3DFA2;--gold3:#9A7424;--green:#06C755;--foil:linear-gradient(100deg,#B98C2E 0%,#F6E6AE 30%,#D4AF5A 50%,#FFF3C9 70%,#B98C2E 100%)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;font-size:18px;font-weight:500;line-height:1.8;padding-bottom:84px}
+body{overflow-x:hidden;margin:0;background:var(--paper);color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;font-size:18px;font-weight:500;line-height:1.8;padding-bottom:84px}
 img{max-width:100%;height:auto;display:block}
+main{overflow-x:clip}
 .in{max-width:760px;margin:0 auto;padding:0 16px}
 .bar{position:fixed;left:0;top:0;height:4px;width:100%;background:var(--foil);transform-origin:0 50%;transform:scaleX(0);z-index:30}
 
@@ -76,7 +77,7 @@ h2{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-weight:800;fo
 .checks li.on::after,html:not(.js) .checks li::after{transform:translateY(-62%) rotate(45deg) scale(1)}
 
 .says{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:14px}
-.says li{max-width:88%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:22px 22px 22px 6px;padding:13px 18px;font-weight:700;line-height:1.65}
+.says li{max-width:92%;font-size:17px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:22px 22px 22px 6px;padding:13px 18px;font-weight:700;line-height:1.65}
 .says li:nth-child(even){justify-self:end;border-radius:22px 22px 6px 22px;background:rgba(243,223,162,.14);border-color:rgba(243,223,162,.4)}
 .dark .pic{border-color:rgba(243,223,162,.45);box-shadow:0 20px 44px rgba(0,0,0,.4)}
 
@@ -99,9 +100,9 @@ h2{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-weight:800;fo
 .ghost:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
 
 .bags{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 22px}
-.bag{background:#fff;border:1px solid var(--line);border-radius:20px;padding:12px 6px 14px;text-align:center;box-shadow:0 12px 28px rgba(120,96,30,.12)}
+.bag{background:#F9FAF5;border:1px solid var(--line);border-radius:20px;padding:12px 6px 14px;text-align:center;box-shadow:0 12px 28px rgba(120,96,30,.12)}
 .bag div{height:118px;display:flex;align-items:flex-end;justify-content:center}
-.bag img{max-height:118px;width:auto;mix-blend-mode:multiply}
+.bag img{max-height:118px;width:auto;mix-blend-mode:multiply;border-radius:10px}
 .bag small{display:block;margin-top:8px;font-size:13.5px;font-weight:900;color:var(--gold3);letter-spacing:.1em}
 .bag b{display:block;font-size:16px;font-weight:900;line-height:1.4}
 .center{text-align:center;margin:0}
@@ -179,7 +180,7 @@ footer::before{content:"";display:block;width:60px;height:2px;margin:0 auto 14px
   <div class="in">
     <div class="prep rv">
       <img src="mascot.webp" alt="" width="78" height="78">
-      <p><b>ペンとメモ</b>をお手元に。<br>クイズと書く時間があります。</p>
+      <p><b>ペンとメモ</b>をお手元に。<br>クイズと、書く時間つき。</p>
     </div>
     <div class="gap"></div>
     <span class="eyebrow rv">18分後のあなた</span>
@@ -188,7 +189,7 @@ footer::before{content:"";display:block;width:60px;height:2px;margin:0 auto 14px
     <ul class="checks">
       <li class="rv" style="--d:.05s">老後にいくら要るかを、自分で計算できる</li>
       <li class="rv" style="--d:.18s">銀行に置いたままのお金の弱点がわかる</li>
-      <li class="rv" style="--d:.31s">お金を「3つの袋」に分けられる</li>
+      <li class="rv" style="--d:.31s">お金を「3つの袋」に分ける</li>
     </ul>
   </div>
 </section>
@@ -198,9 +199,9 @@ footer::before{content:"";display:block;width:60px;height:2px;margin:0 auto 14px
     <span class="eyebrow rv">こんなこと、ありませんか</span>
     <h2 class="rv">気になっている。<br>でも、動けないまま。</h2>
     <ul class="says">
-      <li class="rv l">何から始めたらいいのか、わからない。</li>
-      <li class="rv r" style="--d:.12s">貯金はしている。でも、増えない。</li>
-      <li class="rv l" style="--d:.24s">新NISA、気になる。けれど少し怖い。</li>
+      <li class="rv l">何から始めればいいの？</li>
+      <li class="rv r" style="--d:.12s">貯金しているのに、増えない。</li>
+      <li class="rv l" style="--d:.24s">新NISAは気になる。でも怖い。</li>
     </ul>
     <div class="pic rv z"><img src="il_rougo.jpg" alt="ベンチで財布をのぞく夫婦" width="900" height="672" loading="lazy"></div>
     <p class="txt rv">そのまま5年、10年。<br>時間だけが過ぎていく方が多いです。</p>
@@ -211,7 +212,7 @@ footer::before{content:"";display:block;width:60px;height:2px;margin:0 auto 14px
   <div class="in">
     <span class="eyebrow rv">動けない理由</span>
     <h2 class="rv">あなたのせいでは、<br>ありません。</h2>
-    <p class="txt rv">お金の増やし方は、学校でも家でも教わりませんでした。<br>足りないのは才能ではなく、<b>「順番」</b>です。</p>
+    <p class="txt rv">お金の増やし方は、学校でも家でも教わりませんでした。<br>足りないのは、<b>「順番」</b>だけです。</p>
     <div class="pic rv z"><img src="il_bukka.jpg" alt="コインと買い物かごを載せた天びん" width="900" height="672" loading="lazy"></div>
     <div class="quiz rv">
       <span class="q">ためしに1問</span>
@@ -247,7 +248,7 @@ footer::before{content:"";display:block;width:60px;height:2px;margin:0 auto 14px
   <div class="in">
     <span class="eyebrow rv">見終わったら</span>
     <h2 class="rv">次の一歩は、<br>LINEに一言だけ。</h2>
-    <p class="txt rv">ボタンを押すと、文字が入ったLINEが開きます。</p>
+    <p class="txt rv">ボタンを押すと、LINEが開きます。</p>
     <div class="cards">
       <div class="card rv" style="--d:.05s">
         <span class="step">まずは気軽に</span>
