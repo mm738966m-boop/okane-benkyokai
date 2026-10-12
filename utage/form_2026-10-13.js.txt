@@ -34,6 +34,7 @@ var css=''
 +'#fx-line{margin:22px 0 4px;background:#F7FBFB;border:2px dashed #CFE3E5;border-radius:16px;padding:14px 14px 13px;text-align:center}'
 +'#fx-line p{margin:0 0 10px;font-size:15px;color:#4A6468;line-height:1.7}'
 +'#fx-line a{display:inline-flex;align-items:center;gap:8px;background:#06C755;color:#fff;font-weight:900;font-size:16px;border-radius:999px;padding:11px 20px;text-decoration:none;box-shadow:0 4px 0 #04994A}'
++'#fx-line small{display:block;margin-top:10px;font-size:13.5px;color:#4A6468;line-height:1.6}'
 +'#fx-line b{display:inline-block;font-size:15px;font-weight:900;color:#0A5A62;background:#fff;border:2px solid #CFE3E5;border-radius:999px;padding:6px 16px}'
 +'#app .schedule ul.list-group{display:none!important}'
 +'#fx-slots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 6px}'
@@ -84,7 +85,7 @@ function render(){
   if(!document.getElementById('fx-note')){var cal=sch.querySelector('.event-calendar');if(cal)cal.insertAdjacentHTML('afterend','<div id="fx-note"></div>')}
   if(!box){box=document.createElement('div');box.id='fx-slots';sch.appendChild(box);
     var fh=document.createElement('div');fh.id='fx-head';sch.insertBefore(fh,box);
-    var fl=document.createElement('div');fl.id='fx-line';fl.innerHTML='<p>2週間より先の日をご希望の方は、LINEで「日程」と送ってください。<br>ご希望の日が開く日に、お知らせします。</p>'+(IS_PHONE?'<a href="'+LINE_URL+'">LINEで「日程」と送る</a>':'<b>スマホのLINEで「日程」と送ってください</b>');sch.appendChild(fl);box.addEventListener('click',function(e){var t=e.target.closest('.fx-ok');if(!t)return;var r=document.querySelector('#app .schedule').querySelectorAll('button.calendar-time');[].forEach.call(r,function(b){if(b.textContent.trim().slice(0,5)===t.getAttribute('data-k'))b.click()});setTimeout(render,200)});sig=''}
+    var fl=document.createElement('div');fl.id='fx-line';fl.innerHTML='<p>2週間より先の日をご希望の方は、LINEでお知らせください。<br>ご希望の日が開く日に、こちらからご連絡します。</p>'+(IS_PHONE?'<a href="'+LINE_URL+'">LINEを開く</a><small>開くと「日程」の文字が入っています。<br>そのまま送信ボタンを押してください。</small>':'<b>スマホのLINEで「日程」と送ってください</b>');sch.appendChild(fl);box.addEventListener('click',function(e){var t=e.target.closest('.fx-ok');if(!t)return;var r=document.querySelector('#app .schedule').querySelectorAll('button.calendar-time');[].forEach.call(r,function(b){if(b.textContent.trim().slice(0,5)===t.getAttribute('data-k'))b.click()});setTimeout(render,200)});sig=''}
   if(s!==sig){sig=s;box.innerHTML=parts.join('');var fhd=document.getElementById('fx-head');if(fhd){if(selected&&m){var dn=parseInt((selDay.firstElementChild||selDay).textContent,10),dd=new Date(+m[1],+m[2]-1,dn);fhd.textContent=(+m[2])+'月'+dn+'日（'+'日月火水木金土'.charAt(dd.getDay())+'）の時間';fhd.style.display=''}else fhd.style.display='none'}}
   var nt=document.getElementById('fx-note');if(nt){var e0=new Date();e0.setHours(0,0,0,0);var e1=new Date(e0.getTime()+(WINDOW_DAYS-1)*864e5);var ntx='いま予約できるのは、'+(e1.getMonth()+1)+'月'+e1.getDate()+'日（'+'日月火水木金土'.charAt(e1.getDay())+'）までの日程です。';if(nt.textContent!==ntx)nt.textContent=ntx}
   /* 予約できる14日間の日付だけ、押せる形にする（印はつけない） */
