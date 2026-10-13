@@ -94,9 +94,9 @@ function render(){
     var dmin=new Date();dmin.setHours(0,0,0,0);dmin=new Date(dmin.getTime()+WINDOW_DAYS*864e5);var dmax=new Date(dmin.getTime()+76*864e5);
     var iso=function(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())};
     fl.innerHTML='<p><b>2週間より先の日</b>をご希望の方へ</p><p class="fx-sub">ご希望の日を選んで送ると、その日の予約が始まる朝に、メールでお知らせします。</p>'
-      +'<label>ご希望の日<input type="date" id="fx-rq-date" min="'+iso(dmin)+'" max="'+iso(dmax)+'" required></label>'
-      +'<label>メールアドレス<input type="email" id="fx-rq-mail" placeholder="example@gmail.com" autocomplete="email" required></label>'
-      +'<button type="button" id="fx-rq-go">この日を希望する</button><div id="fx-rq-msg" aria-live="polite"></div>';
+      +'<label>ご希望の日<input type="date" id="fx-rq-date" form="fx-none" min="'+iso(dmin)+'" max="'+iso(dmax)+'"></label>'
+      +'<label>メールアドレス<input type="email" id="fx-rq-mail" form="fx-none" placeholder="example@gmail.com" autocomplete="email"></label>'
+      +'<button type="button" id="fx-rq-go" form="fx-none">この日を希望する</button><div id="fx-rq-msg" aria-live="polite"></div>';
     sch.appendChild(fl);
     fl.querySelector('#fx-rq-go').addEventListener('click',function(){
       var di=fl.querySelector('#fx-rq-date'),mi=fl.querySelector('#fx-rq-mail'),msg=fl.querySelector('#fx-rq-msg'),btn=this;
