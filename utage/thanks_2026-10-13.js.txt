@@ -20,12 +20,17 @@ var css=''
 +'.fx-box li::after{content:"";position:absolute;left:6px;top:9px;width:5px;height:9px;border-right:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(45deg)}'
 +'.fx-note{font-size:15px;color:#4A6468;background:#F7FBFB;border:2px dashed #CFE3E5;border-radius:14px;padding:12px 14px;margin:0 0 18px;line-height:1.7}'
 +'.fx-note b{color:#0A5A62}'
++'.fx-line{background:#fff;border:2px solid #CFE3E5;border-radius:18px;padding:16px 16px 14px;margin:0 0 18px;text-align:center}'
++'.fx-line-h{font-size:17px;font-weight:900;color:#0A5A62;margin:0 0 6px}.fx-line-p{font-size:14.5px;color:#4A6468;margin:0 0 12px;line-height:1.7}'
++'.fx-line-btn{display:block;background:#06C755;color:#fff!important;text-decoration:none!important;font-weight:900;font-size:18px;border-radius:999px;padding:13px 16px;box-shadow:0 5px 0 #04994A}'
++'.fx-line-s{font-size:13px;color:#6F8386;margin:10px 0 0}'
 +'.fx-foot{font-size:13.5px;color:#4A6468;text-align:center;margin:0}';
 var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
 function boot(){
   var h=document.querySelector('.card-header'),b=document.querySelector('.card-body');if(!h||!b)return;
   if(!document.getElementById('fx-robo')){var ri=document.createElement('img');ri.id='fx-robo';ri.src='https://mm738966m-boop.github.io/okane-benkyokai/kiku/mascot.webp';ri.alt='';ri.width=72;ri.height=72;h.appendChild(ri)}
   var h2=h.querySelector('h2');if(h2)h2.textContent='お申し込み、ありがとうございます';
+  var metaEl=document.getElementById('fx-meta');if(metaEl)document.body.appendChild(metaEl);
   var html='<p class="fx-lead">日時と当日の参加方法を、メールでお送りしました。</p>'
     +'<p class="fx-sub">届いていないときは、迷惑メールフォルダもご確認ください。</p>';
   if(SOUDAN){
@@ -42,6 +47,10 @@ function boot(){
       +'<li>前日と当日に、LINEとメールでリマインドが届きます</li>'
       +'</ul></div>'
       +'<p class="fx-note">ご都合が変わったときは、お金の勉強会のLINEに<b>「変更」</b>と一言ください。別の日にお席をご用意します。</p>';
+    var meta=document.getElementById('fx-meta'),rid=meta?(meta.getAttribute('data-rid')||''):'';if(/%/.test(rid))rid='';
+    var lineUrl='https://utage-system.com/line/link/DHmB7Kogg6pd/j5K2p2f8nDJ2'+(rid?'?rid='+encodeURIComponent(rid):'');
+    html+='<div class="fx-line"><p class="fx-line-h">LINEでも、お知らせを受け取れます</p><p class="fx-line-p">前日と当日のリマインドと、当日の入り方をLINEにもお送りします。<br>メールが届きにくい方は、こちらが確実です。</p>'
+      +'<a class="fx-line-btn" href="'+lineUrl+'">LINEで受け取る</a><p class="fx-line-s">すでに友だち追加している方は、押すだけで連携されます。</p></div>';
   }
   html+='<p class="fx-foot">fulfull株式会社　お金の増やし方オンライン勉強会</p>';
   b.innerHTML=html;
