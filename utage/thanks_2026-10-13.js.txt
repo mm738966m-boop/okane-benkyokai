@@ -26,7 +26,7 @@ function boot(){
   var h=document.querySelector('.card-header'),b=document.querySelector('.card-body');if(!h||!b)return;
   if(!document.getElementById('fx-robo')){var ri=document.createElement('img');ri.id='fx-robo';ri.src='https://mm738966m-boop.github.io/okane-benkyokai/kiku/mascot.webp';ri.alt='';ri.width=72;ri.height=72;h.appendChild(ri)}
   var h2=h.querySelector('h2');if(h2)h2.textContent='お申し込み、ありがとうございます';
-  var html='<p class="fx-lead">日時とZoomのリンクを、メールでお送りしました。</p>'
+  var html='<p class="fx-lead">日時と当日の参加方法を、メールでお送りしました。</p>'
     +'<p class="fx-sub">届いていないときは、迷惑メールフォルダもご確認ください。</p>';
   if(SOUDAN){
     html+='<div class="fx-box"><h3>当日までに（できれば）</h3><ul>'
