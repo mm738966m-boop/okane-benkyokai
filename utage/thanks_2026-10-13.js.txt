@@ -30,7 +30,7 @@ function boot(){
   var h=document.querySelector('.card-header'),b=document.querySelector('.card-body');if(!h||!b)return;
   if(!document.getElementById('fx-robo')){var ri=document.createElement('img');ri.id='fx-robo';ri.src='https://mm738966m-boop.github.io/okane-benkyokai/kiku/mascot.webp';ri.alt='';ri.width=72;ri.height=72;h.appendChild(ri)}
   var h2=h.querySelector('h2');if(h2)h2.textContent='お申し込み、ありがとうございます';
-  var metaEl=document.getElementById('fx-meta');if(metaEl)document.body.appendChild(metaEl);
+  var metaTxt=(b.textContent.match(/fx-meta\s+(\S+)\s+(\S+)\s+fx-end/)||[]);var RID=metaTxt[1]||'';if(/%/.test(RID))RID='';
   var html='<p class="fx-lead">日時と当日の参加方法を、メールでお送りしました。</p>'
     +'<p class="fx-sub">届いていないときは、迷惑メールフォルダもご確認ください。</p>';
   if(SOUDAN){
@@ -47,7 +47,7 @@ function boot(){
       +'<li>前日と当日に、LINEとメールでリマインドが届きます</li>'
       +'</ul></div>'
       +'<p class="fx-note">ご都合が変わったときは、お金の勉強会のLINEに<b>「変更」</b>と一言ください。別の日にお席をご用意します。</p>';
-    var meta=document.getElementById('fx-meta'),rid=meta?(meta.getAttribute('data-rid')||''):'';if(/%/.test(rid))rid='';
+    var rid=RID;
     var lineUrl='https://utage-system.com/line/link/DHmB7Kogg6pd/j5K2p2f8nDJ2'+(rid?'?rid='+encodeURIComponent(rid):'');
     html+='<div class="fx-line"><p class="fx-line-h">LINEでも、お知らせを受け取れます</p><p class="fx-line-p">前日と当日のリマインドと、当日の入り方をLINEにもお送りします。<br>メールが届きにくい方は、こちらが確実です。</p>'
       +'<a class="fx-line-btn" href="'+lineUrl+'">LINEで受け取る</a><p class="fx-line-s">すでに友だち追加している方は、押すだけで連携されます。</p></div>';
