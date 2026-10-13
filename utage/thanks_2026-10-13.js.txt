@@ -27,10 +27,11 @@ var css=''
 +'.fx-foot{font-size:13.5px;color:#4A6468;text-align:center;margin:0}';
 var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
 function boot(){
-  var h=document.querySelector('.card-header'),b=document.querySelector('.card-body');if(!h||!b)return;
-  if(!document.getElementById('fx-robo')){var ri=document.createElement('img');ri.id='fx-robo';ri.src='https://mm738966m-boop.github.io/okane-benkyokai/kiku/mascot.webp';ri.alt='';ri.width=72;ri.height=72;h.appendChild(ri)}
-  var h2=h.querySelector('h2');if(h2)h2.textContent='お申し込み、ありがとうございます';
-  var metaTxt=(b.textContent.match(/fx-meta\s+(\S+)\s+(\S+)\s+fx-end/)||[]);var RID=metaTxt[1]||'';if(/%/.test(RID))RID='';
+  var card=document.querySelector('.card');if(!card)return;
+  var rawTxt=card.textContent||'';
+  card.innerHTML='<div class="card-header center-block bg-white"><h2 class="mb-0">お申し込み、ありがとうございます</h2><img id="fx-robo" src="https://mm738966m-boop.github.io/okane-benkyokai/kiku/mascot.webp" alt="" width="72" height="72"></div><div class="card-body"></div>';
+  var b=card.querySelector('.card-body');b.setAttribute('data-raw',rawTxt);
+  var metaTxt=(rawTxt.match(/fx-meta\s+(\S+)\s+(\S+)\s+fx-end/)||[]);var RID=metaTxt[1]||'';if(/%/.test(RID))RID='';
   var html='<p class="fx-lead">日時と当日の参加方法を、メールでお送りしました。</p>'
     +'<p class="fx-sub">届いていないときは、迷惑メールフォルダもご確認ください。</p>';
   if(SOUDAN){
