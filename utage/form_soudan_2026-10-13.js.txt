@@ -1,7 +1,7 @@
 <script>
 /* お金の個別相談（30分） 申込フォーム（2026-10-13版）：勉強会ページと同じデザイン・日付の印なし・空き枠はそのまま表示（UTAGE フォーム設定 > bodyタグの最後に挿入するJavaScript） */
 (function(){
-var WINDOW_DAYS=10;
+var WINDOW_DAYS=21;
 var IS_PHONE=/iPhone|iPod|Android|Mobile/i.test(navigator.userAgent)||(navigator.maxTouchPoints>1&&/Macintosh/.test(navigator.userAgent));
 var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap';document.head.appendChild(l);
 var css=''
@@ -78,7 +78,7 @@ function render(){
   var pk=((document.querySelector('#app .card-body table')||{}).textContent||'').match(/\d{4}\/\d{2}\/(\d{2})[^\d]*(\d{2}:\d{2})-/),picked=(pk&&selDay&&parseInt(pk[1],10)===parseInt((selDay.firstElementChild||selDay).textContent,10))?pk[2]:'';
   var head=(document.querySelector('#app .calendar-head')||{}).textContent||'',m=head.match(/(\d{4})年(\d{1,2})月/);
   var parts=[],state=[];
-  if(selected){Object.keys(real).sort().forEach(function(k){var on=picked===k;state.push(k+(on?'S':'O'));
+  if(selected){Object.keys(real).filter(function(k){return /:00$/.test(k)}).sort().forEach(function(k){var on=picked===k;state.push(k+(on?'S':'O'));
     parts.push('<button type="button" class="fx-slot fx-ok'+(on?' fx-on':'')+'" data-k="'+k+'">'+k+'<span>'+(on?'選択中':'予約できます')+'</span></button>')});if(!parts.length)parts.push('<div class="fx-slot fx-full" aria-disabled="true" style="grid-column:1/-1">この日は空きがありません<span>別の日をお選びください</span></div>')}
   var s=state.join(',');
   [].forEach.call(sch.querySelectorAll(':scope > div'),function(e){if(e.children.length===0&&/希望する時間を選択/.test(e.textContent))e.style.display='none'});
@@ -89,7 +89,7 @@ function render(){
     var fh=document.createElement('div');fh.id='fx-head';sch.insertBefore(fh,box);
 box.addEventListener('click',function(e){var t=e.target.closest('.fx-ok');if(!t)return;var r=document.querySelector('#app .schedule').querySelectorAll('button.calendar-time');[].forEach.call(r,function(b){if(b.textContent.trim().slice(0,5)===t.getAttribute('data-k'))b.click()});setTimeout(render,200)});sig=''}
   if(s!==sig){sig=s;box.innerHTML=parts.join('');var fhd=document.getElementById('fx-head');if(fhd){if(selected&&m){var dn=parseInt((selDay.firstElementChild||selDay).textContent,10),dd=new Date(+m[1],+m[2]-1,dn);fhd.textContent=(+m[2])+'月'+dn+'日（'+'日月火水木金土'.charAt(dd.getDay())+'）の時間';fhd.style.display=''}else fhd.style.display='none'}}
-  var nt=document.getElementById('fx-note');if(nt){var e0=new Date();e0.setHours(0,0,0,0);var e1=new Date(e0.getTime()+(WINDOW_DAYS-1)*864e5);var ntx='予約は、10日先の日まで受け付けています。\nそれより先の日は、順番に受付を始めます📅';if(nt.textContent!==ntx){nt.textContent=ntx;nt.style.whiteSpace='pre-line'}}
+  var nt=document.getElementById('fx-note');if(nt){var e0=new Date();e0.setHours(0,0,0,0);var e1=new Date(e0.getTime()+(WINDOW_DAYS-1)*864e5);var ntx='予約は、3週間先の日まで受け付けています。\nそれより先の日は、順番に受付を始めます📅';if(nt.textContent!==ntx){nt.textContent=ntx;nt.style.whiteSpace='pre-line'}}
   /* 予約できる14日間の日付だけ、押せる形にする（印はつけない） */
   if(!m)return;
   var t0=new Date();t0.setHours(0,0,0,0);var t1=new Date(t0.getTime()+WINDOW_DAYS*864e5);
