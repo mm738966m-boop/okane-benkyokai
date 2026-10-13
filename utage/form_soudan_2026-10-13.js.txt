@@ -9,6 +9,7 @@ var css=''
 +'#app .card{border:0;border-radius:22px;box-shadow:0 6px 24px rgba(10,90,98,.10);overflow:hidden}'
 +'#app .card-header{border-bottom:4px solid #D9A441;padding:22px 20px}'
 +'#app .card-header h2{font-size:clamp(19px,5.3vw,24px);font-weight:900;color:#0A5A62;line-height:1.5;word-break:auto-phrase;text-wrap:balance}'
++'#app .card-header{position:relative;padding-right:92px}#fx-robo{position:absolute;right:14px;bottom:-4px;width:72px;height:auto;pointer-events:none;filter:drop-shadow(0 4px 8px rgba(10,90,98,.18))}'
 +'#app .card-body{padding:22px 18px}'
 +'#app h4{font-size:21px;font-weight:900;color:#1C3236;margin-top:26px}'
 +'#app hr{border-top:2px solid #D5E4E6}'
@@ -82,6 +83,7 @@ function render(){
     parts.push('<button type="button" class="fx-slot fx-ok'+(on?' fx-on':'')+'" data-k="'+k+'">'+k+'<span>'+(on?'選択中':'予約できます')+'</span></button>')});if(!parts.length)parts.push('<div class="fx-slot fx-full" aria-disabled="true" style="grid-column:1/-1">この日は空きがありません<span>別の日をお選びください</span></div>')}
   var s=state.join(',');
   [].forEach.call(sch.querySelectorAll(':scope > div'),function(e){if(e.children.length===0&&/希望する時間を選択/.test(e.textContent))e.style.display='none'});
+  var ch=document.querySelector('#app .card-header');if(ch&&!document.getElementById('fx-robo')){var ri=document.createElement('img');ri.id='fx-robo';ri.src='https://mm738966m-boop.github.io/okane-benkyokai/kiku/mascot.webp';ri.alt='';ri.width=72;ri.height=72;ch.appendChild(ri)}
   var h4=document.querySelector('#app .card-body h4');
   if(h4&&!document.getElementById('fx-hint')){h4.insertAdjacentHTML('afterend','<p class="fx-hint" id="fx-hint">日にちを押すと、時間が出ます。</p>')}
   if(!document.getElementById('fx-note')){var cal=sch.querySelector('.event-calendar');if(cal)cal.insertAdjacentHTML('afterend','<div id="fx-note"></div>')}
