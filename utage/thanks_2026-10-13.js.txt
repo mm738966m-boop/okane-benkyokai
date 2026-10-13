@@ -1,7 +1,7 @@
 <script>
 /* お金の勉強会／個別相談 サンクスページ（2026-10-13版）：予約ページと同じデザインに（UTAGE フォーム設定 > サンクスページ > bodyタグの最後に挿入するJavaScript） */
 (function(){
-var SOUDAN=/zsNG7V8HsuS7/.test(location.pathname);
+var KIND=/zsNG7V8HsuS7/.test(location.pathname)?'soudan':/wQvZacCdkROE/.test(location.pathname)?'ai_soudan':/oBQLPTad8XgC/.test(location.pathname)?'shinsa':'benkyokai';var SOUDAN=KIND==='soudan';
 var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap';document.head.appendChild(l);
 var css=''
 +'body{background:#EEF6F7!important;font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif!important;font-size:17px;font-weight:500;color:#1C3236;line-height:1.8}'
@@ -34,7 +34,27 @@ function boot(){
   var metaTxt=(rawTxt.match(/fx-meta\s+(\S+)\s+(\S+)\s+fx-end/)||[]);var RID=metaTxt[1]||'';if(/%/.test(RID))RID='';
   var html='<p class="fx-lead">日時と当日の参加方法を、メールでお送りしました。</p>'
     +'<p class="fx-sub">届いていないときは、迷惑メールフォルダもご確認ください。</p>';
-  if(SOUDAN){
+  var FOOT='fulfull株式会社　お金の増やし方オンライン勉強会';
+  if(KIND==='shinsa'){
+    card.querySelector('h2').textContent='参加審査のお申し込み、ありがとうございます';
+    html='<p class="fx-lead">2営業日以内に、審査の結果をメールでお送りします。</p>'
+      +'<p class="fx-sub">通過した方にだけ、本申込みのページをご案内します。届いていないときは、迷惑メールフォルダもご確認ください。</p>'
+      +'<div class="fx-box"><h3>審査で見ていること</h3><ul>'
+      +'<li>保険・金融の営業を、現役で行っている</li>'
+      +'<li>週1回の作業会（Zoom）に参加できる</li>'
+      +'<li>週3時間ほど、作業の時間を取れる</li>'
+      +'</ul></div>'
+      +'<p class="fx-note">2期は<b>11月5日（木）20:00</b>開始予定です。結果のメールをお待ちください。</p>';
+    FOOT='fulfull株式会社　金融AIカレッジ';
+  }else if(KIND==='ai_soudan'){
+    html+='<div class="fx-box"><h3>当日までに（できれば）</h3><ul>'
+      +'<li>いま使っているAI（ChatGPTなど）と、困っている作業をひとつ</li>'
+      +'<li>画面を共有できるパソコンからだと、その場で一緒に動かせます</li>'
+      +'<li>顔出しはいりません</li>'
+      +'</ul></div>'
+      +'<p class="fx-note">日時の変更は、届いたメールのリンクからできます。<br>当日お会いできるのを、楽しみにしています。</p>';
+    FOOT='fulfull株式会社　金融AIカレッジ';
+  }else if(SOUDAN){
     html+='<div class="fx-box"><h3>当日までに（できれば）</h3><ul>'
       +'<li>毎月の「入るお金」と「出ていくお金」の、だいたいの数字</li>'
       +'<li>動画を見た方は、書いた「3つの袋」の金額</li>'
@@ -53,7 +73,7 @@ function boot(){
     html+='<div class="fx-line"><p class="fx-line-h">LINEでも、お知らせを受け取れます</p><p class="fx-line-p">前日と当日のリマインドと、当日の入り方をLINEにもお送りします。<br>メールが届きにくい方は、こちらが確実です。</p>'
       +'<a class="fx-line-btn" href="'+lineUrl+'">LINEで受け取る</a><p class="fx-line-s">すでに友だち追加している方は、押すだけで連携されます。</p></div>';
   }
-  html+='<p class="fx-foot">fulfull株式会社　お金の増やし方オンライン勉強会</p>';
+  html+='<p class="fx-foot">'+FOOT+'</p>';
   b.innerHTML=html;
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
