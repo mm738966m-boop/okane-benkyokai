@@ -48,13 +48,14 @@ h1 .mk{background:linear-gradient(transparent 62%,#FBE88A 62%)}
 .lead{font-size:19px;font-weight:700;margin:0 0 20px;color:var(--ink)}
 .hero-art{position:relative;margin:18px 0 0;border-radius:22px;overflow:hidden;box-shadow:0 18px 40px rgba(10,90,98,.16)}
 .hero-art img.ph{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:60% 40%}
-.hero-art .halo{position:absolute;left:10px;bottom:10px;width:112px;height:112px;border-radius:50%;background:#fff;border:3px solid var(--teal);box-shadow:0 8px 18px rgba(10,90,98,.28)}
-.hero-art .robo{position:absolute;left:14px;bottom:14px;width:104px;filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 6px 10px rgba(10,90,98,.22))}
-.hero-art .bubble{white-space:nowrap;font-size:14px!important;padding:8px 12px!important;position:absolute;left:130px;bottom:16px;background:#fff;border-radius:16px;padding:8px 14px;font-weight:900;font-size:15px;color:var(--deep);box-shadow:0 6px 14px rgba(0,0,0,.14)}
+.hero-art .halo{position:absolute;left:12px;bottom:12px;width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 4px 10px rgba(10,90,98,.18)}
+.hero-art .robo{position:absolute;left:15px;bottom:15px;width:56px;filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 6px 10px rgba(10,90,98,.22))}
+.hero-art .bubble{white-space:nowrap;font-size:14px!important;padding:8px 12px!important;position:absolute;left:84px;bottom:16px;background:#fff;border-radius:16px;padding:8px 14px;font-weight:900;font-size:15px;color:var(--deep);box-shadow:0 6px 14px rgba(0,0,0,.14)}
 .hero-art .bubble:before{content:"";position:absolute;left:-10px;bottom:14px;border:8px solid transparent;border-right-color:#fff}
 .count{display:flex;align-items:center;gap:12px;margin-top:16px;font-weight:900;color:var(--deep);font-size:16px}
 .count .n{white-space:nowrap;flex:0 0 auto}
-.count .d{font-weight:700;color:var(--ink2);font-size:14.5px;line-height:1.5}
+.count .d{font-weight:700;color:var(--ink2);font-size:14.5px;line-height:1.6}
+@media (max-width:959px){.count{flex-wrap:wrap;gap:4px 12px}.count .d{flex-basis:100%}}
 .count b{font-family:"Zen Maru Gothic",sans-serif;font-size:30px;color:var(--gold);line-height:1}
 /* CTA */
 .cta{margin:22px 0 0}
@@ -132,17 +133,17 @@ figure{margin:0}
 .faq .a{padding:0 0 16px;color:var(--ink)}
 .band{background:var(--teal);color:#fff;padding:14px 0;text-align:center;font-family:"Zen Maru Gothic",sans-serif;font-weight:900;font-size:18px}
 .final{background:linear-gradient(180deg,#EEF6F7 0%,#fff 100%)}
-.final .robo-wrap{display:block;width:176px;height:176px;margin:0 auto 10px;border-radius:50%;background:var(--goldbg);border:2px solid #EBD9AE;position:relative;overflow:visible}
-.final .robo{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);width:124px;filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 6px 10px rgba(10,90,98,.22))}
+.final .robo-wrap{display:block;width:128px;height:128px;margin:0 auto 10px;border-radius:50%;background:var(--goldbg);border:2px solid #EBD9AE;position:relative;overflow:visible}
+.final .robo{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);width:88px;filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 6px 10px rgba(10,90,98,.22))}
 .oni{margin:26px 0 22px;padding:20px 14px;background:#FFFDF6;border:1.5px solid #EBD9AE;border-radius:20px}
 .oni h3{color:var(--deep)}
 .oni-fig{margin:6px 0 16px}
 .oni-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:560px;margin:0 auto}
-.oni-c{display:flex;flex-direction:column;align-items:center;text-align:center;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:10px 4px 12px;line-height:1.45;min-width:0}
+.oni-c{display:flex;flex-direction:column;align-items:center;text-align:center;background:#FBF6E6;border:1.5px solid var(--line);border-radius:14px;padding:10px 4px 12px;line-height:1.45;min-width:0}
 .oni-c.fut{border-color:var(--goldfill)}
 .oni-c .pill{font-family:"Zen Maru Gothic",sans-serif;font-weight:900;font-size:14px;color:var(--deep);background:var(--soft);border-radius:999px;padding:3px 10px;white-space:nowrap}
 .oni-c.fut .pill{background:var(--goldbg);color:var(--gold)}
-.oni-c svg{width:64px;height:58px;margin:10px 0 6px}
+.oni-c img{width:100%;max-width:120px;aspect-ratio:1/1;border-radius:12px;margin:8px 0 6px}
 .oni-c .s{font-size:14px;font-weight:700;color:var(--ink2)}
 .oni-c b{font-family:"Zen Maru Gothic",sans-serif;font-weight:900;font-size:20px;white-space:nowrap;color:var(--deep);line-height:1.3}
 .oni-c.fut b{color:var(--gold)}
@@ -175,9 +176,6 @@ body{padding-bottom:0}
   .lead{font-size:19px}
   br.sp{display:none}
   .count .d{font-size:14.5px}
-  .hero-art .halo{width:124px;height:124px}
-  .hero-art .robo{width:116px}
-  .hero-art .bubble{left:146px}
   section .in>.eyebrow{display:block;text-align:center}
   section .in>h2{text-align:center;font-size:32px}
   section .in>p{text-align:center}
@@ -224,7 +222,7 @@ body{padding-bottom:0}
       <img class="robo" src="../lp/img/robo_invite.webp" alt="">
       <div class="bubble">お一人でも、ご家族でも。</div>
     </div>
-    <div class="count"><span class="n"><b>2,000</b>人以上</span><span class="d">積水ハウス・商工会議所・小学校などで、講師がお金の話を届けてきた<span style="white-space:nowrap">人数（延べ）。</span></span></div>
+    <div class="count"><span class="n"><b>2,000</b>人以上</span><span class="d">大手証券会社・ハウスメーカー・小中学校などで、講師がお金の話を届けてきた<span style="white-space:nowrap">人数（延べ）。</span></span></div>
     </div></div>
   </div>
 </header>
@@ -280,9 +278,9 @@ body{padding-bottom:0}
       <p>コンビニのおにぎり。<br>10年前は、<br class="sp">100円ちょっとで1個買えました。<br>いまは、1個200円前後のものも<br class="sp">珍しくありません。</p>
       <figure class="oni-fig" aria-label="同じ100円で買えるおにぎりの量。10年前は1個、いまは半分、同じペースで上がると10年後はひと口ほど">
         <div class="oni-row">
-          <div class="oni-c"><span class="pill">10年前</span><svg viewBox="-40 -36 80 72" aria-hidden="true"><g><path d="M0 -32 C9 -32 36 9 36 20 C36 28 29 32 20 32 L-20 32 C-29 32 -36 28 -36 20 C-36 9 -9 -32 0 -32 Z" fill="#FFFDF7" stroke="#1C3236" stroke-width="2.5"/><rect x="-13" y="8" width="26" height="24" rx="2" fill="#1C3236"/></g></svg><span class="s">100円で</span><b>1個</b><span class="pr">1個<br>約100円</span></div>
-          <div class="oni-c"><span class="pill">いま</span><svg viewBox="-40 -36 80 72" aria-hidden="true"><g><path d="M0 -32 C9 -32 36 9 36 20 C36 28 29 32 20 32 L-20 32 C-29 32 -36 28 -36 20 C-36 9 -9 -32 0 -32 Z" fill="none" stroke="#9FB3B6" stroke-width="2" stroke-dasharray="5 4"/><clipPath id="oniH"><rect x="-40" y="-40" width="40" height="80"/></clipPath><g clip-path="url(#oniH)"><path d="M0 -32 C9 -32 36 9 36 20 C36 28 29 32 20 32 L-20 32 C-29 32 -36 28 -36 20 C-36 9 -9 -32 0 -32 Z" fill="#FFFDF7" stroke="#1C3236" stroke-width="2.5"/><rect x="-13" y="8" width="26" height="24" rx="2" fill="#1C3236"/></g></g></svg><span class="s">100円で</span><b>半分</b><span class="pr">1個<br>200円前後</span></div>
-          <div class="oni-c fut"><span class="pill">10年後は？</span><svg viewBox="-40 -36 80 72" aria-hidden="true"><g><path d="M0 -32 C9 -32 36 9 36 20 C36 28 29 32 20 32 L-20 32 C-29 32 -36 28 -36 20 C-36 9 -9 -32 0 -32 Z" fill="none" stroke="#C9B48A" stroke-width="2" stroke-dasharray="5 4"/><clipPath id="oniB"><rect x="-40" y="-40" width="80" height="42"/></clipPath><g clip-path="url(#oniB)"><path d="M0 -32 C9 -32 36 9 36 20 C36 28 29 32 20 32 L-20 32 C-29 32 -36 28 -36 20 C-36 9 -9 -32 0 -32 Z" fill="#FFFDF7" stroke="#1C3236" stroke-width="2.5"/></g></g></svg><span class="s">100円で</span><b>ひと口？</b><span class="pr">1個<br>300円台？</span><span class="pace">同じ<br>ペースなら</span></div>
+          <div class="oni-c"><span class="pill">10年前</span><img src="../lp/img/oni_full.webp" alt="まるごと1個のおにぎり" width="360" height="360"><span class="s">100円で</span><b>1個</b><span class="pr">1個<br>約100円</span></div>
+          <div class="oni-c"><span class="pill">いま</span><img src="../lp/img/oni_half.webp" alt="半分だけのおにぎり" width="360" height="360"><span class="s">100円で</span><b>半分</b><span class="pr">1個<br>200円前後</span></div>
+          <div class="oni-c fut"><span class="pill">10年後は？</span><img src="../lp/img/oni_bite.webp" alt="ひと口ぶんだけ残ったおにぎり" width="360" height="360"><span class="s">100円で</span><b>ひと口？</b><span class="pr">1個<br>300円台？</span><span class="pace">同じ<br>ペースなら</span></div>
         </div>
         <div class="oni-band">100円玉は、ずっと100円のまま。<br>買えるおにぎりが、<br class="sp">小さくなっていく。</div>
         <figcaption class="note">※10年前は2016年、いまは2025〜26年の店頭価格（税込）の目安です。地域・お店・具材によって違います。<br>※「10年後」は予測ではありません。この10年と同じペース（10年でおよそ1.8倍）で上がり続けたと仮定した計算です。</figcaption>
@@ -353,7 +351,7 @@ body{padding-bottom:0}
       <div><p class="name">森川 満章<small>fulfull株式会社 代表</small></p>
         <ul><li>1986年生まれ、岩手出身、横浜在住。3児の父</li><li>大手金融会社の認定講師、商工会議所のビジネスアドバイザー</li><li>音声アプリVoicy「ふるふるラジオ」を毎朝配信</li></ul></div>
     </div>
-    <div class="venues"><p class="vh">これまでの登壇先（一部）</p><ul class="media"><li>積水ハウス</li><li>八王子商工会議所</li><li>神奈川県の小学校<span>（県教育委員会の授業）</span></li></ul><p class="note" style="margin:8px 0 0">講演・授業でも、この勉強会でも、<br class="sp">商品のご案内はしていません。</p></div>
+    <div class="venues"><p class="vh">これまでの登壇先（一部）</p><ul class="media"><li>大手証券会社</li><li>大手ハウスメーカー</li><li>大手金融会社</li><li>小学校・中学校</li></ul><p class="note" style="margin:8px 0 0">講演・授業でも、この勉強会でも、<br class="sp">商品のご案内はしていません。</p></div>
     <div class="story"><p style="margin:0">僕は30歳まで、お金のことをほとんど勉強せず、貯金もないような状態でした。<br>バスケを習っていた息子に「プロになりたい、海外に行きたい」と言われたとき、そのお金の余裕がなく、「諦めて」と言うしかなかった。<br>その夜、「なんてかっこ悪いんだろう」と、人生でいちばん自分がみじめになりました。<br>そこからお金のことをゼロから学び直して、暮らしも、家族との会話も変わりました。<br>同じ悔しさを、ひとりでも減らしたい。それが、この会を無料で続けている理由です。<br>むずかしい言葉は使いません。<br>はじめてでも、途中からでも、大丈夫です。</p></div>
     <ul class="media"><li>Voicy <span>「ふるふるラジオ」毎朝配信</span></li><li>YouTube <span>「ふるふるチャンネル」</span></li><li>Instagram <span>@morikawa_fulfull</span></li></ul>
   </div>
