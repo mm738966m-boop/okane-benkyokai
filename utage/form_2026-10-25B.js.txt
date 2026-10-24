@@ -69,7 +69,7 @@ var css=''
 +'#fx-confirm .fx-back{background:#fff;color:#0E7C86;border:2px solid #0E7C86;font-weight:700;font-size:17px;min-height:50px;margin-top:16px}'
 +'#fx-confirm .fx-go[disabled]{opacity:.6}'
 +'#app button[type=submit],#app .btn-success,#app .btn-primary{background:#06C755!important;border:0!important;border-radius:999px!important;font-weight:900;font-size:20px;min-height:60px;box-shadow:0 5px 0 #04994A;font-family:inherit;color:#fff!important}'
-+'#fx-line{margin-top:28px}#fx-line summary{cursor:pointer;list-style:none;font-size:16px;font-weight:900;color:#0A5A62;display:flex;align-items:center;gap:8px}#fx-line summary::-webkit-details-marker{display:none}#fx-line summary:after{content:"";width:9px;height:9px;border-right:2.5px solid #0E7C86;border-bottom:2.5px solid #0E7C86;transform:rotate(45deg);margin-left:auto;transition:transform .2s}#fx-line details[open] summary:after{transform:rotate(-135deg)}#fx-line .fx-body{margin-top:10px}';
++'#fx-line{margin-top:28px}#fx-line summary{cursor:pointer;list-style:none;font-size:16px;font-weight:900;color:#0A5A62;display:flex;align-items:center;gap:8px}#fx-line summary::-webkit-details-marker{display:none}#fx-line summary:after{content:"";width:9px;height:9px;border-right:2.5px solid #0E7C86;border-bottom:2.5px solid #0E7C86;transform:rotate(45deg);margin-left:auto;transition:transform .2s}#fx-line details[open] summary:after{transform:rotate(-135deg)}#fx-line .fx-body{margin-top:10px}'
 +'#app .schedule .d-flex.justify-content-between,#app .schedule .event-calendar,#app .schedule .loading,#fx-note,#fx-head,#fx-slots{display:none!important}'
 +'[data-fx-after]{display:none!important}'
 +'#fx-list{margin:6px 0 0}#fx-loading{padding:18px 0;color:#4A6468;font-size:15.5px}'
@@ -80,7 +80,7 @@ var css=''
 +'.fx-pick b{font-size:12.5px;font-weight:900;background:#EEF6F7;color:#0E7C86;border-radius:999px;padding:2px 8px}.fx-pick.on{background:#0E7C86;color:#fff}.fx-pick.on b{background:#fff;color:#0A5A62}'
 +'.fx-pick:focus-visible{outline:3px solid #D9A441;outline-offset:2px}'
 +'#fx-after{margin:12px 0 0;font-size:14px;color:#4A6468;line-height:1.7}#fx-msg{margin:8px 0 0;font-size:15px;font-weight:700;color:#B23B3B;min-height:0}'
-+'#app .card-body > div:not(.schedule):not(.form-group) table{margin-bottom:0}'
++'#app .card-body > div:not(.schedule):not(.form-group) table{margin-bottom:0}';
 var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
 
 function pad(n){return (n<10?'0':'')+n}
@@ -97,6 +97,7 @@ function pickTimes(times){var m=null,e=null;MORNING.some(function(h){var k=pad(h
 async function scan(){
   var list=document.getElementById('fx-list');if(!list)return;
   var t0=new Date();t0.setHours(0,0,0,0);var t1=new Date(t0.getTime()+WINDOW_DAYS*864e5);
+  for(var w=0;w<40&&!document.querySelector('#app .calendar-day-selectable');w++){await new Promise(function(r){setTimeout(r,150)})}
   var startYM=headYM();if(!startYM)return;
   var months=[];for(var d=new Date(t0);d<t1;d=new Date(d.getTime()+864e5)){var ym=d.getFullYear()+'-'+pad(d.getMonth()+1);if(months.indexOf(ym)<0)months.push(ym)}
   DAYS=[];
@@ -131,8 +132,10 @@ async function choose(btn){
   if(tgt){setTimeout(function(){var y=tgt.getBoundingClientRect().top+window.pageYOffset-12;window.scrollTo({top:y,behavior:'smooth'})},60)}
   busy=false;
 }
+function hideNative(){var s=sch();if(!s)return;[].forEach.call(s.querySelectorAll(':scope > div'),function(e){if(e.children.length===0&&/希望する時間を選択/.test(e.textContent))e.style.display='none'})}
 function setup(){
   var s=sch();if(!s||document.getElementById('fx-list'))return false;
+  new MutationObserver(hideNative).observe(s,{childList:true,subtree:true});hideNative();
   var h4=document.querySelector('#app .card-body h4');if(h4&&!document.getElementById('fx-hint')){h4.insertAdjacentHTML('afterend','<p class="fx-hint" id="fx-hint">ご都合のよい日時を押してください。</p>')}
   var list=document.createElement('div');list.id='fx-list';list.innerHTML='<div id="fx-loading">日程を読み込んでいます…</div>';s.appendChild(list);
   list.addEventListener('click',function(e){var b=e.target.closest('.fx-pick');if(b)choose(b)});
