@@ -1,5 +1,5 @@
 <script>
-/* お金の勉強会 申込フォーム（2026-10-25 C版）：カレンダーを隠して「日程の一覧」（この先10日・1日2枠＝朝9時か10時・夜20時。空いていない枠と、日付ごとに決まった一部の枠は「満席」）→押すと入力欄が出る→名前とメールだけ→1タップで申込（確認画面なし）。先の日の欄は申込ボタンの下。UTAGE フォーム設定 > bodyタグの最後に挿入するJavaScript */
+/* お金の勉強会 申込フォーム（2026-10-25 C版・満席は赤枠／空きは青い縁）：カレンダーを隠して「日程の一覧」（この先10日・1日2枠＝朝9時か10時・夜20時。空いていない枠と、日付ごとに決まった一部の枠は「満席」）→押すと入力欄が出る→名前とメールだけ→1タップで申込（確認画面なし）。先の日の欄は申込ボタンの下。UTAGE フォーム設定 > bodyタグの最後に挿入するJavaScript */
 (function(){
 var WINDOW_DAYS=10,MORNING=[9,10],EVENING=[20],CLOSE_RATE=22;
 var LINE_URL='https://line.me/R/oaMessage/%40477jhcia/?%E6%97%A5%E7%A8%8B';
@@ -76,10 +76,10 @@ var css=''
 +'.fx-day{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1.5px solid #E3EAEB}.fx-day:last-child{border-bottom:0}'
 +'.fx-day .fx-d{flex:0 0 108px;font-weight:900;font-size:17px;color:#0A5A62;line-height:1.25;white-space:nowrap}.fx-day .fx-d small{display:block;font-size:13.5px;font-weight:700;color:#4A6468;margin-top:2px}.fx-day.fx-sun .fx-d{color:#C0392B}.fx-day.fx-sat .fx-d{color:#1F5FA8}'
 +'.fx-day .fx-b{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:8px}.fx-day .fx-b.one{grid-template-columns:1fr}'
-+'.fx-pick{display:flex;align-items:center;justify-content:center;gap:5px;min-height:52px;padding:6px 6px;border-radius:999px;border:2px solid #0E7C86;background:#fff;color:#0A5A62;font:inherit;font-weight:900;font-size:18px;font-variant-numeric:tabular-nums;cursor:pointer}'
-+'.fx-pick b{font-size:13.5px;font-weight:900;background:#EEF6F7;color:#0E7C86;border-radius:999px;padding:2px 8px}.fx-pick.on{background:#0E7C86;color:#fff}.fx-pick.on b{background:#fff;color:#0A5A62}'
++'.fx-pick{display:flex;align-items:center;justify-content:center;gap:5px;min-height:52px;padding:6px 6px;border-radius:999px;border:2.5px solid #1F6FD1;background:#fff;color:#164E9A;font:inherit;font-weight:900;font-size:18px;font-variant-numeric:tabular-nums;cursor:pointer}'
++'.fx-pick b{font-size:13.5px;font-weight:900;background:#E8F0FC;color:#1F6FD1;border-radius:999px;padding:2px 8px}.fx-pick:hover{background:#F2F7FE}.fx-pick.on{background:#1F6FD1;color:#fff}.fx-pick.on b{background:#fff;color:#164E9A}'
 +'.fx-pick:focus-visible{outline:3px solid #D9A441;outline-offset:2px}'
-+'.fx-pick.fx-man{background:#F1F5F5;border-color:#E3EAEB;color:#9DB0B3;cursor:default;font-size:16px}.fx-pick.fx-man b{background:#E3EAEB;color:#8A9C9F}'
++'.fx-pick.fx-man{background:#FDECEC;border:2.5px solid #D64545;color:#C62828;cursor:default;font-size:16.5px;letter-spacing:.08em}.fx-pick.fx-man:hover{background:#FDECEC}.fx-pick.fx-man b{background:#F8D0D0;color:#B71C1C;letter-spacing:0}'
 +'#fx-after{margin:12px 0 0;font-size:14px;color:#4A6468;line-height:1.7}#fx-msg{margin:8px 0 0;font-size:15px;font-weight:700;color:#B23B3B;min-height:0}'
 +'#app .card-body > div:not(.schedule):not(.form-group) table{margin-bottom:0}';
 var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
