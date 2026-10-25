@@ -1,5 +1,5 @@
 <script>
-/* お金の勉強会 申込フォーム（2026-10-25 C版・満席は赤枠／空きは青い縁）：カレンダーを隠して「日程の一覧」（この先10日・1日2枠＝朝9時か10時・夜20時。空いていない枠と、日付ごとに決まった一部の枠は「満席」）→押すと入力欄が出る→名前とメールだけ→1タップで申込（確認画面なし）。先の日の欄は申込ボタンの下。UTAGE フォーム設定 > bodyタグの最後に挿入するJavaScript */
+/* お金の勉強会 申込フォーム（2026-10-25 C版・満席は薄い赤枠／空きは青い縁／メールの打ち間違いに一言）：カレンダーを隠して「日程の一覧」（この先10日・1日2枠＝朝9時か10時・夜20時。空いていない枠と、日付ごとに決まった一部の枠は「満席」）→押すと入力欄が出る→名前とメールだけ→1タップで申込（確認画面なし）。先の日の欄は申込ボタンの下。UTAGE フォーム設定 > bodyタグの最後に挿入するJavaScript */
 (function(){
 var WINDOW_DAYS=10,MORNING=[9,10],EVENING=[20],CLOSE_RATE=22;
 var LINE_URL='https://line.me/R/oaMessage/%40477jhcia/?%E6%97%A5%E7%A8%8B';
@@ -79,7 +79,8 @@ var css=''
 +'.fx-pick{display:flex;align-items:center;justify-content:center;gap:5px;min-height:52px;padding:6px 6px;border-radius:999px;border:2.5px solid #1F6FD1;background:#fff;color:#164E9A;font:inherit;font-weight:900;font-size:18px;font-variant-numeric:tabular-nums;cursor:pointer}'
 +'.fx-pick b{font-size:13.5px;font-weight:900;background:#E8F0FC;color:#1F6FD1;border-radius:999px;padding:2px 8px}.fx-pick:hover{background:#F2F7FE}.fx-pick.on{background:#1F6FD1;color:#fff}.fx-pick.on b{background:#fff;color:#164E9A}'
 +'.fx-pick:focus-visible{outline:3px solid #D9A441;outline-offset:2px}'
-+'.fx-pick.fx-man{background:#FDECEC;border:2.5px solid #D64545;color:#C62828;cursor:default;font-size:16.5px;letter-spacing:.08em}.fx-pick.fx-man:hover{background:#FDECEC}.fx-pick.fx-man b{background:#F8D0D0;color:#B71C1C;letter-spacing:0}'
++'.fx-pick.fx-man{background:#FFF6F6;border:1.5px solid #F2C4C4;color:#D99494;cursor:default;font-size:16px;font-weight:700;letter-spacing:.08em}.fx-pick.fx-man:hover{background:#FFF6F6}.fx-pick.fx-man b{background:#FCE6E6;color:#D08A8A;font-weight:700;letter-spacing:0}'
++'#fx-mailhint{margin:8px 0 0;font-size:16px;line-height:1.6;color:#8A5A00;background:#FFF7E0;border:1.5px solid #F0D9A0;border-radius:12px;padding:9px 12px}#fx-mailhint b{color:#1C3236;word-break:break-all}#fx-mailhint button{font:inherit;font-size:15px;font-weight:900;color:#fff;background:#1F6FD1;border:0;border-radius:999px;padding:5px 14px;margin-left:6px;cursor:pointer}'
 +'#fx-after{margin:12px 0 0;font-size:14px;color:#4A6468;line-height:1.7}#fx-msg{margin:8px 0 0;font-size:15px;font-weight:700;color:#B23B3B;min-height:0}'
 +'#app .card-body > div:not(.schedule):not(.form-group) table{margin-bottom:0}';
 var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
@@ -225,8 +226,18 @@ function hookConfirm(){
   },true);
 }
 
+
+/* メールの打ち間違いに気づける一言（gmail.con など）。全角は半角に直す */
+var DOMS=['gmail.com','yahoo.co.jp','icloud.com','docomo.ne.jp','ezweb.ne.jp','au.com','softbank.ne.jp','i.softbank.jp','ymobile.ne.jp','hotmail.com','hotmail.co.jp','outlook.jp','outlook.com','me.com','nifty.com','biglobe.ne.jp','ocn.ne.jp','live.jp','yahoo.com'];
+function lev(a,b){var m=a.length,n=b.length,d=[],i,j;for(i=0;i<=m;i++){d[i]=[i]}for(j=0;j<=n;j++)d[0][j]=j;for(i=1;i<=m;i++)for(j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n]}
+function suggest(v){var at=v.lastIndexOf('@');if(at<1)return '';var dom=v.slice(at+1).toLowerCase();if(!dom||DOMS.indexOf(dom)>=0)return '';var best='',bd=9;DOMS.forEach(function(x){var k=lev(dom,x);if(k<bd){bd=k;best=x}});var lim=dom.length<=8?1:2;return bd<=lim?v.slice(0,at+1)+best:''}
+function hookMail(){var inp=document.querySelector('#app input[type=email],#app input[name=mail]');if(!inp||inp.__fx)return;inp.__fx=true;inp.setAttribute('autocomplete','email');inp.setAttribute('inputmode','email');
+  var hint=document.createElement('div');hint.id='fx-mailhint';hint.hidden=true;inp.insertAdjacentElement('afterend',hint);
+  function check(){var v=inp.value.replace(/[！-～]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0)}).replace(/[\s　]/g,'');if(v!==inp.value)inp.value=v;var sg=suggest(v);
+    if(sg){hint.innerHTML='もしかして <b>'+esc(sg)+'</b> ですか？<button type="button">直す</button>';hint.hidden=false;hint.querySelector('button').onclick=function(){inp.value=sg;hint.hidden=true;inp.dispatchEvent(new Event('input',{bubbles:true}))}}else hint.hidden=true}
+  inp.addEventListener('blur',check);inp.addEventListener('change',check);inp.addEventListener('input',function(){if(!hint.hidden)check()})}
 function relabel(){var b=document.querySelector('#app button[type=submit]');if(b&&!b.__fx&&/確認/.test(b.textContent)){b.__fx=true;b.textContent='この日で申し込む'}}
-function boot(){var tries=0;(function tick(){if(setup()){try{hookConfirm()}catch(e){}relabel();setInterval(relabel,800);scan()}else if(++tries<60)setTimeout(tick,250)})()}
+function boot(){var tries=0;(function tick(){if(setup()){try{hookConfirm()}catch(e){}relabel();setInterval(function(){relabel();try{hookMail()}catch(e){}},800);scan()}else if(++tries<60)setTimeout(tick,250)})()}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 
