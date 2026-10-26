@@ -22,6 +22,8 @@ p{margin:0 0 6px}
 .btn[aria-disabled=true]{background:#B9CDD0;box-shadow:0 5px 0 #9DB0B3;pointer-events:none}
 .btn:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
 .ask{display:none;text-align:left;margin-top:14px}.ask label{font-weight:900;display:block;margin-bottom:6px}.ask input{width:100%;font:inherit;font-size:18px;border:2px solid #D5E4E6;border-radius:12px;padding:12px 14px;min-height:54px}.ask input:focus{outline:3px solid var(--gold);border-color:var(--teal)}.ask button{width:100%;margin-top:12px;font:inherit;font-weight:900;font-size:20px;color:#fff;background:var(--teal);border:0;border-radius:999px;min-height:58px;box-shadow:0 5px 0 var(--deep);cursor:pointer}
+.miss{display:none;text-align:left;background:#FFF7E0;border:1.5px solid #F0D9A0;border-radius:14px;padding:12px 14px;margin:14px 0 4px;font-size:16.5px;line-height:1.7}.miss b{color:var(--deep)}
+.lbtn{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 0 4px;background:#06C755;color:#fff;text-decoration:none;font-weight:900;font-size:18px;border-radius:999px;min-height:56px;padding:10px 14px;box-shadow:0 4px 0 #04994A}
 .note{font-size:15px;color:var(--ink2);background:var(--goldbg);border-radius:14px;padding:12px 14px;text-align:left}
 </style>
 </head>
@@ -31,36 +33,62 @@ p{margin:0 0 6px}
   <h1 id="ttl">Zoomを開いています</h1>
   <p id="msg">そのまま少しお待ちください。</p>
   <form id="ask" class="ask"><label for="em">お申込みのときのメールアドレス</label><input id="em" type="email" inputmode="email" autocomplete="email" required placeholder="例：name@example.com"><button type="submit">Zoomを開く</button></form>
+  <div id="miss" class="miss" role="alert"></div>
   <a id="go" class="btn" href="#" aria-disabled="true">Zoomに入る</a>
-  <p class="note">自動で開かないときは、上のボタンを押してください。<br>うまく入れないときは、お申込みのときに届いたメールのリンクからも入れます。</p>
+  <a id="line" class="lbtn" href="https://line.me/R/oaMessage/%40477jhcia/?Zoom%E3%81%AB%E5%85%A5%E3%82%8C%E3%81%BE%E3%81%9B%E3%82%93" style="display:none">LINEで「Zoomに入れません」と送る</a>
+  <p class="note" id="note">自動で開かないときは、上のボタンを押してください。<br>うまく入れないときは、お申込みのときに届いたメールのリンクからも入れます。</p>
 </main>
 <script>
 (function(){
   var API='https://script.google.com/macros/s/AKfycbwjbvpoTwN4gUGCSMEMkhG4kmho-yCGcnjKr0YIJ-CCf5KXb0HVHjKo2XUS-bOAMlgwZw/exec';
-  var FALLBACK='https://us02web.zoom.us/j/86141509775';
-  var go=document.getElementById('go'),ttl=document.getElementById('ttl'),msg=document.getElementById('msg'),done=false;
-  function ready(url,auto){
-    if(done)return;done=true;
-    if(!/^https:\/\/[a-z0-9.-]*zoom\.us\//i.test(url))url=FALLBACK;
-    go.href=url;go.removeAttribute('aria-disabled');
+  /* 2026-10-26：予約が見つからないときに、別のZoomの部屋（共通の部屋）へ飛ばさない。もう一度入れてもらうか、LINEで連絡してもらう */
+  var go=document.getElementById('go'),ttl=document.getElementById('ttl'),msg=document.getElementById('msg'),ask=document.getElementById('ask'),em=document.getElementById('em'),miss=document.getElementById('miss'),line=document.getElementById('line'),note=document.getElementById('note'),done=false,seq=0;
+  var DOMS=['gmail.com','yahoo.co.jp','icloud.com','docomo.ne.jp','ezweb.ne.jp','au.com','softbank.ne.jp','i.softbank.jp','ymobile.ne.jp','hotmail.com','hotmail.co.jp','outlook.jp','outlook.com','me.com','nifty.com','biglobe.ne.jp','ocn.ne.jp','live.jp','yahoo.com'];
+  function lev(a,b){var m=a.length,n=b.length,d=[],i,j;for(i=0;i<=m;i++){d[i]=[i]}for(j=0;j<=n;j++)d[0][j]=j;for(i=1;i<=m;i++)for(j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n]}
+  function fixDomain(v){var at=v.lastIndexOf('@');if(at<1)return '';var dom=v.slice(at+1).toLowerCase();if(DOMS.indexOf(dom)>=0)return '';var best='',bd=9;DOMS.forEach(function(x){var k=lev(dom,x);if(k<bd){bd=k;best=x}});return bd<=(dom.length<=8?1:2)?v.slice(0,at+1)+best:''}
+  function norm(v){return String(v||'').replace(/[！-～]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0)}).replace(/[\s　]/g,'')}
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function open(url){
+    done=true;go.href=url;go.removeAttribute('aria-disabled');go.style.display='block';ask.style.display='none';miss.style.display='none';line.style.display='none';
     ttl.textContent='Zoomの準備ができました';msg.textContent='自動で開きます。';
-    if(auto)setTimeout(function(){location.href=url},300);
+    setTimeout(function(){location.href=url},300);
   }
-  function lookup(m){
-    done=false;ttl.textContent='Zoomを開いています';msg.textContent='そのまま少しお待ちください。';
-    window.fxJoin=function(d){ready(d&&d.url||FALLBACK,true)};
-    var s=document.createElement('script');
-    s.src=API+'?callback=fxJoin&m='+encodeURIComponent(m)+'&t='+Date.now();
-    s.onerror=function(){ready(FALLBACK,true)};
-    document.body.appendChild(s);
-    setTimeout(function(){ready(FALLBACK,true)},9000);
+  function notFound(m,kind){
+    done=true;go.style.display='none';ask.style.display='block';line.style.display='flex';note.style.display='none';
+    ttl.textContent=kind==='err'?'うまく読み込めませんでした':'ご予約が見つかりませんでした';
+    msg.textContent='';
+    miss.innerHTML=kind==='err'
+      ?'通信がうまくいきませんでした。もう一度ボタンを押してください。<br>それでも入れないときは、下の緑のボタンからLINEで送ってください。担当からZoomのリンクをお送りします。'
+      :'<b>'+esc(m)+'</b> では、ご予約が見つかりませんでした。<br>お申込みのときのメールアドレスで、もう一度お試しください。<br>わからないときは、下の緑のボタンからLINEで送ってください。担当からZoomのリンクをお送りします。';
+    miss.style.display='block';em.value=m;
   }
-  var m=(new URLSearchParams(location.search).get('m')||'').trim();
+  function call(m){
+    return new Promise(function(res){
+      var id='fxJ'+(++seq),fin=false;
+      window[id]=function(d){if(fin)return;fin=true;res(d||{})};
+      var s=document.createElement('script');
+      s.src=API+'?callback='+id+'&m='+encodeURIComponent(m)+'&t='+Date.now();
+      s.onerror=function(){if(fin)return;fin=true;res(null)};
+      document.body.appendChild(s);
+      setTimeout(function(){if(fin)return;fin=true;res(null)},12000);
+    });
+  }
+  function ok(d){return d&&d.found!==false&&/^https:\/\/[a-z0-9.-]*zoom\.us\//i.test(d.url||'')}
+  async function lookup(m){
+    done=false;miss.style.display='none';line.style.display='none';ask.style.display='none';go.style.display='block';go.setAttribute('aria-disabled','true');note.style.display='';
+    ttl.textContent='Zoomを開いています';msg.textContent='そのまま少しお待ちください。';
+    var d=await call(m);
+    if(ok(d))return open(d.url);
+    var alt=fixDomain(m);
+    if(d&&alt){var d2=await call(alt);if(ok(d2))return open(d2.url)}
+    notFound(m,d?'miss':'err');
+  }
+  ask.addEventListener('submit',function(ev){ev.preventDefault();var v=norm(em.value);if(!v)return;lookup(v)});
+  var m=norm(new URLSearchParams(location.search).get('m'));
   if(m&&m.indexOf('@')>0&&m.indexOf('%')===-1){lookup(m)}
   else{
-    var ask=document.getElementById('ask');ask.style.display='block';go.style.display='none';
+    ask.style.display='block';go.style.display='none';
     ttl.textContent='Zoomに入る';msg.textContent='お申込みのメールアドレスを入れて、ボタンを押してください。';
-    ask.addEventListener('submit',function(ev){ev.preventDefault();var v=document.getElementById('em').value.trim();if(!v)return;ask.style.display='none';go.style.display='block';lookup(v)});
   }
 })();
 </script>
