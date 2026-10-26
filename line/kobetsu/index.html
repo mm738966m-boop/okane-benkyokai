@@ -26,8 +26,12 @@ img{width:132px;height:auto}h1{font-size:25px;font-weight:900;color:#0A5A62;line
 </main>
 <script>
 (function(){
-  var BASE='https://utage-system.com/line/link/DHmB7Kogg6pd/CSbU9afsAD3q';
-  var r=(new URLSearchParams(location.search).get('r')||'').trim();
+  // s＝予約枠ごとのシナリオ（お金30分／経営者30分／お金60分）。不明なときはお金30分へ
+  var OK=['CSbU9afsAD3q','T8QHE3kMy1fl','0WByOWUxnjzg'];
+  var q=new URLSearchParams(location.search);
+  var s=(q.get('s')||'').trim();if(OK.indexOf(s)<0)s=OK[0];
+  var BASE='https://utage-system.com/line/link/DHmB7Kogg6pd/'+s;
+  var r=(q.get('r')||'').trim();
   var url=(r&&/^[A-Za-z0-9_-]+$/.test(r))?BASE+'?rid='+encodeURIComponent(r):BASE;
   document.getElementById('go').href=url;
   setTimeout(function(){location.replace(url)},400);
