@@ -26,8 +26,8 @@ img{width:132px;height:auto}h1{font-size:25px;font-weight:900;color:#0A5A62;line
 </main>
 <script>
 (function(){
-  // s＝予約枠ごとのシナリオ（お金30分／経営者30分／お金60分）。不明なときはお金30分へ
-  var OK=['CSbU9afsAD3q','T8QHE3kMy1fl','0WByOWUxnjzg','UWJLqbbWSLBM'];
+  // s＝予約枠ごとのシナリオ。先頭4つ＝予約専用LINE（お金30/経営30/お金60/経営60）、後ろ4つ＝旧・総合窓口（予約済みの人のため残す）。不明なときは先頭へ
+  var OK=['m650IPMZep03','z2ylyOPovfK1','YrGoPiDk0WpZ','hKBi8J7L5MDp','CSbU9afsAD3q','T8QHE3kMy1fl','0WByOWUxnjzg','UWJLqbbWSLBM'];
   var q=new URLSearchParams(location.search);
   var s=(q.get('s')||'').trim();if(OK.indexOf(s)<0)s=OK[0];
   var BASE='https://utage-system.com/line/link/DHmB7Kogg6pd/'+s;
