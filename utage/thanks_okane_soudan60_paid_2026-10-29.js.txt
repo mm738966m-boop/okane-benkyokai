@@ -87,4 +87,24 @@ function boot(){
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
+
+/* 2026-10-29 予約直後の画面にLINEボタン：予約ページを読み直すと、いま予約した人の読者IDが入っている（UTAGEはお礼ページで%reader_id%を置き換えないため）。有料60分＝予約専用LINEのシナリオ 7WMQi5BGmW7x */
+(function(){
+  var SIDM={q5R8Tv5K0hWC:'7WMQi5BGmW7x'};
+  var eid=(location.pathname.match(/event\/([A-Za-z0-9]+)\/thanks/)||[])[1];var sid=SIDM[eid];
+  if(!sid)return;
+  function put(rid,n){
+    if(!rid||document.querySelector('.fx-line'))return;
+    var at=document.querySelector('.fx-box')||document.querySelector('.fx-foot');
+    if(!at){if((n||0)<30)setTimeout(function(){put(rid,(n||0)+1)},100);return;}
+    var lu='https://mm738966m-boop.github.io/okane-benkyokai/line/kobetsu/?r='+encodeURIComponent(rid)+'&s='+sid;
+    var d=document.createElement('div');d.className='fx-line';
+    d.innerHTML='<p class="fx-line-h">前日と1時間前のお知らせを、LINEでも受け取れます</p><p class="fx-line-p">メールは迷惑メールに入ってしまうことがあります。<br>LINEなら、通知でそのまま気づけます。</p>'
+      +'<a class="fx-line-btn" href="'+lu+'">LINEで受け取る</a><p class="fx-line-s">押すとLINEが開きます。友だち追加すると、お知らせが届きます。</p>';
+    at.parentNode.insertBefore(d,at);
+  }
+  fetch('/event/'+eid+'/register',{credentials:'same-origin'}).then(function(r){return r.text()}).then(function(h){
+    var m=h.match(/name="rid"[^>]*value="([A-Za-z0-9]+)"/)||h.match(/value="([A-Za-z0-9]+)"[^>]*name="rid"/);put(m&&m[1]);
+  }).catch(function(){});
+})();
 </script>
