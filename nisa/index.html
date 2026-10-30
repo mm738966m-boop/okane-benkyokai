@@ -55,24 +55,24 @@ a{color:var(--teal)}
 <section class="card">
 <h2><span class="n">1</span>「守るお金」を先によける</h2>
 <p>生活費の<strong>半年分</strong>を、ふだんの口座に現金のまま置いておきます。これは投資にまわさないお金です。</p>
-<p>このお金があると、値下がりした月も売らずにいられます。ないと、生活の不安がそのまま投資の不安になります。途中でやめてしまった方の話を聞くと、だいたいここが空っぽでした。</p>
+<p>このお金があると、値下がりした月も売らずにいられます。ないと、生活の不安がそのまま投資の不安になります。途中でやめてしまうケースでは、ここが空っぽのことがよくあります。</p>
 </section>
 
 <section class="card">
-<h2><span class="n">2</span>入れていいのは「増やす」お金だけ</h2>
+<h2><span class="n">2</span>入れる候補は「長く使わない」お金</h2>
 <p>いま持っているお金と、これから入るお金を、使う時期で3つに分けます。</p>
 <div class="three">
 <div><b>使う</b>1年以内に使う</div>
-<div><b>守る</b>10年以内に使う予定がある</div>
-<div class="ok"><b>増やす</b>10年以上使わない</div>
+<div><b>近いうちに使う</b>1〜10年で使う予定がある</div>
+<div class="ok"><b>長く使わない</b>10年以上使わない</div>
 </div>
-<p>新NISAに入れていいのは、<strong>「増やす」だけ</strong>です。教育費や車の買い替えのように、使う時期が決まっているお金は入れません。</p>
-<p class="note">毎月の積立額を決めるときも同じです。「増やす」に回せる分だけ。無理な額は、続きません。</p>
+<p>新NISAに入れる候補は、<strong>「長く使わない」お金</strong>です。教育費や車の買い替えのように、使う時期が決まっているお金は入れません。</p>
+<p class="note">毎月の積立額も同じです。「長く使わない」に回せる、無理のない額が目安です。</p>
 </section>
 
 <section class="card">
 <h2><span class="n">3</span>商品より先に「毎月いくら」を決める</h2>
-<p>最初に迷うのは「何を買うか」ですが、結果を大きく左右するのは<strong>毎月いくらを、何年続けるか</strong>のほうです。商品の選び方は、勉強会で順番にお話しします。</p>
+<p>最初に迷うのは「何を買うか」ですが、結果に大きく関わるのは<strong>毎月いくらを、何年続けるか</strong>です。商品の選び方は、勉強会で順番にお話しします。</p>
 </section>
 
 <section class="card calc">
@@ -83,7 +83,7 @@ a{color:var(--teal)}
 <label for="nen">続ける年数</label>
 <div class="row"><input id="nen" inputmode="numeric" placeholder="例：20"><span class="u">年</span></div>
 <label>ふえ方の想定（年率）</label>
-<div class="seg" id="seg"><button type="button" data-r="0.03" class="on">年3％</button><button type="button" data-r="0.05">年5％</button></div>
+<div class="seg" id="seg"><button type="button" data-r="0">ふえない</button><button type="button" data-r="0.03" class="on">年3％</button><button type="button" data-r="0.05">年5％</button></div>
 <div class="res" id="res">数字を入れると、ここに出ます。</div>
 <p class="small" style="margin-top:10px">ざっくりの目安です。ふえ方は仮の数字で、実際は上下し、元本を下回る時期もあります。税金や手数料は考えていません。入れた数字はこのページの中だけで使い、どこにも送られません。</p>
 </section>
@@ -106,7 +106,8 @@ a{color:var(--teal)}
   function run(){
     var m=num(t.value),y=num(n.value);
     if(!m||!y){res.textContent='数字を入れると、ここに出ます。';return}
-    var k=rate/12,c=12*y,p=m*c,fv=m*(Math.pow(1+k,c)-1)/k;
+    var k=rate/12,c=12*y,p=m*c,fv=k?m*(Math.pow(1+k,c)-1)/k:p;
+    if(!k){res.innerHTML='積み立てる元本は<b>'+man(p)+'万円</b>。ふえなければ、このままの額です。';return}
     res.innerHTML='積み立てる元本は<b>'+man(p)+'万円</b>。<br>年'+(rate*100)+'％でふえた場合の目安は、約<b>'+man(fv)+'万円</b>（ふえた分 約'+man(fv-p)+'万円）。';
   }
   [t,n].forEach(function(el){el.addEventListener('input',function(){var v=num(el.value);el.value=v?v.toLocaleString('ja-JP'):'';run()})});
