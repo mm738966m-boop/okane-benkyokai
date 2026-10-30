@@ -1,7 +1,7 @@
 <script>
 /* お金の勉強会／個別相談 サンクスページ（2026-10-13版）：予約ページと同じデザインに（UTAGE フォーム設定 > サンクスページ > bodyタグの最後に挿入するJavaScript） */
 (function(){
-var KIND=/KczRInaQse9W/.test(location.pathname)?'keiei':/zsNG7V8HsuS7/.test(location.pathname)?'soudan':/wQvZacCdkROE/.test(location.pathname)?'ai_soudan':/oBQLPTad8XgC/.test(location.pathname)?'shinsa':'benkyokai';var SOUDAN=KIND==='soudan';
+var KIND=/KczRInaQse9W|p1NURVjA43Cn/.test(location.pathname)?'keiei':/zsNG7V8HsuS7/.test(location.pathname)?'soudan':/wQvZacCdkROE/.test(location.pathname)?'ai_soudan':/oBQLPTad8XgC/.test(location.pathname)?'shinsa':'benkyokai';var SOUDAN=KIND==='soudan';
 var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap';document.head.appendChild(l);
 var css=''
 +'body{background:#EEF6F7!important;font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif!important;font-size:17px;font-weight:500;color:#1C3236;line-height:1.8}'

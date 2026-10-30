@@ -1,5 +1,5 @@
 <script>
-/* お金の勉強会 申込フォーム（2026-10-25 C版・満席は薄い赤枠／空きは青い縁／メールの打ち間違いに一言／安心チップ・わかること3つ・ボタンに日時）：カレンダーを隠して「日程の一覧」（この先10日・1日2枠＝朝9時か10時・夜20時。空いていない枠と、日付ごとに決まった一部の枠は「満席」）→押すと入力欄が出る→名前とメールだけ→1タップで申込（確認画面なし）。先の日の欄は申込ボタンの下。UTAGE フォーム設定 > bodyタグの最後に挿入するJavaScript */
+/* お金の勉強会 申込フォーム（2026-10-25 C版・満席は薄い赤枠／空きは青い縁／メールの打ち間違いに一言／安心チップ・わかること3つ・ボタンに日時／参加特典）：カレンダーを隠して「日程の一覧」（この先10日・1日2枠＝朝9時か10時・夜20時。空いていない枠と、日付ごとに決まった一部の枠は「満席」）→押すと入力欄が出る→名前とメールだけ→1タップで申込（確認画面なし）。先の日の欄は申込ボタンの下。UTAGE フォーム設定 > bodyタグの最後に挿入するJavaScript */
 (function(){
 var WINDOW_DAYS=10,MORNING=[9,10],EVENING=[20],CLOSE_RATE=22;
 var LINE_URL='https://line.me/R/oaMessage/%40477jhcia/?%E6%97%A5%E7%A8%8B';
@@ -82,6 +82,7 @@ var css=''
 +'.fx-pick.fx-man{background:#FFF6F6;border:1.5px solid #F2C4C4;color:#D99494;cursor:default;font-size:16px;font-weight:700;letter-spacing:.08em}.fx-pick.fx-man:hover{background:#FFF6F6}.fx-pick.fx-man b{background:#FCE6E6;color:#D08A8A;font-weight:700;letter-spacing:0}'
 +'#fx-intro{margin:0 0 6px}#fx-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}#fx-chips span{display:inline-flex;align-items:center;gap:5px;background:#EEF6F7;color:#0A5A62;border:1.5px solid #CFE3E5;border-radius:999px;padding:5px 12px;font-size:15.5px;font-weight:900;line-height:1.3}#fx-chips span:before{content:"✓";color:#0E7C86;font-weight:900}#fx-mic{font-size:14.5px;color:#4A6468;margin:0 0 12px}'
 +'#fx-take{background:#FBF4E3;border-radius:16px;padding:12px 16px 12px;margin:0 0 4px}#fx-take h3{font-size:17px;font-weight:900;color:#0A5A62;margin:0 0 4px}#fx-take ul{margin:0;padding:0;list-style:none}#fx-take li{position:relative;padding-left:22px;font-size:17px;line-height:1.65;margin:3px 0}#fx-take li:before{content:"";position:absolute;left:4px;top:.62em;width:9px;height:9px;border-radius:50%;background:#D9A441}'
++'#fx-gift{margin:10px 0 4px;background:#fff;border:2px dashed #D9A441;border-radius:16px;padding:10px 14px 11px;font-size:16.5px;line-height:1.65;color:#1C3236}#fx-gift b{display:block;font-size:17px;font-weight:900;color:#8A5A00}#fx-gift b:before{content:"🎁 "}'
 +'#fx-next{margin:10px 0 0;text-align:center;font-size:15.5px;color:#4A6468;line-height:1.6}#fx-next b{color:#0A5A62}'
 +'#fx-mailhint{margin:8px 0 0;font-size:16px;line-height:1.6;color:#8A5A00;background:#FFF7E0;border:1.5px solid #F0D9A0;border-radius:12px;padding:9px 12px}#fx-mailhint b{color:#1C3236;word-break:break-all}#fx-mailhint button{font:inherit;font-size:15px;font-weight:900;color:#fff;background:#1F6FD1;border:0;border-radius:999px;padding:5px 14px;margin-left:6px;cursor:pointer}'
 +'#fx-after{margin:12px 0 0;font-size:14px;color:#4A6468;line-height:1.7}#fx-msg{margin:8px 0 0;font-size:15px;font-weight:700;color:#B23B3B;min-height:0}'
@@ -150,7 +151,7 @@ function hideNative(){var s=sch();if(!s)return;[].forEach.call(s.querySelectorAl
 function setup(){
   var s=sch();if(!s||document.getElementById('fx-list'))return false;
   new MutationObserver(hideNative).observe(s,{childList:true,subtree:true});hideNative();
-  var h4=document.querySelector('#app .card-body h4');if(h4&&!document.getElementById('fx-intro')){h4.insertAdjacentHTML('beforebegin','<div id="fx-intro"><div id="fx-chips"><span>顔出しなしでOK</span><span>スマホで参加OK</span><span>1回1〜3名の少人数</span><span>無料</span></div><p id="fx-mic">お話はマイクで、声だけ参加します。</p><div id="fx-take"><h3>この1時間でわかること</h3><ul><li>お金が増えるしくみの、いちばん最初のところ</li><li>ご自分の場合、どこから始めればいいか</li><li>やらなくていいこと（よくある遠回り）</li></ul></div></div>')}if(h4&&!document.getElementById('fx-hint')){h4.insertAdjacentHTML('afterend','<p class="fx-hint" id="fx-hint">ご都合のよい日時を押してください。</p>')}
+  var h4=document.querySelector('#app .card-body h4');if(h4&&!document.getElementById('fx-intro')){h4.insertAdjacentHTML('beforebegin','<div id="fx-intro"><div id="fx-chips"><span>顔出しなしでOK</span><span>スマホで参加OK</span><span>1回1〜3名の少人数</span><span>無料</span></div><p id="fx-mic">お話はマイクで、声だけ参加します。</p><div id="fx-take"><h3>この1時間でわかること</h3><ul><li>お金が増えるしくみの、いちばん最初のところ</li><li>ご自分の場合、どこから始めればいいか</li><li>やらなくていいこと（よくある遠回り）</li></ul></div><div id="fx-gift"><b>ご参加の方へプレゼント</b>Brainで有料で販売している「書くだけ設計ノート」を、当日の最後にお渡しします。</div></div>')}if(h4&&!document.getElementById('fx-hint')){h4.insertAdjacentHTML('afterend','<p class="fx-hint" id="fx-hint">ご都合のよい日時を押してください。</p>')}
   var list=document.createElement('div');list.id='fx-list';list.innerHTML='<div id="fx-loading">日程を読み込んでいます…</div>';s.appendChild(list);
   list.addEventListener('click',function(e){var b=e.target.closest('.fx-pick');if(b)choose(b)});
   /* 日程を選ぶまで、下の入力欄は隠す */
@@ -242,8 +243,10 @@ function hookMail(){var inp=document.querySelector('#app input[type=email],#app 
 function relabel(){var b=document.querySelector('#app button[type=submit]');if(!b)return;if(!b.__fx&&!/確認|申し込む/.test(b.textContent))return;b.__fx=true;
   var t='この日で申し込む';if(picked){var d=new Date(+picked.ym.slice(0,4),+picked.ym.slice(5,7)-1,picked.day);t=(d.getMonth()+1)+'/'+d.getDate()+'（'+'日月火水木金土'.charAt(d.getDay())+'）'+picked.time+'で申し込む'}
   if(b.textContent!==t&&!b.disabled)b.textContent=t;
-  if(!document.getElementById('fx-next')){b.insertAdjacentHTML('afterend','<p id="fx-next">押すとすぐ、<b>LINEとメール</b>に参加の案内が届きます。</p>')}}
-function boot(){var tries=0;(function tick(){if(setup()){try{hookConfirm()}catch(e){}relabel();setInterval(function(){relabel();try{hookMail()}catch(e){}},800);scan()}else if(++tries<60)setTimeout(tick,250)})()}
+  if(!document.getElementById('fx-next')){b.insertAdjacentHTML('afterend','<p id="fx-next">押すとすぐ、<b>LINEとメール</b>に参加の案内と「ねんきん定期便の見方」が届きます。</p>')}}
+/* UTAGE標準の「日付を押すと隠したカレンダーへスクロール」を止める（読み込み中に上へ飛ぶ・申込時に揺れる原因） */
+function muteScroll(){var $=window.jQuery;if(!$||!$.fn||$.fn.__fxMute)return;var o=$.fn.animate;$.fn.animate=function(p){if(p&&typeof p==='object'&&('scrollTop' in p)&&this.is&&this.is('html,body'))return this;return o.apply(this,arguments)};$.fn.__fxMute=true}
+function boot(){var tries=0;(function tick(){muteScroll();if(setup()){try{hookConfirm()}catch(e){}relabel();setInterval(function(){relabel();try{hookMail()}catch(e){}},800);scan()}else if(++tries<60)setTimeout(tick,250)})()}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 
