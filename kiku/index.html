@@ -351,8 +351,7 @@ dialog.qr .x{border:0;background:none;font:inherit;font-weight:700;color:var(--i
   function tick(){
     if(!player||!player.getCurrentTime)return;
     var cur=player.getCurrentTime();
-    if(last!==null){var d=cur-last;if(d>0&&d<2.5){watched+=d;try{localStorage.setItem(K,String(Math.round(watched)))}catch(e){}}}
-    last=cur;paint();
+    onTime(cur);
   }
   function onState(e){
     if(e.data===1){if(!timer)timer=setInterval(tick,1000)}
@@ -363,6 +362,20 @@ dialog.qr .x{border:0;background:none;font:inherit;font-weight:700;color:var(--i
   window.onYouTubeIframeAPIReady=function(){player=new YT.Player('yt',{host:'https://www.youtube-nocookie.com',videoId:'a-Ixjk2cfAM',playerVars:{rel:0,playsinline:1,origin:location.origin},events:{onReady:onReady,onStateChange:onState}})};
   setTimeout(function(){if(!player){var el=document.getElementById('yt');if(el&&el.tagName==='DIV'){el.outerHTML='<iframe id="yt" src="https://www.youtube-nocookie.com/embed/a-Ixjk2cfAM?rel=0&playsinline=1" title="お金の増やし方勉強会" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';yt=document.getElementById('yt');gtxt.textContent='見終わったら、LINEで「ノート」と送ってください。';}}},6000);
   var tag=document.createElement('script');tag.src='https://www.youtube.com/iframe_api';document.head.appendChild(tag);
+  var lastSave=0;
+  function onTime(cur){
+    if(last!==null){var d=cur-last;if(d>0&&d<2.5){watched+=d;var now=Date.now();if(now-lastSave>2000){lastSave=now;try{localStorage.setItem(K,String(Math.round(watched)))}catch(e){}}}}
+    last=cur;paint();
+  }
+  window.addEventListener('message',function(e){
+    if(!/https:\/\/www\.youtube(-nocookie)?\.com$/.test(e.origin))return;
+    var d=e.data;if(typeof d==='string'){try{d=JSON.parse(d)}catch(x){return}}
+    if(!d||d.event!=='infoDelivery'||!d.info)return;
+    if(d.info.duration>60)DUR=d.info.duration;
+    if(typeof d.info.currentTime==='number')onTime(d.info.currentTime);
+    if(d.info.playerState===0){if(watched>=0.8*DUR){watched=Math.max(watched,NEED*DUR);try{localStorage.setItem(K,String(Math.round(watched)))}catch(e){}paint()}last=null}
+    if(d.info.playerState===2)last=null;
+  });
   paint();
   document.querySelectorAll('[data-t]').forEach(function(b){
     b.addEventListener('click',function(){
