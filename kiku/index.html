@@ -360,7 +360,7 @@ dialog.qr .x{border:0;background:none;font:inherit;font-weight:700;color:var(--i
   function onReady(){var d=player.getDuration&&player.getDuration();if(d&&d>60)DUR=d;paint();if(pending!==null){go(pending);pending=null}}
   function go(t){if(player&&player.seekTo){player.seekTo(t,true);player.playVideo&&player.playVideo();}else{pending=t}}
   window.onYouTubeIframeAPIReady=function(){player=new YT.Player('yt',{host:'https://www.youtube-nocookie.com',videoId:'a-Ixjk2cfAM',playerVars:{rel:0,playsinline:1,origin:location.origin},events:{onReady:onReady,onStateChange:onState}})};
-  setTimeout(function(){if(!player){var el=document.getElementById('yt');if(el&&el.tagName==='DIV'){el.outerHTML='<iframe id="yt" src="https://www.youtube-nocookie.com/embed/a-Ixjk2cfAM?rel=0&playsinline=1" title="お金の増やし方勉強会" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';yt=document.getElementById('yt');gtxt.textContent='見終わったら、LINEで「ノート」と送ってください。';}}},6000);
+  setTimeout(function(){if(!player&&typeof YT==='undefined'){var el=document.getElementById('yt');if(el&&el.tagName==='DIV'){el.outerHTML='<iframe id="yt" src="https://www.youtube-nocookie.com/embed/a-Ixjk2cfAM?rel=0&playsinline=1" title="お金の増やし方勉強会" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';yt=document.getElementById('yt');gtxt.textContent='見終わったら、LINEで「見終わりました」と送ってください。ノートをお送りします。';}}},15000);
   var tag=document.createElement('script');tag.src='https://www.youtube.com/iframe_api';document.head.appendChild(tag);
   var lastSave=0;
   function onTime(cur){
