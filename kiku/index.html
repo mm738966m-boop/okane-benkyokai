@@ -193,7 +193,7 @@ dialog.qr .x{border:0;background:none;font:inherit;font-weight:700;color:var(--i
     <ul class="facts"><li>18分</li><li>顔も声も出さない</li><li>スマホで見られる</li></ul>
     <div class="frame" id="top">
       <div class="video">
-        <iframe id="yt" src="https://www.youtube-nocookie.com/embed/a-Ixjk2cfAM?rel=0&playsinline=1&enablejsapi=1" title="お金の増やし方勉強会" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+        <div id="yt"></div>
       </div>
     </div>
     <div class="gift" id="gift" aria-live="polite">
@@ -360,7 +360,8 @@ dialog.qr .x{border:0;background:none;font:inherit;font-weight:700;color:var(--i
   }
   function onReady(){var d=player.getDuration&&player.getDuration();if(d&&d>60)DUR=d;paint();if(pending!==null){go(pending);pending=null}}
   function go(t){if(player&&player.seekTo){player.seekTo(t,true);player.playVideo&&player.playVideo();}else{pending=t}}
-  window.onYouTubeIframeAPIReady=function(){player=new YT.Player('yt',{events:{onReady:onReady,onStateChange:onState}})};
+  window.onYouTubeIframeAPIReady=function(){player=new YT.Player('yt',{host:'https://www.youtube-nocookie.com',videoId:'a-Ixjk2cfAM',playerVars:{rel:0,playsinline:1,origin:location.origin},events:{onReady:onReady,onStateChange:onState}})};
+  setTimeout(function(){if(!player){var el=document.getElementById('yt');if(el&&el.tagName==='DIV'){el.outerHTML='<iframe id="yt" src="https://www.youtube-nocookie.com/embed/a-Ixjk2cfAM?rel=0&playsinline=1" title="お金の増やし方勉強会" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';yt=document.getElementById('yt');gtxt.textContent='見終わったら、LINEで「ノート」と送ってください。';}}},6000);
   var tag=document.createElement('script');tag.src='https://www.youtube.com/iframe_api';document.head.appendChild(tag);
   paint();
   document.querySelectorAll('[data-t]').forEach(function(b){
