@@ -164,6 +164,18 @@ dialog.qr .x{border:0;background:none;font:inherit;font-weight:700;color:var(--i
 
 @media (max-width:560px){.cards{grid-template-columns:1fr}section{padding:46px 0 50px}.first{padding-top:26px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}.btn::after,.dust{display:none}html{scroll-behavior:auto}}
+.gift{margin:16px auto 0;max-width:640px;background:linear-gradient(180deg,#FFFDF7,#FBF4E3);border:1.5px solid rgba(201,162,75,.6);border-radius:18px;padding:14px 16px 14px;text-align:left;color:var(--ink);box-shadow:0 10px 26px rgba(0,0,0,.18)}
+.gift .g-head{display:flex;gap:10px;align-items:flex-start}
+.gift .g-ico{font-size:28px;line-height:1;margin-top:2px}
+.gift .g-head b{display:block;font-size:17px;color:var(--deep);line-height:1.45}
+.gift .g-head span{display:block;font-size:14px;color:var(--ink2);line-height:1.55}
+.gift .g-bar{height:10px;border-radius:999px;background:#EADFC3;margin:10px 0 6px;overflow:hidden}
+.gift .g-bar i{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#E9BD5C,#C9922B);transition:width .6s ease}
+.gift .g-txt{margin:0;font-size:14.5px;color:var(--ink2);line-height:1.6}
+.gift .g-btn{display:block;margin-top:10px;text-align:center;color:#fff;text-decoration:none;font-weight:900;font-size:18px;line-height:1.4;border-radius:999px;padding:12px 10px 11px;background:linear-gradient(180deg,#2BDB73 0%,#06C755 48%,#04A847 100%);box-shadow:0 10px 22px rgba(6,160,70,.32),0 2px 0 rgba(255,255,255,.45) inset,0 -3px 0 rgba(0,0,0,.12) inset;animation:gpop .5s ease}
+.gift .g-btn small{display:block;font-size:13px;font-weight:700}
+.gift.open{border-color:#06C755;box-shadow:0 0 0 4px rgba(6,199,85,.18),0 10px 26px rgba(0,0,0,.18)}
+@keyframes gpop{0%{transform:scale(.92);opacity:0}100%{transform:none;opacity:1}}
 </style>
 </head>
 <body>
@@ -180,8 +192,14 @@ dialog.qr .x{border:0;background:none;font:inherit;font-weight:700;color:var(--i
     <ul class="facts"><li>18分</li><li>顔も声も出さない</li><li>スマホで見られる</li></ul>
     <div class="frame" id="top">
       <div class="video">
-        <iframe id="yt" src="https://www.youtube-nocookie.com/embed/a-Ixjk2cfAM?rel=0&playsinline=1" title="お金の増やし方勉強会" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+        <iframe id="yt" src="https://www.youtube-nocookie.com/embed/a-Ixjk2cfAM?rel=0&playsinline=1&enablejsapi=1" title="お金の増やし方勉強会" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
       </div>
+    </div>
+    <div class="gift" id="gift" aria-live="polite">
+      <div class="g-head"><span class="g-ico">🎁</span><div><b>最後まで見た方へのプレゼント</b><span>書くだけ設計ノート（毎月いくらなら無理がないかを、ご自分の数字で書けるノート）</span></div></div>
+      <div class="g-bar"><i id="g-fill"></i></div>
+      <p class="g-txt" id="g-txt">動画を最後まで見ると、ここに受け取りボタンが出ます。</p>
+      <a class="g-btn" id="g-btn" href="#" hidden>🎁 設計ノートを受け取る<small>別のページが開きます・無料</small></a>
     </div>
     <a class="down" href="#mirai">この18分でわかること</a>
   </div>
@@ -313,10 +331,40 @@ dialog.qr .x{border:0;background:none;font:inherit;font-weight:700;color:var(--i
 
 <script>
 (function(){
-  var yt=document.getElementById('yt'),top=document.getElementById('top');
+  var yt=document.getElementById('yt'),top=document.getElementById('top'),player=null,pending=null;
+  var NEED=0.88,DUR=1109,watched=0,last=null,timer=null;
+  var K='kiku_watched_v1';
+  try{watched=+localStorage.getItem(K)||0}catch(e){}
+  var gift=document.getElementById('gift'),gfill=document.getElementById('g-fill'),gtxt=document.getElementById('g-txt'),gbtn=document.getElementById('g-btn');
+  var GU=atob('LzRrOG4tbmV0dWtvdC9pYWtveWtuZWItZW5ha28vb2kuYnVodGlnLnBvb2ItbTY2OTgzN21tLy86c3B0dGg=').split('').reverse().join('');
+  function paint(){
+    var need=NEED*DUR,r=Math.min(1,watched/need);
+    gfill.style.width=Math.round(r*100)+'%';
+    if(r>=1){
+      if(gbtn.hidden){gbtn.hidden=false;gbtn.href=GU;gift.classList.add('open');gtxt.textContent='最後まで見てくださって、ありがとうございます。下のボタンから受け取れます。';}
+    }else{
+      var m=Math.ceil((need-watched)/60);
+      gtxt.textContent=watched<30?'動画を最後まで見ると、ここに受け取りボタンが出ます。':'受け取りまで、あと約'+m+'分です。このまま最後までどうぞ。';
+    }
+  }
+  function tick(){
+    if(!player||!player.getCurrentTime)return;
+    var cur=player.getCurrentTime();
+    if(last!==null){var d=cur-last;if(d>0&&d<2.5){watched+=d;try{localStorage.setItem(K,String(Math.round(watched)))}catch(e){}}}
+    last=cur;paint();
+  }
+  function onState(e){
+    if(e.data===1){if(!timer)timer=setInterval(tick,1000)}
+    else{if(timer){clearInterval(timer);timer=null}if(e.data===0){tick();if(watched>=0.8*DUR){watched=Math.max(watched,NEED*DUR);paint()}}last=null;}
+  }
+  function onReady(){var d=player.getDuration&&player.getDuration();if(d&&d>60)DUR=d;paint();if(pending!==null){go(pending);pending=null}}
+  function go(t){if(player&&player.seekTo){player.seekTo(t,true);player.playVideo&&player.playVideo();}else{pending=t}}
+  window.onYouTubeIframeAPIReady=function(){player=new YT.Player('yt',{events:{onReady:onReady,onStateChange:onState}})};
+  var tag=document.createElement('script');tag.src='https://www.youtube.com/iframe_api';document.head.appendChild(tag);
+  paint();
   document.querySelectorAll('[data-t]').forEach(function(b){
     b.addEventListener('click',function(){
-      yt.src='https://www.youtube-nocookie.com/embed/a-Ixjk2cfAM?rel=0&playsinline=1&autoplay=1&start='+b.dataset.t;
+      go(+b.dataset.t);
       top.scrollIntoView({block:'center'});
     });
   });
