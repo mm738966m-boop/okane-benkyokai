@@ -84,9 +84,11 @@ footer p{margin:0}
 }
 /*/anim*/
 
+
 /*stk*/
 .stk{position:fixed;left:50%;bottom:0;z-index:30;width:min(100vw,560px);transform:translate(-50%,130%);transition:transform .35s ease;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(180deg,rgba(255,248,219,0),rgba(255,248,219,.96) 30%)}
 .stk.show{transform:translate(-50%,0)}
+.stk{text-align:center}
 .stk .btn{padding:calc(var(--u)*22) calc(var(--u)*70) calc(var(--u)*18) 0}
 .stk .btn .pill{display:none}
 .stk .btn .main{font-size:calc(var(--u)*44)}
@@ -144,6 +146,7 @@ footer p{margin:0}
   <ul class="links"><li><a href="https://fulfull.jp/lp/privacy.html">プライバシーポリシー</a></li><li><a href="https://fulfull.jp/lp/law.html">特定商取引法に基づく表記</a></li><li><a href="https://fulfull.jp/">fulfull株式会社</a></li></ul>
   <p>本ページは情報提供を目的としたもので、個別の投資判断を含むものではありません。<br>© fulfull株式会社</p>
 </footer>
+
 <!--stk--><div class="stk" id="stk"><a class="btn js-line" href="https://utage-system.com/line/open/X4Z2lketpu30?mtid=Us2bWvI6KlNU"><span class="main">LINEで日程を受け取る</span><span class="sub">無料・Zoom・顔出し不要</span><span class="arr"></span></a></div><script>(function(){var k=document.getElementById("stk"),b=[].slice.call(document.querySelectorAll(".cta .btn"));function f(){if(!b.length)return;var h=innerHeight,first=b[0].getBoundingClientRect().bottom<0,vis=b.some(function(x){var r=x.getBoundingClientRect();return r.top<h&&r.bottom>0;});k.classList.toggle("show",first&&!vis);}addEventListener("scroll",f,{passive:true});addEventListener("resize",f);f();})();</script><!--/stk-->
 <script>
 (function(){
