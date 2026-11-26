@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>笑って出せる私 診断｜お金の増やし方オンライン勉強会</title>
+<meta property="og:title" content="笑って出せる私 診断">
+<meta property="og:description" content="5つ選ぶだけ・1分。お金のタイプと、当日のお品書きがわかります。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--g1:#19B394;--g2:#0E9C86;--gd:#0A6F62;--or:#FF7A1A;--or2:#FFA53A;--ye:#FFF27A;--gold:#D9A441;--gold2:#F5D98A;--ink:#24413C;--sub:#5E7672;--bg:#FFF9EC;--line:#06C755;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:#EAF3EE;color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;font-weight:700}
+#app{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;background:var(--bg);position:relative;overflow:hidden;box-shadow:0 0 30px rgba(0,0,0,.08)}
+.scr{display:none;flex-direction:column;min-height:100vh;min-height:100dvh}
+.scr.on{display:flex}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;padding:0}
+.ol{color:var(--or);-webkit-text-stroke:.16em #fff;paint-order:stroke fill;text-shadow:0 .07em 0 rgba(160,70,0,.18);font-weight:900;line-height:1.15}
+/* 表紙 */
+.cv-top{background:linear-gradient(170deg,var(--g1),var(--g2));color:#fff;padding:18px 14px 48px;text-align:center;clip-path:polygon(0 0,100% 0,100% 82%,0 100%)}
+.cv-top p{margin:0;font-size:clamp(20px,6.3vw,25px);font-weight:900;line-height:1.5;transform:rotate(-3deg)}
+.cv-top b{color:var(--ye);font-size:1.35em}
+.cv-ph{margin:-34px 18px 0;border-radius:22px;overflow:hidden;border:5px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,.14);position:relative;aspect-ratio:1/0.66}
+.cv-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 100%;display:block}
+.cv-rb{position:absolute;left:-6px;bottom:7px;background:var(--ye);color:var(--ink);font-weight:900;font-size:16px;line-height:1.3;padding:4px 16px 5px 14px;transform:rotate(-2deg);box-shadow:0 3px 0 rgba(0,0,0,.1)}
+.cv-rb b{font-size:1.35em}
+.cv-ttl{text-align:center;margin:12px 10px 0}
+.cv-ttl .s{display:inline-block;background:var(--or);color:#fff;font-size:17px;padding:2px 14px;font-weight:900;margin-bottom:6px}
+.cv-ttl h1{margin:0;font-size:clamp(37px,12vw,46px)}
+.cv-ttl h1 span{display:inline-block}
+.cv-ttl h1 .big{font-size:1.35em}
+.medals{display:flex;justify-content:center;gap:12px;margin:14px 0 4px}
+.medal{width:clamp(88px,28vw,110px);height:clamp(88px,28vw,110px);border-radius:50%;background:radial-gradient(circle at 35% 30%,#2CC7A6,var(--g2) 70%);border:5px solid var(--gold);box-shadow:0 0 0 3px var(--gold2),0 6px 10px rgba(0,0,0,.15);color:#fff;display:grid;place-items:center;text-align:center;font-size:clamp(14px,4.4vw,17px);line-height:1.25;font-weight:900}
+.medal b{display:block;color:var(--ye);font-size:clamp(24px,7.6vw,30px)}
+.get{margin:22px 22px 0;background:#fff;border-radius:16px;padding:10px 14px;font-size:15px;line-height:1.7;border:2px dashed var(--g1)}
+.get b{color:var(--gd)}
+.go{margin:16px 22px 0;display:block;width:calc(100% - 44px);background:linear-gradient(180deg,var(--or2),var(--or));color:#fff;font-weight:900;font-size:24px;padding:16px 10px;border-radius:99px;box-shadow:0 6px 0 #C85A00,0 12px 18px rgba(200,90,0,.3);position:relative;overflow:hidden}
+.go small{display:block;font-size:13px;font-weight:700;opacity:.95}
+.foot{font-size:11px;color:var(--sub);text-align:center;padding:14px 20px 22px;line-height:1.6;font-weight:700;margin-top:auto}
+.coin{position:absolute;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE98A,#F2B822);border:3px solid #E0A010;color:#B07400;display:grid;place-items:center;font-weight:900;font-size:22px;z-index:3}
+/* 質問 */
+.q-top{padding:16px 18px 0}
+.prog{display:flex;align-items:center;gap:6px}
+.prog i{flex:1;height:10px;border-radius:5px;background:#DDE9E3;position:relative;overflow:hidden}
+.prog i::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--g1),var(--g2));transform:scaleX(0);transform-origin:left;transition:transform .5s}
+.prog i.on::after{transform:none}
+.prog span{font-size:26px;line-height:1;margin-left:2px}
+.q-no{margin:16px 0 0;text-align:center;font-size:15px;color:#fff;font-weight:900}
+.q-no span{background:var(--g2);border-radius:99px;padding:3px 16px}
+.q-ttl{margin:10px 14px 4px;text-align:center;font-size:27px;font-weight:900;line-height:1.4}
+.q-ttl em{font-style:normal;color:var(--or)}
+.q-sub{margin:0 0 6px;text-align:center;font-size:14px;color:var(--sub)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:10px 16px 26px}
+.opts.c3{grid-template-columns:1fr 1fr 1fr;gap:9px}
+.opt{background:#fff;border-radius:20px;border:3px solid #fff;box-shadow:0 5px 0 #E3D9BE,0 8px 14px rgba(0,0,0,.07);padding:10px 8px 12px;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:16px;font-weight:900;line-height:1.35;text-align:center;transition:transform .12s}
+.opt img{width:100%;max-width:150px;height:auto;aspect-ratio:1;object-fit:contain;display:block}
+.opt .cn{height:92px;display:flex;align-items:flex-end;justify-content:center;gap:3px;width:100%}
+.opt .cn i{width:26px;border-radius:5px 5px 3px 3px;background:repeating-linear-gradient(180deg,#FFD84A 0 9px,#E8A914 9px 11px);border:2px solid #C98F0A;display:block}
+.opt .cn b{font-size:54px;color:var(--g2);line-height:1.5}
+.opt b.n{font-size:1.5em;color:var(--or)}
+.opt:active{transform:translateY(4px)}
+.opt.sel{border-color:var(--or);background:#FFF4E6;animation:pick .45s cubic-bezier(.3,1.7,.5,1)}
+@keyframes pick{0%{transform:scale(.94)}60%{transform:scale(1.07) rotate(-2deg)}100%{transform:none}}
+/* 待ち */
+#wait{align-items:center;justify-content:center;text-align:center;background:linear-gradient(170deg,var(--g1),var(--g2));color:#fff;gap:10px}
+#wait .pot{font-size:110px;line-height:1;animation:shake .5s ease-in-out infinite}
+#wait p{font-size:24px;font-weight:900;margin:0;line-height:1.5}
+#wait small{color:var(--ye);font-size:16px}
+@keyframes shake{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg) scale(1.06)}}
+/* 結果 */
+.r-top{background:linear-gradient(170deg,var(--g1),var(--g2));color:#fff;text-align:center;padding:18px 16px 60px;clip-path:polygon(0 0,100% 0,100% 86%,0 100%)}
+.r-top p{margin:0;font-size:18px;font-weight:900}
+.r-top p b{color:var(--ye)}
+.r-card{margin:-48px 16px 0;background:#fff;border-radius:26px;border:5px solid var(--gold);box-shadow:0 0 0 3px var(--gold2),0 10px 22px rgba(0,0,0,.14);padding:14px 14px 18px;text-align:center;position:relative}
+.r-card .lab{display:inline-block;background:var(--ye);font-size:15px;padding:2px 14px;transform:rotate(-2deg);font-weight:900}
+.r-card img{width:74%;max-width:260px;height:auto;display:block;margin:4px auto 0}
+.r-card h2{margin:0;font-size:44px}
+.r-card .cp{font-size:17px;line-height:1.7;margin:8px 4px 0;font-weight:700}
+.r-card .cp b{background:linear-gradient(transparent 60%,var(--ye) 60%);font-weight:900}
+.sec{margin:26px 16px 0}
+.sec h3{margin:0 0 10px;text-align:center;font-size:22px;font-weight:900;line-height:1.45}
+.sec h3 em{font-style:normal;color:var(--or);font-size:1.25em}
+.sec h3 .tag{display:block;width:fit-content;margin:0 auto 6px;background:var(--g2);color:#fff;font-size:14px;border-radius:99px;padding:2px 16px}
+.grow{background:#fff;border-radius:22px;padding:16px 12px 12px;box-shadow:0 6px 14px rgba(0,0,0,.07)}
+.bars{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:end;height:210px;border-bottom:3px solid #DDE9E3}
+.bar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative}
+.bar b{font-size:20px;font-weight:900;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar b small{font-size:.6em}
+.bar i{display:block;width:74%;height:0;border-radius:12px 12px 0 0;transition:height 1.3s cubic-bezier(.25,1.4,.5,1);background:#C9D6D0}
+.bar.b2 i{background:linear-gradient(180deg,#3CCBAC,var(--g2))}
+.bar.b3 i{background:linear-gradient(180deg,var(--or2),var(--or))}
+.bar .plus{position:absolute;top:-6px;background:var(--ye);border-radius:99px;font-size:13px;padding:1px 10px;font-weight:900;opacity:0;transform:scale(.4);transition:all .4s cubic-bezier(.3,1.7,.5,1) 1.4s;white-space:nowrap}
+.bars.run .plus{opacity:1;transform:none}
+.blab{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center;font-size:13px;line-height:1.35;margin-top:6px;color:var(--sub)}
+.nt{font-size:13px;color:var(--sub);line-height:1.6;margin:10px 2px 0;font-weight:700}
+.menu{display:grid;gap:10px}
+.mi{display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:center;background:#fff;border-radius:18px;padding:10px 12px;box-shadow:0 5px 12px rgba(0,0,0,.06);font-size:17px;line-height:1.45;font-weight:900;opacity:0;transform:translateY(20px);transition:all .5s}
+.mi.in{opacity:1;transform:none}
+.mi img{width:76px;height:76px;object-fit:contain;display:block}
+.mi small{display:block;color:var(--g2);font-size:13px}
+.invite{margin:28px 0 0;background:linear-gradient(170deg,var(--g1),var(--g2));color:#fff;text-align:center;padding:26px 16px 22px}
+.invite h3{margin:0;font-size:23px;line-height:1.5;font-weight:900}
+.invite h3 b{color:var(--ye)}
+.invite p{margin:10px 0 0;font-size:15px;line-height:1.75}
+.send{display:block;width:100%;margin:16px 0 0;background:var(--line);color:#fff;font-size:22px;font-weight:900;padding:16px 8px;border-radius:99px;box-shadow:0 6px 0 #04913E,0 12px 18px rgba(0,0,0,.2);text-decoration:none;position:relative;overflow:hidden}
+.send small{display:block;font-size:13px;font-weight:700}
+.after{font-size:14px;font-weight:700;margin:12px 0 0;opacity:.92}
+.back{margin:14px 0 0;background:rgba(255,255,255,.16);border-radius:14px;padding:10px 12px;font-size:14px;line-height:1.7}.back a{color:var(--ye);font-weight:900}
+.again{display:block;margin:14px auto 0;color:#fff;font-size:14px;text-decoration:underline}
+.shw{position:absolute;top:-20%;bottom:-20%;left:-40%;width:28%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0));transform:skewX(-18deg)}
+.conf{position:absolute;top:-30px;width:12px;height:18px;border-radius:3px;z-index:9;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){
+ .cv-ttl h1 span{animation:pop .55s cubic-bezier(.3,1.6,.5,1) both,hop 4s ease-in-out 2s infinite}
+ .cv-ttl h1 span:nth-child(2){animation-delay:.15s,2.15s}.cv-ttl h1 span:nth-child(3){animation-delay:.3s,2.3s}.cv-ttl h1 span:nth-child(5){animation-delay:.5s,2.5s}
+ .medal{animation:pop .5s cubic-bezier(.3,1.6,.5,1) both}.medal:nth-child(1){animation-delay:.7s}.medal:nth-child(2){animation-delay:.85s}.medal:nth-child(3){animation-delay:1s}
+ .go,.send{animation:breathe 2.2s ease-in-out infinite}
+ .shw{animation:shine 3s ease-in-out infinite}
+ .coin{animation:bob 2.6s ease-in-out infinite}
+ .opt{animation:pop .4s cubic-bezier(.3,1.5,.5,1) both}.opt:nth-child(2){animation-delay:.07s}.opt:nth-child(3){animation-delay:.14s}.opt:nth-child(4){animation-delay:.21s}
+ .r-card{animation:pop .7s cubic-bezier(.3,1.5,.5,1) both}
+ .r-card img{animation:hopB 3.2s ease-in-out 1s infinite}
+ .conf{animation:fall 2.6s linear forwards}
+ @keyframes pop{0%{opacity:0;transform:scale(.4)}100%{opacity:1;transform:none}}
+ @keyframes hop{0%,16%,100%{transform:none}6%{transform:translateY(-14%) scale(1.05,.96)}11%{transform:scale(1.05,.94)}}
+ @keyframes hopB{0%,22%,100%{transform:none}8%{transform:translateY(-7%) rotate(-3deg)}15%{transform:rotate(2deg) scale(1.03,.97)}}
+ @keyframes breathe{0%,100%{transform:none}50%{transform:scale(1.035)}}
+ @keyframes shine{0%,55%{left:-40%}85%,100%{left:120%}}
+ @keyframes bob{0%,100%{translate:0 0}50%{translate:0 -10px}}
+ @keyframes fall{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(105vh) rotate(720deg)}}
+}
+</style>
+</head>
+<body>
+<div id="app">
+
+<section class="scr on" id="cover">
+  <div class="cv-top"><p><b>50代</b>からの<b>お金</b>、<br>わたしは今、どのあたり？</p></div>
+  <div class="cv-ph"><img src="img/cover.webp" alt="笑顔で歩く50代の女性と、そのお母さん" width="900" height="700">
+    <div class="cv-rb">旅も、孫へのお祝いも<br><b>笑って出せる私へ</b></div>
+    <span class="coin" style="right:10px;top:10px">¥</span>
+  </div>
+  <div class="cv-ttl"><span class="s">5つ選ぶだけ・1分</span>
+    <h1 class="ol"><span>笑って</span><span>出せる</span><span class="big">私</span><br><span>診断</span></h1></div>
+  <div class="medals"><div class="medal"><span><b>1分</b>で<br>わかる</span></div><div class="medal"><span>絵を<br><b>選ぶ</b>だけ</span></div><div class="medal"><span>もちろん<br><b>無料</b></span></div></div>
+  <button class="go" id="start" type="button">診断をはじめる<small>お名前や金額の入力はありません</small><span class="shw"></span></button>
+  <div class="get">この3つが、1枚のカードで届きます。<br><b>① あなたのお金のタイプ</b><br><b>② 毎月の積み立てが、この先どう育つか</b><br><b>③ 勉強会であなたにお話しする3つ</b></div>
+  <p class="foot">おばあちゃんでもできる お金の増やし方 オンライン勉強会<br>fulfull株式会社</p>
+</section>
+
+<section class="scr" id="quiz">
+  <div class="q-top"><div class="prog" id="prog"></div><p class="q-no"><span id="qno"></span></p></div>
+  <h2 class="q-ttl" id="qttl"></h2>
+  <p class="q-sub" id="qsub"></p>
+  <div class="opts" id="opts"></div>
+</section>
+
+<section class="scr" id="wait">
+  <div class="pot">🪴</div>
+  <p>あなたの鉢を<br>のぞいています…</p>
+  <small>もうすぐ結果が出ます</small>
+</section>
+
+<section class="scr" id="result">
+  <div class="r-top"><p>診断の結果、<b>あなたは…</b></p></div>
+  <div class="r-card"><span class="lab" id="rlab"></span><img id="rimg" alt="" width="500" height="500"><h2 class="ol" id="rname"></h2><p class="cp" id="rcp"></p></div>
+
+  <div class="sec"><h3><span class="tag">あなたの数字で見ると</span><span id="gttl"></span></h3>
+    <div class="grow"><div class="bars" id="bars"></div>
+      <div class="blab"><span>貯金のまま<br>置いた場合</span><span>年3%で<br>育った場合</span><span>年5%で<br>育った場合</span></div>
+      <p class="nt">毎月同じ額を積み立てた場合の、計算上の目安です。税金や手数料は入れていません。将来の成果を約束するものではありません。投資には元本割れのおそれがあります。</p></div>
+  </div>
+
+  <div class="sec"><h3><span class="tag">勉強会では、ここからお話しします</span>あなたの回の<em>お品書き</em></h3>
+    <div class="menu" id="menu"></div>
+  </div>
+
+  <div class="invite">
+    <h3>当日は、<b>この結果から</b><br>話を始めます。</h3>
+    <p>Zoomで1時間・参加は無料。<br>1回1〜3組の少人数です。<br>ご家族と一緒でも、お一人でも。</p>
+    <a class="send" id="send" href="https://line.me/R/oaMessage/%40477jhcia/">結果のカードをLINEで受け取る<small>LINEが開いたら、紙ひこうき（送信）を押すだけ</small><span class="shw"></span></a>
+    <p class="after">日程は、カードが届いたあとで選べます。</p>
+    <div class="back" id="back" hidden>カードが届かないときは、もう一度上の緑のボタンを押して、<br>LINEで紙ひこうき（送信）を押してください。<br><a href="https://utage-system.com/event/y8sB9RpZilKk/register">先に、空いている日を見る ›</a></div>
+    <button class="again" id="again" type="button">もう一度やってみる</button>
+  </div>
+  <p class="foot">おばあちゃんでもできる お金の増やし方 オンライン勉強会<br>fulfull株式会社｜投資には元本割れのおそれがあります。</p>
+</section>
+
+</div>
+<script>
+(function(){
+var Q=[
+ {k:'age',t:'いまの<em>年代</em>は？',s:'積み立てを続ける年数の目安に使います',c3:1,o:[['age1','40代',20],['age2','50代',15],['age3','60代から',10]]},
+ {k:'wish',t:'いちばん<em>叶えたい</em>のは？',s:'ピンとくる絵を、ひとつ',o:[['wish1','旅行を、がまんせず楽しむ','旅'],['wish2','孫や子へのお祝いを笑って出す','祝'],['wish3','老後のお金の心配を小さくする','老'],['wish4','自分のやりたいことを続ける','自']]},
+ {k:'now',t:'いまの<em>お金の置き場所</em>は？',s:'いちばん近いものを',o:[['place1','ほとんど貯金',0],['place2','NISAの口座は作った',1],['place3','少し積み立てている',2],['place4','いろいろ続けている',3]]},
+ {k:'m',t:'毎月、<em>無理なく</em>回せそうなのは？',s:'だいたいで大丈夫です',coin:1,o:[[1,'<b class="n">1</b>万円くらい',1],[3,'<b class="n">3</b>万円くらい',3],[5,'<b class="n">5</b>万円くらい',5],[0,'いまは回せない・<br>まだ分からない',3]]},
+ {k:'ask',t:'当日、いちばん<em>聞きたい</em>のは？',s:'あなたの回のお品書きに入ります',o:[['ask1','何から<br>始めればいい？',0],['ask2','いくら貯めれば<br>安心？',1],['ask3','新NISAのきほん',2],['ask4','今のやり方で<br>合っている？',3],['ask5','年金・退職金の<br>受け取り方',4],['ask6','貯めたお金を<br>使う順番',5]]}
+];
+var T=[
+ ['type1','たねまきさん','これから種をまくところ','ここからが、はじまり。貯めてきたお金も、りっぱな種です。<b>まく順番</b>が分かると、最初の一歩がぐっと軽くなります。'],
+ ['type2','めばえさん','もう芽が出ています','口座を作ったのは、大きな一歩。次は、<b>何をどれだけ育てるか</b>を決める番です。'],
+ ['type3','つぼみさん','つぼみが、ふくらんでいます','続けているのが、いちばんの力。<b>今のやり方が合っているか</b>、一度いっしょに確かめましょう。'],
+ ['type4','はなさかさん','花が咲きはじめています','ここまで育てた方は多くありません。次は、<b>守り方と、笑って使う順番</b>です。']
+];
+var M=[
+ [['ask1','お金を増やす第一歩','まずは何から始めるのが正解？'],['place1','お金を分ける3つの袋','もしも・近い将来・長く育てる']],
+ [['ask2','自分の家の数字で','いくら貯めれば安心？'],['place1','物価が上がる時代の','貯金の置き方']],
+ [['ask3','はじめての方も','新NISAのきほん'],['ask1','お金を増やす第一歩','まずは何から始めるのが正解？']],
+ [['ask4','貯めているのに増えない家の','よくある置き方'],['place4','お金を分ける3つの袋','もしも・近い将来・長く育てる']],
+ [['ask5','年金・退職金の','受け取り方と置き場所'],['place1','物価が上がる時代の','貯金の置き方']],
+ [['ask6','貯めたお金を','笑って使っていく順番'],['place4','お金を分ける3つの袋','もしも・近い将来・長く育てる']]
+];
+var W={'旅':['wish1','旅行のお金を','どの袋から出すか'],'祝':['wish2','お祝いのお金を','笑って出せる置き方'],'老':['wish3','老後のお金','うちの場合の目安'],'自':['wish4','やりたいことを続ける','毎月の分け方']};
+var a={},i=0,$=function(x){return document.getElementById(x)};
+function show(id){document.querySelectorAll('.scr').forEach(function(s){s.classList.toggle('on',s.id===id)});window.scrollTo(0,0)}
+function fv(m,y,r){var n=y*12;if(!r)return m*n;var x=r/12;return m*(Math.pow(1+x,n)-1)/x}
+function ask(){
+ var q=Q[i],p=$('prog');p.innerHTML='';
+ for(var n=0;n<5;n++){var d=document.createElement('i');if(n<i)d.className='on';p.appendChild(d)}
+ var f=document.createElement('span');f.textContent=['🌰','🌱','🌿','🌷','🌸'][i];p.appendChild(f);
+ $('qno').textContent='質問 '+(i+1)+' / 5';$('qttl').innerHTML=q.t;$('qsub').textContent=q.s;
+ var o=$('opts');o.innerHTML='';o.className='opts'+(q.c3?' c3':'');
+ q.o.forEach(function(x){var b=document.createElement('button');b.type='button';b.className='opt';
+  if(q.coin){var nn=x[0]===1?1:x[0]===3?2:3,h='';for(var c=0;c<nn;c++)h+='<i style="height:'+(34+c*22)+'px"></i>';if(!x[0])h='<b>？</b>';b.innerHTML='<span class="cn">'+h+'</span><span>'+x[1]+'</span>'}
+  else b.innerHTML='<img src="img/'+x[0]+'.webp" alt="" width="300" height="300"><span>'+x[1]+'</span>';
+  b.onclick=function(){if(b.classList.contains('sel'))return;b.classList.add('sel');a[q.k]=x[2];if(q.k==='m')a.unk=!x[0];
+   setTimeout(function(){i++;if(i<Q.length)ask();else{show('wait');setTimeout(res,1900)}},430)};
+  o.appendChild(b)});
+ show('quiz');
+}
+function confetti(){if(!matchMedia('(prefers-reduced-motion:no-preference)').matches)return;var c=['#FF7A1A','#FFD84A','#19B394','#FFA53A','#fff'],ap=$('app');
+ for(var n=0;n<36;n++){var e=document.createElement('span');e.className='conf';e.style.left=(Math.random()*100)+'%';e.style.background=c[n%5];e.style.animationDelay=(Math.random()*.8)+'s';e.style.animationDuration=(2+Math.random()*1.4)+'s';ap.appendChild(e);setTimeout(function(x){x.remove()},4200,e)}}
+function count(el,to){var s=performance.now();(function f(t){var k=Math.min(1,(t-s)/1300);el.firstChild.nodeValue=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(s)}
+function res(){
+ var t=T[a.now];$('rlab').textContent=t[2];$('rimg').src='img/'+t[0]+'.webp';$('rimg').alt=t[1];$('rname').textContent=t[1];$('rcp').innerHTML=t[3];
+ $('gttl').innerHTML='毎月<em>'+a.m+'万円</em>を、<em>'+a.age+'年</em>つづけると'+(a.unk?'<br><small style="font-size:.6em;color:#5E7672">（回すお金の見つけ方から、当日お話しします。ここでは3万円で見てみます）</small>':'');
+ var v=[fv(a.m,a.age,0),fv(a.m,a.age,.03),fv(a.m,a.age,.05)],bs=$('bars');bs.innerHTML='';bs.className='bars';
+ v.forEach(function(x,n){var d=document.createElement('div');d.className='bar b'+(n+1);d.innerHTML=(n?'<span class="plus">＋'+Math.round(x-v[0])+'万円</span>':'')+'<b>0<small>万円</small></b><i></i>';bs.appendChild(d)});
+ var mn=$('menu');mn.innerHTML='';[W[a.wish]].concat(M[a.ask]).concat(a.unk?[['place1','毎月「回せるお金」の','見つけ方']]:[]).forEach(function(m,n){var d=document.createElement('div');d.className='mi';d.innerHTML='<img src="img/'+m[0]+'.webp" alt="" width="150" height="150"><div><small>'+(n+1)+'品目｜'+m[1]+'</small>'+m[2]+'</div>';mn.appendChild(d)});
+ try{var TY=['たねまきさん','めばえさん','つぼみさん','はなさかさん'],AS=['何から始めるか','いくら貯めれば安心か','新NISAのこと','今のやり方で合っているか','年金・退職金のこと','貯めたお金を使う順番'];var tx='診断結果：'+TY[a.now]+'／毎月'+(a.unk?'まだ分からない':a.m+'万円')+'／'+a.age+'年／聞きたいこと：'+AS[a.ask];$('send').href='https://line.me/R/oaMessage/%40477jhcia/?'+encodeURIComponent(tx);$('send').onclick=function(){setTimeout(function(){$('back').hidden=false},1500)}}catch(e){}
+ show('result');confetti();
+ setTimeout(function(){bs.classList.add('run');bs.querySelectorAll('.bar').forEach(function(d,n){d.querySelector('i').style.height=Math.max(8,v[n]/v[2]*72)+'%';count(d.querySelector('b'),v[n])})},700);
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.querySelectorAll('.mi').forEach(function(m,n){setTimeout(function(){m.classList.add('in')},n*180)})})},{threshold:.15});io.observe(mn);
+ setTimeout(function(){mn.querySelectorAll('.mi').forEach(function(m){m.classList.add('in')})},6000);
+}
+$('start').onclick=function(){a={};i=0;ask()};
+$('again').onclick=function(){a={};i=0;show('cover')};
+})();
+</script>
+</body>
+</html>
