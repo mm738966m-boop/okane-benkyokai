@@ -46,9 +46,12 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;paddin
 .c small{display:block;font-size:10.5px;color:var(--sub);line-height:1.3;font-weight:700}
 .c .go{display:block;width:100%;background:#2F5D74;color:#fff;border-radius:99px;font-size:12px;padding:3px 0;margin-top:2px}
 .c.big{grid-column:span 2;flex-direction:row;gap:8px;background:linear-gradient(170deg,#E9FBF3,#C9F0E0);border:3px solid var(--g1);padding:8px 10px;text-align:left;align-items:center}
-.c.big img{height:92px}
+.c.big img{height:82px}
+.c.big .go{white-space:nowrap}
+@media(max-width:350px){.c.big .go{font-size:12.5px}.c.big img{height:76px}}
 .c.big .t{flex:1;min-width:0;font-size:19px;line-height:1.25}
-.c.big .t em{font-style:normal;color:var(--or)}
+.c.big .t em{font-style:normal;color:var(--or);display:inline-block}
+.c.big .t .fr{display:block;font-style:normal;font-size:15px;line-height:1.2;color:var(--g2);white-space:nowrap;margin:1px 0 1px -.5em}
 .c.big .go{background:var(--line);font-size:14px;padding:5px 0;text-align:center;box-shadow:0 3px 0 #04913E}
 .c.big.gold{background:linear-gradient(170deg,#FFF9DE,#FFE9A8);border-color:var(--gold)}
 .c .free{position:absolute;left:-6px;top:-9px;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#2CC7A6,var(--g2) 70%);border:3px solid var(--gold);color:var(--ye);font-size:13px;display:grid;place-items:center;font-weight:900;transform:rotate(10deg)}
@@ -129,11 +132,11 @@ function menu(j,anim){
  var radio=cell('radio','','<img src="'+I+'m_radio.webp" alt=""><span>森川のラジオ<small>Voicyで毎朝配信</small></span><span class="go">聞く ›</span>');
  var hp=cell('hp','','<img src="'+I+'m_hp.webp" alt=""><span>会社の<br>ホームページ</span><span class="go">見る ›</span>');
  rm.innerHTML=j?
-  cell('free','big gold','<img src="'+I+'m_soudan.webp" alt=""><span class="t">個別に<em>相談</em><small>NISAも・家計も・もしもの備えも</small><span class="go">日時を選ぶ ›</span></span><span class="free">無料</span>')+
+  cell('free','big gold','<img src="'+I+'m_soudan.webp" alt=""><span class="t">個別に<em>相談</em><i class="fr">（無料）</i><small>NISAも・家計も・もしもの備えも</small><span class="go">日時を選ぶ ›</span></span><span class="free">無料</span>')+
   cell('note','','<img src="'+I+'m_note.webp" alt=""><span>お土産の<br>ノート</span><span class="go">開く ›</span>')+
   cell('family','','<img src="'+I+'m_family.webp" alt=""><span>家族を誘う<small>次の勉強会へ</small></span><span class="go">カードを送る ›</span>')+radio+hp
   :
-  cell('cal','big','<img src="'+I+'m_cal.webp" alt=""><span class="t">お金の<em>勉強会</em><small>Zoom・1時間・家族と一緒でもOK</small><span class="go">日程を見る ›</span></span><span class="free">無料</span>')+
+  cell('cal','big','<img src="'+I+'m_cal.webp" alt=""><span class="t">お金の<em>勉強会</em><i class="fr">（無料）</i><small>Zoom・1時間・家族と一緒でもOK</small><span class="go">日程を見る ›</span></span><span class="free">無料</span>')+
   cell('shindan','','<img src="'+I+'type4.webp" alt=""><span>1分診断<small>笑って出せる私</small></span><span class="go">やってみる ›</span>')+
   cell('pay','','<img src="'+I+'m_soudan.webp" alt=""><span>個別に相談<small class="pay">60分 税込5,500円</small><small>勉強会に参加した方は無料</small></span><span class="go">くわしく ›</span>')+radio+hp;
  rm.querySelectorAll('.c').forEach(function(b){b.onclick=function(){tap(b.dataset.k)}});
