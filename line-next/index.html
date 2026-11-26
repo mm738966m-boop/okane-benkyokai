@@ -118,7 +118,7 @@ var S=[
 var A={
  cal:function(){add('',YOYAKU);note('本番では、今の予約ページがそのまま開きます。申込とLINEがつながる開き方にします。')},
  shindan:function(){location.href='../shindan-next/'},
- pay:function(){add('','個別相談は、60分・税込5,500円です。\nNISAの始め方、毎月の額、家計の見直し、もしもの備えまで、ご自分の数字でじっくり話せます。\n\n勉強会（無料・1時間）に参加された方は、ご相談が無料になります。\n全体が見えてからのほうが、相談の1時間を深く使えます。');
+ pay:function(){add('','個別相談は、30分・税込5,500円です。\nNISAの始め方、毎月の額、家計の見直し、もしもの備えまで、ご自分の数字でじっくり話せます。\n\n勉強会（無料・1時間）に参加された方は、ご相談が無料になります。\n全体が見えてからのほうが、相談の1時間を深く使えます。');
   add('btn','先に、勉強会の日程を見る（無料）',function(){tap('cal')});add('btn sub','個別相談を予約する（5,500円）',function(){add('','相談の予約ページ（カード払い）が開きます。')})},
  free:function(){add('','ご相談の予約ページが開きます（60分・無料）。\nNISAのことも、家計のことも、もしもの備えのことも。\n気になることを、そのままお持ちください。')},
  radio:function(){add('','森川のラジオ「ふるふるラジオ」（Voicy）が開きます。\n毎朝、お金の話を10分ほど。\nまずはこの30本から、のページにつながります。')},
@@ -138,7 +138,7 @@ function menu(j,anim){
   :
   cell('cal','big','<img src="'+I+'m_cal.webp" alt=""><span class="t">お金の<em>勉強会</em><i class="fr">（無料）</i><small>Zoom・1時間・家族と一緒でもOK</small><span class="go">日程を見る ›</span></span><span class="free">無料</span>')+
   cell('shindan','','<img src="'+I+'type4.webp" alt=""><span>1分診断<small>笑って出せる私</small></span><span class="go">やってみる ›</span>')+
-  cell('pay','','<img src="'+I+'m_soudan.webp" alt=""><span>個別に相談<small class="pay">60分 税込5,500円</small><small>勉強会に参加した方は無料</small></span><span class="go">くわしく ›</span>')+radio+hp;
+  cell('pay','','<img src="'+I+'m_soudan.webp" alt=""><span>個別に相談<small class="pay">30分 税込5,500円</small><small>勉強会に参加した方は無料</small></span><span class="go">くわしく ›</span>')+radio+hp;
  rm.querySelectorAll('.c').forEach(function(b){b.onclick=function(){tap(b.dataset.k)}});
  rm.classList.remove('sw');
  if(anim){void rm.offsetWidth;rm.classList.add('sw');var t=document.createElement('span');t.className='toast';t.textContent='メニューが切り替わりました';rm.appendChild(t);setTimeout(function(){t.remove()},2600)}

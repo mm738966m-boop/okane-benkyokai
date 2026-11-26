@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive"><meta name="color-scheme" content="light only">
+<title>書くだけ設計ノート｜勉強会ご参加の方へ</title>
+<meta property="og:title" content="書くだけ設計ノート｜勉強会ご参加の方へ">
+<meta property="og:description" content="お金の勉強会にご参加いただいた方へのプレゼントです。">
+<meta property="og:image" content="https://mm738966m-boop.github.io/okane-benkyokai/zoom/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
+<style>
+:root{--g1:#19B394;--g2:#0E9C86;--gd:#0A6F62;--or:#FF7A1A;--or2:#FFA53A;--ye:#FFF27A;--gold:#D9A441;--gold2:#F5D98A;--ink:#24413C;--sub:#5E7672;--bg:#FFF9EC;--line:#06C755}
+*{box-sizing:border-box}
+html,body{margin:0;background:#EAF3EE;color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;font-weight:700;font-size:18px;line-height:1.7}
+button,input{font:inherit;color:inherit}
+button{border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.app{max-width:520px;margin:0 auto;background:var(--bg);min-height:100vh;position:relative;overflow:hidden;padding-bottom:40px}
+.scr{display:none}.scr.on{display:block}
+.top{background:linear-gradient(170deg,var(--g1),var(--g2));color:#fff;text-align:center;padding:18px 16px 44px;clip-path:polygon(0 0,100% 0,100% 84%,0 100%)}
+.top small{display:inline-block;background:var(--ye);color:var(--gd);border-radius:99px;padding:1px 14px;font-size:14px;font-weight:900}
+.top p{margin:6px 0 0;font-size:clamp(19px,5.6vw,23px);font-weight:900;line-height:1.45}
+.top b{color:var(--ye)}
+.mas{display:block;width:150px;height:150px;margin:-30px auto 0;position:relative;border-radius:50%;background:#fff;border:6px solid #fff;box-shadow:0 8px 18px rgba(0,0,0,.12);object-fit:contain}
+h1{margin:10px 12px 0;text-align:center;font-size:clamp(34px,10.5vw,44px);font-weight:900;line-height:1.2;color:var(--or);text-shadow:0 3px 0 #fff,0 5px 0 rgba(255,122,26,.18)}
+.sub{text-align:center;margin:6px 18px 0;font-size:18px;line-height:1.6}
+.sub b{color:var(--or);font-size:1.25em}
+.medals{display:flex;justify-content:center;gap:12px;margin:14px 0 4px}
+.medal{width:clamp(88px,28vw,108px);height:clamp(88px,28vw,108px);border-radius:50%;background:radial-gradient(circle at 35% 30%,#2CC7A6,var(--g2) 70%);border:5px solid var(--gold);box-shadow:0 0 0 3px var(--gold2),0 6px 10px rgba(0,0,0,.15);color:#fff;display:grid;place-items:center;text-align:center;font-size:clamp(14px,4.3vw,16.5px);line-height:1.25;font-weight:900}
+.medal b{display:block;color:var(--ye);font-size:clamp(23px,7.2vw,28px)}
+.go{margin:16px 22px 0;display:block;width:calc(100% - 44px);background:linear-gradient(180deg,var(--or2),var(--or));color:#fff;font-weight:900;font-size:23px;padding:15px 10px;border-radius:99px;box-shadow:0 6px 0 #C85A00,0 12px 18px rgba(200,90,0,.3);position:relative;overflow:hidden;text-align:center;text-decoration:none}
+.go small{display:block;font-size:13px;font-weight:700}
+.go.g{background:var(--line);box-shadow:0 6px 0 #04913E,0 12px 18px rgba(0,0,0,.18)}
+.shw{position:absolute;top:-20%;bottom:-20%;left:-40%;width:28%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0));transform:skewX(-18deg)}
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 16px 0}
+.four div{background:#fff;border-radius:16px;padding:8px 2px 8px;text-align:center;font-size:13.5px;line-height:1.3;box-shadow:0 4px 0 #E3D9BE;position:relative}
+.four img{width:86%;aspect-ratio:1;object-fit:contain;display:block;margin:0 auto 2px}
+.four i{position:absolute;left:-4px;top:-8px;width:28px;height:28px;border-radius:50%;background:var(--or);color:#fff;font-style:normal;font-size:16px;display:grid;place-items:center;border:2px solid #fff}
+.four .ok{outline:3px solid var(--g1)}.four .ok:after{content:"✓";position:absolute;right:-4px;top:-8px;width:28px;height:28px;border-radius:50%;background:var(--g1);color:#fff;display:grid;place-items:center;font-size:17px;border:2px solid #fff}
+.save{margin:16px 20px 0;font-size:13.5px;color:var(--sub);text-align:center;line-height:1.6}
+/* マス */
+.prog{display:flex;gap:6px;align-items:center;padding:14px 18px 0}
+.prog i{flex:1;height:10px;border-radius:99px;background:#DDE9E3}.prog i.on{background:linear-gradient(90deg,var(--g1),var(--g2))}
+.prog span{font-size:24px;line-height:1}
+.no{display:block;width:max-content;margin:12px auto 0;background:var(--g2);color:#fff;border-radius:99px;padding:1px 16px;font-size:15px;font-weight:900}
+h2{margin:8px 14px 0;text-align:center;font-size:clamp(24px,7vw,29px);font-weight:900;line-height:1.35}
+h2 em{font-style:normal;color:var(--or)}
+.pic{display:block;width:132px;height:132px;object-fit:contain;margin:6px auto 0;background:#fff;border-radius:26px;padding:6px;box-shadow:0 4px 0 #E3D9BE}
+.hint{margin:4px 22px 0;text-align:center;font-size:15.5px;color:var(--sub);line-height:1.6}
+.box{margin:14px 16px 0;background:#fff;border-radius:22px;padding:14px 14px 12px;box-shadow:0 5px 0 #E3D9BE,0 8px 14px rgba(0,0,0,.06)}
+.row{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:2px dashed #EFE7D2}
+.row:last-child{border-bottom:0}
+.row label{flex:1;font-size:16.5px;line-height:1.35}
+.row label small{display:block;font-size:12.5px;color:var(--sub);font-weight:700}
+.row .in{display:flex;align-items:center;gap:4px;flex:none}
+.row input{width:92px;font-size:22px;font-weight:900;text-align:right;border:3px solid #DDE9E3;border-radius:14px;padding:6px 8px;background:#FFFDF6}
+.row input:focus{outline:0;border-color:var(--or);background:#fff}
+.row .u{font-size:15px;color:var(--sub)}
+.row.c1 label:before,.row.c2 label:before,.row.c3 label:before{content:"";display:inline-block;width:16px;height:16px;border-radius:50%;margin-right:6px;vertical-align:-2px}
+.row.c1 label:before{background:#FFB45E}.row.c2 label:before{background:#F5D060}.row.c3 label:before{background:var(--g1)}
+details.more{margin:10px 0 0}details.more summary{list-style:none;cursor:pointer;color:var(--g2);font-size:15px;text-align:center;text-decoration:underline}
+details.more summary::-webkit-details-marker{display:none}
+.ans{margin:14px 16px 0;background:linear-gradient(170deg,#FFFDF0,#FFF1C4);border:4px solid var(--gold);border-radius:22px;padding:12px 12px 14px;text-align:center}
+.ans small{display:block;font-size:15px;color:var(--gd)}
+.ans b{font-size:clamp(34px,10vw,42px);color:var(--or);line-height:1.2}
+.ans b span{font-size:.5em;color:var(--ink);margin-left:2px}
+.ans p{margin:4px 0 0;font-size:14.5px;color:var(--sub);line-height:1.5}
+.bar{display:flex;height:22px;border-radius:99px;overflow:hidden;background:#EFE7D2;margin:8px 0 0}
+.bar i{display:block;height:100%;transition:width .5s}
+.bar .a{background:#FFB45E}.bar .b{background:#F5D060}.bar .c{background:var(--g1)}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 16px 0}
+.chip{background:#fff;border:3px solid #fff;border-radius:18px;padding:12px 6px;font-size:19px;font-weight:900;box-shadow:0 5px 0 #E3D9BE}
+.chip b{color:var(--or);font-size:1.3em}
+.chip.sel{border-color:var(--or);background:#FFF4E6}
+.nav{display:flex;gap:10px;margin:18px 16px 0}
+.nav button{flex:1;border-radius:99px;padding:13px 6px;font-size:20px;font-weight:900}
+.nav .bk{flex:none;width:92px;background:#fff;color:var(--sub);box-shadow:0 4px 0 #E3D9BE;font-size:16px}
+.nav .nx{background:linear-gradient(180deg,var(--or2),var(--or));color:#fff;box-shadow:0 5px 0 #C85A00}
+.skip{display:block;margin:12px auto 0;background:none;color:var(--sub);font-size:14.5px;text-decoration:underline}
+.note{margin:10px 20px 0;font-size:13px;color:var(--sub);line-height:1.6}
+/* できあがり */
+.cert{margin:14px 16px 0;background:linear-gradient(172deg,#F2FCF7,#D6F3E7);border:8px solid var(--gold);box-shadow:inset 0 0 0 4px var(--gold2),0 10px 22px rgba(0,0,0,.12);border-radius:10px;text-align:center;padding:0 10px 16px;position:relative}
+.cert .band{margin:0 -10px;background:linear-gradient(170deg,var(--g1),var(--g2));color:#fff;font-size:16px;padding:8px 0 9px;font-weight:900}
+.cert .band b{color:var(--ye)}
+.cert img{width:140px;height:140px;object-fit:contain;display:block;margin:8px auto 0;background:#fff;border-radius:50%;padding:8px}
+.cert .l{margin:4px 0 0;font-size:19px;color:var(--gd)}
+.cert .v{font-size:clamp(46px,14vw,60px);font-weight:900;color:var(--or);line-height:1.15}
+.cert .v span{font-size:.42em;color:var(--ink)}
+.cert .tri{display:flex;gap:8px;margin:10px 0 0}
+.cert .tri div{flex:1;background:#fff;border-radius:14px;padding:6px 2px;font-size:13.5px;line-height:1.35}
+.cert .tri b{display:block;font-size:19px}
+.cert .tri .a b{color:#E8862A}.cert .tri .b b{color:#C59A10}.cert .tri .c b{color:var(--g2)}
+.cert .d{margin:8px 0 0;font-size:13px;color:var(--sub)}
+.invite{margin:22px 0 0;background:linear-gradient(170deg,var(--g1),var(--g2));color:#fff;text-align:center;padding:22px 16px 22px}
+.invite h3{margin:0;font-size:22px;line-height:1.45}.invite h3 b{color:var(--ye)}
+.invite p{margin:8px 0 0;font-size:15px;line-height:1.7}
+.again{display:block;margin:12px auto 0;background:none;color:#fff;font-size:14.5px;text-decoration:underline}
+.lib{margin:22px 14px 0}
+.lib h3{margin:0 0 4px;font-size:20px;text-align:center}
+.lib p.l{margin:0 0 10px;font-size:14.5px;color:var(--sub);text-align:center}
+.lib h4{margin:18px 0 8px;font-size:17px;color:var(--gd);border-left:6px solid var(--g1);padding-left:10px}
+details.qa{border:2px solid #E3EDE8;border-radius:16px;margin:0 0 9px;background:#fff;font-weight:500;font-size:16.5px;line-height:1.8}
+details.qa summary{cursor:pointer;list-style:none;padding:12px 40px 12px 14px;font-weight:900;color:var(--gd);position:relative;line-height:1.5}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary:after{content:"";position:absolute;right:16px;top:50%;width:9px;height:9px;border-right:3px solid var(--g2);border-bottom:3px solid var(--g2);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+details.qa[open] summary:after{transform:translateY(-30%) rotate(-135deg)}
+details.qa .qa-body{padding:0 14px 4px;border-top:2px dashed #E3EDE8}
+details.qa .qa-body p{margin:10px 0}details.qa ul{margin:0 0 10px;padding-left:1.3em}
+.foot{margin:26px 16px 0;text-align:center;font-size:12.5px;color:var(--sub);line-height:1.7}
+.conf{position:absolute;top:-30px;width:12px;height:18px;border-radius:3px;z-index:9;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){
+ .shw{animation:shine 3s ease-in-out infinite}.go{animation:breathe 2.2s ease-in-out infinite}
+ .scr.on>*{animation:up .45s both}.scr.on>*:nth-child(2){animation-delay:.05s}.scr.on>*:nth-child(3){animation-delay:.1s}.scr.on>*:nth-child(4){animation-delay:.15s}.scr.on>*:nth-child(n+5){animation-delay:.2s}
+ .mas,.pic{animation:hop 2.6s ease-in-out infinite}.cert{animation:pop .6s cubic-bezier(.3,1.5,.5,1) both}
+ .conf{animation:fall 2.6s linear forwards}
+ @keyframes up{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:none}}
+ @keyframes pop{0%{opacity:0;transform:scale(.5)}100%{opacity:1;transform:none}}
+ @keyframes hop{0%,18%,100%{transform:none}7%{transform:translateY(-8%) scale(1.04,.97)}12%{transform:scale(1.04,.95)}}
+ @keyframes breathe{0%,100%{transform:none}50%{transform:scale(1.03)}}
+ @keyframes shine{0%,55%{left:-40%}85%,100%{left:120%}}
+ @keyframes fall{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(105vh) rotate(720deg)}}
+}
+@media print{.go,.nav,.skip,.invite,.lib{display:none}}
+</style></head><body><div class="app" id="app">
+
+<section class="scr on" id="cover">
+  <div class="top"><small>勉強会ご参加の方へのプレゼント</small><p>4つのマスに書くだけで、<br><b>「わが家は毎月◯円」</b>ができあがり</p></div>
+  <img class="mas" src="../shindan-next/img/ask6.webp" alt="貯金箱から、3つの袋へ" width="360" height="360">
+  <h1>書くだけ<br>設計ノート</h1>
+  <div class="medals"><div class="medal"><span><b>1マス</b>3分</span></div><div class="medal"><span>空欄で<br><b>OK</b></span></div><div class="medal"><span>計算は<br><b>自動</b></span></div></div>
+  <button class="go" id="start" type="button">1マス目から、はじめる<small>書いた数字は、このスマホの中にだけ残ります</small><span class="shw"></span></button>
+  <div class="four" id="four">
+    <div><i>1</i><img src="../shindan-next/img/ask2.webp" alt="">入るお金<br>出るお金</div>
+    <div><i>2</i><img src="../shindan-next/img/place1.webp" alt="">いま<br>あるお金</div>
+    <div><i>3</i><img src="../shindan-next/img/ask6.webp" alt="">3つの袋に<br>分ける</div>
+    <div><i>4</i><img src="../shindan-next/img/ask1.webp" alt="">毎月の額を<br>決める</div>
+  </div>
+  <p class="save">分からないマスは、空欄のままで大丈夫です。<br>個別のご相談で、いっしょに埋めます。</p>
+</section>
+
+<section class="scr" id="s1">
+  <div class="prog"><i class="on"></i><i></i><i></i><i></i><span>🌰</span></div>
+  <span class="no">1マス目 / 4</span>
+  <h2>1か月に<em>入るお金</em>と、<br><em>出るお金</em></h2>
+  <img class="pic" src="../shindan-next/img/ask2.webp" alt="">
+  <p class="hint">通帳やアプリを見ながら、ざっくりで。<br>「万円」で書くだけです。</p>
+  <div class="box">
+    <div class="row"><label>入ってくるお金<small>手取り。ご夫婦なら合計</small></label><div class="in"><input inputmode="decimal" data-k="inc" aria-label="入ってくるお金"><span class="u">万円</span></div></div>
+    <div class="row"><label>出ていくお金<small>ぜんぶ合わせて、だいたい</small></label><div class="in"><input inputmode="decimal" data-k="out" aria-label="出ていくお金"><span class="u">万円</span></div></div>
+    <details class="more"><summary>こまかく書きたい方は、こちら</summary>
+      <div class="row"><label>家賃・ローン</label><div class="in"><input inputmode="decimal" data-k="o1"><span class="u">万円</span></div></div>
+      <div class="row"><label>食費・日用品</label><div class="in"><input inputmode="decimal" data-k="o2"><span class="u">万円</span></div></div>
+      <div class="row"><label>光熱費・通信費</label><div class="in"><input inputmode="decimal" data-k="o3"><span class="u">万円</span></div></div>
+      <div class="row"><label>毎月の固定の支払い<small>掛け金・会費など</small></label><div class="in"><input inputmode="decimal" data-k="o4"><span class="u">万円</span></div></div>
+      <div class="row"><label>そのほか</label><div class="in"><input inputmode="decimal" data-k="o5"><span class="u">万円</span></div></div>
+    </details>
+  </div>
+  <div class="ans"><small>毎月の余力（入る − 出る）</small><b id="yo">―<span>万円</span></b><p id="yo_p">ここが、毎月まわせる上限です。</p></div>
+  <div class="nav"><button class="bk" type="button" data-to="cover">もどる</button><button class="nx" type="button" data-to="s2">2マス目へ ›</button></div>
+</section>
+
+<section class="scr" id="s2">
+  <div class="prog"><i class="on"></i><i class="on"></i><i></i><i></i><span>🌱</span></div>
+  <span class="no">2マス目 / 4</span>
+  <h2>いま<em>持っているお金</em>を、<br>ぜんぶ出す</h2>
+  <img class="pic" src="../shindan-next/img/place1.webp" alt="">
+  <p class="hint">分かるところだけで大丈夫。<br>合計は、自動で出ます。</p>
+  <div class="box">
+    <div class="row"><label>銀行の預貯金<small>ぜんぶの口座の合計</small></label><div class="in"><input inputmode="decimal" data-k="b1"><span class="u">万円</span></div></div>
+    <div class="row"><label>証券口座にあるもの<small>NISAもここ</small></label><div class="in"><input inputmode="decimal" data-k="b2"><span class="u">万円</span></div></div>
+    <div class="row"><label>貯まるタイプの積み立て<small>いま戻る額。分からなければ空欄</small></label><div class="in"><input inputmode="decimal" data-k="b3"><span class="u">万円</span></div></div>
+    <div class="row"><label>そのほか<small>定期・財形・社内預金など</small></label><div class="in"><input inputmode="decimal" data-k="b4"><span class="u">万円</span></div></div>
+  </div>
+  <div class="ans"><small>いま持っているお金（合計）</small><b id="tot">―<span>万円</span></b></div>
+  <div class="nav"><button class="bk" type="button" data-to="s1">もどる</button><button class="nx" type="button" data-to="s3">3マス目へ ›</button></div>
+</section>
+
+<section class="scr" id="s3">
+  <div class="prog"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><span>🌿</span></div>
+  <span class="no">3マス目 / 4</span>
+  <h2>持っているお金を、<br><em>3つの袋</em>に分ける</h2>
+  <img class="pic" src="../shindan-next/img/ask6.webp" alt="">
+  <p class="hint">いつ使うお金か、で分けます。</p>
+  <div class="box">
+    <div class="row c1"><label>使う<small>1年以内に使う。生活費の予備も</small></label><div class="in"><input inputmode="decimal" data-k="c1"><span class="u">万円</span></div></div>
+    <div class="row c2"><label>守る<small>1〜10年のあいだに使う予定</small></label><div class="in"><input inputmode="decimal" data-k="c2"><span class="u">万円</span></div></div>
+    <div class="row c3"><label>増やす<small>10年以上は使わない</small></label><div class="in"><input inputmode="decimal" data-k="c3"><span class="u">万円</span></div></div>
+    <div class="bar"><i class="a" id="ba"></i><i class="b" id="bb"></i><i class="c" id="bc"></i></div>
+  </div>
+  <div class="ans"><small>まだ分けていないお金</small><b id="rest">―<span>万円</span></b><p>新NISAを考えるのは、「増やす」の袋だけです。</p></div>
+  <p class="note">投資は、元本（最初に入れたお金）が減ることもあります。「使う」「守る」のお金は、増やすほうには入れません。</p>
+  <div class="nav"><button class="bk" type="button" data-to="s2">もどる</button><button class="nx" type="button" data-to="s4">4マス目へ ›</button></div>
+</section>
+
+<section class="scr" id="s4">
+  <div class="prog"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><span>🌸</span></div>
+  <span class="no">4マス目 / 4</span>
+  <h2><em>毎月いくら</em>なら、<br>無理がない？</h2>
+  <img class="pic" src="../shindan-next/img/ask1.webp" alt="">
+  <p class="hint">目安は「なくても、今月の生活が変わらない額」。<br>迷ったら、ひとつ小さいほうを。</p>
+  <div class="ans"><small>1マス目で出た、毎月の余力</small><b id="yo2">―<span>万円</span></b></div>
+  <div class="chips" id="chips">
+    <button class="chip" type="button" data-v="1"><b>1</b>万円</button><button class="chip" type="button" data-v="2"><b>2</b>万円</button>
+    <button class="chip" type="button" data-v="3"><b>3</b>万円</button><button class="chip" type="button" data-v="5"><b>5</b>万円</button>
+  </div>
+  <div class="box"><div class="row"><label>自分で決める</label><div class="in"><input inputmode="decimal" data-k="m" id="m"><span class="u">万円</span></div></div></div>
+  <div class="nav"><button class="bk" type="button" data-to="s3">もどる</button><button class="nx" type="button" data-to="done">できあがり！ ›</button></div>
+  <button class="skip" type="button" data-to="done">まだ決められない（相談でいっしょに決める）</button>
+</section>
+
+<section class="scr" id="done">
+  <div class="top"><small>おつかれさまでした</small><p>4つのマスが、<br><b>1枚のカード</b>になりました</p></div>
+  <div class="cert">
+    <div class="band">書くだけ<b>設計ノート</b></div>
+    <img src="../shindan-next/img/type4.webp" alt="花が咲いた鉢">
+    <p class="l" id="cl">わが家は、毎月</p>
+    <div class="v" id="cv">―<span>万円</span></div>
+    <div class="tri"><div class="a">使う<b id="t1">―</b></div><div class="b">守る<b id="t2">―</b></div><div class="c">増やす<b id="t3">―</b></div></div>
+    <p class="d" id="cd"></p>
+  </div>
+  <p class="save">このカードは、スクリーンショットで残せます。<br>ご家族に見せるのも、おすすめです。</p>
+  <div class="invite">
+    <h3>空欄や「これでいいのかな」は、<br><b>個別のご相談</b>でいっしょに。</h3>
+    <p>参加された方のご相談は、無料です（Zoom・60分）。<br>持ち物は、このノートと通帳やアプリの画面だけ。</p>
+    <a class="go g" href="https://utage-system.com/event/J0kYCST75TQ7/register" target="_blank" rel="noopener">相談の日時を選ぶ<small>NISAも・家計も・もしもの備えも</small><span class="shw"></span></a>
+    <button class="again" id="again" type="button">数字を直す（1マス目へ）</button>
+  </div>
+  <div class="lib">
+    <h3>もっと読みたい方へ</h3>
+    <p class="l">ここから下は、読みたいところだけ。押すと開きます。</p>
+    <h4>毎月の額が決まったあとに、やること</h4>
+<details class="qa"><summary>ステップ5｜自分の決め方を、言葉にする（10分）</summary><div class="qa-body"><p>ここまでで「いつ使うお金か」と「毎月いくらか」が決まりました。<br>次に決めるのは、「何を買うか」ではなく、自分の決め方です。</p>
+<p>書き出すのは3つ。</p>
+<ul><li>どのくらい値段が上がり下がりしても、自分は落ち着いていられるか</li><li>どこまで手間をかけられるか（毎月見たい／年1回でいい）</li><li>家族に、自分の言葉で説明できるか</li></ul>
+<p>このノートでは、具体的な商品の名前はおすすめしません。<br>自分の決め方が言葉になっていれば、どこで説明を受けても、自分で考えて決められます。</p></div></details>
+<details class="qa"><summary>ステップ6｜同じ質問リストで比べられるようにする（10分）</summary><div class="qa-body"><p>銀行や証券会社、サイトで説明を受けるとき、毎回そろえて確認することを決めておきます。</p>
+<ul><li>持っているあいだ、毎年かかる費用はいくらか</li><li>ステップ3で決めた「使う時期」と合っているか</li><li>仕組みを、自分の言葉で家族に説明できるか</li><li>元本（最初に入れたお金）が減ることもある、と分かっているか</li></ul>
+<p>扱うものも費用も、会社によって違います。<br>どれが当たりかを当てにいくのではなく、同じ質問リストで比べられる状態を作るのが目的です。</p></div></details>
+<details class="qa"><summary>ステップ7｜毎月の自動積立を設定する（20分）</summary><div class="qa-body"><p>口座を開き、「毎月◯日に◯円」の自動の積立（手続きしなくても、毎月決めた額を買い足してくれる設定）をします。</p>
+<p>会社はご自身で選んでください。<br>このノートでは特定の会社をおすすめしません。<br>ステップ6の質問リストで比べれば、自分で選べます。</p>
+<p>設定する日は、給料日の直後にしておくと続きます。<br>残ったら回す、ではなく、先に取り分ける形にするためです。</p></div></details>
+<details class="qa"><summary>ステップ8｜見直しのルールを先に書く（10分）</summary><div class="qa-body"><p>始める前に、やめ方と見直し方を決めておきます。</p>
+<ul><li>見直しは年1回、日付を決めて</li><li>途中でやめる条件は「10年以内に使う事情ができたとき」だけ</li><li>値下がりだけを理由に、あわててやめない</li></ul>
+<p>これを自分の字で書いておくと、大きく下がった日に効きます。</p></div></details>
+
+    <h4>年代ごとの考え方</h4>
+    <p class="l" style="text-align:left">どれも一般的な考え方です。個別の事情で答えは変わります。</p>
+<details class="qa"><summary>ケース1｜40代夫婦・子どもの教育費がこれから</summary><div class="qa-body"><p>教育費は「守る」お金です。<br>大学入学までが10年を切っているなら、その分は新NISAに入れず、預金や定期で確保します。</p>
+<p>増やすほうに回すのは、教育費を除いた「増やす」の部分だけ。<br>夫婦それぞれに口座を作れるので、金額は家族の合計で考えて、口座は分けるのが基本です。</p></div></details>
+<details class="qa"><summary>ケース2｜30代独身・貯金100万円</summary><div class="qa-body"><p>まずワークシートCで「使う」に入れる分を確認します。<br>生活費が月20万円なら、3〜6か月分で60〜120万円。<br>つまりこのケースは、増やすより、まず「使う」をためるのが先です。</p>
+<p>ただしゼロにする必要はありません。<br>月5,000円〜1万円で「仕組みに慣れる」のも、ひとつのやり方です。<br>金額より、始まっていることに価値があります。</p></div></details>
+<details class="qa"><summary>ケース3｜50代・老後が気になり始めた</summary><div class="qa-body"><p>「もう遅いですか？<br>」とよく聞かれますが、65歳から使うとしても10年以上あります。<br>始める余地はあります。</p>
+<p>ただし50代は、時間が限られるのも事実です。<br>毎月の額を無理に大きくするより、退職金や守るお金と分けて、淡々と積む形にします。</p>
+<p>一発逆転をねらう年代ではなく、分け方のていねいさで守る年代です。</p></div></details>
+
+    <h4>つまずきQ&amp;A</h4>
+<details class="qa"><summary>Q1「始めてすぐ下がりました。失敗ですか？」</summary><div class="qa-body">
+<p>値下がりは、続けていれば何度か起きます。<br>10年以上使わないお金だけで始めていれば、あわてなくて大丈夫です。<br>毎月同じ額で買う積立は、下がっているあいだは同じお金で多く買えています。<br>ワークシートFに書いた自分の言葉を読み返してください。</p>
+</div></details>
+<details class="qa"><summary>Q2「毎月いくらが正解ですか？」</summary><div class="qa-body">
+<p>正解の額はありません。<br>続けられる額が、あなたの正解です。<br>迷ったら、決めた額より1段階小さくしてください。</p>
+</div></details>
+<details class="qa"><summary>Q3「窓口ですすめられて、その場で決めそうになりました」</summary><div class="qa-body">
+<p>その場で決めず、いったん持ち帰ってください。<br>そしてワークシートEの項目を、ひとつずつ確認してみてください。</p>
+<p>決められないのは、迷っているからではなく、比べる質問リストをまだ持っていないからです。<br>質問リストさえあれば、判断は自分でできます。</p>
+</div></details>
+<details class="qa"><summary>Q4「いくつも組み合わせたほうがいいですか？」</summary><div class="qa-body">
+<p>数を増やすほど安全になる、とは限りません。<br>中身が重なっていると、分けた気分ほどには分かれていないこともあります。</p>
+<p>大事なのは数ではなく、それぞれを持っている理由を自分で言えるかどうかです。</p>
+</div></details>
+<details class="qa"><summary>Q5「途中で内容を変えたくなったら？」</summary><div class="qa-body">
+<p>年1回の見直しのときに考えれば間に合います。<br>思いついたその日に動かすと、たいてい余計なことをします。</p>
+<p>変えるかどうかは、ステップ3で決めた「いつ使うお金か」が変わったときだけ、で十分です。</p>
+</div></details>
+<details class="qa"><summary>Q6「夫婦でどう分ければいいですか？」</summary><div class="qa-body">
+<p>金額は家族で決めて、口座はそれぞれで。<br>どちらかに寄せるより、2人とも仕組みを持っているほうが、家のお金の会話が続きます。</p>
+</div></details>
+<details class="qa"><summary>Q7「いつ売ればいいんですか？」</summary><div class="qa-body">
+<p>基本は「使うとき」と決めておくと、迷いにくくなります。<br>値上がりしたから売る、下がったから売る、ではなく、ステップ3で決めた「何年後に使うか」が売るときです。</p>
+</div></details>
+<details class="qa"><summary>Q8「ほったらかしで本当にいいんですか？」</summary><div class="qa-body">
+<p>年1回の見直しだけは、ほったらかさないでください。<br>確認するのは3つ。<br>積立が続いているか、生活の変化で色分けが変わっていないか、毎月の額が今の生活に合っているか。<br>それ以外の日は、忘れていて大丈夫です。</p>
+</div></details>
+  </div>
+</section>
+
+<p class="foot">おばあちゃんでもできる お金の増やし方 オンライン勉強会<br>fulfull株式会社｜投資には元本割れのおそれがあります。</p>
+</div>
+<script>
+(function(){
+var KEY='okane-sekkei-note-v2',st={},$=function(x){return document.getElementById(x)};
+try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+function sv(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function n(k){var v=parseFloat(String(st[k]==null?'':st[k]).replace(/[０-９．]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-65248)}).replace(/[^0-9.\-]/g,''));return isNaN(v)?null:v}
+function f(v){return v==null?'―':(Math.round(v*10)/10).toLocaleString('ja-JP')}
+function put(id,v){$(id).firstChild.nodeValue=f(v)}
+function calc(){
+ var inc=n('inc'),d=['o1','o2','o3','o4','o5'].map(n),ds=d.some(function(x){return x!=null})?d.reduce(function(a,b){return a+(b||0)},0):null,out=ds!=null?ds:n('out');
+ var yo=(inc!=null&&out!=null)?inc-out:null;put('yo',yo);put('yo2',yo);
+ $('yo_p').textContent=yo==null?'ここが、毎月まわせる上限です。':yo<=0?'ゼロやマイナスでも大丈夫。それが分かることが、いちばんの収穫です。':'ここが、毎月まわせる上限です。';
+ var b=['b1','b2','b3','b4'].map(n),tot=b.some(function(x){return x!=null})?b.reduce(function(a,x){return a+(x||0)},0):null;put('tot',tot);
+ var c=['c1','c2','c3'].map(n),cs=c.reduce(function(a,x){return a+(x||0)},0),any=c.some(function(x){return x!=null});
+ put('rest',tot!=null?tot-cs:null);
+ var w=Math.max(cs,tot||0)||1;$('ba').style.width=((c[0]||0)/w*100)+'%';$('bb').style.width=((c[1]||0)/w*100)+'%';$('bc').style.width=((c[2]||0)/w*100)+'%';
+ var m=n('m');document.querySelectorAll('.chip').forEach(function(x){x.classList.toggle('sel',m!=null&&+x.dataset.v===m)});
+ var ok=[yo!=null,tot!=null,any,m!=null];document.querySelectorAll('#four div').forEach(function(x,i){x.classList.toggle('ok',ok[i])});
+ $('start').firstChild.nodeValue=ok.every(Boolean)?'できあがったカードを見る':ok.some(Boolean)?'つづきから、はじめる':'1マス目から、はじめる';
+ $('start').dataset.to=ok.every(Boolean)?'done':ok[0]?(ok[1]?(ok[2]?'s4':'s3'):'s2'):'s1';
+ $('cl').textContent=m!=null?'わが家は、毎月':'わが家の毎月の額は';
+ $('cv').firstChild.nodeValue=m!=null?f(m):'相談で';$('cv').lastChild.textContent=m!=null?'万円':'決めます';
+ $('t1').textContent=c[0]!=null?f(c[0])+'万円':'―';$('t2').textContent=c[1]!=null?f(c[1])+'万円':'―';$('t3').textContent=c[2]!=null?f(c[2])+'万円':'―';
+ var t=new Date();$('cd').textContent=t.getFullYear()+'年'+(t.getMonth()+1)+'月'+t.getDate()+'日に書きました';
+}
+function confetti(){var ap=$('app'),c=['#FF7A1A','#FFF27A','#19B394','#D9A441','#FFA53A'];for(var i=0;i<36;i++){var e=document.createElement('span');e.className='conf';e.style.left=(Math.random()*100)+'%';e.style.background=c[i%5];e.style.animationDelay=(Math.random()*.8)+'s';e.style.animationDuration=(2+Math.random()*1.4)+'s';ap.appendChild(e);setTimeout(function(x){x.remove()},4200,e)}}
+function show(id){document.querySelectorAll('.scr').forEach(function(s){s.classList.toggle('on',s.id===id)});window.scrollTo(0,0);if(id==='done')confetti()}
+document.querySelectorAll('[data-k]').forEach(function(el){var k=el.getAttribute('data-k');if(st[k]!=null)el.value=st[k];el.addEventListener('input',function(){st[k]=el.value;sv();calc()})});
+document.querySelectorAll('.chip').forEach(function(x){x.onclick=function(){st.m=x.dataset.v;$('m').value=st.m;sv();calc()}});
+document.querySelectorAll('[data-to]').forEach(function(x){if(x.id!=='start')x.onclick=function(){show(x.dataset.to)}});
+$('start').onclick=function(){show($('start').dataset.to||'s1')};
+$('again').onclick=function(){show('s1')};
+if(['o1','o2','o3','o4','o5'].some(function(k){return st[k]}))document.querySelector('details.more').open=true;
+calc();
+})();
+</script>
+</body></html>
