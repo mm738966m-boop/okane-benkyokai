@@ -95,7 +95,7 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;paddin
 .bar .plus{position:absolute;top:-6px;background:var(--ye);border-radius:99px;font-size:13px;padding:1px 10px;font-weight:900;opacity:0;transform:scale(.4);transition:all .4s cubic-bezier(.3,1.7,.5,1) 1.4s;white-space:nowrap}
 .bars.run .plus{opacity:1;transform:none}
 .blab{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center;font-size:13px;line-height:1.35;margin-top:6px;color:var(--sub)}
-.nt{font-size:11px;color:var(--sub);line-height:1.6;margin:10px 2px 0;font-weight:700}
+.nt{font-size:13px;color:var(--sub);line-height:1.6;margin:10px 2px 0;font-weight:700}
 .menu{display:grid;gap:10px}
 .mi{display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:center;background:#fff;border-radius:18px;padding:10px 12px;box-shadow:0 5px 12px rgba(0,0,0,.06);font-size:17px;line-height:1.45;font-weight:900;opacity:0;transform:translateY(20px);transition:all .5s}
 .mi.in{opacity:1;transform:none}
@@ -107,6 +107,7 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;paddin
 .invite p{margin:10px 0 0;font-size:15px;line-height:1.75}
 .send{display:block;width:100%;margin:16px 0 0;background:var(--line);color:#fff;font-size:22px;font-weight:900;padding:16px 8px;border-radius:99px;box-shadow:0 6px 0 #04913E,0 12px 18px rgba(0,0,0,.2);text-decoration:none;position:relative;overflow:hidden}
 .send small{display:block;font-size:13px;font-weight:700}
+.after{font-size:14px;font-weight:700;margin:12px 0 0;opacity:.92}
 .again{display:block;margin:14px auto 0;color:#fff;font-size:14px;text-decoration:underline}
 .shw{position:absolute;top:-20%;bottom:-20%;left:-40%;width:28%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0));transform:skewX(-18deg)}
 .conf{position:absolute;top:-30px;width:12px;height:18px;border-radius:3px;z-index:9;pointer-events:none}
@@ -176,9 +177,10 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;paddin
   </div>
 
   <div class="invite">
-    <h3>この結果は、<b>講師に届きます。</b><br>当日は、ここから話を始めます。</h3>
+    <h3>当日は、<b>この結果から</b><br>話を始めます。</h3>
     <p>Zoomで1時間・参加は無料。<br>1回1〜3組の少人数です。<br>ご家族と一緒でも、お一人でも。</p>
-    <a class="send" id="send" href="../line-next/">この結果を送って、日程を選ぶ<small>LINEのトークに戻ります</small><span class="shw"></span></a>
+    <a class="send" id="send" href="../line-next/">結果のカードをLINEで受け取る<small>LINEが開いたら、紙ひこうき（送信）を押すだけ</small><span class="shw"></span></a>
+    <p class="after">日程は、カードが届いたあとで選べます。</p>
     <button class="again" id="again" type="button">もう一度やってみる</button>
   </div>
   <p class="foot">おばあちゃんでもできる お金の増やし方 オンライン勉強会<br>fulfull株式会社｜投資には元本割れのおそれがあります。</p>
@@ -191,11 +193,11 @@ var Q=[
  {k:'age',t:'いまの<em>年代</em>は？',s:'積み立てを続ける年数の目安に使います',c3:1,o:[['age1','40代',20],['age2','50代',15],['age3','60代から',10]]},
  {k:'wish',t:'いちばん<em>叶えたい</em>のは？',s:'ピンとくる絵を、ひとつ',o:[['wish1','旅行を、がまんせず楽しむ','旅'],['wish2','孫や子へのお祝いを笑って出す','祝'],['wish3','老後のお金の心配を小さくする','老'],['wish4','自分のやりたいことを続ける','自']]},
  {k:'now',t:'いまの<em>お金の置き場所</em>は？',s:'いちばん近いものを',o:[['place1','ほとんど貯金',0],['place2','NISAの口座は作った',1],['place3','少し積み立てている',2],['place4','いろいろ続けている',3]]},
- {k:'m',t:'毎月、<em>無理なく</em>回せそうなのは？',s:'だいたいで大丈夫です',coin:1,o:[[1,'<b class="n">1</b>万円くらい',1],[3,'<b class="n">3</b>万円くらい',3],[5,'<b class="n">5</b>万円くらい',5],[0,'まだ分からない',3]]},
- {k:'ask',t:'当日、いちばん<em>聞きたい</em>のは？',s:'これが、あなたの回の1品目になります',o:[['ask1','何から始めればいい？',0],['ask2','いくら貯めれば安心？',1],['ask3','新NISAのきほん',2],['ask4','今のやり方で合っている？',3]]}
+ {k:'m',t:'毎月、<em>無理なく</em>回せそうなのは？',s:'だいたいで大丈夫です',coin:1,o:[[1,'<b class="n">1</b>万円くらい',1],[3,'<b class="n">3</b>万円くらい',3],[5,'<b class="n">5</b>万円くらい',5],[0,'いまは回せない・<br>まだ分からない',3]]},
+ {k:'ask',t:'当日、いちばん<em>聞きたい</em>のは？',s:'あなたの回のお品書きに入ります',o:[['ask1','何から<br>始めればいい？',0],['ask2','いくら貯めれば<br>安心？',1],['ask3','新NISAのきほん',2],['ask4','今のやり方で<br>合っている？',3],['ask5','年金・退職金の<br>受け取り方',4],['ask6','貯めたお金を<br>使う順番',5]]}
 ];
 var T=[
- ['type1','たねまきさん','これから種をまくところ','まだ何もしていなくて、大丈夫。<b>まく順番</b>さえ分かれば、あとは育つのを待つだけです。'],
+ ['type1','たねまきさん','これから種をまくところ','ここからが、はじまり。貯めてきたお金も、りっぱな種です。<b>まく順番</b>が分かると、最初の一歩がぐっと軽くなります。'],
  ['type2','めばえさん','もう芽が出ています','口座を作ったのは、大きな一歩。次は、<b>何をどれだけ育てるか</b>を決める番です。'],
  ['type3','つぼみさん','つぼみが、ふくらんでいます','続けているのが、いちばんの力。<b>今のやり方が合っているか</b>、一度いっしょに確かめましょう。'],
  ['type4','はなさかさん','花が咲きはじめています','ここまで育てた方は多くありません。次は、<b>守り方と、笑って使う順番</b>です。']
@@ -204,7 +206,9 @@ var M=[
  [['ask1','お金を増やす第一歩','まずは何から始めるのが正解？'],['place1','お金を分ける3つの袋','もしも・近い将来・長く育てる']],
  [['ask2','自分の家の数字で','いくら貯めれば安心？'],['place1','物価が上がる時代の','貯金の置き方']],
  [['ask3','はじめての方も','新NISAのきほん'],['ask1','お金を増やす第一歩','まずは何から始めるのが正解？']],
- [['ask4','貯めているのに増えない家の','よくある置き方'],['place4','お金を分ける3つの袋','もしも・近い将来・長く育てる']]
+ [['ask4','貯めているのに増えない家の','よくある置き方'],['place4','お金を分ける3つの袋','もしも・近い将来・長く育てる']],
+ [['ask5','年金・退職金の','受け取り方と置き場所'],['place1','物価が上がる時代の','貯金の置き方']],
+ [['ask6','貯めたお金を','笑って使っていく順番'],['place4','お金を分ける3つの袋','もしも・近い将来・長く育てる']]
 ];
 var W={'旅':['wish1','旅行のお金を','どの袋から出すか'],'祝':['wish2','お祝いのお金を','笑って出せる置き方'],'老':['wish3','老後のお金','うちの場合の目安'],'自':['wish4','やりたいことを続ける','毎月の分け方']};
 var a={},i=0,$=function(x){return document.getElementById(x)};
@@ -229,10 +233,10 @@ function confetti(){if(!matchMedia('(prefers-reduced-motion:no-preference)').mat
 function count(el,to){var s=performance.now();(function f(t){var k=Math.min(1,(t-s)/1300);el.firstChild.nodeValue=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(s)}
 function res(){
  var t=T[a.now];$('rlab').textContent=t[2];$('rimg').src='img/'+t[0]+'.webp';$('rimg').alt=t[1];$('rname').textContent=t[1];$('rcp').innerHTML=t[3];
- $('gttl').innerHTML='毎月<em>'+a.m+'万円</em>を、<em>'+a.age+'年</em>つづけると'+(a.unk?'<br><small style="font-size:.6em;color:#5E7672">（まずは3万円で見てみます）</small>':'');
+ $('gttl').innerHTML='毎月<em>'+a.m+'万円</em>を、<em>'+a.age+'年</em>つづけると'+(a.unk?'<br><small style="font-size:.6em;color:#5E7672">（回すお金の見つけ方から、当日お話しします。ここでは3万円で見てみます）</small>':'');
  var v=[fv(a.m,a.age,0),fv(a.m,a.age,.03),fv(a.m,a.age,.05)],bs=$('bars');bs.innerHTML='';bs.className='bars';
  v.forEach(function(x,n){var d=document.createElement('div');d.className='bar b'+(n+1);d.innerHTML=(n?'<span class="plus">＋'+Math.round(x-v[0])+'万円</span>':'')+'<b>0<small>万円</small></b><i></i>';bs.appendChild(d)});
- var mn=$('menu');mn.innerHTML='';[W[a.wish]].concat(M[a.ask]).forEach(function(m,n){var d=document.createElement('div');d.className='mi';d.innerHTML='<img src="img/'+m[0]+'.webp" alt="" width="150" height="150"><div><small>'+(n+1)+'品目｜'+m[1]+'</small>'+m[2]+'</div>';mn.appendChild(d)});
+ var mn=$('menu');mn.innerHTML='';[W[a.wish]].concat(M[a.ask]).concat(a.unk?[['place1','毎月「回せるお金」の','見つけ方']]:[]).forEach(function(m,n){var d=document.createElement('div');d.className='mi';d.innerHTML='<img src="img/'+m[0]+'.webp" alt="" width="150" height="150"><div><small>'+(n+1)+'品目｜'+m[1]+'</small>'+m[2]+'</div>';mn.appendChild(d)});
  try{$('send').href='../line-next/?r='+a.now+'&m='+a.m+'&y='+a.age}catch(e){}
  show('result');confetti();
  setTimeout(function(){bs.classList.add('run');bs.querySelectorAll('.bar').forEach(function(d,n){d.querySelector('i').style.height=Math.max(8,v[n]/v[2]*72)+'%';count(d.querySelector('b'),v[n])})},700);
