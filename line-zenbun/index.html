@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive"><meta name="color-scheme" content="light only">
+<title>LINEの全文（確認用）｜お金の勉強会</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--g1:#19B394;--g2:#0E9C86;--gd:#0A6F62;--or:#FF7A1A;--ye:#FFF27A;--gold:#D9A441;--gold2:#F5D98A;--ink:#24413C;--sub:#5E7672;--line:#06C755;--chat:#9DB9E0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;background:#F3F8F5;color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;font-weight:500;font-size:17px;line-height:1.75}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 80px}
+.top{background:linear-gradient(170deg,var(--g1),var(--g2));color:#fff;padding:30px 16px 34px;text-align:center}
+.top small{display:inline-block;background:var(--ye);color:var(--gd);font-weight:900;border-radius:999px;padding:2px 14px;font-size:13px}
+.top h1{margin:10px 0 6px;font-size:clamp(26px,7vw,36px);font-weight:900;line-height:1.3}
+.top p{margin:0;font-size:15px;font-weight:700}
+h2{font-size:23px;font-weight:900;margin:44px 0 4px;display:flex;align-items:center;gap:10px;line-height:1.35}
+h2 i{flex:none;width:38px;height:38px;border-radius:50%;background:var(--or);color:#fff;font-style:normal;display:grid;place-items:center;font-size:20px}
+.lead{margin:0 0 14px;color:var(--sub);font-size:15px;font-weight:700}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0 6px}
+.count div{background:#fff;border-radius:16px;padding:10px 4px;text-align:center;font-weight:900;font-size:13px;border:2px solid #DDEBE5}
+.count b{display:block;font-size:28px;line-height:1.1;color:var(--gd)}
+.list{background:#fff;border-radius:18px;border:2px solid #DDEBE5;overflow:hidden;margin-top:10px}
+.row{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:10px 14px;border-top:1px solid #E6F0EC;text-decoration:none;color:inherit}
+.row:first-child{border-top:0}
+.row b{font-weight:900;font-size:16px}.row span{grid-column:1;font-size:13px;color:var(--sub);font-weight:700;line-height:1.4}
+.row em,.msg header em{grid-row:1/3;grid-column:2;align-self:center;font-style:normal;font-weight:900;font-size:12px;border-radius:999px;padding:3px 10px;white-space:nowrap}
+.k-new em{background:#FFE6D2;color:#B34B00}.k-fix em{background:#FFF4C2;color:#7A5B00}.k-keep em{background:#E3F4EE;color:var(--gd)}.k-stop em{background:#E7E9EC;color:#59626B}
+.msg{background:#fff;border-radius:22px;border:2px solid #DDEBE5;padding:16px 14px 14px;margin:14px 0;scroll-margin-top:12px}
+.msg header{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.msg .when{font-weight:900;font-size:20px;line-height:1.3}
+.msg dl{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:8px 0 12px;font-size:14px;font-weight:700}
+.msg dt{color:var(--gd);font-weight:900}.msg dd{margin:0;color:var(--sub)}
+.talk{background:var(--chat);border-radius:18px;padding:14px 10px 16px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.pane{display:flex;flex-direction:column;gap:8px;align-items:flex-start;width:100%}.pane[hidden]{display:none}
+.b{background:#fff;border-radius:6px 18px 18px 18px;padding:11px 13px;max-width:88%;white-space:pre-wrap;font-weight:700;font-size:16px;line-height:1.65;overflow-wrap:anywhere}
+.b .u{color:#1565C0;text-decoration:underline;font-size:13px}.b .v{background:#EAF6F2;color:var(--gd);border-radius:6px;padding:0 3px;font-size:14px}
+.b.img{margin:0;padding:0;overflow:hidden;width:78%;border-radius:16px;background:#fff}
+.b.img.wide{width:100%;max-width:100%}
+.b.img img{display:block;width:100%;height:auto}
+.b.img figcaption{font-size:12px;color:var(--sub);font-weight:700;padding:4px 10px 6px;white-space:normal}
+.b.btn{background:var(--line);color:#fff;text-align:center;font-weight:900;border-radius:14px;box-shadow:0 4px 0 #04913E;width:88%;white-space:normal}
+.to{margin:-2px 0 2px 6px;font-size:12px;color:#33506F;font-weight:700}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:0 0 8px}
+.tabs button{font:inherit;font-weight:900;font-size:13px;border:2px solid #CFE3DC;background:#EEF6F2;color:var(--gd);border-radius:12px;padding:8px 2px;cursor:pointer}
+.tabs button.on{background:var(--g2);color:#fff;border-color:var(--gd)}
+.memo{margin:12px 0 0;padding:10px 12px 10px 30px;background:#FFFBE6;border:2px dashed var(--gold);border-radius:14px;font-size:14px;font-weight:700;color:#6B5200}
+.memo li{margin:3px 0}
+.rule{background:#fff;border:2px solid #DDEBE5;border-radius:18px;padding:12px 16px;font-size:15px;font-weight:700}
+.rule ul{margin:6px 0 0;padding-left:20px}
+footer{margin-top:40px;text-align:center;color:var(--sub);font-size:13px;font-weight:700}
+</style></head><body>
+<div class="top"><small>確認用の見本・本番には入れていません</small><h1>LINEの全文</h1><p>おばあちゃんでもできる お金の増やし方 オンライン勉強会</p></div>
+<div class="wrap">
+<div class="count"><div><b>10</b>新しく作る</div><div><b>4</b>言葉を直す</div><div><b>4</b>今のまま</div><div><b>1</b>止める</div></div>
+<div class="list"><a class="row k-new" href="#A1"><b>追加の直後</b><span>新しいLPから追加した人（Xから来た人は今の別の文のまま）</span><em>新しく作る</em></a><a class="row k-new" href="#A2"><b>診断の結果を送った直後</b><span>診断の最後のボタンを押した人（自動で返る・タイプごとに4種類）</span><em>新しく作る</em></a><a class="row k-keep" href="#A3"><b>10分後</b><span>全員</span><em>今のまま</em></a><a class="row k-new" href="#A4"><b>30分後</b><span>まだ申し込んでいない人</span><em>新しく作る</em></a><a class="row k-new" href="#A5"><b>1日後 19:30</b><span>まだ申し込んでいない人</span><em>新しく作る</em></a><a class="row k-new" href="#A6"><b>2日後 19:30</b><span>まだ申し込んでいない人</span><em>新しく作る</em></a><a class="row k-new" href="#A7"><b>3日後 20:00</b><span>まだ申し込んでいない人</span><em>新しく作る</em></a><a class="row k-stop" href="#A8"><b>4日後 20:00</b><span>―</span><em>止める</em></a><a class="row k-keep" href="#A9"><b>7日後・14日後・21日後</b><span>全員（21日後は、申し込んでいない人）</span><em>今のまま</em></a><a class="row k-new" href="#B1"><b>申込の直後</b><span>申し込んだ人</span><em>新しく作る</em></a><a class="row k-keep" href="#B2"><b>7日前 12:30</b><span>申し込んだ人</span><em>今のまま</em></a><a class="row k-fix" href="#B3"><b>3日前 12:30</b><span>申し込んだ人</span><em>言葉を直す</em></a><a class="row k-fix" href="#B4"><b>前日 12:30</b><span>申し込んだ人</span><em>言葉を直す</em></a><a class="row k-keep" href="#B5"><b>当日 7:30／1時間前／5分前</b><span>申し込んだ人</span><em>今のまま</em></a><a class="row k-fix" href="#B6"><b>翌朝 8:00</b><span>申し込んだが、席に着けなかった人</span><em>言葉を直す</em></a><a class="row k-fix" href="#B7"><b>2日後 19:30</b><span>申し込んだが、席に着けなかった人</span><em>言葉を直す</em></a><a class="row k-new" href="#C1"><b>翌朝 8:00</b><span>参加した人</span><em>新しく作る</em></a><a class="row k-new" href="#D1"><b>はじめての人のメニュー</b><span>追加した全員</span><em>新しく作る</em></a><a class="row k-new" href="#D2"><b>参加した人のメニュー</b><span>「勉強会参加済み」の人</span><em>新しく作る</em></a></div>
+<h2><i>✓</i>全体でそろえた言葉</h2>
+<div class="rule"><ul>
+<li>1回「1〜3組」。毎月「3万円から」。相談は「60分 税込5,500円」、参加した方は無料。</li>
+<li>カメラはオフのままでOK。講師に聞かれたら、声で答える。金額は口に出さない。</li>
+<li>差出人は「主催の森川」。当日の講師の名前は書いていません。</li>
+<li>緑の四角は、UTAGEが自動で入れ替える所です（お名前・日時）。</li>
+</ul></div>
+<section id="A"><h2><i>A</i>LINEを追加してから、申し込むまで</h2><p class="lead">シナリオ「広告流入」。申し込んだ人には、30分後からの案内は届きません。</p><article class="msg k-new" id="A1"><header><span class="when">追加の直後</span><em>新しく作る</em></header><dl><dt>届く人</dt><dd>新しいLPから追加した人（Xから来た人は今の別の文のまま）</dd><dt>今</dt><dd>お礼＋3つの質問カード</dd></dl><div class="talk"><div class="b"><span class="v">%line_name%</span>さん
+ご登録ありがとうございます。
+「おばあちゃんでもできる お金の増やし方 オンライン勉強会」主催の森川です😊
+
+最初に、1分の診断をどうぞ。
+絵を5つ選ぶだけで、この3つが届きます。
+
+・あなたのお金のタイプ
+・毎月の積み立てが、この先どう育つか
+・あなたの回でお話しする3つ</div><figure class="b img"><img src="img/shindan_cover.jpg" alt="診断の表紙。タップで診断ページ" loading="lazy"><figcaption>診断の表紙。タップで診断ページ</figcaption></figure><div class="b btn">診断をはじめる（1分）</div><p class="to">押すと：診断ページ</p><div class="b btn">先に、空いている日を見る</div><p class="to">押すと：予約ページ</p></div><ul class="memo"><li>今の「登録直後_3問カード」は下書きにして残します。3つの質問は診断の中に入るので、別では送りません。</li></ul></article><article class="msg k-new" id="A2"><header><span class="when">診断の結果を送った直後</span><em>新しく作る</em></header><dl><dt>届く人</dt><dd>診断の最後のボタンを押した人（自動で返る・タイプごとに4種類）</dd><dt>今</dt><dd>なし（新しく作る）</dd></dl><div class="tabs" data-t="A2"><button type="button" class="on" data-i="0">たねまき</button><button type="button" data-i="1">めばえ</button><button type="button" data-i="2">つぼみ</button><button type="button" data-i="3">はなさか</button></div><div class="talk"><div class="pane" data-p="A2-0"><figure class="b img"><img src="img/kekka_1.jpg" alt="結果カード。タップで予約ページ" loading="lazy"><figcaption>結果カード。タップで予約ページ</figcaption></figure><div class="b">結果を受け取りました📋
+<span class="v">%line_name%</span>さんは「たねまきさん」。
+まだ何もしていなくて、大丈夫です。
+まく順番さえ分かれば、あとは育つのを待つだけです。
+
+当日は、この結果と、選んでいただいた「聞きたいこと」から話を始めます。
+
+勉強会は、Zoomで1時間。
+1回1〜3組の少人数で、参加は無料です。
+ご家族と一緒でも、お一人でも。</div><div class="b btn">日程を選ぶ</div><p class="to">押すと：予約ページ</p></div><div class="pane" hidden data-p="A2-1"><figure class="b img"><img src="img/kekka_2.jpg" alt="結果カード。タップで予約ページ" loading="lazy"><figcaption>結果カード。タップで予約ページ</figcaption></figure><div class="b">結果を受け取りました📋
+<span class="v">%line_name%</span>さんは「めばえさん」。
+口座を作ったのは、大きな一歩です。
+次は、何をどれだけ育てるかを決める番です。
+
+当日は、この結果と、選んでいただいた「聞きたいこと」から話を始めます。
+
+勉強会は、Zoomで1時間。
+1回1〜3組の少人数で、参加は無料です。
+ご家族と一緒でも、お一人でも。</div><div class="b btn">日程を選ぶ</div><p class="to">押すと：予約ページ</p></div><div class="pane" hidden data-p="A2-2"><figure class="b img"><img src="img/kekka_3.jpg" alt="結果カード。タップで予約ページ" loading="lazy"><figcaption>結果カード。タップで予約ページ</figcaption></figure><div class="b">結果を受け取りました📋
+<span class="v">%line_name%</span>さんは「つぼみさん」。
+続けているのが、いちばんの力です。
+今のやり方が合っているか、当日いっしょに確かめましょう。
+
+当日は、この結果と、選んでいただいた「聞きたいこと」から話を始めます。
+
+勉強会は、Zoomで1時間。
+1回1〜3組の少人数で、参加は無料です。
+ご家族と一緒でも、お一人でも。</div><div class="b btn">日程を選ぶ</div><p class="to">押すと：予約ページ</p></div><div class="pane" hidden data-p="A2-3"><figure class="b img"><img src="img/kekka_4.jpg" alt="結果カード。タップで予約ページ" loading="lazy"><figcaption>結果カード。タップで予約ページ</figcaption></figure><div class="b">結果を受け取りました📋
+<span class="v">%line_name%</span>さんは「はなさかさん」。
+ここまで育てた方は多くありません。
+次は、守り方と、笑って使う順番です。
+
+当日は、この結果と、選んでいただいた「聞きたいこと」から話を始めます。
+
+勉強会は、Zoomで1時間。
+1回1〜3組の少人数で、参加は無料です。
+ご家族と一緒でも、お一人でも。</div><div class="b btn">日程を選ぶ</div><p class="to">押すと：予約ページ</p></div></div><ul class="memo"><li>診断の最後のボタンを押すと、「診断結果：めばえさん／毎月3万円／15年／聞きたいこと：新NISA」のような1行がトークに入ります。送ると、この返事が自動で届きます。</li><li>返事の合図は「診断結果：たねまきさん」など4つ（前方一致）。タイプ名のラベルも付けます。講師は当日、この1行を見て話を始めます。</li></ul></article><article class="msg k-keep" id="A3"><header><span class="when">10分後</span><em>今のまま</em></header><dl><dt>届く人</dt><dd>全員</dd><dt>今</dt><dd>「何で知りましたか」のボタン1問</dd></dl><ul class="memo"><li>今のまま使います。広告・紹介・SNSのどこから来たかを数える1問です。</li></ul></article><article class="msg k-new" id="A4"><header><span class="when">30分後</span><em>新しく作る</em></header><dl><dt>届く人</dt><dd>まだ申し込んでいない人</dd><dt>今</dt><dd>声2つ＋家族の変化の長文</dd></dl><div class="talk"><figure class="b img"><img src="img/photo.jpg" alt="LPと同じ写真" loading="lazy"><figcaption>LPと同じ写真</figcaption></figure><div class="b">50代・60代で学び直した方の声です。
+
+「お金に対する不安が和らぎ、生き方まで変わりました」
+大和田さん（50代・サービス業）
+
+「ずっと興味はありましたが、何を信じていいか分からず、踏み出せずにいました」
+住田さん（60代・会社員）
+
+今週・来週の空きは、下のボタンから見られます📅</div><div class="b btn">日程を選ぶ</div><p class="to">押すと：予約ページ</p></div><ul class="memo"><li>声は2つとも、LPに載せている文をそのまま使っています。</li></ul></article><article class="msg k-new" id="A5"><header><span class="when">1日後 19:30</span><em>新しく作る</em></header><dl><dt>届く人</dt><dd>まだ申し込んでいない人</dd><dt>今</dt><dd>会の雰囲気＋中身5つ</dd></dl><div class="talk"><div class="b"><span class="v">%line_name%</span>さん、こんばんは。
+
+「Zoomは、はじめてで…」という方へ。
+やることは3つだけです。
+
+1．届いたリンクを押す
+2．カメラはオフのまま
+3．講師に聞かれたら、声で答える
+
+金額は口に出さなくてOKです。
+お申し込みのあと、入り方を一度ためせるリンクが届きます。</div><figure class="b img"><img src="img/zoom3.jpg" alt="3コマの図" loading="lazy"><figcaption>3コマの図</figcaption></figure><div class="b btn">日程を選ぶ</div><p class="to">押すと：予約ページ</p></div></article><article class="msg k-new" id="A6"><header><span class="when">2日後 19:30</span><em>新しく作る</em></header><dl><dt>届く人</dt><dd>まだ申し込んでいない人</dd><dt>今</dt><dd>子育て中の苦労話</dd></dl><div class="talk"><div class="b"><span class="v">%line_name%</span>さん、こんばんは。
+
+ご自分の数字で、じっくり相談したい方へ。
+道は2つあります。
+
+A．個別相談から始める
+　60分・税込5,500円
+
+B．勉強会に参加してから相談する
+　勉強会は無料。参加された方は、ご相談も無料
+
+おすすめは、Bです。
+勉強会で全体が見えてからのほうが、相談の1時間を深く使えます。
+
+相談では、NISAのことも、家計のことも、もしもの備えのことも伺います。</div><div class="b btn">勉強会の日程を選ぶ（無料）</div><p class="to">押すと：予約ページ</p><div class="b btn">個別相談を予約する（60分 5,500円）</div><p class="to">押すと：有料の相談ページ（10月に作ったもの）</p></div></article><article class="msg k-new" id="A7"><header><span class="when">3日後 20:00</span><em>新しく作る</em></header><dl><dt>届く人</dt><dd>まだ申し込んでいない人</dd><dt>今</dt><dd>朝・夜・夜の3通（かっこいい親・さすがママ）</dd></dl><div class="talk"><div class="b">物価は上がるのに、貯金はそのまま。
+
+50代・60代からでも、
+まだ間に合います。
+始めるなら、今日。
+
+旅も、孫へのお祝いも、
+笑って出せる私へ。
+
+日程は2週間先まで選べます📅</div><div class="b btn">日程を選ぶ</div><p class="to">押すと：予約ページ</p><div class="b">今回は見送る方へ。
+このあとは、月に数回、家計の役に立つ話だけをお届けします。</div></div><ul class="memo"><li>今の「3日後 8:00」「3日後 21:00」は下書きにします。3日目は、この1通だけになります。</li></ul></article><article class="msg k-stop" id="A8"><header><span class="when">4日後 20:00</span><em>止める</em></header><dl><dt>届く人</dt><dd>―</dd><dt>今</dt><dd>今回見送る方へ（18分の動画の案内つき）</dd></dl><ul class="memo"><li>止めます（下書きにして残す）。見送る方への一言は3日後に入れました。18分の動画の案内も、ここで外れます。</li></ul></article><article class="msg k-keep" id="A9"><header><span class="when">7日後・14日後・21日後</span><em>今のまま</em></header><dl><dt>届く人</dt><dd>全員（21日後は、申し込んでいない人）</dd><dt>今</dt><dd>ラジオの紹介／参加した方のその後／新しい日程</dd></dl><ul class="memo"><li>文は今のまま使います。50代の女性の話と、ラジオの紹介で、新しいLPとずれていません。</li><li>3通に付いている画像3枚は、入れ替えの日に目で確かめます。「月5万円」「1〜3名」が残っていたら、「毎月3万円」「1〜3組」に直します。</li></ul></article></section><section id="B"><h2><i>B</i>申し込んでから、当日まで</h2><p class="lead">シナリオ「リマインダ」。11月に100人テストを通した型を使い、言葉だけ新しい流れに合わせます。</p><article class="msg k-new" id="B1"><header><span class="when">申込の直後</span><em>新しく作る</em></header><dl><dt>届く人</dt><dd>申し込んだ人</dd><dt>今</dt><dd>お礼・入り口・当日のこと（1つの長い吹き出し）</dd></dl><div class="talk"><figure class="b img"><img src="img/seki.jpg" alt="席札カード" loading="lazy"><figcaption>席札カード</figcaption></figure><div class="b"><span class="v">%line_name%</span>さん
+ご予約ありがとうございます😊
+お金の増やし方オンライン勉強会、主催の森川です。
+
+<span class="v">%line_name%</span>さんのお席をご用意しました。
+
+📅 開始：<span class="v">%event_date%</span>
+🎧 Zoomで約1時間（スマホでOK）
+
+▼当日は、ここを押すだけで入れます
+<span class="u">https://mm738966m-boop.github.io/okane-benkyokai/zoom/?m=<span class="v">%mail%</span></span></div><div class="b">いま1分だけ、お願いがあります。
+上のリンクを、一度だけ押してみてください。
+
+・日時の入ったページが出たら、準備OKです
+・Zoomのアプリがまだの方は、そのページの「アプリを入れる」から入れられます（無料です）
+
+先に済ませておくと、当日は押すだけです。</div><div class="b">当日のこと
+
+・診断の結果と「聞きたいこと」から話を始めます
+・カメラはオフのままでOKです
+・講師が順番にお聞きするので、声で答えるだけでOKです
+　（イヤホンがあると安心です）
+・金額は口に出さなくて大丈夫です
+
+当日までに何度か、このLINEで入り口をお送りします。
+いちばん最後は、始まる5分前です。</div><div class="b">ご家族と一緒に聞く方へ。
+下のカードを、そのままご家族に送れます。
+（画像を長押しして「転送」）
+となりで一緒に聞けます。</div><figure class="b img"><img src="img/kazoku.jpg" alt="家族に送るカード" loading="lazy"><figcaption>家族に送るカード</figcaption></figure></div><ul class="memo"><li>今の文から外したのは「会の中で、商品をおすすめすることはありません」の1行です。足したのは、席札カード・診断の1行・家族に送るカードです。</li><li>「新NISA、はじめる前の3つのチェック」のページは、前日のLINEに移します。</li></ul></article><article class="msg k-keep" id="B2"><header><span class="when">7日前 12:30</span><em>今のまま</em></header><dl><dt>届く人</dt><dd>申し込んだ人</dd><dt>今</dt><dd>あと1週間・入り口</dd></dl><ul class="memo"><li>今のまま使います。</li></ul></article><article class="msg k-fix" id="B3"><header><span class="when">3日前 12:30</span><em>言葉を直す</em></header><dl><dt>届く人</dt><dd>申し込んだ人</dd><dt>今</dt><dd>持ち帰る3つ＋「聞きたいこと」のボタン4つ</dd></dl><div class="talk"><div class="b"><span class="v">%line_name%</span>さん
+森川です😊
+勉強会まで、あと3日です。
+
+📅 開始：<span class="v">%event_date%</span>
+
+▼当日は、ここを押すだけです
+<span class="u">https://mm738966m-boop.github.io/okane-benkyokai/zoom/?m=<span class="v">%mail%</span></span>
+
+当日、持ち帰っていただくのは、この3つです。
+・<span class="v">%line_name%</span>さんの家の「毎月いくらなら無理がないか」
+・お金を「使う・守る・増やす」に分ける目安
+・最後にお渡しする「書くだけ設計ノート」
+
+カメラはオフのままでOKです。
+声でやりとりするので、イヤホンがあると安心です🎧
+
+ご都合が変わったときは、このトークに「変更」と一言ください。
+別の日にお席を移せます。</div><div class="b">当日は、診断で選んでいただいた「聞きたいこと」から始めます。
+変わった方・まだの方は、下から1つ選んでください。</div><div class="b btn">毎月いくら積み立てるか</div><p class="to">押すと：押すと「聞きたいこと：◯◯」が送られる（今と同じ）</p><div class="b btn">老後のお金</div><div class="b btn">新NISAのこと</div><div class="b btn">何から始めるか</div></div><ul class="memo"><li>直すのは2か所です。「顔出しはなしで大丈夫です」を「カメラはオフのままでOKです」に。ボタンの前の一言を、診断とつながる文に。</li><li>ボタンの「教育費」は「新NISAのこと」に替えます。診断の選択肢とそろえるためです。</li></ul></article><article class="msg k-fix" id="B4"><header><span class="when">前日 12:30</span><em>言葉を直す</em></header><dl><dt>届く人</dt><dd>申し込んだ人</dd><dt>今</dt><dd>入り口＋明日の流れ</dd></dl><div class="talk"><div class="b"><span class="v">%line_name%</span>さん
+こんにちは、森川です😊
+
+いよいよ明日ですね。
+入り口を、先にお送りします。
+
+📅 開始：<span class="v">%event_date%</span>
+
+▼明日、5分前に押すだけで入れます
+<span class="u">https://mm738966m-boop.github.io/okane-benkyokai/zoom/?m=<span class="v">%mail%</span></span>
+
+まだでしたら、今日のうちに一度だけ押してみてください。
+日時の入ったページが出たら、準備OKです。
+Zoomのアプリがまだの方は、そのページから入れられます。</div><div class="b">明日の流れは、こんな感じです。
+
+1. はじめに、声の聞こえ方を一緒に確かめます
+2. 診断の結果と「聞きたいこと」から、話を始めます
+3. そこから、<span class="v">%line_name%</span>さんの家の
+「毎月いくらなら無理がないか」を一緒に出します
+
+金額は口に出さなくて大丈夫です。
+出てきた数字は、手元のメモに書くだけです✏️
+会の終わりに「わが家は毎月◯円」の1行を書いて、
+そのまま持ち帰っていただきます。
+
+カメラはオフのままでOKです。
+
+🎁 最後に「書くだけ設計ノート」をお渡しします。
+
+もし明日、声を出しにくい場所になりそうなら、
+別の日にお席を移せます。
+このトークに「変更」と一言ください。</div><div class="b">今夜、お時間があれば1ページだけ。
+「新NISA、はじめる前の3つのチェック」
+<span class="u">https://mm738966m-boop.github.io/okane-benkyokai/nisa/</span></div><div class="b btn">明日参加します</div><p class="to">押すと：押すと「明日参加します」が送られる（今と同じ）</p></div><ul class="memo"><li>直すのは3か所です。「会の中で、商品をおすすめすることはありません」を外す。流れの2を診断につなげる。新NISAの1ページをここに移す。</li></ul></article><article class="msg k-keep" id="B5"><header><span class="when">当日 7:30／1時間前／5分前</span><em>今のまま</em></header><dl><dt>届く人</dt><dd>申し込んだ人</dd><dt>今</dt><dd>入り口を3回</dd></dl><ul class="memo"><li>3通とも今のまま使います。新しいLPとずれている言葉はありません。</li></ul></article><article class="msg k-fix" id="B6"><header><span class="when">翌朝 8:00</span><em>言葉を直す</em></header><dl><dt>届く人</dt><dd>申し込んだが、席に着けなかった人</dd><dt>今</dt><dd>別の日のご案内（18分の動画の案内つき）</dd></dl><div class="talk"><div class="b"><span class="v">%line_name%</span>さん
+おはようございます、森川です😊
+
+昨日の勉強会と同じ内容で、
+別の日にも、お席をご用意できます。
+
+もしかして、Zoomにうまく入れなかった、
+ということはありませんでしたか？
+そのときは、このトークに「入れなかった」と一言ください。
+次は、入り方から一緒に確かめます。
+
+▼別の日を選ぶ（押すと日程の一覧が開きます）
+<span class="u">https://utage-system.com/event/y8sB9RpZilKk/register</span>
+
+また、お話しできるのを楽しみにしています😊</div></div><ul class="memo"><li>直すのは1か所です。「18分の動画にまとめた回もあります」の段落を外します。</li></ul></article><article class="msg k-fix" id="B7"><header><span class="when">2日後 19:30</span><em>言葉を直す</em></header><dl><dt>届く人</dt><dd>申し込んだが、席に着けなかった人</dd><dt>今</dt><dd>前の診断（質問2つ）のご案内</dd></dl><div class="talk"><div class="b"><span class="v">%line_name%</span>さん
+
+先日はご都合が合わず、残念でした。
+日程はまた作れますので、そこは気にしないでください。</div><div class="b">まだの方は、1分の診断をどうぞ。
+絵を5つ選ぶだけで、お金のタイプと、
+毎月の積み立てがこの先どう育つかが見られます。
+
+次の回は、その結果から話を始めます。</div><div class="b btn">診断をはじめる（1分）</div><p class="to">押すと：診断ページ</p><div class="b btn">別の日を選ぶ</div><p class="to">押すと：予約ページ</p></div><ul class="memo"><li>前の診断（質問2つ）の案内を、新しい診断に替えます。</li></ul></article></section><section id="C"><h2><i>C</i>勉強会に参加したあと</h2><p class="lead">担当が「参加済」を付けた人に、翌朝届きます。ここでメニューが切り替わります。</p><article class="msg k-new" id="C1"><header><span class="when">翌朝 8:00</span><em>新しく作る</em></header><dl><dt>届く人</dt><dd>参加した人</dd><dt>今</dt><dd>下書きのまま（相談60分・ふだん11,000円を1回だけ無料）</dd></dl><div class="talk"><div class="b"><span class="v">%line_name%</span>さん
+おはようございます😊
+昨日は、お金の勉強会にご参加いただき、ありがとうございました。
+
+お土産の「書くだけ設計ノート」です🎁
+毎月いくら回せるかの目安を、ご自分の数字で書き出せます。</div><div class="b btn">お土産のノートを開く</div><p class="to">押すと：ノートのページ</p><div class="b">このあと気になることが出てきたら、個別にご相談ください。
+NISAのことも、家計のことも、もしもの備えのことも。
+参加された方のご相談は、無料です（Zoom・60分）。
+
+下のメニューが、参加された方用に変わりました。
+「個別に相談」から、日時を選べます。</div></div><ul class="memo"><li>このLINEと同時に、メニューを参加者用に切り替え、ラベル「勉強会参加済み」を付けます。</li><li>今の下書きにある「ふだんは11,000円」「はじめての1回だけ」は使いません。お金の勉強会のLINEでは、相談は60分5,500円、参加した方は無料（回数も期限も書かない）でそろえます。</li><li>当日のうちに、担当（森川・尾道）が参加者に「参加済」を付けます。付け忘れると、このLINEとメニューの切り替えが届きません。</li></ul></article></section><section id="D"><h2><i>D</i>メニューを押したとき</h2><p class="lead">はじめての人用と、参加した人用の2枚。画像は下に載せています。</p><article class="msg k-new" id="D1"><header><span class="when">はじめての人のメニュー</span><em>新しく作る</em></header><dl><dt>届く人</dt><dd>追加した全員</dd><dt>今</dt><dd>勉強会・診断・新NISAの質問・18分の動画・ラジオ</dd></dl><div class="talk"><figure class="b img wide"><img src="img/menu_hajimete.jpg" alt="メニュー画像（2500×1686）" loading="lazy"><figcaption>メニュー画像（2500×1686）</figcaption></figure><div class="b">個別相談は、60分・税込5,500円です。
+NISAの始め方、毎月の額、家計の見直し、もしもの備えまで、ご自分の数字でじっくり話せます。
+
+勉強会（無料・1時間）に参加された方は、ご相談も無料です。</div><div class="b btn">先に、勉強会の日程を見る（無料）</div><p class="to">押すと：予約ページ</p><div class="b btn">個別相談を予約する（5,500円）</div><p class="to">押すと：有料の相談ページ</p></div><ul class="memo"><li>お金の勉強会（無料）→ 予約ページ。予約とLINEがつながる開き方にします（実機テストで確かめてから）。</li><li>1分診断 → 診断ページ。</li><li>個別に相談 → 下の返事が届く。</li><li>森川のラジオ → Voicyの「まずはこの30本」のページ。会社のホームページ → fulfull.jp。</li></ul></article><article class="msg k-new" id="D2"><header><span class="when">参加した人のメニュー</span><em>新しく作る</em></header><dl><dt>届く人</dt><dd>「勉強会参加済み」の人</dd><dt>今</dt><dd>なし（新しく作る）</dd></dl><div class="talk"><figure class="b img wide"><img src="img/menu_sanka.jpg" alt="メニュー画像（2500×1686）" loading="lazy"><figcaption>メニュー画像（2500×1686）</figcaption></figure><div class="b">ご家族やお友だちに、そのまま送れるカードです。
+（画像を長押しして「転送」）
+
+申し込みは、こちらのページからできます。
+<span class="u">https://fulfull.jp/lp/</span></div><figure class="b img"><img src="img/kazoku.jpg" alt="家族に送るカード" loading="lazy"><figcaption>家族に送るカード</figcaption></figure></div><ul class="memo"><li>個別に相談（無料）→ 相談の予約ページ（Zoom・60分）。</li><li>お土産のノート → ノートのページ。</li><li>家族を誘う → 下の返事が届く。</li><li>森川のラジオ・会社のホームページは、はじめての人用と同じです。</li></ul></article></section>
+<footer>fulfull株式会社｜確認用（第1版・2026年11月26日）</footer>
+</div>
+<script>
+document.querySelectorAll('.tabs').forEach(function(t){t.querySelectorAll('button').forEach(function(b){b.onclick=function(){
+ t.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
+ document.querySelectorAll('[data-p^="'+t.dataset.t+'-"]').forEach(function(p){p.hidden=p.dataset.p!==t.dataset.t+'-'+b.dataset.i});
+}})});
+</script>
+</body></html>
