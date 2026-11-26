@@ -1,0 +1,410 @@
+{
+"img": {
+"shindan_cover": "https://utagesystem.s3.ap-northeast-1.amazonaws.com/ueJTHN0tTgY1/linetemplate/wuDIhlWSWJLOMXfTqP7DmTZKkbTx3mTyJktGninR.jpg",
+"kekka_1": "https://utagesystem.s3.ap-northeast-1.amazonaws.com/ueJTHN0tTgY1/linetemplate/P91DhizfzfZCzvb0UA8d3J56Sf9YSHtBtPdGvQCM.jpg",
+"kekka_2": "https://utagesystem.s3.ap-northeast-1.amazonaws.com/ueJTHN0tTgY1/linetemplate/E50x4HzcIeMdwmzu49jHq0VIHWDwAClJ55BTJ0oC.jpg",
+"kekka_3": "https://utagesystem.s3.ap-northeast-1.amazonaws.com/ueJTHN0tTgY1/linetemplate/bWfClZXTzajn6eESnk2mKZKH39QU9Ns4R0mlvSbX.jpg",
+"kekka_4": "https://utagesystem.s3.ap-northeast-1.amazonaws.com/ueJTHN0tTgY1/linetemplate/GrULSkAIEnnSoK0OugFtYvvLcfBNPME4dkM5q2Bm.jpg",
+"seki": "https://utagesystem.s3.ap-northeast-1.amazonaws.com/ueJTHN0tTgY1/linetemplate/d5n8moyrAezvdKG2wpfdi6dRs30rTmwcxDZeTO0m.jpg",
+"kazoku": "https://utagesystem.s3.ap-northeast-1.amazonaws.com/ueJTHN0tTgY1/linetemplate/6xrsPSAmMALNRNU4hK8TbRPrlKyCWB1k4FfVbxa6.jpg",
+"zoom3": "https://utagesystem.s3.ap-northeast-1.amazonaws.com/ueJTHN0tTgY1/linetemplate/ujdDf3zZhOdif0asZQsBSzgSri57Hl1kwEMAOXrc.jpg",
+"ab_a": "https://utagesystem.s3.ap-northeast-1.amazonaws.com/ueJTHN0tTgY1/linetemplate/tdwQY1RJ0B3MMzGv5RGJohCmPFAPQIyKZ9e9k7Si.jpg",
+"ab_b": "https://utagesystem.s3.ap-northeast-1.amazonaws.com/ueJTHN0tTgY1/linetemplate/34g1JeR67tSnssgdMg5EF5BOTtyxo2aSGqmMKJSR.jpg",
+"mada": "https://utagesystem.s3.ap-northeast-1.amazonaws.com/ueJTHN0tTgY1/linetemplate/fHl9Nvigu9wTu9swvSkLKZYP2R0xDCB0qyZISs0M.jpg",
+"photo": "https://utagesystem.s3.ap-northeast-1.amazonaws.com/ueJTHN0tTgY1/linetemplate/dPFGprKgp6lBV1NrhHvt0bxBJvp865TXnPIiryDY.jpg"
+},
+"url": {
+"yoyaku": "https://utage-system.com/event/y8sB9RpZilKk/register",
+"shindan": "https://mm738966m-boop.github.io/okane-benkyokai/shindan/",
+"soudan30": "https://utage-system.com/event/WozrO52ma86D/register",
+"soudan_sanka": "https://utage-system.com/event/J0kYCST75TQ7/register",
+"note": "https://mm738966m-boop.github.io/okane-benkyokai/note/",
+"voicy": "https://fulfull.jp/voicy-step/",
+"hp": "https://fulfull.jp/"
+},
+"msg": {
+"A1": {
+"when": "追加の直後",
+"parts": [
+{
+"k": "t",
+"text": "%line_name%さん\nご登録ありがとうございます。\n「おばあちゃんでもできる お金の増やし方 オンライン勉強会」主催の森川です😊\n\n最初に、1分の診断をどうぞ。\n絵を5つ選ぶだけで、この3つが届きます。\n\n・あなたのお金のタイプ\n・毎月の積み立てが、この先どう育つか\n・あなたの回でお話しする3つ\n\n日程をすぐ見たい方は、下の「先に、空いている日を見る」からどうぞ📅"
+},
+{
+"k": "i",
+"file": "shindan_cover"
+},
+{
+"k": "b",
+"label": "診断をはじめる（1分）",
+"to": "診断ページ"
+},
+{
+"k": "b",
+"label": "先に、空いている日を見る",
+"to": "予約ページ"
+}
+]
+},
+"A2": {
+"when": "診断の結果を送った直後",
+"parts": [],
+"tabs": {
+"たねまき": [
+{
+"k": "i",
+"file": "kekka_1"
+},
+{
+"k": "t",
+"text": "結果を受け取りました📋\n「たねまきさん」ですね。\nここからが、はじまりです。\n貯めてきたお金も、りっぱな種です。\nまく順番が分かると、最初の一歩がぐっと軽くなります。\n\n当日は、この結果と、選んでいただいた「聞きたいこと」から話を始めます。\n\n勉強会は、Zoomで1時間。\n1回1〜3組の少人数で、参加は無料です。\nご家族と一緒でも、お一人でも。"
+},
+{
+"k": "b",
+"label": "日程を選ぶ",
+"to": "予約ページ"
+}
+],
+"めばえ": [
+{
+"k": "i",
+"file": "kekka_2"
+},
+{
+"k": "t",
+"text": "結果を受け取りました📋\n「めばえさん」ですね。\n口座を作ったのは、大きな一歩です。\n次は、何をどれだけ育てるかを決める番です。\n\n当日は、この結果と、選んでいただいた「聞きたいこと」から話を始めます。\n\n勉強会は、Zoomで1時間。\n1回1〜3組の少人数で、参加は無料です。\nご家族と一緒でも、お一人でも。"
+},
+{
+"k": "b",
+"label": "日程を選ぶ",
+"to": "予約ページ"
+}
+],
+"つぼみ": [
+{
+"k": "i",
+"file": "kekka_3"
+},
+{
+"k": "t",
+"text": "結果を受け取りました📋\n「つぼみさん」ですね。\n続けているのが、いちばんの力です。\n今のやり方が合っているか、当日いっしょに確かめましょう。\n\n当日は、この結果と、選んでいただいた「聞きたいこと」から話を始めます。\n\n勉強会は、Zoomで1時間。\n1回1〜3組の少人数で、参加は無料です。\nご家族と一緒でも、お一人でも。"
+},
+{
+"k": "b",
+"label": "日程を選ぶ",
+"to": "予約ページ"
+}
+],
+"はなさか": [
+{
+"k": "i",
+"file": "kekka_4"
+},
+{
+"k": "t",
+"text": "結果を受け取りました📋\n「はなさかさん」ですね。\nここまで育てた方は多くありません。\n次は、守り方と、笑って使う順番です。\n\n当日は、この結果と、選んでいただいた「聞きたいこと」から話を始めます。\n\n勉強会は、Zoomで1時間。\n1回1〜3組の少人数で、参加は無料です。\nご家族と一緒でも、お一人でも。"
+},
+{
+"k": "b",
+"label": "日程を選ぶ",
+"to": "予約ページ"
+}
+]
+}
+},
+"A3": {
+"when": "10分後",
+"parts": []
+},
+"A4": {
+"when": "30分後",
+"parts": [
+{
+"k": "i",
+"file": "photo"
+},
+{
+"k": "t",
+"text": "50代・60代で学び直した方の声です。\n\n大和田さん（50代・サービス業）\n\n「資産運用はやってみたいけど、どこでどう学べば良いのか、よくわからなかった。\nお金に関して、わたしの周りで、知識のある相談できる人がいなかった。\n\nVoicyを聴いて、投資の世界が身近に感じられました。\n\nお金に対する不安が和らいだ。\n年齢は関係ないという自信がついた。\n\nこの場所に出会えたからこそ、お金に対しての考え方、生き方を変えることができました」"
+},
+{
+"k": "t",
+"text": "住田さん（60代・会社員）\n\n「森川さんのVoicyを、常に聞いており。\n二年間聞いたあと、森川さんについていけば間違いないと確信しました。\n\nアットホームで、何かの問い合わせをしても迅速に応えてもらい、今のところ何ら、不満はありません。つまり、満足です。\n\n一番は、代表の森川さんの活動自体が、常に見えるというところだと思います」\n\n※ご本人の感想です。感じ方には個人差があります。"
+},
+{
+"k": "t",
+"text": "今週・来週の空きは、下のボタンから見られます📅\n診断がまだの方・結果を受け取っていない方は、「診断をはじめる」からどうぞ。"
+},
+{
+"k": "b",
+"label": "日程を選ぶ",
+"to": "予約ページ"
+},
+{
+"k": "b",
+"label": "診断をはじめる（1分）",
+"to": "診断ページ"
+}
+]
+},
+"A5": {
+"when": "1日後 19:30",
+"parts": [
+{
+"k": "t",
+"text": "%line_name%さん、こんばんは。\n\n「Zoomは、はじめてで…」という方へ。\nやることは3つだけです。\n\n1．届いたリンクを押す\n2．カメラはオフのまま\n3．講師に聞かれたら、声で答える\n\n貯金や収入の金額を、声に出して言う場面はありません。\n数字は、ご自分の手元のメモに書くだけです。\nお申し込みのあと、入り方を一度ためせるリンクが届きます。"
+},
+{
+"k": "i",
+"file": "zoom3"
+},
+{
+"k": "b",
+"label": "日程を選ぶ",
+"to": "予約ページ"
+}
+]
+},
+"A6": {
+"when": "2日後 19:30",
+"parts": [],
+"tabs": {
+"AとBのカード": [
+{
+"k": "t",
+"text": "%line_name%さん、こんばんは。\n\nご自分の数字で、じっくり相談したい方へ。\n道は2つあります。\n下のカードを押すと、そのまま進めます。\n\nおすすめは、Bです。\n勉強会で全体が見えてからのほうが、相談の1時間を深く使えます。"
+},
+{
+"k": "i",
+"file": "ab_a"
+},
+{
+"k": "i",
+"file": "ab_b"
+}
+]
+}
+},
+"A7": {
+"when": "3日後 20:00",
+"parts": [
+{
+"k": "t",
+"text": "物価は上がるのに、貯金はそのまま。\n\n50代・60代からでも、\nまだ間に合います。\n始めるなら、今日。\n\n日程は2週間先まで選べます📅"
+},
+{
+"k": "i",
+"file": "mada"
+},
+{
+"k": "b",
+"label": "日程を選ぶ",
+"to": "予約ページ"
+},
+{
+"k": "t",
+"text": "今回は見送る方へ。\nこのあとは、月に数回、家計の役に立つ話と、新しい日程のお知らせをお届けします。"
+}
+]
+},
+"A8": {
+"when": "4日後 20:00",
+"parts": []
+},
+"A9": {
+"when": "7日後・14日後・21日後",
+"parts": []
+},
+"B1": {
+"when": "申込の直後",
+"parts": [
+{
+"k": "i",
+"file": "seki"
+},
+{
+"k": "t",
+"text": "%line_name%さん\nご予約ありがとうございます😊\nお金の増やし方オンライン勉強会、主催の森川です。\n\n%line_name%さんのお席をご用意しました。\n\n📅 開始：%event_date%\n🎧 Zoomで約1時間（スマホでOK）\n\n▼当日は、ここを押すだけで入れます\nhttps://mm738966m-boop.github.io/okane-benkyokai/zoom/?m=%mail%"
+},
+{
+"k": "t",
+"text": "いま1分だけ、お願いがあります。\n上のリンクを、一度だけ押してみてください。\n\n・Zoomの画面が出たら、準備OKです（そのまま閉じて大丈夫です）\n・Zoomのアプリがまだの方は、入れる画面が出ます（無料です）\n\nうまくいかないときは、このトークに「Zoomに入れません」と一言ください。\n先に済ませておくと、当日は押すだけです。"
+},
+{
+"k": "t",
+"text": "当日のこと\n\n・診断の結果と「聞きたいこと」から話を始めます\n　（診断がまだの方は、当日その場でお聞きします）\n・カメラはオフのままでOKです\n・講師が順番にお聞きするので、声で答えるだけでOKです\n　（イヤホンがあると安心です）\n・貯金や収入の金額は、言わなくて大丈夫です\n　（数字は、手元のメモに書くだけ）\n\n当日までに何度か、このLINEで入り口をお送りします。\nいちばん最後は、始まる5分前です。"
+}
+]
+},
+"B1b": {
+"when": "申込の3分後",
+"parts": [
+{
+"k": "t",
+"text": "ご家族と一緒に聞く方へ。\n下のカードを、そのままご家族に送れます。\n（画像を長押しして「転送」）\nお家から一緒に聞けます。"
+},
+{
+"k": "i",
+"file": "kazoku"
+}
+]
+},
+"B2": {
+"when": "7日前 12:30",
+"parts": []
+},
+"B3": {
+"when": "3日前 12:30",
+"parts": [
+{
+"k": "t",
+"text": "%line_name%さん\n森川です😊\n勉強会まで、あと3日です。\n\n📅 開始：%event_date%\n\n▼当日は、ここを押すだけです\nhttps://mm738966m-boop.github.io/okane-benkyokai/zoom/?m=%mail%\n\n当日、持ち帰っていただくのは、この3つです。\n・%line_name%さんの家の「毎月いくらなら無理がないか」\n・お金を「使う・守る・増やす」に分ける目安\n・最後にお渡しする「書くだけ設計ノート」\n\nカメラはオフのままでOKです。\n声でやりとりするので、イヤホンがあると安心です🎧\n\nご都合が変わったときは、このトークに「変更」と一言ください。\n別の日にお席を移せます。"
+},
+{
+"k": "t",
+"text": "当日は、診断で選んでいただいた「聞きたいこと」から始めます。\n変わった方・まだの方は、下から1つ選んでください。"
+},
+{
+"k": "b",
+"label": "何から始めるか",
+"to": "押すと「聞きたいこと：◯◯」が送られる（今と同じ）"
+},
+{
+"k": "b",
+"label": "いくら貯めれば安心か",
+"to": ""
+},
+{
+"k": "b",
+"label": "新NISAのこと",
+"to": ""
+},
+{
+"k": "b",
+"label": "年金・退職金のこと",
+"to": ""
+}
+]
+},
+"B4": {
+"when": "前日 12:30",
+"parts": [
+{
+"k": "t",
+"text": "%line_name%さん\nこんにちは、森川です😊\n\nいよいよ明日ですね。\n入り口を、先にお送りします。\n\n📅 開始：%event_date%\n\n▼明日、5分前に押すだけで入れます\nhttps://mm738966m-boop.github.io/okane-benkyokai/zoom/?m=%mail%\n\nまだでしたら、今日のうちに一度だけ押してみてください。\nZoomの画面が出たら、準備OKです。\nZoomのアプリがまだの方は、入れる画面が出ます。"
+},
+{
+"k": "t",
+"text": "明日の流れは、こんな感じです。\n\n1. はじめに、声の聞こえ方を一緒に確かめます\n2. 診断の結果と「聞きたいこと」から、話を始めます\n（まだの方は、その場でひとことお聞きします）\n3. そこから、%line_name%さんの家の\n「毎月いくらなら無理がないか」を一緒に出します\n\n貯金や収入の金額は、言わなくて大丈夫です。\n出てきた数字は、手元のメモに書くだけです✏️\n会の終わりに「わが家は毎月◯円」の1行を書いて、\nそのまま持ち帰っていただきます。\n\nカメラはオフのままでOKです。\n\n🎁 最後に「書くだけ設計ノート」をお渡しします。\n\nもし明日、声を出しにくい場所になりそうなら、\n別の日にお席を移せます。\nこのトークに「変更」と一言ください。"
+},
+{
+"k": "t",
+"text": "今夜、お時間があれば1ページだけ。\n「新NISA、はじめる前の3つのチェック」\nhttps://mm738966m-boop.github.io/okane-benkyokai/nisa/"
+},
+{
+"k": "b",
+"label": "明日参加します",
+"to": "押すと「明日参加します」が送られる（今と同じ）"
+}
+]
+},
+"B5": {
+"when": "当日 7:30／1時間前／5分前",
+"parts": []
+},
+"B6": {
+"when": "翌朝 8:00",
+"parts": [
+{
+"k": "t",
+"text": "%line_name%さん\nおはようございます、森川です😊\n\n昨日の勉強会と同じ内容で、\n別の日にも、お席をご用意できます。\n\nもしかして、Zoomにうまく入れなかった、\nということはありませんでしたか？\nそのときは、このトークに「入れなかった」と一言ください。\n次は、入り方から一緒に確かめます。\n\n▼別の日を選ぶ（押すと日程の一覧が開きます）\nhttps://utage-system.com/event/y8sB9RpZilKk/register\n\nまた、お話しできるのを楽しみにしています😊"
+}
+]
+},
+"B7": {
+"when": "2日後 19:30",
+"parts": [
+{
+"k": "t",
+"text": "%line_name%さん\n\n先日はご都合が合わず、残念でした😌\n日程はまた作れますので、そこは気にしないでくださいね。"
+},
+{
+"k": "t",
+"text": "まだの方は、1分の診断をどうぞ🌱\n絵を5つ選ぶだけで、お金のタイプと、\n毎月の積み立てがこの先どう育つかが見られます。\n\n次の回は、その結果から話を始めます😊"
+},
+{
+"k": "i",
+"file": "shindan_cover"
+},
+{
+"k": "b",
+"label": "診断をはじめる（1分）",
+"to": "診断ページ"
+},
+{
+"k": "b",
+"label": "別の日を選ぶ 📅",
+"to": "予約ページ"
+}
+]
+},
+"C1": {
+"when": "翌朝 8:00",
+"parts": [
+{
+"k": "t",
+"text": "%line_name%さん\nおはようございます😊\n昨日は、お金の勉強会にご参加いただき、ありがとうございました。\n\nお土産の「書くだけ設計ノート」です🎁\n毎月いくら回せるかの目安を、ご自分の数字で書き出せます。"
+},
+{
+"k": "b",
+"label": "お土産のノートを開く",
+"to": "ノートのページ"
+},
+{
+"k": "t",
+"text": "このあと気になることが出てきたら、個別にご相談ください。\nNISAのことも、家計のことも、もしもの備えのことも。\n参加された方のご相談は、無料です（Zoom・60分）。\n\n下のメニューが、参加された方用に変わりました。\n「個別に相談」から、日時を選べます。"
+}
+]
+},
+"D1": {
+"when": "はじめての人のメニュー",
+"parts": [
+{
+"k": "i",
+"file": "menu_hajimete"
+},
+{
+"k": "t",
+"text": "個別相談は、30分・税込5,500円です。\nNISAの始め方、毎月の額、家計の見直し、もしもの備えまで、ご自分の数字でじっくり話せます。\n\n勉強会（無料・1時間）に参加された方は、ご相談も無料です。"
+},
+{
+"k": "b",
+"label": "先に、勉強会の日程を見る（無料）",
+"to": "予約ページ"
+},
+{
+"k": "b",
+"label": "個別相談を予約する（5,500円）",
+"to": "有料の相談ページ"
+}
+]
+},
+"D2": {
+"when": "参加した人のメニュー",
+"parts": [
+{
+"k": "i",
+"file": "menu_sanka"
+},
+{
+"k": "t",
+"text": "ご家族やお友だちに、そのまま送れるカードです。\n（画像を長押しして「転送」）\n\n申し込みは、こちらのページからできます。\nhttps://fulfull.jp/lp/"
+},
+{
+"k": "i",
+"file": "kazoku"
+}
+]
+}
+}
+}
