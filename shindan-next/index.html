@@ -20,21 +20,21 @@ html,body{margin:0;background:#EAF3EE;color:var(--ink);font-family:"Zen Maru Got
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;padding:0}
 .ol{color:var(--or);-webkit-text-stroke:.16em #fff;paint-order:stroke fill;text-shadow:0 .07em 0 rgba(160,70,0,.18);font-weight:900;line-height:1.15}
 /* 表紙 */
-.cv-top{background:linear-gradient(170deg,var(--g1),var(--g2));color:#fff;padding:16px 20px 44px;text-align:center;clip-path:polygon(0 0,100% 0,100% 82%,0 100%)}
-.cv-top p{margin:0;font-size:19px;font-weight:900;line-height:1.5;transform:rotate(-3deg)}
+.cv-top{background:linear-gradient(170deg,var(--g1),var(--g2));color:#fff;padding:18px 14px 48px;text-align:center;clip-path:polygon(0 0,100% 0,100% 82%,0 100%)}
+.cv-top p{margin:0;font-size:clamp(20px,6.3vw,25px);font-weight:900;line-height:1.5;transform:rotate(-3deg)}
 .cv-top b{color:var(--ye);font-size:1.35em}
 .cv-ph{margin:-34px 18px 0;border-radius:22px;overflow:hidden;border:5px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,.14);position:relative;aspect-ratio:1/0.66}
-.cv-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 32%;display:block}
-.cv-rb{position:absolute;left:-6px;bottom:14px;background:var(--ye);color:var(--ink);font-weight:900;font-size:16px;line-height:1.35;padding:6px 16px 6px 14px;transform:rotate(-3deg);box-shadow:0 3px 0 rgba(0,0,0,.1)}
+.cv-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 100%;display:block}
+.cv-rb{position:absolute;left:-6px;bottom:7px;background:var(--ye);color:var(--ink);font-weight:900;font-size:16px;line-height:1.3;padding:4px 16px 5px 14px;transform:rotate(-2deg);box-shadow:0 3px 0 rgba(0,0,0,.1)}
 .cv-rb b{font-size:1.35em}
 .cv-ttl{text-align:center;margin:12px 10px 0}
 .cv-ttl .s{display:inline-block;background:var(--or);color:#fff;font-size:17px;padding:2px 14px;font-weight:900;margin-bottom:6px}
-.cv-ttl h1{margin:0;font-size:46px}
+.cv-ttl h1{margin:0;font-size:clamp(37px,12vw,46px)}
 .cv-ttl h1 span{display:inline-block}
 .cv-ttl h1 .big{font-size:1.35em}
-.medals{display:flex;justify-content:center;gap:12px;margin:12px 0 2px}
-.medal{width:88px;height:88px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#2CC7A6,var(--g2) 70%);border:5px solid var(--gold);box-shadow:0 0 0 3px var(--gold2),0 6px 10px rgba(0,0,0,.15);color:#fff;display:grid;place-items:center;text-align:center;font-size:14px;line-height:1.25;font-weight:900}
-.medal b{display:block;color:var(--ye);font-size:24px}
+.medals{display:flex;justify-content:center;gap:12px;margin:14px 0 4px}
+.medal{width:clamp(88px,28vw,110px);height:clamp(88px,28vw,110px);border-radius:50%;background:radial-gradient(circle at 35% 30%,#2CC7A6,var(--g2) 70%);border:5px solid var(--gold);box-shadow:0 0 0 3px var(--gold2),0 6px 10px rgba(0,0,0,.15);color:#fff;display:grid;place-items:center;text-align:center;font-size:clamp(14px,4.4vw,17px);line-height:1.25;font-weight:900}
+.medal b{display:block;color:var(--ye);font-size:clamp(24px,7.6vw,30px)}
 .get{margin:22px 22px 0;background:#fff;border-radius:16px;padding:10px 14px;font-size:15px;line-height:1.7;border:2px dashed var(--g1)}
 .get b{color:var(--gd)}
 .go{margin:16px 22px 0;display:block;width:calc(100% - 44px);background:linear-gradient(180deg,var(--or2),var(--or));color:#fff;font-weight:900;font-size:24px;padding:16px 10px;border-radius:99px;box-shadow:0 6px 0 #C85A00,0 12px 18px rgba(200,90,0,.3);position:relative;overflow:hidden}
