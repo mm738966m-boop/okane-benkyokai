@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>LINEの体験見本｜お金の増やし方オンライン勉強会</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--g1:#19B394;--g2:#0E9C86;--gd:#0A6F62;--or:#FF7A1A;--or2:#FFA53A;--ye:#FFF27A;--gold:#D9A441;--gold2:#F5D98A;--ink:#24413C;--sub:#5E7672;--line:#06C755;--chat:#9DB9E0}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:#EAF3EE;color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;font-weight:700}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;padding:0}
+#app{max-width:480px;margin:0 auto;height:100vh;height:100dvh;display:flex;flex-direction:column;background:var(--chat);box-shadow:0 0 30px rgba(0,0,0,.1)}
+.guide{background:#fff;padding:8px 10px 10px;border-bottom:2px solid #D5E4E3}
+.guide p{margin:0 0 6px;font-size:12px;color:var(--sub);text-align:center}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.tabs button{font-size:12px;font-weight:900;line-height:1.3;padding:7px 2px;border-radius:10px;background:#EEF6F4;color:var(--gd);border:2px solid transparent}
+.tabs button.on{background:var(--g2);color:#fff;border-color:var(--gd)}
+.hd{background:#2E3B4E;color:#fff;font-size:15px;padding:9px 14px;display:flex;align-items:center;gap:8px}
+.hd i{width:28px;height:28px;border-radius:50%;background:var(--g1);display:grid;place-items:center;font-style:normal;font-size:15px}
+#chat{flex:1;overflow-y:auto;padding:12px 10px 16px;display:flex;flex-direction:column;gap:9px;scroll-behavior:smooth}
+.when{flex-shrink:0;align-self:center;background:rgba(0,0,0,.28);color:#fff;font-size:11px;border-radius:99px;padding:1px 12px}
+.b{flex-shrink:0;max-width:86%;background:#fff;border-radius:4px 18px 18px 18px;padding:10px 13px;font-size:15px;line-height:1.7;white-space:pre-line;align-self:flex-start;font-weight:700;animation:in .35s cubic-bezier(.3,1.5,.5,1) both}
+.b.me{align-self:flex-end;background:#8DE055;border-radius:18px 4px 18px 18px}
+.b.note{background:#FFFBE0;border:2px dashed var(--gold);color:#7A5B00;font-size:13px;white-space:normal}
+.b.btn{background:var(--line);color:#fff;text-align:center;font-weight:900;border-radius:14px;white-space:normal;box-shadow:0 4px 0 #04913E;width:86%}
+.b.btn.sub{background:#fff;color:var(--gd);border:2px solid var(--g2);box-shadow:0 4px 0 #BFD9D2}
+.b.card{padding:0;overflow:hidden;width:86%;white-space:normal;border-radius:18px;border:4px solid var(--gold);box-shadow:0 0 0 2px var(--gold2)}
+.card .top{background:linear-gradient(170deg,var(--g1),var(--g2));color:#fff;text-align:center;font-size:13px;padding:5px;font-weight:900}
+.card .in{padding:8px 12px 12px;text-align:center}
+.card img{width:58%;height:auto;display:block;margin:0 auto}
+.card h3{margin:0;font-size:28px;color:var(--or);-webkit-text-stroke:.14em #fff;paint-order:stroke fill;font-weight:900;text-shadow:0 2px 0 rgba(160,70,0,.18)}
+.card p{margin:4px 0 0;font-size:13px;line-height:1.6}
+.card .seat{font-size:22px;font-weight:900;line-height:1.4;margin:6px 0}
+.card .seat b{color:var(--or);font-size:1.15em}
+.card .dt{display:inline-block;background:var(--ye);padding:2px 12px;font-size:15px;font-weight:900;transform:rotate(-2deg)}
+@keyframes in{0%{opacity:0;transform:translateY(14px) scale(.9)}100%{opacity:1;transform:none}}
+/* リッチメニュー */
+#rm{background:#DDE7E3;padding:7px;display:grid;grid-template-columns:repeat(3,1fr);gap:7px;border-top:3px solid #fff;position:relative}
+.c{background:#fff;border-radius:14px;box-shadow:0 4px 0 #B9CCC6;padding:7px 5px 8px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:3px;text-align:center;font-size:14px;line-height:1.25;font-weight:900;min-width:0;position:relative}
+.c:active{transform:translateY(3px);box-shadow:0 1px 0 #B9CCC6}
+.c img{height:62px;width:auto;max-width:100%;object-fit:contain;display:block}
+.c small{display:block;font-size:10.5px;color:var(--sub);line-height:1.3;font-weight:700}
+.c .go{display:block;width:100%;background:#2F5D74;color:#fff;border-radius:99px;font-size:12px;padding:3px 0;margin-top:2px}
+.c.big{grid-column:span 2;flex-direction:row;gap:8px;background:linear-gradient(170deg,#E9FBF3,#C9F0E0);border:3px solid var(--g1);padding:8px 10px;text-align:left;align-items:center}
+.c.big img{height:92px}
+.c.big .t{flex:1;min-width:0;font-size:19px;line-height:1.25}
+.c.big .t em{font-style:normal;color:var(--or)}
+.c.big .go{background:var(--line);font-size:14px;padding:5px 0;text-align:center;box-shadow:0 3px 0 #04913E}
+.c.big.gold{background:linear-gradient(170deg,#FFF9DE,#FFE9A8);border-color:var(--gold)}
+.c .free{position:absolute;left:-6px;top:-9px;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#2CC7A6,var(--g2) 70%);border:3px solid var(--gold);color:var(--ye);font-size:13px;display:grid;place-items:center;font-weight:900;transform:rotate(10deg)}
+.c .pay{color:var(--or);font-size:12px}
+.toast{position:absolute;left:50%;top:-40px;transform:translateX(-50%);background:var(--or);color:#fff;font-size:13px;font-weight:900;border-radius:99px;padding:4px 16px;white-space:nowrap;box-shadow:0 4px 10px rgba(0,0,0,.2);animation:in .4s both}
+@media (prefers-reduced-motion:no-preference){
+ .c.big{animation:br 2.4s ease-in-out infinite}
+ .c .free{animation:wig 2.8s ease-in-out infinite}
+ #rm.sw .c{animation:in .45s cubic-bezier(.3,1.6,.5,1) both}
+ #rm.sw .c:nth-child(2){animation-delay:.06s}#rm.sw .c:nth-child(3){animation-delay:.12s}#rm.sw .c:nth-child(4){animation-delay:.18s}#rm.sw .c:nth-child(5){animation-delay:.24s}
+ @keyframes br{0%,100%{transform:none}50%{transform:scale(1.02)}}
+ @keyframes wig{0%,100%{transform:rotate(10deg)}50%{transform:rotate(-4deg) scale(1.08)}}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="guide">
+    <p>確認用の見本です。場面を選んで、下のメニューを押してみてください。</p>
+    <div class="tabs" id="tabs">
+      <button type="button" data-s="0">追加した<br>直後</button>
+      <button type="button" data-s="1">診断の<br>あと</button>
+      <button type="button" data-s="2">申し込んだ<br>あと</button>
+      <button type="button" data-s="3">参加した<br>あと</button>
+    </div>
+  </div>
+  <div class="hd"><i>¥</i>お金の増やし方オンライン勉強会</div>
+  <div id="chat"></div>
+  <div id="rm"></div>
+</div>
+<script>
+(function(){
+var qs=new URLSearchParams(location.search),R=qs.has('r')?+qs.get('r'):2,MM=+qs.get('m')||3,YY=+qs.get('y')||15;
+var T=[['type1','たねまきさん','これから種をまくところ'],['type2','めばえさん','もう芽が出ています'],['type3','つぼみさん','つぼみが、ふくらんでいます'],['type4','はなさかさん','花が咲きはじめています']];
+var I='../shindan-next/img/',chat=document.getElementById('chat'),rm=document.getElementById('rm'),joined=false,follow=false;
+function add(cls,html,fn){var d=document.createElement(fn?'button':'div');if(fn){d.type='button';d.onclick=fn}d.className='b '+cls;d.innerHTML=html;chat.appendChild(d);if(follow)setTimeout(function(){chat.scrollTop=chat.scrollHeight},60);return d}
+function when(t){var d=document.createElement('span');d.className='when';d.textContent=t;chat.appendChild(d)}
+function note(t){add('note','見本のメモ：'+t)}
+var YOYAKU='日程のページが開きます。\n今週・来週の空きから、日にちを選んで、お名前とメールアドレスを入れるだけです。';
+function cardType(){var t=T[R];return '<div class="top">診断の結果</div><div class="in"><img src="'+I+t[0]+'.webp" alt=""><h3>'+t[1]+'</h3><p>'+t[2]+'<br>毎月'+MM+'万円を'+YY+'年つづけると…のグラフと、<br>あなたの回のお品書き3つ</p></div>'}
+var S=[
+ function(){when('登録直後');
+  add('','ご登録ありがとうございます。\n「おばあちゃんでもできる お金の増やし方 オンライン勉強会」の森川です😊\n\n最初に、1分の診断をどうぞ。\n絵を5つ選ぶだけで、この3つが1枚のカードで届きます。\n\n・あなたのお金のタイプ\n・毎月の積み立てが、この先どう育つか\n・あなたの回でお話しする3つ');
+  add('btn','診断をはじめる（1分）',function(){location.href='../shindan-next/'});
+  add('btn sub','先に、空いている日を見る',function(){tap('cal')});},
+ function(){when('診断のあと');
+  add('me','診断結果：'+T[R][1]+'／毎月'+MM+'万円／'+YY+'年');
+  add('card',cardType());
+  add('','結果を受け取りました。\n当日は、この結果から話を始めます📋\n\n勉強会は、Zoomで1時間。\n1回1〜3組の少人数で、参加は無料です。\nご家族と一緒でも、お一人でも。');
+  add('btn','日程を選ぶ',function(){tap('cal')});
+  note('結果カードは、タイプごとに4種類の画像を用意します。');},
+ function(){when('申込の直後');
+  add('card','<div class="top">ご予約ありがとうございます</div><div class="in"><p class="seat"><b>◯◯さん</b>のお席を<br>ご用意しました</p><span class="dt">12月◯日（土）10:00〜</span><p>Zoom・1時間｜カメラはオフのままで大丈夫です</p></div>');
+  add('','当日は、診断の結果から話を始めます。\n\nご家族と一緒に聞く方は、下のカードをそのまま送れます。');
+  add('btn sub','家族に送るカードを開く',function(){tap('family')});
+  add('btn sub','Zoomの入り方を、いま一度ためす',function(){add('','Zoomの入り方の練習ページが開きます。\nリンクを押す → カメラはオフ → 声で答える、の3つだけです。')});
+  note('席札カードは、お名前と日時が入った画像で届きます。このあと 3日前・前日・当日の朝・1時間前・5分前 にお知らせが届きます。');},
+ function(){when('勉強会のあと');
+  add('','本日はご参加ありがとうございました。\n\nお土産の「書くだけ設計ノート」です🎁\n毎月いくら回せるかの目安を、ご自分の数字で書き出せます。');
+  add('btn sub','お土産のノートを開く',function(){tap('note')});
+  add('','このあと気になることが出てきたら、個別にご相談ください。\nNISAのことも、家計のことも、もしもの備えのことも。\n参加された方のご相談は、無料です。\n\n下のメニューが、参加された方用に切り替わりました。');
+  note('「参加済み」になると、メニューが自動で切り替わります。');}
+];
+var A={
+ cal:function(){add('',YOYAKU);note('本番では、今の予約ページがそのまま開きます。申込とLINEがつながる開き方にします。')},
+ shindan:function(){location.href='../shindan-next/'},
+ pay:function(){add('','個別相談は、60分・税込5,500円です。\nNISAの始め方、毎月の額、家計の見直し、もしもの備えまで、ご自分の数字でじっくり話せます。\n\n勉強会（無料・1時間）に参加された方は、ご相談が無料になります。\n全体が見えてからのほうが、相談の1時間を深く使えます。');
+  add('btn','先に、勉強会の日程を見る（無料）',function(){tap('cal')});add('btn sub','個別相談を予約する（5,500円）',function(){add('','相談の予約ページ（カード払い）が開きます。')})},
+ free:function(){add('','ご相談の予約ページが開きます（60分・無料）。\nNISAのことも、家計のことも、もしもの備えのことも。\n気になることを、そのままお持ちください。')},
+ radio:function(){add('','森川のラジオ「ふるふるラジオ」（Voicy）が開きます。\n毎朝、お金の話を10分ほど。\nまずはこの30本から、のページにつながります。')},
+ hp:function(){add('','fulfull株式会社のホームページが開きます。\n会社のこと、講師のこと、これまでの登壇先が見られます。')},
+ note:function(){add('','「書くだけ設計ノート」が開きます。\n勉強会で出した数字を、そのまま書きこめます。')},
+ family:function(){add('card','<div class="top">ご家族に送るカード</div><div class="in"><img src="'+I+'m_family.webp" alt=""><p class="seat">一緒に<b>お金の話</b>、<br>聞いてみない？</p><p>無料・Zoom・1時間｜家族何人でも</p></div>');add('','このカードを、LINEでそのままご家族に送れます。')}
+};
+function tap(k){A[k]()}
+function cell(k,cls,html){return '<button type="button" class="c '+cls+'" data-k="'+k+'">'+html+'</button>'}
+function menu(j,anim){
+ var radio=cell('radio','','<img src="'+I+'m_radio.webp" alt=""><span>森川のラジオ<small>Voicyで毎朝配信</small></span><span class="go">聞く ›</span>');
+ var hp=cell('hp','','<img src="'+I+'m_hp.webp" alt=""><span>会社の<br>ホームページ</span><span class="go">見る ›</span>');
+ rm.innerHTML=j?
+  cell('free','big gold','<img src="'+I+'m_soudan.webp" alt=""><span class="t">個別に<em>相談</em><small>NISAも・家計も・もしもの備えも</small><span class="go">日時を選ぶ ›</span></span><span class="free">無料</span>')+
+  cell('note','','<img src="'+I+'m_note.webp" alt=""><span>お土産の<br>ノート</span><span class="go">開く ›</span>')+
+  cell('family','','<img src="'+I+'m_family.webp" alt=""><span>家族を誘う<small>次の勉強会へ</small></span><span class="go">カードを送る ›</span>')+radio+hp
+  :
+  cell('cal','big','<img src="'+I+'m_cal.webp" alt=""><span class="t">お金の<em>勉強会</em><small>Zoom・1時間・家族と一緒でもOK</small><span class="go">日程を見る ›</span></span><span class="free">無料</span>')+
+  cell('shindan','','<img src="'+I+'type4.webp" alt=""><span>1分診断<small>笑って出せる私</small></span><span class="go">やってみる ›</span>')+
+  cell('pay','','<img src="'+I+'m_soudan.webp" alt=""><span>個別に相談<small class="pay">60分 税込5,500円</small><small>勉強会に参加した方は無料</small></span><span class="go">くわしく ›</span>')+radio+hp;
+ rm.querySelectorAll('.c').forEach(function(b){b.onclick=function(){tap(b.dataset.k)}});
+ rm.classList.remove('sw');
+ if(anim){void rm.offsetWidth;rm.classList.add('sw');var t=document.createElement('span');t.className='toast';t.textContent='メニューが切り替わりました';rm.appendChild(t);setTimeout(function(){t.remove()},2600)}
+}
+function scene(n){
+ document.querySelectorAll('#tabs button').forEach(function(b){b.classList.toggle('on',+b.dataset.s===n)});
+ chat.innerHTML='';var j=n===3;follow=false;S[n]();chat.scrollTop=0;setTimeout(function(){follow=true},100);
+ if(j!==joined){joined=j;menu(j,true)}
+}
+document.querySelectorAll('#tabs button').forEach(function(b){b.onclick=function(){scene(+b.dataset.s)}});
+menu(false,false);scene(qs.has('r')?1:0);
+})();
+</script>
+</body>
+</html>
