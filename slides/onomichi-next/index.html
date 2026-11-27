@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>お金の勉強会（尾道）確認用</title>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>お金の勉強会（尾道）ご家族版・確認用</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
@@ -668,7 +668,7 @@ body.scroll .spk{display:none}
 .vs.fl .p li:before{top:16px}
 .warn div b{font-size:23px}
 
-/* おひとり向けの切り替え（右下のボタン） */
+/* ご家族版・おひとり版（同じ元から作る2本。おひとり版は body.solo） */
 body:not(.solo) .v-solo{display:none!important}
 body.solo .v-fam{display:none!important}
 .nav button.on{background:var(--goldfill)}
@@ -731,7 +731,7 @@ body.solo .v-fam{display:none!important}
   <div class="grow"></div>
   <span class="sticker pop" style="--i:8;font-size:30px;padding:12px 28px">全部、自分の選択。</span>
   <img class="pop" src="img/cover.jpg" alt="" style="--i:3;position:absolute;right:76px;bottom:96px;width:300px;border-radius:30px;box-shadow:0 16px 36px rgba(10,90,98,.18)">
-  <aside class="sp">キーワードを拾いながら1〜2分で。全部を話さなくてよい。「全部、自分の選択だった」で締めて、チェックへ。お子さんがいない方だと分かったら、ここで右下の「おひとり向け」を押す（このあとの言葉が入れ替わる）。</aside>
+  <aside class="sp">キーワードを拾いながら1〜2分で。全部を話さなくてよい。「全部、自分の選択だった」で締めて、チェックへ。お子さんがいない方だと分かったら、ここで右下の「おひとり版へ」を押す（同じページのまま、おひとり版に差し替わる）。</aside>
 </section>
 
 
@@ -751,7 +751,7 @@ body.solo .v-fam{display:none!important}
     </div>
     <p class="note" style="margin-top:12px;font-weight:900;color:var(--ink)">当てはまる番号を、チャットに数字だけどうぞ。</p>
   </div></div>
-  <aside class="sp">→ で1つずつ出す。チャットの番号を見て、今日どこを厚くするか決める。子育て中の方が多ければ教育費、年金世代が多ければ老後と置き場所を厚めに。おひとりの方は「おひとり向け」で1・2番が入れ替わる。</aside>
+  <aside class="sp">→ で1つずつ出す。チャットの番号を見て、今日どこを厚くするか決める。子育て中の方が多ければ教育費、年金世代が多ければ老後と置き場所を厚めに。おひとり版では1・2番が「やりたいこと」「親のこと」になる。</aside>
 </section>
 
 <section class="slide tint" data-sec="0">
@@ -825,7 +825,7 @@ body.solo .v-fam{display:none!important}
     <div class="box g"><div style="font-size:22px;color:var(--gold)">老後に足りない分</div><div class="big gd num" style="font-size:72px"><span class="v-fam" data-count="2160" data-comma="1">2,160</span><span class="v-solo" data-count="1440" data-comma="1">1,440</span><small>万円</small></div></div>
   </div>
   <p class="note v-fam" style="position:absolute;left:76px;right:76px;bottom:64px;font-size:16px">夫婦の年金は月20〜23万円前後、生活費は月22〜28万円ほどが一般的な目安です（総務省「家計調査」）。平均寿命は男性81歳・女性87歳（厚生労働省「令和4年簡易生命表」）。</p><p class="note v-solo" style="position:absolute;left:76px;right:76px;bottom:64px;font-size:16px">ひとり暮らしの例は、65歳以上の単身無職世帯の平均（支出 約16.2万円・年金など 約12.2万円）を丸めた目安です（総務省「家計調査」2024年）。平均寿命は男性81歳・女性87歳（厚生労働省「令和4年簡易生命表」）。</p>
-  <aside class="sp">2,160万円（おひとり向けは1,440万円）で怖がらせない。「これは平均の話。うちの場合は後半で一緒に計算しましょう」と、後半への期待につなげる。</aside>
+  <aside class="sp">2,160万円（おひとり版は1,440万円）で怖がらせない。「これは平均の話。うちの場合は後半で一緒に計算しましょう」と、後半への期待につなげる。</aside>
 </section>
 
 <section class="slide bleed" data-sec="2">
@@ -1062,7 +1062,7 @@ body.solo .v-fam{display:none!important}
 </section>
 </div>
 <div class="spk" id="spk"></div>
-<div class="nav"><button id="bPrev" aria-label="前へ">‹</button><button id="bNext" aria-label="次へ">›</button><button id="bSolo" aria-pressed="false">おひとり向け</button><button id="bNote">メモ</button><button id="bFull">全画面</button></div>
+<div class="nav"><button id="bPrev" aria-label="前へ">‹</button><button id="bNext" aria-label="次へ">›</button><button id="bSwap" data-to="hitori/">おひとり版へ</button><button id="bNote">メモ</button><button id="bFull">全画面</button></div>
 <script>
 (function(){
   var deck=document.getElementById('deck');
@@ -1122,7 +1122,6 @@ body.solo .v-fam{display:none!important}
     else if(e.key==='Home'){show(0,0)} else if(e.key==='End'){show(slides.length-1,0)}
     else if(e.key==='f'||e.key==='F'){full()}
     else if(e.key==='n'||e.key==='N'){document.body.classList.toggle('notes')}
-    else if(e.key==='o'||e.key==='O'){solo(!document.body.classList.contains('solo'))}
   });
   deck.addEventListener('click',function(e){
     if(scroll)return;
@@ -1135,10 +1134,8 @@ body.solo .v-fam{display:none!important}
   deck.addEventListener('touchend',function(e){if(scroll||tx===null)return;var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50){d<0?next():prev()}tx=null},{passive:true});
   function full(){try{var d=document.documentElement;if(!document.fullscreenElement){var p=(d.requestFullscreen||d.webkitRequestFullscreen).call(d);if(p&&p.catch)p.catch(function(){})}else{document.exitFullscreen()}}catch(e){}}
   document.getElementById('bPrev').onclick=prev;document.getElementById('bNext').onclick=next;document.getElementById('bFull').onclick=full;document.getElementById('bNote').onclick=function(){document.body.classList.toggle('notes')};
-  var bS=document.getElementById('bSolo');
-  function solo(on){document.body.classList.toggle('solo',on);bS.classList.toggle('on',on);bS.setAttribute('aria-pressed',on?'true':'false');bS.textContent=on?'ご家族向けに戻す':'おひとり向け';try{var u=new URL(location.href);if(on)u.searchParams.set('solo','1');else u.searchParams.delete('solo');history.replaceState(null,'',u.toString())}catch(e){}}
-  bS.onclick=function(){solo(!document.body.classList.contains('solo'))};
-  try{if(new URLSearchParams(location.search).get('solo')==='1')solo(true)}catch(e){}
+  var bW=document.getElementById('bSwap');
+  bW.onclick=function(){location.href=bW.getAttribute('data-to')+(location.hash||'')};
   window.addEventListener('resize',fit);
   var h=parseInt((location.hash||'').replace('#',''),10); if(h>0){cur=Math.min(slides.length-1,h-1)}
   fit();
