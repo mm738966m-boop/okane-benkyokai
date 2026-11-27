@@ -1,0 +1,1144 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>お金の勉強会（尾道）おひとり版</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
+<style>
+
+:root{
+  --teal:#0E7C86; --deep:#0A5A62; --ink:#1C3236; --ink2:#4A6468; --soft:#EEF6F7; --line:#D5E4E6;
+  --gold:#A87A1F; --goldfill:#D9A441; --goldbg:#FBF4E3; --bg:#fff; --mint:#DDF1EE;
+  --s:1;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%}
+body{background:var(--soft);color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;font-weight:700;overflow:hidden;-webkit-text-size-adjust:100%}
+body.scroll{overflow:auto}
+p,h1,h2,h3,ul,ol{margin:0;padding:0}
+ul,ol{list-style:none}
+
+/* ---------- stage ---------- */
+.deck{position:absolute;left:50%;top:50%;width:1280px;height:720px;transform:translate(-50%,-50%) scale(var(--s));transform-origin:center center;box-shadow:0 10px 50px rgba(10,90,98,.18)}
+.frame{position:absolute;inset:0}
+.frame:not(.on){display:none}
+body.scroll .deck{position:static;width:auto;height:auto;transform:none;box-shadow:none;padding:10px 0 60px}
+body.scroll .frame{position:relative;display:block;width:calc(1280px * var(--s));height:calc(720px * var(--s));margin:0 auto 12px;overflow:hidden;box-shadow:0 4px 18px rgba(10,90,98,.14);border-radius:8px}
+body.scroll .slide{transform:scale(var(--s));transform-origin:top left}
+
+.slide{position:absolute;left:0;top:0;width:1280px;height:720px;padding:56px 76px 84px;display:flex;flex-direction:column;background:var(--bg);overflow:hidden}
+.slide.tint{background:linear-gradient(160deg,#fff 0%,#F3FAFA 55%,#E4F3F3 100%)}
+.slide.teal{background:radial-gradient(1200px 700px at 85% 10%,#17939E 0%,var(--teal) 45%,var(--deep) 100%);color:#fff}
+.slide.center{align-items:center;justify-content:center;text-align:center}
+
+/* ---------- type ---------- */
+.eyebrow{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:21px;font-weight:900;letter-spacing:.08em;color:var(--teal);background:var(--mint);padding:8px 20px;border-radius:999px;line-height:1.2;margin-bottom:20px}
+.slide.center .eyebrow{align-self:center}
+.slide.teal .eyebrow{background:rgba(255,255,255,.16);color:#fff}
+.eyebrow.gold{background:var(--goldbg);color:var(--gold)}
+h1{font-weight:900;font-size:54px;line-height:1.36;letter-spacing:.01em;color:var(--ink);text-wrap:balance;word-break:auto-phrase;line-break:strict}
+.card .v,.card .d,.st .t,.st .d,.lead,.note,.check li,.tile b{text-wrap:pretty;word-break:auto-phrase;line-break:strict}
+.slide.teal h1{color:#fff}
+h1.xl{font-size:84px;line-height:1.25}
+h1.l{font-size:66px;line-height:1.3}
+h1 em,.mk{font-style:normal;background:linear-gradient(transparent 62%,#F4DE9C 62%);padding:0 .08em}
+.slide.teal h1 em{background:none;color:#FFE08A}
+.tl{color:var(--teal)} .gd{color:var(--gold)}
+.lead{font-size:28px;line-height:1.75;font-weight:700;color:var(--ink2);margin-top:20px}
+.slide.teal .lead{color:#E3F5F5}
+.lead b{color:var(--ink);font-weight:900}
+.note{font-size:20px;line-height:1.6;color:var(--ink2);font-weight:500}
+.slide.teal .note{color:#CFEBEC}
+.grow{flex:1 1 auto;min-height:0}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+
+/* ---------- pieces ---------- */
+.row{display:flex;gap:26px;align-items:stretch}
+.col{display:flex;flex-direction:column}
+.cards{display:grid;gap:22px;margin-top:26px}
+.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}
+.card{background:#fff;border:2px solid var(--line);border-radius:22px;padding:24px 26px;display:flex;flex-direction:column;gap:8px;box-shadow:0 8px 22px rgba(14,124,134,.08)}
+.card .k{font-size:20px;font-weight:900;letter-spacing:.06em;color:var(--teal)}
+.card .v{font-size:34px;font-weight:900;line-height:1.3;color:var(--ink)}
+.card .d{font-size:22px;line-height:1.6;color:var(--ink2);font-weight:700}
+.card.gold{background:var(--goldbg);border-color:#EBD9A6}
+.card.gold .k{color:var(--gold)}
+.card.fill{background:var(--teal);border-color:var(--teal)}
+.card.fill .k{color:#FFE08A}.card.fill .v{color:#fff}.card.fill .d{color:#DDF1EE}
+.big{font-size:92px;font-weight:900;line-height:1;color:var(--teal);letter-spacing:-.01em}
+.big small{font-size:.4em;margin-left:.08em;color:var(--ink)}
+.big.gd{color:var(--gold)}
+.badge{display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;background:var(--teal);color:#fff;font-size:28px;font-weight:900;flex:0 0 auto}
+.badge.gold{background:var(--goldfill);color:#fff}
+.pill{display:inline-block;font-size:21px;font-weight:900;padding:6px 16px;border-radius:999px;background:var(--mint);color:var(--deep);line-height:1.3}
+.pill.gold{background:var(--goldbg);color:var(--gold)}
+.pill.solid{background:var(--teal);color:#fff}
+.mascot{position:absolute;pointer-events:none;filter:drop-shadow(0 10px 14px rgba(10,90,98,.18))}
+.illust{border-radius:24px;overflow:hidden;background:#fff}
+.illust img{width:100%;height:100%;object-fit:cover;display:block}
+.photo{border-radius:24px;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.bubble{position:relative;background:#fff;border:3px solid var(--teal);border-radius:26px;padding:16px 26px;font-size:26px;font-weight:900;color:var(--deep);line-height:1.5}
+.bubble:after{content:"";position:absolute;left:50%;bottom:-22px;margin-left:-11px;border:11px solid transparent;border-top-color:var(--teal)}
+.check li{position:relative;padding-left:46px;font-size:27px;line-height:1.55;margin-top:14px;font-weight:700}
+.check li:before{content:"";position:absolute;left:0;top:7px;width:30px;height:30px;border-radius:50%;background:var(--teal)}
+.check li:after{content:"";position:absolute;left:10px;top:13px;width:8px;height:14px;border:solid #fff;border-width:0 4px 4px 0;transform:rotate(42deg)}
+.step3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:26px}
+.st{position:relative;background:#fff;border:2px solid var(--line);border-radius:22px;padding:24px 24px 22px;box-shadow:0 8px 22px rgba(14,124,134,.08)}
+.st .n{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:900;color:var(--teal);letter-spacing:.04em}
+.st .t{font-size:32px;font-weight:900;line-height:1.35;margin-top:12px}
+.st .d{font-size:22px;line-height:1.6;color:var(--ink2);margin-top:8px;font-weight:700}
+.st.now{border-color:var(--goldfill);background:var(--goldbg);box-shadow:0 0 0 5px rgba(217,164,65,.22),0 10px 26px rgba(168,122,31,.16)}
+.st.now .n{color:var(--gold)}
+.st.dim{opacity:.5}
+.st .stamp{position:absolute;right:16px;top:14px;font-size:20px;font-weight:900;color:#fff;background:var(--goldfill);padding:5px 14px;border-radius:999px;transform:rotate(6deg)}
+.st.done .stamp{background:var(--teal)}
+
+/* table */
+table.calc{width:100%;border-collapse:separate;border-spacing:0 8px;margin-top:8px;font-size:25px}
+table.calc th{font-size:22px;font-weight:900;color:var(--teal);text-align:right;padding:0 16px 2px;line-height:1.35}
+table.calc th:first-child,table.calc td:first-child{text-align:left}
+table.calc td{background:#fff;border-top:2px solid var(--line);border-bottom:2px solid var(--line);padding:11px 16px;text-align:right;font-weight:900}
+table.calc td:first-child{border-left:2px solid var(--line);border-radius:16px 0 0 16px;font-size:26px}
+table.calc td:last-child{border-right:2px solid var(--line);border-radius:0 16px 16px 0}
+table.calc tr.sum td{background:var(--teal);border-color:var(--teal);color:#fff;font-size:30px}
+table.calc tr.hit td{background:var(--goldbg);border-color:var(--goldfill)}
+table.calc .u{font-size:.7em;margin-left:2px;font-weight:700}
+.barwrap{height:14px;border-radius:99px;background:var(--soft);overflow:hidden;margin-top:6px}
+.bar{height:100%;width:0;border-radius:99px;background:var(--teal);transition:width 1.1s cubic-bezier(.2,.8,.2,1) .5s}
+.bar.g{background:var(--goldfill)}
+.frame.on .bar{width:var(--w)}
+
+/* ruler */
+.ruler{display:flex;align-items:center;justify-content:center;gap:26px;margin-top:22px}
+.ruler .box{background:#fff;border:3px solid var(--teal);border-radius:26px;padding:22px 36px;text-align:center}
+.ruler .box.g{border-color:var(--goldfill);background:var(--goldbg)}
+.ruler .eq{font-size:70px;font-weight:900;color:var(--teal)}
+.formula{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px;font-size:23px;color:var(--ink2)}
+.formula span{background:var(--soft);border-radius:14px;padding:8px 16px;font-weight:900;color:var(--ink)}
+
+/* real tiles */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px}
+.tile{position:relative;border-radius:20px;overflow:hidden;height:330px;box-shadow:0 10px 24px rgba(10,90,98,.18)}
+.tile img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.tile b{position:absolute;left:0;right:0;bottom:0;padding:74px 14px 14px;background:linear-gradient(transparent,rgba(6,50,56,.98) 34%);color:#fff;font-size:22px;line-height:1.4;font-weight:900}
+
+/* footer */
+.foot{position:absolute;left:76px;right:76px;bottom:26px;display:flex;justify-content:space-between;align-items:center;font-size:17px;font-weight:900;color:var(--ink2)}
+.slide.teal .foot{color:#CFEBEC}
+.prog{display:flex;gap:8px;align-items:center}
+.prog i{font-style:normal;display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:var(--soft);color:#8AA3A6;font-size:16px;line-height:1.2}
+.prog i.cur{background:var(--teal);color:#fff}
+.prog i.past{background:var(--mint);color:var(--deep)}
+.slide.teal .prog i{background:rgba(255,255,255,.14);color:#CFEBEC}
+.slide.teal .prog i.cur{background:#fff;color:var(--deep)}
+.slide.teal .prog i.past{background:rgba(255,255,255,.28);color:#fff}
+
+/* motion */
+.r{opacity:0;transform:translateY(22px)}
+.frame.on .r{animation:up .6s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i,0) * .14s + .08s)}
+.pop{opacity:0;transform:scale(.7)}
+.frame.on .pop{animation:pop .55s cubic-bezier(.2,1.5,.4,1) forwards;animation-delay:calc(var(--i,0) * .14s + .1s)}
+@keyframes up{to{opacity:1;transform:none}}
+@keyframes pop{to{opacity:1;transform:none}}
+.frame.on .float{animation:float 3.6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+body.scroll .r,body.scroll .pop{opacity:1;transform:none;animation:none}
+body.scroll .bar{width:var(--w)}
+@media (prefers-reduced-motion:reduce){.r,.pop{opacity:1;transform:none;animation:none!important}.float{animation:none!important}}
+
+/* controls */
+.nav{position:fixed;right:14px;bottom:12px;display:flex;gap:8px;z-index:9;opacity:.0;transition:opacity .2s}
+body:hover .nav{opacity:.55}.nav:hover{opacity:1}
+.nav button{font:inherit;font-size:17px;font-weight:900;border:0;border-radius:999px;background:var(--deep);color:#fff;padding:8px 16px;cursor:pointer}
+body.scroll .nav{display:none}
+button.ui{font:inherit;font-weight:900;border:0;cursor:pointer;border-radius:999px;background:var(--teal);color:#fff;font-size:26px;padding:12px 30px;box-shadow:0 6px 0 var(--deep)}
+button.ui:active{transform:translateY(3px);box-shadow:0 3px 0 var(--deep)}
+button.ui.ghost{background:#fff;color:var(--teal);box-shadow:inset 0 0 0 3px var(--teal)}
+button.ui.sel{background:var(--goldfill);box-shadow:0 6px 0 var(--gold)}
+button.rnd{width:70px;height:70px;padding:0;font-size:40px;line-height:1}
+.timer{font-size:200px;font-weight:900;line-height:1;color:var(--teal);letter-spacing:.02em}
+.timer.end{color:var(--gold)}
+video{width:100%;height:100%;object-fit:contain;background:#06383D;border-radius:22px;display:block}
+
+/* ===== v2 追加：おしゃれ・ワクワク ===== */
+:root{--coral:#E8734A;--sun:#FFE08A;--sky:#E9F6F7}
+.slide{background:
+  radial-gradient(520px 320px at 100% 0%,rgba(217,164,65,.13),transparent 70%),
+  radial-gradient(620px 380px at 0% 100%,rgba(14,124,134,.10),transparent 70%),#fff}
+.slide.tint{background:
+  radial-gradient(560px 360px at 96% 4%,rgba(217,164,65,.20),transparent 70%),
+  radial-gradient(700px 420px at 0% 100%,rgba(14,124,134,.16),transparent 70%),
+  linear-gradient(160deg,#fff 0%,#F3FAFA 60%,#E4F3F3 100%)}
+.slide.bleed{padding:0;background:#fff}
+.bleed .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bleed .veil{position:absolute;inset:0}
+.bleed .veil.l{background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.88) 34%,rgba(255,255,255,0) 62%)}
+.bleed .veil.r{background:linear-gradient(270deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.88) 34%,rgba(255,255,255,0) 62%)}
+.bleed .veil.warm{background:linear-gradient(90deg,rgba(255,250,235,.92) 0%,rgba(255,250,235,.70) 36%,rgba(255,250,235,0) 64%)}
+.bleed .inner{position:absolute;inset:0;padding:60px 76px 84px;display:flex;flex-direction:column;justify-content:center}
+.bleed .inner.rt{align-items:flex-end;text-align:left}
+.bleed .inner .box{max-width:600px}
+h1.hero{font-size:74px;line-height:1.28;letter-spacing:.005em}
+h1.mega{font-size:92px;line-height:1.2}
+.stroke{-webkit-text-stroke:0;text-shadow:0 2px 0 #fff,0 0 22px rgba(255,255,255,.9)}
+.sticker{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;font-weight:900;font-size:22px;padding:8px 20px;border-radius:999px;transform:rotate(-3deg);box-shadow:0 6px 0 rgba(180,70,30,.35);align-self:flex-start}
+.sticker.gold{background:var(--goldfill);box-shadow:0 6px 0 rgba(168,122,31,.4)}
+.sticker.teal{background:var(--teal);box-shadow:0 6px 0 rgba(10,90,98,.4)}
+.cr{color:var(--coral)}
+h1 em.c{background:linear-gradient(transparent 62%,#FAD2C3 62%)}
+
+/* 段階表示 */
+[data-s]{opacity:0;transform:translateY(18px) scale(.98);transition:opacity .45s ease,transform .5s cubic-bezier(.2,.9,.3,1.2)}
+[data-s].in{opacity:1;transform:none}
+[data-only]{opacity:0;transition:opacity .3s}
+[data-only].cur{opacity:1}
+body.scroll [data-s]{opacity:1;transform:none}
+.hint{position:absolute;right:76px;bottom:62px;font-size:16px;color:#9DB3B6;font-weight:700}
+body.scroll .hint{display:none}
+
+/* クイズ */
+.quiz{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
+.opt{position:relative;background:#fff;border:3px solid var(--line);border-radius:26px;padding:26px 20px;text-align:center;box-shadow:0 10px 24px rgba(14,124,134,.10);transition:all .4s}
+.opt .abc{display:inline-flex;width:52px;height:52px;border-radius:50%;align-items:center;justify-content:center;background:var(--mint);color:var(--deep);font-size:28px;font-weight:900}
+.opt .yen{font-size:64px;font-weight:900;line-height:1.2;margin-top:8px;color:var(--ink)}
+.opt .yen small{font-size:.45em}
+.frame.ans .opt.ok{border-color:var(--coral);background:#FFF3EE;transform:scale(1.06);box-shadow:0 0 0 8px rgba(232,115,74,.18),0 16px 34px rgba(232,115,74,.25)}
+.frame.ans .opt.ok .abc{background:var(--coral);color:#fff}
+.frame.ans .opt.ok .yen{color:var(--coral)}
+.frame.ans .opt:not(.ok){opacity:.38}
+
+/* 1日 */
+.day{display:flex;flex-direction:column;gap:14px;margin-top:22px}
+.day .t{display:flex;align-items:center;gap:18px;background:rgba(255,255,255,.94);border-radius:22px;padding:14px 22px;box-shadow:0 8px 22px rgba(120,90,20,.14);max-width:640px}
+.day time{flex:0 0 118px;font-size:34px;font-weight:900;color:var(--coral);font-variant-numeric:tabular-nums}
+.day b{font-size:27px;line-height:1.45;font-weight:900}
+
+/* マンガ */
+.manga{display:grid;gap:16px;margin-top:18px}
+.manga.c5{grid-template-columns:repeat(5,1fr)}.manga.c4{grid-template-columns:repeat(4,1fr)}
+.koma{background:#fff;border:3px solid var(--ink);border-radius:14px;overflow:hidden;box-shadow:5px 5px 0 var(--deep)}
+.koma img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-bottom:3px solid var(--ink)}
+.koma p{padding:10px 12px;font-size:20px;line-height:1.4;font-weight:900;min-height:96px}
+.koma p b{display:block;color:var(--coral);font-size:18px}
+.manga.c4 .koma p{font-size:22px;min-height:104px}
+
+/* 棒グラフ */
+.chart{display:flex;align-items:flex-end;gap:26px;height:330px;margin-top:10px;padding:0 10px;border-bottom:4px solid var(--ink)}
+.chart .b{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.chart .b i{display:block;width:100%;border-radius:16px 16px 0 0;background:linear-gradient(180deg,#19A0AB,var(--teal));height:0;transition:height 1.1s cubic-bezier(.2,.8,.2,1)}
+.chart .b.top i{background:linear-gradient(180deg,#F39A75,var(--coral))}
+.chart .b span{font-size:34px;font-weight:900;color:var(--teal);margin-bottom:6px;font-variant-numeric:tabular-nums}
+.chart .b.top span{font-size:64px;color:var(--coral);line-height:1}
+.frame.on .chart .b i{height:var(--h)}
+body.scroll .chart .b i{height:var(--h)}
+.chartx{display:flex;gap:26px;padding:8px 10px 0}
+.chartx b{flex:1;text-align:center;font-size:24px;font-weight:900;color:var(--ink2)}
+
+/* 時計の行 */
+.clock{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px;margin-top:20px}
+.ck{display:flex;align-items:center;gap:16px;background:#fff;border:2px solid var(--line);border-radius:20px;padding:12px 18px;box-shadow:0 6px 16px rgba(14,124,134,.08)}
+.ck time{flex:0 0 104px;font-size:30px;font-weight:900;color:var(--teal);font-variant-numeric:tabular-nums;text-align:right}
+.ck .ic{flex:0 0 46px;height:46px;border-radius:14px;background:var(--goldbg);display:flex;align-items:center;justify-content:center}
+.ck .ic svg{width:28px;height:28px;stroke:var(--gold);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ck b{font-size:23px;line-height:1.35;font-weight:900}
+
+/* 人とお札 */
+.ppl{display:flex;gap:10px;align-items:flex-end}
+.ppl svg{width:74px;height:110px}
+.ppl svg.half{opacity:.35}
+
+/* 2分割の比べ */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px}
+.vs .p{border-radius:26px;padding:22px 26px;border:3px solid var(--line);background:#fff}
+.vs .p.good{border-color:var(--coral);background:#FFF6F1;box-shadow:0 0 0 6px rgba(232,115,74,.14)}
+.vs .p h3{font-size:34px;font-weight:900;line-height:1.3;margin:0}
+.vs .p .tag{font-size:20px;font-weight:900;color:var(--ink2)}
+.vs .p.good .tag{color:var(--coral)}
+.vs .p ul{margin-top:10px}
+.vs .p li{font-size:24px;line-height:1.55;font-weight:700;padding-left:30px;position:relative}
+.vs .p li:before{content:"";position:absolute;left:4px;top:15px;width:12px;height:12px;border-radius:50%;background:var(--line)}
+.vs .p.good li:before{background:var(--coral)}
+
+/* 実演 */
+.demo{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;margin-top:18px}
+.io{background:#fff;border:3px solid var(--line);border-radius:24px;padding:20px 22px;box-shadow:0 8px 22px rgba(14,124,134,.08)}
+.io.out{border-color:var(--coral);background:#FFF6F1}
+.io .k{font-size:20px;font-weight:900;color:var(--teal)}
+.io.out .k{color:var(--coral)}
+.io .v{font-size:32px;font-weight:900;line-height:1.35;margin-top:4px}
+.io li{font-size:23px;line-height:1.5;font-weight:700;margin-top:4px;padding-left:34px;position:relative}
+.io li:before{content:"✓";position:absolute;left:4px;top:0;color:var(--coral);font-weight:900}
+.arrow{font-size:60px;color:var(--coral);font-weight:900}
+.prompt{margin-top:16px;background:#0F3A3F;color:#EAF7F7;border-radius:22px;padding:18px 24px;font-size:24px;line-height:1.6;font-weight:700;position:relative;box-shadow:0 10px 26px rgba(10,60,66,.25)}
+.prompt:before{content:"貼る文";position:absolute;left:22px;top:-16px;background:var(--goldfill);color:#fff;font-size:18px;font-weight:900;padding:4px 16px;border-radius:999px}
+.prompt.sm{font-size:21px;line-height:1.55;padding:20px 22px 16px}
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.four .c{background:rgba(255,255,255,.95);border-radius:20px;padding:14px 12px;text-align:center;box-shadow:0 8px 20px rgba(10,90,98,.16)}
+.four .c b{display:block;font-size:26px;font-weight:900}
+.four .c span{font-size:19px;color:var(--ink2);font-weight:700;line-height:1.4;display:block;margin-top:2px}
+
+/* 手順の塗り分け */
+.flow5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:26px}
+.f5{border-radius:20px;padding:20px 12px;text-align:center;font-size:26px;font-weight:900;line-height:1.35;position:relative}
+.f5.ai{background:var(--teal);color:#fff}
+.f5.hu{background:var(--goldbg);color:var(--gold);border:3px solid #EBD9A6}
+.f5 small{display:block;font-size:18px;margin-top:6px;opacity:.9}
+.f5:not(:last-child):after{content:"";position:absolute;right:-11px;top:50%;margin-top:-10px;border:10px solid transparent;border-left-color:var(--goldfill);z-index:2}
+.meter{height:38px;border-radius:99px;background:var(--goldbg);border:3px solid #EBD9A6;overflow:hidden;margin-top:20px;position:relative}
+.meter i{display:block;height:100%;width:0;background:var(--teal);transition:width 1.2s cubic-bezier(.2,.8,.2,1) .4s}
+.frame.on .meter i{width:60%} body.scroll .meter i{width:60%}
+
+/* 給与明細 */
+.slip{width:330px;background:#fff;border:3px solid var(--ink);border-radius:16px;box-shadow:6px 6px 0 var(--deep);overflow:hidden}
+.slip h4{margin:0;background:var(--ink);color:#fff;font-size:20px;padding:8px 16px;font-weight:900}
+.slip .r{display:flex;justify-content:space-between;padding:12px 16px;font-size:24px;font-weight:900;border-bottom:2px dashed var(--line)}
+.slip .r.add{background:#FFF3EE;color:var(--coral)}
+.slip .r.sum{background:var(--goldbg);font-size:28px;border-bottom:0}
+
+/* 仕事の一覧 */
+.jobs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.jg{background:#fff;border:2px solid var(--line);border-radius:20px;padding:12px 16px 14px;box-shadow:0 6px 16px rgba(14,124,134,.07)}
+.jg h4{margin:0 0 6px;font-size:21px;font-weight:900;color:#fff;background:var(--teal);display:inline-block;padding:3px 14px;border-radius:999px}
+.jg.g h4{background:var(--goldfill)} .jg.c h4{background:var(--coral)}
+.jg li{font-size:22px;line-height:1.5;font-weight:900;display:flex;align-items:center;gap:8px}
+.jg li:before{content:"";flex:0 0 20px;height:20px;border:3px solid var(--teal);border-radius:50%}
+
+/* シート */
+.sheetwrap{position:relative;border-radius:10px;overflow:hidden;box-shadow:0 14px 34px rgba(10,90,98,.26);border:1px solid var(--line);background:#fff}
+.sheetwrap img{display:block;width:100%}
+.hl{position:absolute;border:5px solid var(--coral);border-radius:12px;box-shadow:0 0 0 9999px rgba(255,255,255,.42),0 0 22px rgba(232,115,74,.6)}
+.hl b{position:absolute;left:-18px;top:-22px;width:44px;height:44px;border-radius:50%;background:var(--coral);color:#fff;font-size:26px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 rgba(180,70,30,.4)}
+.pin{position:absolute;width:42px;height:42px;border-radius:50%;background:var(--coral);color:#fff;font-size:24px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 rgba(180,70,30,.4)}
+.steps{display:flex;flex-direction:column;gap:12px}
+.stp{display:flex;gap:14px;align-items:flex-start;background:#fff;border:3px solid var(--line);border-radius:20px;padding:12px 18px;opacity:.35;transition:all .35s}
+.stp.cur{opacity:1;border-color:var(--coral);background:#FFF6F1;box-shadow:0 0 0 6px rgba(232,115,74,.14);transform:translateX(-6px)}
+.stp.done{opacity:.75}
+body.scroll .stp{opacity:1}
+.stp .n{flex:0 0 44px;height:44px;border-radius:50%;background:var(--coral);color:#fff;font-size:26px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.stp b{font-size:26px;line-height:1.4;font-weight:900;display:block}
+.stp span{font-size:20px;line-height:1.45;color:var(--ink2);font-weight:700;display:block}
+
+/* 横棒 */
+.hbar{display:grid;grid-template-columns:330px 1fr 90px;gap:10px 16px;align-items:center;margin-top:8px}
+.hbar b{font-size:24px;font-weight:900;text-align:right;line-height:1.3}
+.hbar .tr{height:34px;background:var(--soft);border-radius:99px;overflow:hidden}
+.hbar .tr i{display:block;height:100%;width:0;border-radius:99px;background:var(--teal);transition:width 1s cubic-bezier(.2,.8,.2,1) .3s}
+.hbar .tr.top i{background:var(--coral)}
+.frame.on .hbar .tr i{width:var(--w)} body.scroll .hbar .tr i{width:var(--w)}
+.hbar span{font-size:26px;font-weight:900;color:var(--teal)}
+
+/* 輪 */
+.loop{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.lp{background:#fff;border:3px solid var(--line);border-radius:22px;padding:16px 16px 18px;position:relative;box-shadow:0 8px 20px rgba(14,124,134,.08)}
+.lp .n{font-size:20px;font-weight:900;color:var(--teal)}
+.lp b{display:block;font-size:28px;line-height:1.3;font-weight:900;margin-top:4px}
+.lp span{display:block;font-size:20px;line-height:1.5;color:var(--ink2);font-weight:700;margin-top:6px}
+.lp.hot{border-color:var(--coral);background:#FFF6F1}
+.lp.hot .n{color:var(--coral)}
+.lp:not(:last-child):after{content:"";position:absolute;right:-13px;top:50%;margin-top:-10px;border:10px solid transparent;border-left-color:var(--coral);z-index:2}
+
+/* QR */
+.qrbox{background:#fff;border:4px solid var(--teal);border-radius:32px;padding:22px;text-align:center;box-shadow:0 16px 40px rgba(10,90,98,.22)}
+.qrbox img{width:300px;height:300px;display:block;margin:0 auto;image-rendering:pixelated}
+.qrbox p{font-size:24px;font-weight:900;color:var(--deep);margin-top:10px;line-height:1.35}
+.gift li{display:flex;gap:14px;align-items:center;font-size:27px;font-weight:900;line-height:1.4;margin-top:14px}
+.gift li i{flex:0 0 46px;height:46px;border-radius:14px;background:var(--coral);color:#fff;font-style:normal;display:flex;align-items:center;justify-content:center;font-size:24px}
+
+/* 紙ふぶき */
+.conf{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.conf i{position:absolute;top:-20px;width:12px;height:18px;border-radius:3px;opacity:0}
+.frame.on .conf i{animation:fall 2.6s ease-in forwards;animation-delay:var(--d)}
+@keyframes fall{0%{opacity:1;transform:translateY(0) rotate(0)}100%{opacity:0;transform:translateY(760px) rotate(540deg)}}
+video.wide{width:100%;height:100%;object-fit:contain;background:#06383D;border-radius:22px}
+
+/* 追い込み */
+.manga.big{gap:14px;margin-top:22px}
+.manga.big .koma img{aspect-ratio:1/1}
+.manga.big .koma p{font-size:21px;min-height:118px;padding:12px 12px}
+.manga.c4 .koma img{aspect-ratio:5/4}
+.jobs{gap:16px;margin-top:18px}
+.jg{padding:14px 18px 14px}
+.jg h4{font-size:24px;padding:4px 18px;margin-bottom:8px}
+.jg li{font-size:24px;line-height:1.6;white-space:nowrap}
+.jg li:before{flex:0 0 24px;height:24px}
+.hbar{grid-template-columns:350px 1fr 90px;gap:16px 16px;margin-top:18px}
+.hbar b{font-size:27px}.hbar .tr{height:46px}.hbar span{font-size:32px}
+.lp{padding:20px 18px 22px}.lp b{font-size:31px}.lp span{font-size:22px}.lp .n{font-size:22px}
+.zoomer{overflow:hidden}
+.zoomer .sz{position:relative;transform-origin:50% 50%;transition:transform .7s cubic-bezier(.3,.8,.3,1)}
+
+.shot{position:relative;flex:0 0 470px;height:440px;border-radius:18px;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--deep);background:#fff}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:14px;display:block}
+.shot.sm{flex:0 0 250px;height:250px}
+
+.zoomer .hl{border-width:3px}.zoomer .hl b{width:30px;height:30px;font-size:18px;left:-12px;top:-14px}
+
+.prompt,.io .v,.koma p,.lp span,.lp b,.stp b,.stp span{word-break:auto-phrase;line-break:strict}
+.prompt.sm{font-size:20px}
+.ppl svg{width:62px;height:94px}
+.hbar{grid-template-columns:400px 1fr 90px}
+
+.gifts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.gifts .g{background:#fff;border:3px solid var(--ink);border-radius:14px;box-shadow:4px 4px 0 var(--deep);overflow:hidden;text-align:center;padding-bottom:8px}
+.gifts .g img{width:100%;height:118px;object-fit:cover;object-position:top;display:block;border-bottom:3px solid var(--ink)}
+.gifts .g b{display:block;font-size:24px;font-weight:900;margin-top:6px;line-height:1.2}
+.gifts .g span{font-size:18px;font-weight:700;color:var(--ink2)}
+
+button.ui.cp{background:var(--coral);box-shadow:0 6px 0 rgba(180,70,30,.45);font-size:26px}
+button.ui.cp.sm{font-size:19px;padding:7px 20px;box-shadow:0 4px 0 rgba(180,70,30,.45)}
+button.ui.cp.ok{background:var(--teal);box-shadow:0 6px 0 var(--deep)}
+
+.added{display:grid;grid-template-columns:repeat(6,1fr);gap:10px 26px;padding:10px 10px 0}
+.ad{background:#fff;border:2px solid var(--line);border-radius:16px;padding:8px 12px;text-align:center}
+.ad b{display:block;font-size:19px;color:var(--teal);font-weight:900}
+.ad span{display:block;font-size:20px;line-height:1.4;font-weight:900}
+.ad.hot{border-color:var(--coral);background:#FFF6F1}.ad.hot b{color:var(--coral)}
+
+.ad span{font-size:19px;white-space:nowrap}.added{gap:8px 26px}
+
+.grow3{display:flex;align-items:flex-end;justify-content:center;gap:18px;margin-top:10px;flex:1;min-height:0;padding-bottom:6px}
+.gc{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:330px}
+.gbar{width:100%;height:var(--h);border-radius:22px 22px 0 0;background:linear-gradient(180deg,#19A0AB,var(--teal));order:2}
+.gc.hot .gbar{background:linear-gradient(180deg,#F39A75,var(--coral))}
+.gn{order:1;font-size:70px;font-weight:900;color:var(--teal);line-height:1.05}
+.gc.hot .gn{font-size:92px;color:var(--coral)}
+.gc b{order:3;font-size:25px;font-weight:900;margin-top:10px;color:var(--teal)}
+.gc.hot b{color:var(--coral)}
+.gc span{order:4;font-size:21px;line-height:1.45;font-weight:900}
+.garrow{font-size:46px;color:var(--goldfill);font-weight:900;align-self:center}
+
+.io ul.two{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.io ul.two li{font-size:22px}
+
+/* ===== 11/17 朝の直し ===== */
+.frame.ans .opt.ok{border:7px solid #E0431A;background:#fff;transform:scale(1.08);box-shadow:0 0 0 10px #FFD3C4,0 14px 0 rgba(170,50,15,.28)}
+.frame.ans .opt.ok .abc{background:#E0431A;color:#fff}
+.frame.ans .opt.ok .yen{color:#D8360F;font-size:76px;-webkit-text-stroke:2px #D8360F;paint-order:stroke fill;text-shadow:0 3px 0 #fff,3px 0 0 #fff,-3px 0 0 #fff,0 -3px 0 #fff,0 6px 0 rgba(170,50,15,.18)}
+.opt .seikai{position:absolute;right:-16px;top:-20px;background:#E0431A;color:#fff;font-size:24px;font-weight:900;padding:6px 20px;border-radius:999px;transform:rotate(6deg) scale(0);transition:transform .45s cubic-bezier(.2,1.6,.4,1) .2s;box-shadow:0 5px 0 rgba(170,50,15,.35)}
+.frame.ans .opt.ok .seikai{transform:rotate(6deg) scale(1)}
+.redout{color:#D8360F!important;-webkit-text-stroke:1.5px #D8360F;text-shadow:0 3px 0 #fff,3px 0 0 #fff,-3px 0 0 #fff,0 -3px 0 #fff,0 7px 0 rgba(170,50,15,.16)}
+.day time{flex:0 0 128px;font-size:30px}
+.voice{display:flex;gap:18px;align-items:center;background:#0F3A3F;color:#EAF7F7;border-radius:26px;padding:22px 26px;box-shadow:0 12px 28px rgba(10,60,66,.28)}
+.voice .mic{flex:0 0 78px;height:78px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;animation:mic 1.4s ease-in-out infinite}
+.voice .mic svg{width:42px;height:42px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.voice .k{font-size:20px;font-weight:900;color:var(--sun)}
+.voice p{font-size:29px;line-height:1.55;font-weight:900;margin-top:4px;word-break:auto-phrase}
+.voice.sm{padding:14px 20px}.voice.sm .mic{flex:0 0 56px;height:56px}.voice.sm .mic svg{width:30px;height:30px}.voice.sm p{font-size:22px}
+@keyframes mic{0%,100%{box-shadow:0 0 0 0 rgba(232,115,74,.7)}50%{box-shadow:0 0 0 16px rgba(232,115,74,0)}}
+a.ui.cp{display:inline-flex;align-items:center;background:var(--coral);color:#fff;font-weight:900;font-size:26px;padding:12px 28px;border-radius:999px;box-shadow:0 6px 0 rgba(180,70,30,.45)}
+/* 1つずつ光る */
+.fx{opacity:.26;transition:all .45s cubic-bezier(.2,.9,.3,1.2)}
+.fx.done{opacity:1}
+.fx.cur{opacity:1;transform:scale(1.045);z-index:3}
+body.scroll .fx{opacity:1}
+.sky{position:absolute;right:76px;top:34px;display:flex;gap:6px;z-index:2}
+.sky i{font-style:normal;font-size:18px;font-weight:900;padding:5px 16px;border-radius:999px;background:#E6EFF0;color:#8FA6A9}
+.sky i.on{background:var(--coral);color:#fff;box-shadow:0 4px 0 rgba(180,70,30,.4)}
+.slide.night{background:radial-gradient(520px 300px at 92% 6%,rgba(255,224,138,.35),transparent 70%),linear-gradient(160deg,#EAF2FB 0%,#DCE9F6 55%,#CFE3EF 100%)}
+.dys{display:flex;flex-direction:column;gap:13px;margin-top:20px}
+.dys.c2{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;margin-top:16px}
+.dy{display:flex;align-items:center;gap:20px;background:#fff;border:3px solid var(--line);border-radius:22px;padding:13px 22px;box-shadow:0 6px 16px rgba(14,124,134,.08)}
+.dy time{flex:0 0 150px;font-size:42px;font-weight:900;color:var(--teal);font-variant-numeric:tabular-nums;text-align:center;line-height:1.05}
+.dy time small{display:block;font-size:17px;color:var(--ink2)}
+.dy b{display:block;font-size:30px;font-weight:900;line-height:1.3}
+.dy span{display:block;font-size:22px;font-weight:700;color:var(--ink2);line-height:1.4;margin-top:2px}
+.dy.cur{border-color:var(--coral);background:#FFF6F1;box-shadow:0 0 0 7px rgba(232,115,74,.16),0 14px 30px rgba(232,115,74,.22)}
+.dy.cur time{color:var(--coral)}
+.dy.cur span{color:var(--ink)}
+.dys.c2 .dy{padding:11px 16px;gap:14px}.dys.c2 .dy time{flex:0 0 118px;font-size:34px}.dys.c2 .dy b{font-size:25px}.dys.c2 .dy span{font-size:20px}
+/* 塗り分け 詳細 */
+.flow5.det{margin-top:20px;gap:12px}
+.flow5.det .f5{padding:16px 10px 14px;font-size:27px}
+.flow5.det .f5 p{font-size:19px;line-height:1.45;font-weight:700;margin-top:10px;background:rgba(255,255,255,.94);color:var(--ink);border-radius:12px;padding:8px 6px;min-height:72px;display:flex;align-items:center;justify-content:center}
+.flow5.det .f5.cur{box-shadow:0 0 0 7px rgba(232,115,74,.35),0 14px 30px rgba(10,90,98,.25)}
+/* 助成金の案 */
+ul.an{margin:2px 0 0}
+ul.an li{font-size:23px;font-weight:700;line-height:1.5;padding-left:28px;position:relative}
+ul.an li:before{content:"";position:absolute;left:6px;top:14px;width:11px;height:11px;border-radius:50%;background:var(--coral)}
+ul.an b{color:#C4491F;font-weight:900}
+/* コツ1 */
+.kz{flex:1;position:relative;display:flex;gap:18px;align-items:center;border-radius:28px;padding:18px 20px;border:4px solid var(--line);background:#fff}
+.kz img{flex:0 0 210px;width:210px;height:210px;object-fit:cover;border-radius:22px}
+.kz .tag{font-size:21px;font-weight:900;color:var(--ink2)}
+.kz h3{font-size:33px;line-height:1.3;font-weight:900;margin:4px 0 8px}
+.kz p{font-size:24px;line-height:1.45;font-weight:900}
+.kz.bad{background:#F2F4F5;border-color:#C9D3D5}
+.kz.bad h3,.kz.bad p{color:#6B7F82}
+.kz.good{border-color:var(--coral);background:#FFF6F1;box-shadow:0 0 0 7px rgba(232,115,74,.14)}
+.kz.good .tag{color:var(--coral)}
+.kz .batsu,.kz .maru{position:absolute;right:14px;top:-34px;font-size:92px;font-weight:900;line-height:1}
+.kz .batsu{color:#5F7477;transform:rotate(8deg)}
+.kz .maru{color:var(--coral)}
+.blink{display:inline-block;background:var(--coral);color:#fff!important;padding:4px 16px;border-radius:12px;animation:blink 1s ease-in-out infinite;margin-bottom:6px}
+@keyframes blink{0%,100%{box-shadow:0 0 0 0 rgba(232,115,74,.9),0 0 0 0 rgba(255,224,138,.9);transform:scale(1)}50%{box-shadow:0 0 0 12px rgba(232,115,74,0),0 0 26px 8px rgba(255,224,138,.95);transform:scale(1.06)}}
+svg.loss{width:100%;height:auto;font-family:inherit}
+/* 目安 */
+.slip.wide{width:400px}
+.slip.wide h4{display:flex;justify-content:space-between;align-items:center;font-size:21px}
+.slip.wide h4 span{font-size:16px;font-weight:700;opacity:.85}
+.slip.wide .r{padding:9px 16px;font-size:22px}
+.slip.wide .r.sub{font-size:19px;color:var(--ink2);padding:7px 16px}
+.slip.wide .r.cap{background:var(--coral);color:#fff;font-size:17px;padding:6px 16px;justify-content:center;border-bottom:0}
+.slip.wide .r.sum{font-size:27px}
+.slip [data-s]{transform:none}
+.mini{background:#fff;border:3px solid var(--line);border-radius:18px;padding:10px 16px;text-align:center}
+.mini small{display:block;font-size:17px;font-weight:900;color:var(--teal)}
+.mini b{font-size:31px;font-weight:900;white-space:nowrap}
+.mini.hot{border-color:var(--coral);background:#FFF6F1}.mini.hot small{color:var(--coral)}.mini.hot b{color:#D8360F;font-size:38px}
+.eq{font-size:40px;font-weight:900;color:var(--goldfill)}
+.chain{display:flex;align-items:center;gap:10px;margin-top:22px}
+.chain span{font-size:30px;color:var(--goldfill);font-weight:900}
+.cn{flex:1;background:var(--mint);border-radius:20px;padding:12px 6px;text-align:center}
+.cn small{display:block;font-size:19px;font-weight:900;color:var(--deep)}
+.cn b{font-size:58px;font-weight:900;line-height:1.1;color:var(--ink)}
+.cn b i{font-style:normal;font-size:.4em;margin-left:2px}
+.cn.hot{background:var(--coral)}.cn.hot small,.cn.hot b{color:#fff}
+/* 書く時間 */
+.tmbox{position:absolute;right:44px;top:30px;background:#fff;border:3px solid var(--line);border-radius:22px;padding:8px 16px 12px;text-align:center;z-index:3;display:flex;flex-direction:column;align-items:center}
+.tmbox .timer{font-size:54px;line-height:1.1}
+/* 平均 */
+.hk{display:flex;flex-direction:column;gap:20px;margin-top:26px}
+.hkrow{display:grid;grid-template-columns:270px 1fr 330px;gap:20px;align-items:center}
+.hkrow b{font-size:26px;font-weight:900;line-height:1.35;text-align:right}
+.hkbar{height:66px;background:var(--soft);border-radius:18px;overflow:hidden}
+.hkbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#19A0AB,var(--teal));border-radius:18px;transition:width 1.2s cubic-bezier(.2,.8,.2,1) .2s}
+.hkrow.hot .hkbar i{background:linear-gradient(90deg,#F39A75,#E0431A)}
+.hkrow.in .hkbar i{width:var(--w)} body.scroll .hkbar i{width:var(--w)}
+/* できました */
+ul.chk{margin-top:14px}
+ul.chk li{font-size:31px;font-weight:900;line-height:1.5;padding-left:52px;position:relative;margin-top:6px}
+ul.chk li:before{content:"✓";position:absolute;left:0;top:2px;width:40px;height:40px;border-radius:50%;background:var(--coral);color:#fff;font-size:26px;display:flex;align-items:center;justify-content:center}
+.lp.gold{border-color:var(--goldfill);background:var(--goldbg)}.lp.gold .n{color:var(--gold)}
+
+.gifts.g3{grid-template-columns:repeat(3,1fr);margin-top:10px}
+.gifts.g3 .g img{height:100px}
+button.ui.cp,a.ui.cp{white-space:nowrap}
+.tmbox{top:auto;bottom:84px;right:50px}
+.flow5.det .f5 p{min-height:66px;font-size:20px}
+
+.tmbox{top:26px;bottom:auto;right:46px}
+.gifts.g3{margin-top:6px}.gifts.g3 .g img{height:86px}.gifts.g3 .g b{font-size:22px;margin-top:4px}
+
+.zoomer .hl b{left:4px;top:4px}
+
+/* 11/17 昼：一覧の読み解き */
+.yk{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:22px}
+.ykc{position:relative;background:#fff;border:3px solid var(--soft);border-radius:26px;padding:24px 22px 18px 26px;box-shadow:0 10px 26px rgba(10,90,98,.10)}
+.ykc .n{position:absolute;left:-12px;top:-16px;width:52px;height:52px;border-radius:50%;background:var(--teal);color:#fff;font-weight:900;font-size:28px;display:flex;align-items:center;justify-content:center}
+.ykc>b{display:block;font-size:27px;font-weight:900;line-height:1.4}
+.ykc .v{margin-top:10px;font-size:44px;font-weight:900;line-height:1.2;color:var(--teal);white-space:nowrap}
+.ykc .v.t{font-size:36px;line-height:1.3}
+.ykc .v small{display:block;font-size:18px;font-weight:700;color:var(--ink);opacity:.7}
+.ykc .v i{font-style:normal;font-size:.5em;margin-left:2px}
+.ykc .v em{font-style:normal;color:#E0431A;display:block;font-size:1.25em}
+.ykc p{margin:8px 0 0;font-size:20px;font-weight:700;line-height:1.5}
+.ykb{margin-top:20px;background:var(--ink);color:#fff;border-radius:22px;padding:16px 28px;font-size:30px;font-weight:900;line-height:1.5;text-align:center}
+.ykb b{color:#FFD86B;font-size:1.3em}.ykb b.g{color:#FFB199}
+.ykb span{display:block;font-size:.82em}
+
+/* 11/17 昼：クイズの「たとえば」 */
+.tatoe{position:absolute;right:70px;top:44px;width:316px;background:#fff;border:3px dashed var(--goldfill);border-radius:22px;padding:14px 16px 12px;display:flex;flex-wrap:wrap;gap:8px;transform:rotate(1.5deg);box-shadow:0 8px 20px rgba(168,122,31,.14)}
+.tatoe b{flex:0 0 100%;white-space:nowrap;font-size:18px;font-weight:900;color:#A87A1F;line-height:1.2}
+.tatoe span{background:var(--soft);border-radius:999px;padding:4px 13px;font-size:19px;font-weight:900;white-space:nowrap}
+
+/* 11/17 夕：書く時間にスマホ版のQR */
+.sumaho{position:absolute;right:60px;bottom:96px;width:186px;padding:12px 12px 10px;background:#fff;border:3px solid var(--teal);border-radius:20px;display:flex;flex-direction:column;align-items:center;gap:6px;box-shadow:0 10px 24px rgba(11,59,51,.12);z-index:3}
+.sumaho b{font-size:16px;font-weight:900;color:var(--teal);white-space:nowrap}
+.sumaho img{width:150px;height:150px;image-rendering:pixelated}
+.sumaho span{font-size:15px;font-weight:800;line-height:1.35;text-align:center;color:var(--ink)}
+
+/* 11/17 夕：39枚目を「いま → 任せられる分 → 最初の1つ」の流れに */
+.yf{display:grid;grid-template-columns:1fr 46px 1fr 46px 1fr;align-items:stretch;gap:6px;margin-top:22px}
+.yfc{background:#fff;border:3px solid var(--teal);border-radius:26px;overflow:hidden;box-shadow:0 10px 26px rgba(10,90,98,.12);display:flex;flex-direction:column}
+.yfc .lb{background:var(--teal);color:#fff;font-size:25px;font-weight:900;text-align:center;padding:8px 10px;line-height:1.3;white-space:nowrap}
+.yfc .bd{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px 12px 16px}
+.yfc small{font-size:20px;font-weight:700;color:var(--ink);opacity:.75}
+.yfc b.num{font-size:74px;font-weight:900;line-height:1.15;color:var(--teal);white-space:nowrap}
+.yfc b.num i{font-style:normal;font-size:.42em;margin-left:3px}
+.yfc b.t{font-size:38px;font-weight:900;line-height:1.3;color:#8A6410;margin:4px 0}
+.yfc p{margin:4px 0 0;font-size:22px;font-weight:900;line-height:1.4}
+.yfc.hot{border-color:var(--coral);box-shadow:0 14px 34px rgba(232,115,74,.28)}
+.yfc.hot .lb{background:var(--coral)}
+.yfc.hot b.num{color:#E0431A;font-size:86px}
+.yfc.hot p{color:#E0431A;font-size:26px}
+.yfc.gold{border-color:#D9A441}
+.yfc.gold .lb{background:#D9A441;color:#3A2A05}
+.yfa{display:flex;align-items:center;justify-content:center;font-size:34px;color:#D9A441}
+.ykb small{display:block;font-size:.66em;font-weight:900;color:#BFE3E0;letter-spacing:.06em}
+
+
+
+/* ===== お金の勉強会 追加分（法人会スライドの型の上に足す） ===== */
+html,body{background:#EEF6F7}
+.bleed .veil.l2{background:linear-gradient(90deg,rgba(255,253,248,.97) 0%,rgba(255,253,248,.92) 40%,rgba(255,253,248,0) 60%)}
+.bleed .veil.top{background:linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.75) 34%,rgba(255,255,255,0) 50%)}
+
+/* 自己紹介のことば */
+.words{display:flex;flex-wrap:wrap;gap:12px 12px;align-content:flex-start;margin-top:22px}
+.words span{font-size:25px;font-weight:900;padding:9px 20px;border-radius:999px;background:#fff;border:2px solid var(--line);color:var(--ink);box-shadow:0 6px 14px rgba(14,124,134,.07)}
+.words span.t{background:var(--mint);border-color:var(--mint);color:var(--deep)}
+.words span.g{background:var(--goldbg);border-color:#EBD9A6;color:var(--gold)}
+.words span.c{background:#FFF1EA;border-color:#F6C9B5;color:#C4532B}
+.words span.big{font-size:30px;padding:10px 24px}
+
+/* プロフィール */
+.prof li{font-size:26px;line-height:1.5;font-weight:700;padding-left:40px;position:relative;margin-top:12px}
+.prof li:before{content:"";position:absolute;left:4px;top:12px;width:18px;height:18px;border-radius:50%;background:var(--teal)}
+
+/* 3つの袋のラベル */
+.bagl{position:absolute;width:240px;background:rgba(255,255,255,.95);border-radius:20px;padding:12px 16px 14px;text-align:center;box-shadow:0 10px 24px rgba(10,90,98,.16);border-top:7px solid var(--teal)}
+.bagl b{display:block;font-size:27px;font-weight:900;line-height:1.3}
+.bagl span{display:block;font-size:19px;line-height:1.45;color:var(--ink2);font-weight:700;margin-top:4px}
+.bagl.c{border-top-color:var(--coral)}.bagl.c b{color:#C4532B}
+.bagl.g{border-top-color:var(--goldfill)}.bagl.g b{color:var(--gold)}
+.bagl.t b{color:var(--deep)}
+
+/* 複利の棒 */
+.gch{display:flex;align-items:flex-end;gap:22px;height:290px;border-bottom:4px solid var(--ink);padding:0 8px}
+.gch .y{flex:1;display:flex;gap:6px;align-items:flex-end;height:100%;position:relative}
+.gch .y i{flex:1;display:block;border-radius:10px 10px 0 0;height:0;transition:height 1.1s cubic-bezier(.2,.8,.2,1)}
+.gch .y i.s{background:#C9D8DA}
+.gch .y i.k{background:linear-gradient(180deg,#19A0AB,var(--teal))}
+.gch .y.top i.k{background:linear-gradient(180deg,#F39A75,var(--coral))}
+.frame.on .gch .y i,body.scroll .gch .y i{height:var(--h)}
+.gch .y i:nth-child(2){transition-delay:.15s}
+.gch .y em{position:absolute;left:50%;transform:translateX(-50%);font-style:normal;font-size:20px;font-weight:900;color:var(--teal);white-space:nowrap}
+.gch .y.top em{font-size:30px;color:var(--coral)}
+.gx{display:flex;gap:22px;padding:8px 8px 0}
+.gx b{flex:1;text-align:center;font-size:21px;font-weight:900;color:var(--ink2)}
+.legend{display:flex;gap:22px;font-size:20px;font-weight:900;color:var(--ink2);margin-top:12px}
+.legend i{display:inline-block;width:18px;height:18px;border-radius:5px;margin-right:8px;vertical-align:-2px}
+
+/* おにぎり */
+.oni{display:flex;align-items:flex-end;gap:22px;height:250px;margin-top:20px;border-bottom:4px solid var(--ink);padding:0 6px;max-width:540px}
+.oni .b{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.oni .b i{display:block;width:100%;border-radius:14px 14px 0 0;background:linear-gradient(180deg,#19A0AB,var(--teal));height:0;transition:height 1s cubic-bezier(.2,.8,.2,1) .3s}
+.oni .b.top i{background:linear-gradient(180deg,#F39A75,var(--coral))}
+.oni .b span{font-size:30px;font-weight:900;color:var(--teal);margin-bottom:4px}
+.oni .b.top span{font-size:38px;color:var(--coral)}
+.frame.on .oni .b i,body.scroll .oni .b i{height:var(--h)}
+.onix{display:flex;gap:22px;padding:6px 6px 0;max-width:540px}
+.onix b{flex:1;text-align:center;font-size:19px;font-weight:900;color:var(--ink2);line-height:1.35}
+
+/* 注意リスト */
+.warn{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;margin-top:24px}
+.warn div{display:flex;align-items:center;gap:16px;background:#fff;border:2px solid var(--line);border-radius:20px;padding:14px 20px;box-shadow:0 6px 16px rgba(14,124,134,.07)}
+.warn div i{flex:0 0 44px;height:44px;border-radius:50%;background:var(--coral);color:#fff;font-style:normal;font-size:26px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.warn div.n i{background:var(--teal)}
+.warn div b{font-size:24px;line-height:1.45;font-weight:900}
+
+/* 帯 */
+.band{margin-top:22px;border-radius:22px;padding:16px 26px;font-size:26px;font-weight:900;line-height:1.5;background:var(--teal);color:#fff;box-shadow:0 10px 24px rgba(10,90,98,.2)}
+.band.soft{background:#FFF6F1;color:var(--ink);border:3px solid var(--coral);box-shadow:none}
+.band.gold{background:var(--goldbg);color:var(--ink);border:3px solid #EBD9A6;box-shadow:none}
+
+/* 質問カード */
+.qc{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
+.qc .q{background:#fff;border:2px solid var(--line);border-radius:24px;padding:22px 22px 24px;box-shadow:0 8px 22px rgba(14,124,134,.08)}
+.qc .q .qn{display:inline-block;background:var(--coral);color:#fff;font-size:22px;font-weight:900;padding:4px 18px;border-radius:999px}
+.qc .q h3{font-size:32px;font-weight:900;line-height:1.35;margin:12px 0 14px}
+.qc .q .ops{display:flex;flex-wrap:wrap;gap:10px}
+.qc .q .ops span{font-size:23px;font-weight:900;padding:8px 18px;border-radius:999px;background:var(--mint);color:var(--deep)}
+
+/* 書きこみメモ */
+.memo{background:#fff;border:3px dashed #EBC8B8;border-radius:24px;padding:22px 30px;display:flex;flex-direction:column;gap:18px;box-shadow:0 10px 26px rgba(168,122,31,.10)}
+.memo p{font-size:28px;font-weight:900;display:flex;gap:14px;align-items:flex-end}
+.memo p i{flex:1;border-bottom:3px solid #E3D3B5;height:30px}
+.memo p small{font-size:24px;color:var(--ink2);font-weight:700}
+
+/* リンクボタン */
+a.ui{display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-weight:900;border-radius:999px;background:var(--coral);color:#fff;font-size:30px;padding:16px 38px;box-shadow:0 7px 0 rgba(180,70,30,.45)}
+a.ui:active{transform:translateY(3px);box-shadow:0 4px 0 rgba(180,70,30,.45)}
+a.ui:focus-visible,.nav button:focus-visible{outline:4px solid var(--goldfill);outline-offset:4px}
+
+/* 発表者メモ（N キー） */
+aside.sp{display:none}
+.spk{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);width:min(960px,calc(100% - 32px));background:rgba(15,58,63,.95);color:#EAF7F7;border-radius:18px;padding:14px 22px;font-size:17px;line-height:1.7;font-weight:700;z-index:20;display:none;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.spk b{color:#FFE08A;margin-right:8px}
+body.notes .spk{display:block}
+body.scroll .spk{display:none}
+.cards.pr .card .v{font-size:30px}
+.cards.pr .card .d{font-size:21px}
+.words.sm{gap:10px}
+.words.sm span{font-size:22px;padding:7px 16px}
+.vs.fl{margin-top:30px}
+.vs.fl .p{padding:30px 34px}
+.vs.fl .p h3{font-size:40px;margin-top:6px}
+.vs.fl .p .tag{font-size:23px}
+.vs.fl .p li{font-size:27px;margin-top:6px}
+.vs.fl .p li:before{top:16px}
+.warn div b{font-size:23px}
+
+/* ご家族版・おひとり版（同じ元から作る2本。おひとり版は body.solo） */
+body:not(.solo) .v-solo{display:none!important}
+body.solo .v-fam{display:none!important}
+.nav button.on{background:var(--goldfill)}
+/* 動画のスライド */
+.vidrow{display:flex;gap:30px;align-items:center;margin-top:8px}
+.vid{flex:0 0 720px;height:405px;border-radius:28px;overflow:hidden;background:#0A5A62;box-shadow:0 18px 44px rgba(10,90,98,.22)}
+.vid video{width:100%;height:100%;display:block;object-fit:cover;background:#000}
+.vidtxt{flex:1;min-width:0;display:flex;flex-direction:column;gap:16px}
+.vidtxt .card .v{font-size:30px}
+</style>
+</head><body class="solo">
+<div class="deck" id="deck">
+
+<section class="slide tint" data-sec="0">
+  <span class="eyebrow r">無料オンライン勉強会｜fulfull株式会社</span>
+  <h1 class="mega r" style="--i:1;margin-top:14px;font-size:78px;white-space:nowrap">貯金、このままで<br><em class="c">足りますか。</em></h1>
+  <p class="lead r" style="--i:2;font-size:34px;font-weight:900;color:var(--ink);margin-top:22px">さらっと30分の、お金の勉強会</p>
+  <p class="note r" style="--i:3;font-size:23px;font-weight:700;margin-top:12px">お金の増やし方・守り方を、むずかしい言葉なしで。<br>後半は、ご希望の方だけ「うちの数字」で一緒に見てみます。</p>
+  <div class="grow"></div>
+  <p class="note r" style="--i:3;font-size:23px;font-weight:700">講師　fulfull株式会社　尾道</p>
+  <img class="pop" src="../img/cover.jpg" alt="朝のキッチンで、3つの小びんを前にノートに書きこむ女性" style="--i:2;position:absolute;right:60px;top:140px;width:420px;border-radius:36px;box-shadow:0 18px 44px rgba(10,90,98,.2)">
+  <span class="sticker pop" style="--i:4;position:absolute;right:76px;top:80px;font-size:25px">カメラオフ・ニックネームでOK</span>
+  <aside class="sp">全体で約50分。前半30分の勉強会のあと、ご希望の方だけ10〜20分「うちの数字」を一緒に見る。</aside>
+</section>
+
+<section class="slide" data-sec="0">
+  <span class="eyebrow r">はじめに、1分だけ</span>
+  <h1 class="r" style="--i:1">fulfullのことを、<em>動画</em>でご紹介します。</h1>
+  <div class="vidrow">
+    <div class="vid pop" style="--i:2"><video src="../video/seminar-op.mp4" poster="../img/video_poster.jpg" controls playsinline preload="metadata"></video></div>
+    <div class="vidtxt">
+      <div class="card r" style="--i:3;padding:20px 24px"><span class="k">動画の中で話しているのが</span><span class="v">代表の森川です</span><span class="d">お金の相談・勉強会・企業研修をしている会社です。</span></div>
+      <div class="card fill r" style="--i:4;padding:20px 24px"><span class="k">今日の講師</span><span class="v">尾道です</span><span class="d" style="color:#fff">森川と一緒に、勉強会と相談を担当しています。</span></div>
+    </div>
+  </div>
+  <aside class="sp">画面共有を始めるときに「音声を共有」にチェックを入れておく（入れないと参加者に音が届かない）。▶を押して再生（約1分）。終わったら「いまの動画で話していたのが、代表の森川です。私は森川と一緒に、この勉強会と相談をしています」と一言。→で約束へ。</aside>
+</section>
+
+<section class="slide" data-sec="0">
+  <span class="sticker gold r">はじめる前に</span>
+  <h1 class="r" style="--i:1;margin-top:18px">今日の、<em>3つのお約束</em>。</h1>
+  <div class="cards c3 pr">
+    <div class="card r" style="--i:2"><span class="badge">1</span><span class="v">金額は、<br>口に出さなくてOK</span><span class="d">「だいたい」「多い・少ない」で大丈夫。数字は手元のメモにだけ。</span></div>
+    <div class="card r" style="--i:3"><span class="badge">2</span><span class="v">カメラオフ・<br>ニックネームでOK</span><span class="d">声だけで参加できます。ご家族やお子さんが横にいても大丈夫。</span></div>
+    <div class="card fill r" style="--i:4"><span class="badge gold">3</span><span class="v">わからないことは、<br>その場で聞いてOK</span><span class="d">むずかしい言葉は使いません。チャットでも、声でも、途中でどうぞ。</span></div>
+  </div>
+  <p class="note r" style="--i:5;margin-top:22px;font-weight:900">紙とペン、またはスマホのメモをご用意ください。</p>
+  <aside class="sp">ここで安心してもらうのが最優先。3つめは「質問が出るほど、後半が役に立ちます」と添える。メモの準備ができたらチャットに◯をもらう。</aside>
+</section>
+
+<section class="slide" data-sec="0">
+  <span class="eyebrow r">自己紹介</span>
+  <h1 class="r" style="--i:1">尾道です。</h1>
+  <div class="words" style="max-width:760px;margin-top:30px">
+    <span class="big r" style="--i:2">広島出身</span><span class="t big r" style="--i:2">3児の母</span>
+    <span class="big r" style="--i:3">ブラック企業</span><span class="big r" style="--i:3">秘書</span><span class="big r" style="--i:4">フリーランス</span><span class="t big r" style="--i:4">二拠点生活</span>
+    <span class="g big r" style="--i:5">投資は6万円から</span><span class="g big r" style="--i:5">初トレ＋250円</span>
+    <span class="t big r" style="--i:6">好きなことを仕事に</span><span class="t big r" style="--i:6">Voicy</span><span class="t big r" style="--i:6">ふるふる</span><span class="t big r" style="--i:7">学びが楽しくなる</span>
+  </div>
+  <div class="grow"></div>
+  <span class="sticker pop" style="--i:8;font-size:30px;padding:12px 28px">全部、自分の選択。</span>
+  <img class="pop" src="../img/cover.jpg" alt="" style="--i:3;position:absolute;right:76px;bottom:96px;width:300px;border-radius:30px;box-shadow:0 16px 36px rgba(10,90,98,.18)">
+  <aside class="sp">キーワードを拾いながら1〜2分で。全部を話さなくてよい。「全部、自分の選択だった」で締めて、チェックへ。こちらは、おひとり版。お子さんがいる方だと分かったら、右下の「ご家族版へ」で戻す（同じページのまま差し替わる）。</aside>
+</section>
+
+
+<section class="slide bleed" data-sec="0" data-steps="6">
+  <img class="bg" src="../img/worries.jpg" alt="夜のダイニングで、レシートと家計簿を前に考えこむ女性">
+  <div class="veil l2"></div>
+  <div class="inner" style="padding:48px 76px 50px"><div class="box" style="max-width:600px">
+    <span class="eyebrow gold r">まずは、チェックから</span>
+    <h1 class="r" style="--i:1;font-size:50px">こんな気持ち、<br>ありませんか。</h1>
+    <div class="day" style="gap:9px;margin-top:16px">
+      <div class="t" data-s="1" style="padding:9px 18px"><time style="flex:0 0 40px">1</time><b style="font-size:22px"><span class="v-fam">習い事や進学で「うちは無理」と言いたくない</span><span class="v-solo">やりたいことを、お金のせいで諦めたくない</span></b></div>
+      <div class="t" data-s="2" style="padding:9px 18px"><time style="flex:0 0 40px">2</time><b style="font-size:22px"><span class="v-fam">学費の時期と、自分たちの老後が同時に来る</span><span class="v-solo">親のことと、自分の老後が同時に来そう</span></b></div>
+      <div class="t" data-s="3" style="padding:9px 18px"><time style="flex:0 0 40px">3</time><b style="font-size:22px">新NISA、口座は作ったけれど、そのまま</b></div>
+      <div class="t" data-s="4" style="padding:9px 18px"><time style="flex:0 0 40px">4</time><b style="font-size:22px">年金だけで、毎月いくら足りないのか分からない</b></div>
+      <div class="t" data-s="5" style="padding:9px 18px"><time style="flex:0 0 40px">5</time><b style="font-size:22px">物価が上がって、貯金が減っている気がする</b></div>
+      <div class="t" data-s="6" style="padding:9px 18px"><time style="flex:0 0 40px">6</time><b style="font-size:22px">貯金の置き場所を、誰にも相談できない</b></div>
+    </div>
+    <p class="note" style="margin-top:12px;font-weight:900;color:var(--ink)">当てはまる番号を、チャットに数字だけどうぞ。</p>
+  </div></div>
+  <aside class="sp">→ で1つずつ出す。チャットの番号を見て、今日どこを厚くするか決める。子育て中の方が多ければ教育費、年金世代が多ければ老後と置き場所を厚めに。おひとり版では1・2番が「やりたいこと」「親のこと」になる。</aside>
+</section>
+
+<section class="slide tint" data-sec="0">
+  <span class="eyebrow r">今日の流れ</span>
+  <h1 class="r" style="--i:1">前半は勉強会、後半は<em>「うちの場合」</em>。</h1>
+  <div class="vs fl">
+    <div class="p r" style="--i:2"><span class="tag">前半｜約30分</span><h3>さらっと、お金の勉強会</h3>
+      <ul><li>知る → 分ける → 始める</li><li>むずかしい言葉は使いません</li></ul></div>
+    <div class="p good r" style="--i:3"><span class="tag">後半｜10〜20分</span><h3>うちの数字で見てみる</h3>
+      <ul><li>ご希望の方だけ</li><li>その場で一緒に計算します</li></ul></div>
+  </div>
+  <div class="row r" style="--i:4;margin-top:40px;gap:14px;align-items:center;flex-wrap:wrap">
+    <span style="font-size:24px;font-weight:900;color:var(--ink2);margin-right:6px">持ち帰るもの</span>
+    <span class="pill gold" style="font-size:24px">うちの「足りない数字」</span><span class="pill gold" style="font-size:24px">お金を分ける3つの袋</span><span class="pill gold" style="font-size:24px">明日からの一歩</span>
+  </div>
+  <aside class="sp">「前半はさらっと聞くだけでOK。後半で、自分の数字に当てはめると一気に分かります」と期待を作る。後半は希望者だけ、と先に言っておくと安心してもらえる。</aside>
+</section>
+
+<section class="slide" data-sec="1" data-steps="2" data-quiz="1">
+  <span class="sticker gold r">まずは、ひとつだけクイズです</span>
+  <h1 class="r" style="--i:1;margin-top:18px">1日100円（月3,000円）を30年。<br>年5%で育ったら、<em class="c">いくら</em>になるでしょう？</h1>
+  <div class="quiz">
+    <div class="opt r" style="--i:2"><span class="abc">A</span><div class="yen num">約120<small>万円</small></div></div>
+    <div class="opt r" style="--i:3"><span class="abc">B</span><div class="yen num">約180<small>万円</small></div></div>
+    <div class="opt ok r" style="--i:4"><span class="seikai">正解</span><span class="abc">C</span><div class="yen num">約250<small>万円</small></div></div>
+  </div>
+  <div class="row" data-s="2" style="margin-top:24px;gap:22px;align-items:center">
+    <span class="sticker" style="transform:rotate(-2deg);font-size:24px">貯金箱に入れただけなら</span>
+    <div class="big num" style="font-size:70px;color:var(--ink2)">108<small>万円</small></div>
+    <span style="font-size:28px;font-weight:900">同じ100円でも、置き場所で<span class="cr">倍以上</span>に。</span>
+  </div>
+  <p class="note" style="position:absolute;left:76px;bottom:64px;font-size:16px">一定の利回りが続いたと仮定した計算です（税金・手数料は含みません）。実際の運用では、増えたり減ったりします。</p>
+  <aside class="sp">先にチャットで A・B・C を予想してもらう → で正解 → もう一度 → で「貯金だけなら108万円」。「100円なら自分にもできる」と思ってもらうのが狙い。</aside>
+</section>
+
+<section class="slide bleed" data-sec="1">
+  <img class="bg" src="../img/life.jpg" alt="春から冬へつづく道を、家族が歩いていく水彩画" style="object-position:center 60%">
+  <div class="veil" style="background:linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.82) 28%,rgba(255,255,255,0) 46%,rgba(255,255,255,0) 70%,rgba(255,255,255,.9) 100%)"></div>
+  <div class="inner" style="justify-content:space-between;padding:44px 76px 40px">
+    <div>
+      <span class="eyebrow r">1｜いくら貯めれば安心？</span>
+      <h1 class="r" style="--i:1;font-size:50px">人生の<em>「お金が要る時期」</em>を、並べてみる。</h1>
+      <div class="formula r" style="--i:2;justify-content:flex-start;margin-top:10px"><span>ゴール</span>−<span>いまある分</span>＝<span style="background:#FFF1EA;color:#C4532B">足りない分</span></div>
+    </div>
+    <div class="four">
+      <div class="c pop" style="--i:3"><b>いま</b><span>貯金・収入・<br>毎月の残り</span></div>
+      <div class="c pop v-fam" style="--i:4"><b class="cr">◯年後｜教育費</b><span>習い事・進学・<br>ひとり暮らし</span></div><div class="c pop v-solo" style="--i:4"><b class="cr">◯年後｜親のこと</b><span>帰省・介護の<br>行き来</span></div>
+      <div class="c pop v-fam" style="--i:5"><b class="gd">◯年後｜住まい</b><span>ローンの金利が<br>上がったら？</span></div><div class="c pop v-solo" style="--i:5"><b class="gd">◯年後｜住まい</b><span>更新・住み替え。<br>老後も借りられる？</span></div>
+      <div class="c pop" style="--i:6"><b class="tl">65歳〜｜老後</b><span>30年近く、毎月<br>いくら足りない？</span></div>
+    </div>
+  </div>
+  <aside class="sp">「なんとなく不安」は、時期と金額が見えていないから。並べるだけで、どこから手をつけるかが見えてくる。後半で、この◯年後を自分の数字にする。</aside>
+</section>
+
+<section class="slide" data-sec="1" data-steps="1">
+  <span class="eyebrow r">例｜老後のひと月</span>
+  <h1 class="r" style="--i:1">年金だけだと、毎月<em>いくら足りない？</em></h1>
+  <div class="hbar r v-fam" style="--i:2;grid-template-columns:200px 1fr 150px;margin-top:30px">
+    <b>生活費</b><div class="tr top"><i style="--w:100%"></i></div><span class="cr">月25万円</span>
+    <b>年金</b><div class="tr"><i style="--w:76%"></i></div><span>月19万円</span>
+  </div>
+  <div class="hbar r v-solo" style="--i:2;grid-template-columns:200px 1fr 150px;margin-top:30px">
+    <b>生活費</b><div class="tr top"><i style="--w:100%"></i></div><span class="cr">月16万円</span>
+    <b>年金</b><div class="tr"><i style="--w:75%"></i></div><span>月12万円</span>
+  </div>
+  <div class="ruler" data-s="1" style="margin-top:30px">
+    <div class="box"><div style="font-size:22px;color:var(--ink2)">毎月の不足</div><div class="big num" style="font-size:72px;color:var(--coral)"><span class="v-fam">6</span><span class="v-solo">4</span><small>万円</small></div></div>
+    <div class="eq">×</div>
+    <div class="box"><div style="font-size:22px;color:var(--ink2)">12か月 × 30年</div><div class="big num" style="font-size:72px">360<small>か月</small></div></div>
+    <div class="eq">＝</div>
+    <div class="box g"><div style="font-size:22px;color:var(--gold)">老後に足りない分</div><div class="big gd num" style="font-size:72px"><span class="v-fam" data-count="2160" data-comma="1">2,160</span><span class="v-solo" data-count="1440" data-comma="1">1,440</span><small>万円</small></div></div>
+  </div>
+  <p class="note v-fam" style="position:absolute;left:76px;right:76px;bottom:64px;font-size:16px">夫婦の年金は月20〜23万円前後、生活費は月22〜28万円ほどが一般的な目安です（総務省「家計調査」）。平均寿命は男性81歳・女性87歳（厚生労働省「令和4年簡易生命表」）。</p><p class="note v-solo" style="position:absolute;left:76px;right:76px;bottom:64px;font-size:16px">ひとり暮らしの例は、65歳以上の単身無職世帯の平均（支出 約16.2万円・年金など 約12.2万円）を丸めた目安です（総務省「家計調査」2024年）。平均寿命は男性81歳・女性87歳（厚生労働省「令和4年簡易生命表」）。</p>
+  <aside class="sp">2,160万円（おひとり版は1,440万円）で怖がらせない。「これは平均の話。うちの場合は後半で一緒に計算しましょう」と、後半への期待につなげる。</aside>
+</section>
+
+<section class="slide bleed" data-sec="2">
+  <img class="bg" src="../img/bags.jpg" alt="机の上に並んだ3つの巾着袋と、指さすロボット" style="object-position:center 72%">
+  <div class="inner" style="justify-content:flex-start;padding:52px 76px">
+    <span class="eyebrow r">2｜お金を、3つの袋に分ける</span>
+    <h1 class="r" style="--i:1;font-size:56px">お金は、<em class="c">使う時期</em>で分ける。</h1>
+  </div>
+  <div class="bagl c pop" style="--i:2;left:70px;top:300px"><b>もしもの袋</b><span>生活費の3〜6か月分</span></div>
+  <div class="bagl g pop" style="--i:3;left:340px;top:268px"><b>近い将来の袋</b><span>5年以内に使うお金<br><span class="v-fam">（教育費・車など）</span><span class="v-solo">（住み替え・車など）</span></span></div>
+  <div class="bagl t pop" style="--i:4;left:620px;top:236px"><b>長く育てる袋</b><span>10年以上<br>使わないお金</span></div>
+  <aside class="sp">袋の名前だけ覚えて帰ってもらえればOK。「全部ひとつの口座に入っている」方が多いので、まず分けるだけで景色が変わる。</aside>
+</section>
+
+<section class="slide" data-sec="2">
+  <span class="eyebrow r">3｜まずは何から始めるのが正解？</span>
+  <h1 class="r" style="--i:1">あわてない<em>順番</em>があります。</h1>
+  <div class="step3">
+    <div class="st now r" style="--i:2"><span class="stamp">ここから</span><div class="n"><span class="badge gold">1</span>STEP 1</div><div class="t">もしもの袋を<br>つくる</div><div class="d">口座を分けるだけでもOK</div></div>
+    <div class="st r" style="--i:3"><div class="n"><span class="badge">2</span>STEP 2</div><div class="t">近い将来の袋を<br>分ける</div><div class="d">使う時期が決まっているお金</div></div>
+    <div class="st r" style="--i:4"><div class="n"><span class="badge">3</span>STEP 3</div><div class="t">残りを<br>長く育てる</div><div class="d">ここで初めて新NISAなど</div></div>
+  </div>
+  <div class="band soft r" style="--i:5">いきなり「増やす」から始めると、急な出費のたびに取り崩すことに。<br>貯金ゼロ・赤字でも大丈夫。STEP 1から、そのままの数字で始めます。</div>
+  <aside class="sp">順番を守るだけで、投資で慌てて売る失敗の多くは防げる。赤字の方には「まず赤字の原因を一緒に見る」と声をかける。</aside>
+</section>
+
+<section class="slide" data-sec="2">
+  <span class="eyebrow r">4｜新NISAのきほん</span>
+  <h1 class="r" style="--i:1">新NISAは、「長く育てる袋」の<em>入れ物</em>。</h1>
+  <div class="row" style="margin-top:14px;gap:34px;align-items:flex-start">
+    <div class="col" style="flex:1;min-width:0">
+      <table class="calc r" style="--i:2">
+        <tr><td>つみたて投資枠</td><td>年 120<span class="u">万円</span></td></tr>
+        <tr><td>成長投資枠</td><td>年 240<span class="u">万円</span></td></tr>
+        <tr class="sum"><td>一生で使える枠</td><td>1,800<span class="u">万円まで</span></td></tr>
+      </table>
+      <ul class="check r" style="--i:3;margin-top:6px">
+        <li>増えた分に、税金がかからない</li>
+        <li>いつでも引き出せる</li>
+        <li style="color:#C4532B">元本保証はなく、増えたり減ったりする</li>
+      </ul>
+    </div>
+    <div class="col" style="flex:0 0 440px;gap:14px">
+      <div class="illust pop" style="--i:2;height:250px;box-shadow:0 14px 34px rgba(10,90,98,.16)"><img src="../img/tree.jpg" alt="3つの袋と、お金の芽に水をやる女性"></div>
+      <div class="card gold r" style="--i:4;padding:16px 20px"><span class="d" style="color:var(--ink)">投資するかは、自分の数字を見てから決めればOK。口座だけの方は、後半で一緒に確認を。</span></div>
+    </div>
+  </div>
+  <aside class="sp">新NISAは「商品」ではなく「税金がかからない入れ物」。何を入れるかは人それぞれ。個別の商品名は出さない。口座だけの人は後半へ誘う。</aside>
+</section>
+
+<section class="slide tint" data-sec="2">
+  <span class="eyebrow r">時間を味方にする</span>
+  <h1 class="r" style="--i:1">月1万円を30年。<em>差がつくのは後半から</em>。</h1>
+  <div class="row" style="margin-top:44px;gap:36px;align-items:flex-end">
+    <div class="col" style="flex:1;min-width:0"><div class="gch"><div class="y"><i class="s" style="--h:7.2%"></i><i class="k" style="--h:8.2%"></i><em style="bottom:calc(8.2% + 8px)">68万</em></div><div class="y"><i class="s" style="--h:14.4%"></i><i class="k" style="--h:18.7%"></i><em style="bottom:calc(18.7% + 8px)">155万</em></div><div class="y"><i class="s" style="--h:21.6%"></i><i class="k" style="--h:32.1%"></i><em style="bottom:calc(32.1% + 8px)">267万</em></div><div class="y"><i class="s" style="--h:28.8%"></i><i class="k" style="--h:49.4%"></i><em style="bottom:calc(49.4% + 8px)">411万</em></div><div class="y"><i class="s" style="--h:36.0%"></i><i class="k" style="--h:71.5%"></i><em style="bottom:calc(71.5% + 8px)">596万</em></div><div class="y top"><i class="s" style="--h:43.3%"></i><i class="k" style="--h:100.0%"></i><em style="bottom:calc(100.0% + 8px)">約832万</em></div></div><div class="gx"><b>5年</b><b>10年</b><b>15年</b><b>20年</b><b>25年</b><b>30年</b></div>
+      <div class="legend"><span><i style="background:#C9D8DA"></i>貯金だけ（積み立てた元本）</span><span><i style="background:var(--teal)"></i>年5%で育った場合</span></div>
+    </div>
+    <div class="card fill pop" style="--i:3;flex:0 0 300px;text-align:center;align-items:center">
+      <span class="k">30年後、貯金だけとの差</span>
+      <div class="big num" style="color:#FFE08A;font-size:64px">＋<span data-count="472">472</span><small style="color:#fff">万円</small></div>
+      <span class="d">増えた分がまた増える「複利」は、続けた年数ほど効いてきます。</span>
+    </div>
+  </div>
+  <p class="note" style="position:absolute;left:76px;bottom:64px;font-size:16px">一定の利回りが続いたと仮定した計算です（税金・手数料は含みません）。実際の運用では、増えたり減ったりします。</p>
+  <aside class="sp">棒が離れていくのは15年目あたりから。「早く始めた人が勝つのではなく、長く続けた人が勝つ」。高い利回り（8%など）の例は出さない。</aside>
+</section>
+
+<section class="slide bleed" data-sec="2">
+  <img class="bg" src="../img/prices.jpg" alt="スーパーで、おにぎりの値札を見て驚く女性">
+  <div class="veil l2"></div>
+  <div class="inner" style="padding:48px 76px 50px"><div class="box" style="max-width:580px">
+    <span class="eyebrow r">5｜物価が上がる時代</span>
+    <h1 class="r" style="--i:1;font-size:52px">おにぎり1個、<br><em class="c">いくらでしたか？</em></h1>
+    <div class="oni r" style="--i:2">
+      <div class="b"><span>100円</span><i style="--h:30%"></i></div>
+      <div class="b"><span>200円</span><i style="--h:58%"></i></div>
+      <div class="b top"><span>300円台</span><i style="--h:94%"></i></div>
+    </div>
+    <div class="onix"><b>10年前<br>（2016年）</b><b>いま<br>（前後）</b><b>10年後は？<br>（仮定）</b></div>
+    <p class="lead r" style="--i:3;font-size:24px;color:var(--ink);margin-top:14px">貯金だけだと、金額は減らなくても<br><b class="cr">買える量が減っていく。</b></p>
+    <p class="note" style="font-size:15px;margin-top:8px">いまは2025〜26年の店頭価格の目安（税込）。10年後は予測ではなく、10年で約1.8倍のペースが続いたと仮定した計算です。</p>
+  </div></div>
+  <aside class="sp">「最近、値上がりを感じたものは？」とチャットで聞いてから見せる。だから「長く育てる袋」が必要、と次につなぐ。</aside>
+</section>
+
+<section class="slide" data-sec="2">
+  <span class="eyebrow r">物価が上がる時代の、貯金の置き方</span>
+  <h1 class="r" style="--i:1">袋ごとに、<em>置き場所</em>を変える。</h1>
+  <div class="cards c3">
+    <div class="card r" style="--i:2;border-top:8px solid var(--coral)"><span class="k" style="color:#C4532B">もしもの袋</span><span class="v">すぐ出せる場所</span><span class="d">普通預金など。増やすより、いつでも使えることを優先。</span></div>
+    <div class="card r" style="--i:3;border-top:8px solid var(--goldfill)"><span class="k" style="color:var(--gold)">近い将来の袋</span><span class="v">減らしにくい場所</span><span class="d">定期預金や個人向け国債など。使う日まで、元本を守る。</span></div>
+    <div class="card fill r" style="--i:4"><span class="k">長く育てる袋</span><span class="v">時間をかける場所</span><span class="d">新NISAなど。途中の上げ下げに、あわてない。</span></div>
+  </div>
+  <div class="row r" style="--i:5;margin-top:22px;gap:20px">
+    <div class="band soft" style="flex:1;margin-top:0;font-size:24px">全部を預金に → <span class="cr">物価に負ける</span></div>
+    <div class="band soft" style="flex:1;margin-top:0;font-size:24px">全部を投資に → <span class="cr">使うときに減っているかも</span></div>
+  </div>
+  <aside class="sp">退職金や大きな貯金がある方は、まず袋に分けてから考える。一度に全部動かさない。</aside>
+</section>
+
+<section class="slide tint" data-sec="3">
+  <span class="sticker r">6｜ちょっと休憩</span>
+  <h1 class="r" style="--i:1;margin-top:18px">お金が残らない家の、<em class="c">よくある習慣</em>。</h1>
+  <div class="warn">
+    <div class="n r" style="--i:2"><i>1</i><b>「ポイント10倍」で、予定になかったものを買う</b></div>
+    <div class="n r" style="--i:2"><i>2</i><b>ATMの手数料を、毎月なにげなく払っている</b></div>
+    <div class="n r" style="--i:3"><i>3</i><b>セールになると「必要だった気」がしてくる</b></div>
+    <div class="n r" style="--i:3"><i>4</i><b>クレカの請求メールが来ると、祈る気持ちになる</b></div>
+    <div class="n r" style="--i:4"><i>5</i><b>「今日は節約」と言いつつ、金額はいつも通り</b></div>
+    <div class="n r" style="--i:4"><i>6</i><b>「貯金してるよ」と言うけれど、使い道はなんとなく</b></div>
+  </div>
+  <p class="note r" style="--i:5;margin-top:18px;font-weight:900;color:var(--ink)">いくつ当てはまりましたか？　チャットに数字だけどうぞ。</p>
+  <aside class="sp">笑ってもらう時間。責めない。「収入の多い少ないより、使い方と考え方で差がつく」で締める。</aside>
+</section>
+
+<section class="slide" data-sec="3">
+  <span class="eyebrow r">7｜大切なお金を守る</span>
+  <h1 class="r" style="--i:1">SNSの「簡単に増える」に、<em class="c">近づかない</em>。</h1>
+  <div class="warn">
+    <div class="r" style="--i:2"><i>!</i><b>「必ず」「確実に」「元本保証で高利回り」</b></div>
+    <div class="r" style="--i:2"><i>!</i><b>「月◯%」など、ありえない高い利回り</b></div>
+    <div class="r" style="--i:3"><i>!</i><b>「今だけ」「残りわずか」と急がせる</b></div>
+    <div class="r" style="--i:3"><i>!</i><b>人を紹介すると、報酬がもらえる</b></div>
+    <div class="r" style="--i:4"><i>!</i><b>有名人の名前や写真を使った投資の広告</b></div>
+    <div class="r" style="--i:4"><i>!</i><b>SNSで知り合った人が、個人名義の口座に振り込ませる</b></div>
+  </div>
+  <div class="band r" style="--i:5">迷ったら、その日はお金を動かさない。家族か、誰かに一度聞く。</div>
+  <aside class="sp">ひとつでも当てはまったら近づかない。「うまい話は、知らない人のところには来ない」。</aside>
+</section>
+
+<section class="slide bleed" data-sec="3" data-steps="3">
+  <img class="bg" src="../img/morning.jpg" alt="朝のキッチンで、スマホを手に笑う女性">
+  <div class="veil l2"></div>
+  <div class="inner"><div class="box" style="max-width:640px">
+    <span class="sticker teal r">明日から、やってみる</span>
+    <h1 class="hero r" style="--i:1;margin-top:18px;font-size:52px">5分でできることから、<br><em class="c">ひとつだけ</em>。</h1>
+    <div class="day">
+      <div class="t" data-s="1"><time>5分</time><b class="v-fam">数字を、家族に見せる<br><small style="font-size:19px;color:var(--ink2)">「うちの足りない数字」を夕食のときに</small></b><b class="v-solo">数字を、目に入る場所に<br><small style="font-size:19px;color:var(--ink2)">「わたしの足りない数字」をスマホのメモの1行目に</small></b></div>
+      <div class="t" data-s="2"><time>10分</time><b>口座を、ひとつ分ける<br><small style="font-size:19px;color:var(--ink2)">「もしもの袋」用の口座をネットでつくる</small></b></div>
+      <div class="t" data-s="3"><time>15分</time><b>積立を、月3,000円から<br><small style="font-size:19px;color:var(--ink2)">1日100円からでも、始めた人の勝ち</small></b></div>
+    </div>
+    <p class="lead r" style="--i:2;font-size:25px;color:var(--ink);margin-top:16px">完璧じゃなくていい。<b>始めた日が、いちばん早い日。</b></p>
+  </div></div>
+  <aside class="sp">「どれならできそう？」とチャットで番号をもらう。ここで前半は終わり。「では、選んだ一歩を、うちの数字で具体的にしてみましょう」と後半へ。</aside>
+</section>
+
+<section class="slide bleed" data-sec="4">
+  <img class="bg" src="../img/consult.jpg" alt="ソファでお茶を手に、オンラインで話す女性" style="object-position:70% center">
+  <div class="veil" style="background:linear-gradient(90deg,rgba(255,253,248,.97) 0%,rgba(255,253,248,.93) 44%,rgba(255,253,248,0) 62%)"></div>
+  <div class="inner"><div class="box" style="max-width:620px">
+    <span class="sticker teal r">前半はここまで。おつかれさまでした</span>
+    <h1 class="hero r" style="--i:1;margin-top:20px;font-size:56px">ここからは、<br><em class="c">うちの数字</em>で<br>見てみましょう。</h1>
+    <div class="row r" style="--i:2;margin-top:22px;gap:10px;flex-wrap:wrap">
+      <span class="pill solid" style="font-size:22px">ひとり10〜20分</span><span class="pill solid" style="font-size:22px">数字はだいたいでOK</span><span class="pill solid" style="font-size:22px">その場で一緒に計算</span>
+    </div>
+    <p class="lead r" style="--i:3;font-size:22px;color:var(--ink);margin-top:18px">ご予定がある方は、ここで退出して大丈夫です。<br>ご参加ありがとうございました。</p>
+  </div></div>
+  <aside class="sp">ここは押さない。「せっかくなので、さっきの数字を入れてみませんか？」くらいの温度で。複数名のときは、ひとりずつ順番に（またはブレイクアウトルームで）。退出する方には、ここで丁寧にお礼を言う。</aside>
+</section>
+
+<section class="slide" data-sec="4">
+  <span class="eyebrow r">後半｜うちの数字で見てみる</span>
+  <h1 class="r" style="--i:1">3つだけ、<em>教えてください</em>。</h1>
+  <div class="qc">
+    <div class="q r" style="--i:2"><span class="qn">Q1</span><h3>いちばん気になる<br>お金は？</h3><div class="ops"><span class="v-fam">教育費</span><span>老後</span><span>住まい</span><span>もしも</span><span class="v-solo">親のこと</span></div></div>
+    <div class="q r" style="--i:3"><span class="qn">Q2</span><h3>それは、<br>何年後？</h3><div class="ops"><span>5年以内</span><span>10年くらい</span><span>20年以上</span></div></div>
+    <div class="q r" style="--i:4"><span class="qn">Q3</span><h3>毎月、回せそうな<br>額は？</h3><div class="ops"><span>3,000円</span><span>1万円</span><span>3万円〜</span></div></div>
+  </div>
+  <p class="note r" style="--i:5;margin-top:22px;font-weight:900;color:var(--ink)">選ぶだけでOK。金額を口に出しにくいときは、チャットで個別に送っても大丈夫です。</p>
+  <aside class="sp">答えは選択肢を指さす感覚で。Q1で選んだお金をシミュレーターのボタンで選び、Q2・Q3の答えを入れていく。前半の「足りない数字」メモがあれば、それを使う。</aside>
+</section>
+
+<section class="slide tint" data-sec="4">
+  <span class="eyebrow r">その場で計算</span>
+  <h1 class="r" style="--i:1">一緒に、<em>数字を入れてみましょう</em>。</h1>
+  <div class="demo">
+    <div class="io r" style="--i:2"><div class="k">入れるもの</div><ul><li>何のためのお金？</li><li>いくら・何年後？</li><li>いまある分と、毎月の積み立て</li></ul></div>
+    <div class="arrow pop" style="--i:3">→</div>
+    <div class="io out r" style="--i:4"><div class="k">わかること</div><ul><li>ゴールに届く、毎月の額</li><li>30年の伸び方のグラフ</li><li>3つの袋の分け方</li></ul></div>
+  </div>
+  <div class="row r" style="--i:5;margin-top:30px;align-items:center;gap:26px">
+    <a class="ui" href="../../sim/" target="_blank" rel="noopener">積立シミュレーターを開く　→</a>
+    <p class="note" style="font-size:21px;font-weight:700;color:var(--ink)">スライダーを動かすと、その場でグラフが変わります。<br>「月あと◯円なら届く」が見えたら、それが今日の一歩です。</p>
+  </div>
+  <aside class="sp">ここで画面共有をシミュレーターに切り替える。「1万円にしたら？」「5年早く始めたら？」と一緒に動かす。届かない場合は「袋を分ける」「期間を延ばす」「金額を少しずつ上げる」の順に試す。商品名は出さない。</aside>
+</section>
+
+<section class="slide" data-sec="4">
+  <span class="eyebrow gold r">今日のしめくくり</span>
+  <h1 class="r" style="--i:1">わたしの一歩を、<em>メモに書く</em>。</h1>
+  <div class="row" style="margin-top:20px;gap:34px;align-items:stretch">
+    <div class="memo r" style="--i:2;flex:1;min-width:0">
+      <p>わたしの一歩<i></i></p>
+      <p>いつやる？<i style="flex:0 0 90px"></i><small>月</small><i style="flex:0 0 90px"></i><small>日</small></p>
+      <p>毎月<i></i><small>円から</small></p>
+      <p><span class="v-fam">家族に話す日</span><span class="v-solo">見直す日</span><i style="flex:0 0 90px"></i><small>月</small><i style="flex:0 0 90px"></i><small>日</small></p>
+    </div>
+    <div class="illust pop" style="--i:3;flex:0 0 330px;box-shadow:0 14px 34px rgba(10,90,98,.16)"><img src="../img/cover.jpg" alt=""></div>
+  </div>
+  <span class="sticker pop" style="--i:4;margin-top:22px;font-size:24px">やってみたら、LINEで「やった！」と一言どうぞ。全力で応援します。</span>
+  <aside class="sp">シミュレーターで出た「月◯円」をここに書いてもらう。日付まで決めると動ける。書けたら「今日いろいろ話してきましたね」と、次のスライドへ。</aside>
+</section>
+
+<section class="slide tint" data-sec="5">
+  <span class="sticker gold r">今日いろいろ話してきて</span>
+  <h1 class="r" style="--i:1;margin-top:18px">もっと深く、<em>聞いてみたいところ</em>は<br>ありましたか？</h1>
+  <div class="warn">
+    <div class="n r" style="--i:2"><i>1</i><b>「足りない数字」を、もっと正確に</b></div>
+    <div class="n r" style="--i:2"><i>2</i><b>3つの袋に、いまのお金をどう分けるか</b></div>
+    <div class="n r" style="--i:3"><i>3</i><b>新NISAの、口座の作り方・選び方</b></div>
+    <div class="n r" style="--i:3"><i>4</i><b>物価に負けない、お金の置き場所</b></div>
+    <div class="n r" style="--i:4"><i>5</i><b>病気や、働けなくなったときの備え</b></div>
+    <div class="n r" style="--i:4"><i>6</i><b><span class="v-fam">教育費の時期と、いくら要るか</span><span class="v-solo">老後の住まいと、親のこと</span></b></div>
+  </div>
+  <p class="note r" style="--i:5;margin-top:18px;font-weight:900;color:var(--ink)">番号でも、ひとことでも。チャットでどうぞ。</p>
+  <aside class="sp">今日の話をふり返る温度で聞く。出た番号を「そこ、もう少しじっくり見たいですよね」と受けて、次のスライドへ。何も出なければ「今日のシミュレーターの続き（毎月いくら・どこに置くか）」を次回の中身にする。</aside>
+</section>
+
+<section class="slide bleed" data-sec="5">
+  <img class="bg v-fam" src="../img/close.jpg" alt="夕暮れの川沿いを手をつないで歩く親子">
+  <img class="bg v-solo" src="../img/consult.jpg" alt="ソファでお茶を手に、オンラインで話す女性" style="object-position:70% center">
+  <div class="veil" style="background:linear-gradient(90deg,rgba(255,250,235,.95) 0%,rgba(255,250,235,.85) 40%,rgba(255,250,235,0) 60%)"></div>
+  <div class="inner"><div class="box" style="max-width:620px">
+    <span class="eyebrow gold r">では、そこを次回じっくり</span>
+    <h1 class="hero r" style="--i:1;font-size:50px;white-space:nowrap">次の相談、<br><em>いつにしましょう？</em></h1>
+    <div class="col" style="gap:12px;margin-top:22px">
+      <div class="card r" style="--i:2;padding:16px 22px"><span class="k">次回は、いま選んだところから</span><span class="d" style="color:var(--ink)">今日の数字をもとに、もう一歩くわしく一緒に見ます。</span></div>
+      <div class="card fill r" style="--i:3;padding:16px 22px"><span class="k">一緒に考えますよ！</span><span class="d" style="color:#fff">オンラインで30分。カメラはオフのままでも大丈夫です。</span></div>
+    </div>
+    <div class="words sm r" style="--i:4;margin-top:16px"><span class="t">来週</span><span class="t">2週間後</span><span class="g">1か月後</span><span class="c">ボーナスの前に</span></div>
+    <p class="note r" style="--i:5;font-size:15px;margin-top:14px">本勉強会は情報提供を目的としたものであり、個別の投資判断・税務等の助言を行うものではありません。</p>
+  </div></div>
+  <aside class="sp">前のスライドで出た番号を受けて「では、そこを次回じっくり見ましょう。いつにしましょうか？」。その場でカレンダーを開いて日にちを決め、連絡の取り方（LINEかメール）を聞く。迷っていたら「2週間後の同じ時間はどうですか？」。決めきれない方には「今日の数字を持ち帰って、決まったらLINEで一言ください」で気持ちよく終える（こちらから追いかけない）。個別の商品名は出さない。</aside>
+</section>
+</div>
+<div class="spk" id="spk"></div>
+<div class="nav"><button id="bPrev" aria-label="前へ">‹</button><button id="bNext" aria-label="次へ">›</button><button id="bSwap" data-to="../">ご家族版へ</button><button id="bNote">メモ</button><button id="bFull">全画面</button></div>
+<script>
+(function(){
+  var deck=document.getElementById('deck');
+  var slides=[].slice.call(deck.querySelectorAll('.slide'));
+  var secs=['','知る','分ける','始める','うちの数字',''];
+  var spk=document.getElementById('spk');
+  var frames=slides.map(function(s,i){
+    var f=document.createElement('div');f.className='frame';s.parentNode.insertBefore(f,s);f.appendChild(s);
+    var sec=+s.dataset.sec||0, ft=document.createElement('div');ft.className='foot';
+    var p='<div class="prog">';
+    for(var k=1;k<=4;k++){p+='<i class="'+(sec===k?'cur':(sec>k?'past':''))+'">'+k+' '+secs[k]+'</i>';}
+    p+='</div><div class="num">'+(i+1)+' / '+slides.length+'</div>';
+    ft.innerHTML=p; if(i>0 && !s.classList.contains('bleed')) s.appendChild(ft);
+    return f;
+  });
+  var cur=0, step=0, scroll=false;
+  function maxStep(n){return +(slides[n].dataset.steps||0)}
+  function fit(){
+    var w=window.innerWidth,h=window.innerHeight;
+    scroll = w<900 && h>w;
+    document.body.classList.toggle('scroll',scroll);
+    var s = scroll ? Math.min(1,(w-16)/1280) : Math.min(w/1280,h/720);
+    document.documentElement.style.setProperty('--s',s);
+    if(scroll){frames.forEach(function(f){f.classList.add('on')});[].forEach.call(document.querySelectorAll('[data-s]'),function(e){e.classList.add('in')});frames.forEach(function(f){f.classList.add('ans')});}
+    else show(cur,step,true);
+  }
+  function countUp(f){
+    [].forEach.call(f.querySelectorAll('[data-count]'),function(el){
+      var to=parseFloat(el.dataset.count),comma=el.dataset.comma,t0=null,dur=1000;
+      function fmt(v){var s=Math.round(v);return comma?s.toLocaleString('ja-JP'):String(s)}
+      if(scroll||matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=fmt(to);return;}
+      function st(){var t=Date.now();if(!t0)t0=t;var p=Math.min(1,(t-t0)/dur);p=1-Math.pow(1-p,3);el.textContent=fmt(to*p);if(p<1)requestAnimationFrame(st);else el.textContent=fmt(to);}
+      el.textContent=fmt(to);setTimeout(function(){requestAnimationFrame(st)},350);
+    });
+  }
+  function applyStep(n){
+    var f=frames[n];
+    [].forEach.call(f.querySelectorAll('[data-s]'),function(e){e.classList.toggle('in',step>=+e.dataset.s)});
+    if(slides[n].dataset.quiz){f.classList.toggle('ans',step>=1)}
+  }
+  function notes(n){var a=slides[n].querySelector('aside.sp');spk.innerHTML='<b>'+(n+1)+'</b>'+(a?a.innerHTML:'');}
+  function show(n,st,quiet){
+    n=Math.max(0,Math.min(slides.length-1,n));
+    var changed = n!==cur || !frames[n].classList.contains('on');
+    frames.forEach(function(f,i){f.classList.toggle('on',i===n); if(i!==n){[].forEach.call(f.querySelectorAll('video'),function(v){try{v.pause()}catch(e){}})}});
+    cur=n; step=Math.max(0,Math.min(maxStep(n),st||0));
+    applyStep(n); notes(n);
+    
+    if(!quiet){try{history.replaceState(null,'','#'+(n+1))}catch(e){}}
+  }
+  function next(){ if(step<maxStep(cur)){step++;applyStep(cur);} else show(cur+1,0); }
+  function prev(){ if(step>0){step--;applyStep(cur);} else if(cur>0){show(cur-1,maxStep(cur-1));} }
+  document.addEventListener('keydown',function(e){
+    if(scroll)return;
+    if(['ArrowRight','PageDown',' ','Enter','ArrowDown'].indexOf(e.key)>=0){e.preventDefault();next();}
+    else if(['ArrowLeft','PageUp','Backspace','ArrowUp'].indexOf(e.key)>=0){e.preventDefault();prev();}
+    else if(e.key==='Home'){show(0,0)} else if(e.key==='End'){show(slides.length-1,0)}
+    else if(e.key==='f'||e.key==='F'){full()}
+    else if(e.key==='n'||e.key==='N'){document.body.classList.toggle('notes')}
+  });
+  deck.addEventListener('click',function(e){
+    if(scroll)return;
+    if(e.target.closest('button,a,input,video'))return;
+    var r=deck.getBoundingClientRect();
+    if(e.clientX-r.left < r.width*0.25) prev(); else next();
+  });
+  var tx=null;
+  deck.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
+  deck.addEventListener('touchend',function(e){if(scroll||tx===null)return;var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50){d<0?next():prev()}tx=null},{passive:true});
+  function full(){try{var d=document.documentElement;if(!document.fullscreenElement){var p=(d.requestFullscreen||d.webkitRequestFullscreen).call(d);if(p&&p.catch)p.catch(function(){})}else{document.exitFullscreen()}}catch(e){}}
+  document.getElementById('bPrev').onclick=prev;document.getElementById('bNext').onclick=next;document.getElementById('bFull').onclick=full;document.getElementById('bNote').onclick=function(){document.body.classList.toggle('notes')};
+  var bW=document.getElementById('bSwap');
+  bW.onclick=function(){location.href=bW.getAttribute('data-to')+(location.hash||'')};
+  window.addEventListener('resize',fit);
+  var h=parseInt((location.hash||'').replace('#',''),10); if(h>0){cur=Math.min(slides.length-1,h-1)}
+  fit();
+})();
+</script>
+</body></html>

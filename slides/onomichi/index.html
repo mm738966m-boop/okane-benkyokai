@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>お金の勉強会（尾道）</title>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>お金の勉強会（尾道）ご家族版</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
@@ -668,6 +668,16 @@ body.scroll .spk{display:none}
 .vs.fl .p li:before{top:16px}
 .warn div b{font-size:23px}
 
+/* ご家族版・おひとり版（同じ元から作る2本。おひとり版は body.solo） */
+body:not(.solo) .v-solo{display:none!important}
+body.solo .v-fam{display:none!important}
+.nav button.on{background:var(--goldfill)}
+/* 動画のスライド */
+.vidrow{display:flex;gap:30px;align-items:center;margin-top:8px}
+.vid{flex:0 0 720px;height:405px;border-radius:28px;overflow:hidden;background:#0A5A62;box-shadow:0 18px 44px rgba(10,90,98,.22)}
+.vid video{width:100%;height:100%;display:block;object-fit:cover;background:#000}
+.vidtxt{flex:1;min-width:0;display:flex;flex-direction:column;gap:16px}
+.vidtxt .card .v{font-size:30px}
 </style>
 </head><body>
 <div class="deck" id="deck">
@@ -685,15 +695,28 @@ body.scroll .spk{display:none}
 </section>
 
 <section class="slide" data-sec="0">
+  <span class="eyebrow r">はじめに、1分だけ</span>
+  <h1 class="r" style="--i:1">fulfullのことを、<em>動画</em>でご紹介します。</h1>
+  <div class="vidrow">
+    <div class="vid pop" style="--i:2"><video src="video/seminar-op.mp4" poster="img/video_poster.jpg" controls playsinline preload="metadata"></video></div>
+    <div class="vidtxt">
+      <div class="card r" style="--i:3;padding:20px 24px"><span class="k">動画の中で話しているのが</span><span class="v">代表の森川です</span><span class="d">お金の相談・勉強会・企業研修をしている会社です。</span></div>
+      <div class="card fill r" style="--i:4;padding:20px 24px"><span class="k">今日の講師</span><span class="v">尾道です</span><span class="d" style="color:#fff">森川と一緒に、勉強会と相談を担当しています。</span></div>
+    </div>
+  </div>
+  <aside class="sp">画面共有を始めるときに「音声を共有」にチェックを入れておく（入れないと参加者に音が届かない）。▶を押して再生（約1分）。終わったら「いまの動画で話していたのが、代表の森川です。私は森川と一緒に、この勉強会と相談をしています」と一言。→で約束へ。</aside>
+</section>
+
+<section class="slide" data-sec="0">
   <span class="sticker gold r">はじめる前に</span>
   <h1 class="r" style="--i:1;margin-top:18px">今日の、<em>3つのお約束</em>。</h1>
   <div class="cards c3 pr">
     <div class="card r" style="--i:2"><span class="badge">1</span><span class="v">金額は、<br>口に出さなくてOK</span><span class="d">「だいたい」「多い・少ない」で大丈夫。数字は手元のメモにだけ。</span></div>
     <div class="card r" style="--i:3"><span class="badge">2</span><span class="v">カメラオフ・<br>ニックネームでOK</span><span class="d">声だけで参加できます。ご家族やお子さんが横にいても大丈夫。</span></div>
-    <div class="card fill r" style="--i:4"><span class="badge gold">3</span><span class="v">商品の<br>おすすめはしません</span><span class="d">会の中は、お金の勉強だけ。終わったあと、こちらから電話やメールでご連絡することもありません。</span></div>
+    <div class="card fill r" style="--i:4"><span class="badge gold">3</span><span class="v">わからないことは、<br>その場で聞いてOK</span><span class="d">むずかしい言葉は使いません。チャットでも、声でも、途中でどうぞ。</span></div>
   </div>
   <p class="note r" style="--i:5;margin-top:22px;font-weight:900">紙とペン、またはスマホのメモをご用意ください。</p>
-  <aside class="sp">ここで安心してもらうのが最優先。特に3つめ（商品のおすすめはしない）ははっきり言い切る。メモの準備ができたらチャットに◯をもらう。</aside>
+  <aside class="sp">ここで安心してもらうのが最優先。3つめは「質問が出るほど、後半が役に立ちます」と添える。メモの準備ができたらチャットに◯をもらう。</aside>
 </section>
 
 <section class="slide" data-sec="0">
@@ -708,22 +731,9 @@ body.scroll .spk{display:none}
   <div class="grow"></div>
   <span class="sticker pop" style="--i:8;font-size:30px;padding:12px 28px">全部、自分の選択。</span>
   <img class="pop" src="img/cover.jpg" alt="" style="--i:3;position:absolute;right:76px;bottom:96px;width:300px;border-radius:30px;box-shadow:0 16px 36px rgba(10,90,98,.18)">
-  <aside class="sp">キーワードを拾いながら1〜2分で。全部を話さなくてよい。「全部、自分の選択だった」で締めて、会社紹介へ。</aside>
+  <aside class="sp">キーワードを拾いながら1〜2分で。全部を話さなくてよい。「全部、自分の選択だった」で締めて、チェックへ。お子さんがいない方だと分かったら、ここで右下の「おひとり版へ」を押す（同じページのまま、おひとり版に差し替わる）。</aside>
 </section>
 
-<section class="slide tint" data-sec="0">
-  <span class="eyebrow r">会社紹介</span>
-  <h1 class="r" style="--i:1">fulfull株式会社</h1>
-  <div class="cards c2" style="margin-top:22px">
-    <div class="card r" style="--i:2"><span class="k">会社概要</span>
-      <ul class="prof" style="margin-top:0"><li>代表取締役　森川 満章</li><li>所在地　神奈川県横浜市</li><li>設立　2020年6月</li><li>お金の相談・勉強会・企業研修</li></ul></div>
-    <div class="card fill r" style="--i:3"><span class="k">わたしたちの想い</span>
-      <span class="v" style="font-size:36px">資産形成は、誰にでも<br>再現できる「生きるスキル」</span>
-      <span class="d">「自分らしい未来を、自分でつくる人」を増やしたい。fulfullは、そんな想いから生まれた会社です。</span></div>
-  </div>
-  <div class="band soft r" style="--i:4">講演・授業でも、この勉強会でも、<span class="cr">商品のご案内はしていません。</span></div>
-  <aside class="sp">会社紹介は30秒で。最後の一文「商品の案内はしていない」をはっきり伝える。</aside>
-</section>
 
 <section class="slide bleed" data-sec="0" data-steps="6">
   <img class="bg" src="img/worries.jpg" alt="夜のダイニングで、レシートと家計簿を前に考えこむ女性">
@@ -732,8 +742,8 @@ body.scroll .spk{display:none}
     <span class="eyebrow gold r">まずは、チェックから</span>
     <h1 class="r" style="--i:1;font-size:50px">こんな気持ち、<br>ありませんか。</h1>
     <div class="day" style="gap:9px;margin-top:16px">
-      <div class="t" data-s="1" style="padding:9px 18px"><time style="flex:0 0 40px">1</time><b style="font-size:22px">習い事や進学で「うちは無理」と言いたくない</b></div>
-      <div class="t" data-s="2" style="padding:9px 18px"><time style="flex:0 0 40px">2</time><b style="font-size:22px">学費の時期と、自分たちの老後が同時に来る</b></div>
+      <div class="t" data-s="1" style="padding:9px 18px"><time style="flex:0 0 40px">1</time><b style="font-size:22px"><span class="v-fam">習い事や進学で「うちは無理」と言いたくない</span><span class="v-solo">やりたいことを、お金のせいで諦めたくない</span></b></div>
+      <div class="t" data-s="2" style="padding:9px 18px"><time style="flex:0 0 40px">2</time><b style="font-size:22px"><span class="v-fam">学費の時期と、自分たちの老後が同時に来る</span><span class="v-solo">親のことと、自分の老後が同時に来そう</span></b></div>
       <div class="t" data-s="3" style="padding:9px 18px"><time style="flex:0 0 40px">3</time><b style="font-size:22px">新NISA、口座は作ったけれど、そのまま</b></div>
       <div class="t" data-s="4" style="padding:9px 18px"><time style="flex:0 0 40px">4</time><b style="font-size:22px">年金だけで、毎月いくら足りないのか分からない</b></div>
       <div class="t" data-s="5" style="padding:9px 18px"><time style="flex:0 0 40px">5</time><b style="font-size:22px">物価が上がって、貯金が減っている気がする</b></div>
@@ -741,7 +751,7 @@ body.scroll .spk{display:none}
     </div>
     <p class="note" style="margin-top:12px;font-weight:900;color:var(--ink)">当てはまる番号を、チャットに数字だけどうぞ。</p>
   </div></div>
-  <aside class="sp">→ で1つずつ出す。チャットの番号を見て、今日どこを厚くするか決める。子育て中の方が多ければ教育費、年金世代が多ければ老後と置き場所を厚めに。</aside>
+  <aside class="sp">→ で1つずつ出す。チャットの番号を見て、今日どこを厚くするか決める。子育て中の方が多ければ教育費、年金世代が多ければ老後と置き場所を厚めに。おひとり版では1・2番が「やりたいこと」「親のこと」になる。</aside>
 </section>
 
 <section class="slide tint" data-sec="0">
@@ -788,8 +798,8 @@ body.scroll .spk{display:none}
     </div>
     <div class="four">
       <div class="c pop" style="--i:3"><b>いま</b><span>貯金・収入・<br>毎月の残り</span></div>
-      <div class="c pop" style="--i:4"><b class="cr">◯年後｜教育費</b><span>習い事・進学・<br>ひとり暮らし</span></div>
-      <div class="c pop" style="--i:5"><b class="gd">◯年後｜住まい</b><span>ローンの金利が<br>上がったら？</span></div>
+      <div class="c pop v-fam" style="--i:4"><b class="cr">◯年後｜教育費</b><span>習い事・進学・<br>ひとり暮らし</span></div><div class="c pop v-solo" style="--i:4"><b class="cr">◯年後｜親のこと</b><span>帰省・介護の<br>行き来</span></div>
+      <div class="c pop v-fam" style="--i:5"><b class="gd">◯年後｜住まい</b><span>ローンの金利が<br>上がったら？</span></div><div class="c pop v-solo" style="--i:5"><b class="gd">◯年後｜住まい</b><span>更新・住み替え。<br>老後も借りられる？</span></div>
       <div class="c pop" style="--i:6"><b class="tl">65歳〜｜老後</b><span>30年近く、毎月<br>いくら足りない？</span></div>
     </div>
   </div>
@@ -799,19 +809,23 @@ body.scroll .spk{display:none}
 <section class="slide" data-sec="1" data-steps="1">
   <span class="eyebrow r">例｜老後のひと月</span>
   <h1 class="r" style="--i:1">年金だけだと、毎月<em>いくら足りない？</em></h1>
-  <div class="hbar r" style="--i:2;grid-template-columns:200px 1fr 150px;margin-top:30px">
+  <div class="hbar r v-fam" style="--i:2;grid-template-columns:200px 1fr 150px;margin-top:30px">
     <b>生活費</b><div class="tr top"><i style="--w:100%"></i></div><span class="cr">月25万円</span>
     <b>年金</b><div class="tr"><i style="--w:76%"></i></div><span>月19万円</span>
   </div>
+  <div class="hbar r v-solo" style="--i:2;grid-template-columns:200px 1fr 150px;margin-top:30px">
+    <b>生活費</b><div class="tr top"><i style="--w:100%"></i></div><span class="cr">月16万円</span>
+    <b>年金</b><div class="tr"><i style="--w:75%"></i></div><span>月12万円</span>
+  </div>
   <div class="ruler" data-s="1" style="margin-top:30px">
-    <div class="box"><div style="font-size:22px;color:var(--ink2)">毎月の不足</div><div class="big num" style="font-size:72px;color:var(--coral)">6<small>万円</small></div></div>
+    <div class="box"><div style="font-size:22px;color:var(--ink2)">毎月の不足</div><div class="big num" style="font-size:72px;color:var(--coral)"><span class="v-fam">6</span><span class="v-solo">4</span><small>万円</small></div></div>
     <div class="eq">×</div>
     <div class="box"><div style="font-size:22px;color:var(--ink2)">12か月 × 30年</div><div class="big num" style="font-size:72px">360<small>か月</small></div></div>
     <div class="eq">＝</div>
-    <div class="box g"><div style="font-size:22px;color:var(--gold)">老後に足りない分</div><div class="big gd num" style="font-size:72px"><span data-count="2160" data-comma="1">2,160</span><small>万円</small></div></div>
+    <div class="box g"><div style="font-size:22px;color:var(--gold)">老後に足りない分</div><div class="big gd num" style="font-size:72px"><span class="v-fam" data-count="2160" data-comma="1">2,160</span><span class="v-solo" data-count="1440" data-comma="1">1,440</span><small>万円</small></div></div>
   </div>
-  <p class="note" style="position:absolute;left:76px;right:76px;bottom:64px;font-size:16px">夫婦の年金は月20〜23万円前後、生活費は月22〜28万円ほどが一般的な目安です（総務省「家計調査」）。平均寿命は男性81歳・女性87歳（厚生労働省「令和4年簡易生命表」）。</p>
-  <aside class="sp">2,160万円で怖がらせない。「これは平均の話。うちの場合は後半で一緒に計算しましょう」と、後半への期待につなげる。</aside>
+  <p class="note v-fam" style="position:absolute;left:76px;right:76px;bottom:64px;font-size:16px">夫婦の年金は月20〜23万円前後、生活費は月22〜28万円ほどが一般的な目安です（総務省「家計調査」）。平均寿命は男性81歳・女性87歳（厚生労働省「令和4年簡易生命表」）。</p><p class="note v-solo" style="position:absolute;left:76px;right:76px;bottom:64px;font-size:16px">ひとり暮らしの例は、65歳以上の単身無職世帯の平均（支出 約16.2万円・年金など 約12.2万円）を丸めた目安です（総務省「家計調査」2024年）。平均寿命は男性81歳・女性87歳（厚生労働省「令和4年簡易生命表」）。</p>
+  <aside class="sp">2,160万円（おひとり版は1,440万円）で怖がらせない。「これは平均の話。うちの場合は後半で一緒に計算しましょう」と、後半への期待につなげる。</aside>
 </section>
 
 <section class="slide bleed" data-sec="2">
@@ -821,7 +835,7 @@ body.scroll .spk{display:none}
     <h1 class="r" style="--i:1;font-size:56px">お金は、<em class="c">使う時期</em>で分ける。</h1>
   </div>
   <div class="bagl c pop" style="--i:2;left:70px;top:300px"><b>もしもの袋</b><span>生活費の3〜6か月分</span></div>
-  <div class="bagl g pop" style="--i:3;left:340px;top:268px"><b>近い将来の袋</b><span>5年以内に使うお金<br>（教育費・車など）</span></div>
+  <div class="bagl g pop" style="--i:3;left:340px;top:268px"><b>近い将来の袋</b><span>5年以内に使うお金<br><span class="v-fam">（教育費・車など）</span><span class="v-solo">（住み替え・車など）</span></span></div>
   <div class="bagl t pop" style="--i:4;left:620px;top:236px"><b>長く育てる袋</b><span>10年以上<br>使わないお金</span></div>
   <aside class="sp">袋の名前だけ覚えて帰ってもらえればOK。「全部ひとつの口座に入っている」方が多いので、まず分けるだけで景色が変わる。</aside>
 </section>
@@ -936,7 +950,7 @@ body.scroll .spk{display:none}
     <div class="r" style="--i:3"><i>!</i><b>「今だけ」「残りわずか」と急がせる</b></div>
     <div class="r" style="--i:3"><i>!</i><b>人を紹介すると、報酬がもらえる</b></div>
     <div class="r" style="--i:4"><i>!</i><b>有名人の名前や写真を使った投資の広告</b></div>
-    <div class="r" style="--i:4"><i>!</i><b>個人のLINEやDMに誘い、個人の口座に振り込ませる</b></div>
+    <div class="r" style="--i:4"><i>!</i><b>SNSで知り合った人が、個人名義の口座に振り込ませる</b></div>
   </div>
   <div class="band r" style="--i:5">迷ったら、その日はお金を動かさない。家族か、誰かに一度聞く。</div>
   <aside class="sp">ひとつでも当てはまったら近づかない。「うまい話は、知らない人のところには来ない」。</aside>
@@ -949,7 +963,7 @@ body.scroll .spk{display:none}
     <span class="sticker teal r">明日から、やってみる</span>
     <h1 class="hero r" style="--i:1;margin-top:18px;font-size:52px">5分でできることから、<br><em class="c">ひとつだけ</em>。</h1>
     <div class="day">
-      <div class="t" data-s="1"><time>5分</time><b>数字を、家族に見せる<br><small style="font-size:19px;color:var(--ink2)">「うちの足りない数字」を夕食のときに</small></b></div>
+      <div class="t" data-s="1"><time>5分</time><b class="v-fam">数字を、家族に見せる<br><small style="font-size:19px;color:var(--ink2)">「うちの足りない数字」を夕食のときに</small></b><b class="v-solo">数字を、目に入る場所に<br><small style="font-size:19px;color:var(--ink2)">「わたしの足りない数字」をスマホのメモの1行目に</small></b></div>
       <div class="t" data-s="2"><time>10分</time><b>口座を、ひとつ分ける<br><small style="font-size:19px;color:var(--ink2)">「もしもの袋」用の口座をネットでつくる</small></b></div>
       <div class="t" data-s="3"><time>15分</time><b>積立を、月3,000円から<br><small style="font-size:19px;color:var(--ink2)">1日100円からでも、始めた人の勝ち</small></b></div>
     </div>
@@ -965,7 +979,7 @@ body.scroll .spk{display:none}
     <span class="sticker teal r">前半はここまで。おつかれさまでした</span>
     <h1 class="hero r" style="--i:1;margin-top:20px;font-size:56px">ここからは、<br><em class="c">うちの数字</em>で<br>見てみましょう。</h1>
     <div class="row r" style="--i:2;margin-top:22px;gap:10px;flex-wrap:wrap">
-      <span class="pill solid" style="font-size:22px">ひとり10〜20分</span><span class="pill solid" style="font-size:22px">数字はだいたいでOK</span><span class="pill solid" style="font-size:22px">商品のおすすめなし</span>
+      <span class="pill solid" style="font-size:22px">ひとり10〜20分</span><span class="pill solid" style="font-size:22px">数字はだいたいでOK</span><span class="pill solid" style="font-size:22px">その場で一緒に計算</span>
     </div>
     <p class="lead r" style="--i:3;font-size:22px;color:var(--ink);margin-top:18px">ご予定がある方は、ここで退出して大丈夫です。<br>ご参加ありがとうございました。</p>
   </div></div>
@@ -976,7 +990,7 @@ body.scroll .spk{display:none}
   <span class="eyebrow r">後半｜うちの数字で見てみる</span>
   <h1 class="r" style="--i:1">3つだけ、<em>教えてください</em>。</h1>
   <div class="qc">
-    <div class="q r" style="--i:2"><span class="qn">Q1</span><h3>いちばん気になる<br>お金は？</h3><div class="ops"><span>教育費</span><span>老後</span><span>住まい</span><span>もしも</span></div></div>
+    <div class="q r" style="--i:2"><span class="qn">Q1</span><h3>いちばん気になる<br>お金は？</h3><div class="ops"><span class="v-fam">教育費</span><span>老後</span><span>住まい</span><span>もしも</span><span class="v-solo">親のこと</span></div></div>
     <div class="q r" style="--i:3"><span class="qn">Q2</span><h3>それは、<br>何年後？</h3><div class="ops"><span>5年以内</span><span>10年くらい</span><span>20年以上</span></div></div>
     <div class="q r" style="--i:4"><span class="qn">Q3</span><h3>毎月、回せそうな<br>額は？</h3><div class="ops"><span>3,000円</span><span>1万円</span><span>3万円〜</span></div></div>
   </div>
@@ -1007,32 +1021,48 @@ body.scroll .spk{display:none}
       <p>わたしの一歩<i></i></p>
       <p>いつやる？<i style="flex:0 0 90px"></i><small>月</small><i style="flex:0 0 90px"></i><small>日</small></p>
       <p>毎月<i></i><small>円から</small></p>
-      <p>家族に話す日<i style="flex:0 0 90px"></i><small>月</small><i style="flex:0 0 90px"></i><small>日</small></p>
+      <p><span class="v-fam">家族に話す日</span><span class="v-solo">見直す日</span><i style="flex:0 0 90px"></i><small>月</small><i style="flex:0 0 90px"></i><small>日</small></p>
     </div>
     <div class="illust pop" style="--i:3;flex:0 0 330px;box-shadow:0 14px 34px rgba(10,90,98,.16)"><img src="img/cover.jpg" alt=""></div>
   </div>
   <span class="sticker pop" style="--i:4;margin-top:22px;font-size:24px">やってみたら、LINEで「やった！」と一言どうぞ。全力で応援します。</span>
-  <aside class="sp">シミュレーターで出た「月◯円」をここに書いてもらう。日付まで決めると動ける。続きの相談はLINEで一言もらったときだけ、と最後にもう一度伝える。</aside>
+  <aside class="sp">シミュレーターで出た「月◯円」をここに書いてもらう。日付まで決めると動ける。書けたら「今日いろいろ話してきましたね」と、次のスライドへ。</aside>
+</section>
+
+<section class="slide tint" data-sec="5">
+  <span class="sticker gold r">今日いろいろ話してきて</span>
+  <h1 class="r" style="--i:1;margin-top:18px">もっと深く、<em>聞いてみたいところ</em>は<br>ありましたか？</h1>
+  <div class="warn">
+    <div class="n r" style="--i:2"><i>1</i><b>「足りない数字」を、もっと正確に</b></div>
+    <div class="n r" style="--i:2"><i>2</i><b>3つの袋に、いまのお金をどう分けるか</b></div>
+    <div class="n r" style="--i:3"><i>3</i><b>新NISAの、口座の作り方・選び方</b></div>
+    <div class="n r" style="--i:3"><i>4</i><b>物価に負けない、お金の置き場所</b></div>
+    <div class="n r" style="--i:4"><i>5</i><b>病気や、働けなくなったときの備え</b></div>
+    <div class="n r" style="--i:4"><i>6</i><b><span class="v-fam">教育費の時期と、いくら要るか</span><span class="v-solo">老後の住まいと、親のこと</span></b></div>
+  </div>
+  <p class="note r" style="--i:5;margin-top:18px;font-weight:900;color:var(--ink)">番号でも、ひとことでも。チャットでどうぞ。</p>
+  <aside class="sp">今日の話をふり返る温度で聞く。出た番号を「そこ、もう少しじっくり見たいですよね」と受けて、次のスライドへ。何も出なければ「今日のシミュレーターの続き（毎月いくら・どこに置くか）」を次回の中身にする。</aside>
 </section>
 
 <section class="slide bleed" data-sec="5">
-  <img class="bg" src="img/close.jpg" alt="夕暮れの川沿いを手をつないで歩く親子">
+  <img class="bg v-fam" src="img/close.jpg" alt="夕暮れの川沿いを手をつないで歩く親子">
+  <img class="bg v-solo" src="img/consult.jpg" alt="ソファでお茶を手に、オンラインで話す女性" style="object-position:70% center">
   <div class="veil" style="background:linear-gradient(90deg,rgba(255,250,235,.95) 0%,rgba(255,250,235,.85) 40%,rgba(255,250,235,0) 60%)"></div>
   <div class="inner"><div class="box" style="max-width:620px">
-    <span class="eyebrow gold r">このまま、続きも一緒に</span>
+    <span class="eyebrow gold r">では、そこを次回じっくり</span>
     <h1 class="hero r" style="--i:1;font-size:50px;white-space:nowrap">次の相談、<br><em>いつにしましょう？</em></h1>
     <div class="col" style="gap:12px;margin-top:22px">
-      <div class="card r" style="--i:2;padding:16px 22px"><span class="k">次回は、今日の続きから</span><span class="d" style="color:var(--ink)">書いた一歩が進んでいるか、数字を一緒に見直します。</span></div>
+      <div class="card r" style="--i:2;padding:16px 22px"><span class="k">次回は、いま選んだところから</span><span class="d" style="color:var(--ink)">今日の数字をもとに、もう一歩くわしく一緒に見ます。</span></div>
       <div class="card fill r" style="--i:3;padding:16px 22px"><span class="k">一緒に考えますよ！</span><span class="d" style="color:#fff">オンラインで30分。カメラはオフのままでも大丈夫です。</span></div>
     </div>
     <div class="words sm r" style="--i:4;margin-top:16px"><span class="t">来週</span><span class="t">2週間後</span><span class="g">1か月後</span><span class="c">ボーナスの前に</span></div>
     <p class="note r" style="--i:5;font-size:15px;margin-top:14px">本勉強会は情報提供を目的としたものであり、個別の投資判断・税務等の助言を行うものではありません。</p>
   </div></div>
-  <aside class="sp">「では、次はいつにしましょうか？」と当たり前の流れで聞き、その場でカレンダーを開いて日にちを決める。迷っていたら「2週間後の同じ時間はどうですか？」と提案。次回は今日書いた一歩の進み具合を一緒に見る回だと伝える。商品の話はしない。</aside>
+  <aside class="sp">前のスライドで出た番号を受けて「では、そこを次回じっくり見ましょう。いつにしましょうか？」。その場でカレンダーを開いて日にちを決め、連絡の取り方（LINEかメール）を聞く。迷っていたら「2週間後の同じ時間はどうですか？」。決めきれない方には「今日の数字を持ち帰って、決まったらLINEで一言ください」で気持ちよく終える（こちらから追いかけない）。個別の商品名は出さない。</aside>
 </section>
 </div>
 <div class="spk" id="spk"></div>
-<div class="nav"><button id="bPrev" aria-label="前へ">‹</button><button id="bNext" aria-label="次へ">›</button><button id="bNote">メモ</button><button id="bFull">全画面</button></div>
+<div class="nav"><button id="bPrev" aria-label="前へ">‹</button><button id="bNext" aria-label="次へ">›</button><button id="bSwap" data-to="hitori/">おひとり版へ</button><button id="bNote">メモ</button><button id="bFull">全画面</button></div>
 <script>
 (function(){
   var deck=document.getElementById('deck');
@@ -1077,7 +1107,7 @@ body.scroll .spk{display:none}
   function show(n,st,quiet){
     n=Math.max(0,Math.min(slides.length-1,n));
     var changed = n!==cur || !frames[n].classList.contains('on');
-    frames.forEach(function(f,i){f.classList.toggle('on',i===n)});
+    frames.forEach(function(f,i){f.classList.toggle('on',i===n); if(i!==n){[].forEach.call(f.querySelectorAll('video'),function(v){try{v.pause()}catch(e){}})}});
     cur=n; step=Math.max(0,Math.min(maxStep(n),st||0));
     applyStep(n); notes(n);
     
@@ -1095,7 +1125,7 @@ body.scroll .spk{display:none}
   });
   deck.addEventListener('click',function(e){
     if(scroll)return;
-    if(e.target.closest('button,a,input'))return;
+    if(e.target.closest('button,a,input,video'))return;
     var r=deck.getBoundingClientRect();
     if(e.clientX-r.left < r.width*0.25) prev(); else next();
   });
@@ -1104,6 +1134,8 @@ body.scroll .spk{display:none}
   deck.addEventListener('touchend',function(e){if(scroll||tx===null)return;var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50){d<0?next():prev()}tx=null},{passive:true});
   function full(){try{var d=document.documentElement;if(!document.fullscreenElement){var p=(d.requestFullscreen||d.webkitRequestFullscreen).call(d);if(p&&p.catch)p.catch(function(){})}else{document.exitFullscreen()}}catch(e){}}
   document.getElementById('bPrev').onclick=prev;document.getElementById('bNext').onclick=next;document.getElementById('bFull').onclick=full;document.getElementById('bNote').onclick=function(){document.body.classList.toggle('notes')};
+  var bW=document.getElementById('bSwap');
+  bW.onclick=function(){location.href=bW.getAttribute('data-to')+(location.hash||'')};
   window.addEventListener('resize',fit);
   var h=parseInt((location.hash||'').replace('#',''),10); if(h>0){cur=Math.min(slides.length-1,h-1)}
   fit();
